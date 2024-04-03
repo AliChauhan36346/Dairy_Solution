@@ -97,7 +97,7 @@ namespace WindowsFormsApp1
                 }
                 else
                 {
-                    MessageBox.Show("Please select a dodhi!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please select a dodhi from list!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else if(chk_addressWise.Checked)
