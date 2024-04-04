@@ -372,10 +372,8 @@ namespace WindowsFormsApp1
                 e.Graphics.DrawString("03346565189 :فون نمبر" + " ", infofont, brush, 128, 395);
                 e.Graphics.DrawString("آپ کے تعاون کا شکریہ", infofont, brush, 80, 425);
 
-
-                
-
                 currentRow++;
+
                 e.HasMorePages = true;
             }
             else
@@ -397,7 +395,7 @@ namespace WindowsFormsApp1
             // Set up event handler only once
             //printDocument2.PrintPage += printDocument2_PrintPage;
 
-            printDocument2.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("pprnm", 285, 455);
+            printDocument2.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("pprnm", 285, 455);//455
 
             // Create PrintPreviewDialog and assign the document
             PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
