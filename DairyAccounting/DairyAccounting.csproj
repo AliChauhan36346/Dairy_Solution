@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountsLegersClass.cs" />
+    <Compile Include="AddExpenses.cs" />
     <Compile Include="AddReceipts.cs" />
     <Compile Include="AddAccounts.cs" />
     <Compile Include="AddChilarReceive.cs" />

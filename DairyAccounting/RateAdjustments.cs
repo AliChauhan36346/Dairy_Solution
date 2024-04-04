@@ -14,7 +14,7 @@ namespace DairyAccounting
     {
         Connection dbConnection;
 
-        decimal rate;
+        
 
         public RateAdjustments()
         {
