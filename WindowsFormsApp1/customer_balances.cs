@@ -93,7 +93,7 @@ namespace WindowsFormsApp1
                 {
                     int dohdiId=employees.getDodhiIdByName(cmbo_dodhiWise.SelectedItem.ToString());
 
-                    parchi.getAllAccountsBalances(dohdiId, dataGridView2, out grandTotalDebit, out grandTotalCredit);
+                    parchi.getAllAccountsBalances(dohdiId,false, dataGridView2, out grandTotalDebit, out grandTotalCredit);
                 }
                 else
                 {
@@ -103,11 +103,11 @@ namespace WindowsFormsApp1
             else if(chk_addressWise.Checked)
             {
                 // for future use
-                parchi.getAllAccountsBalances(-1, dataGridView2, out grandTotalDebit, out grandTotalCredit);
+                parchi.getAllAccountsBalances(-1,false, dataGridView2, out grandTotalDebit, out grandTotalCredit);
             }
             else
             {
-                parchi.getAllAccountsBalances(-1, dataGridView2, out grandTotalDebit,out grandTotalCredit);
+                parchi.getAllAccountsBalances(-1,false, dataGridView2, out grandTotalDebit,out grandTotalCredit);
             }
 
             grandBalance = grandTotalCredit - grandTotalDebit;

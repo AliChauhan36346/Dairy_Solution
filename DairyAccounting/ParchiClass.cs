@@ -15,6 +15,7 @@ namespace DairyAccounting
     {
         Connection dbConnection;
         AddCustomers customers=new AddCustomers();
+        AddCompanies company=new AddCompanies();
 
         public ParchiClass()
         {
@@ -296,7 +297,7 @@ namespace DairyAccounting
             }
         }
 
-        public void getAllAccountsBalances(int dodhiId, DataGridView dataGridView, 
+        public void getAllAccountsBalances(int dodhiId, bool isCompany, DataGridView dataGridView, 
             out decimal grandTotalDebit, out decimal grandTotalCredit)
         {
             DataTable balanceTable = new DataTable();
@@ -330,16 +331,49 @@ namespace DairyAccounting
 
                 customerAndDodhiID = GetCustomerAndDodhiID();
 
-                // to get parchi of all customer ralated to a single dodhi
-                if (dodhiId != -1)
-                {
-                    foreach (var item in customerAndDodhiID)
-                    {
-                        int customerId = item.Key;
-                        int customerDodhiId = item.Value;
+                Dictionary<int, string> companies = new Dictionary<int, string>();
 
-                        if (customerDodhiId == dodhiId)
+                companies = company.GetCompanyIdsAndNames();
+
+                if(!isCompany)
+                {
+                    // to get parchi of all customer ralated to a single dodhi
+                    if (dodhiId != -1)
+                    {
+                        foreach (var item in customerAndDodhiID)
                         {
+                            int customerId = item.Key;
+                            int customerDodhiId = item.Value;
+
+                            if (customerDodhiId == dodhiId)
+                            {
+                                accountName = customers.GetCustomerNameById(customerId);
+
+                                // caling parchi function to generate parchi of the provide customer
+                                GetAccountSummary(out totalDebit, out totalCredit, out closingBalance, out closingStatus, customerId);
+
+                                // adding a row to the table as the new customer will come every time
+                                balanceTable.Rows.Add(customerId, accountName, openingBalance, openingStatus, totalDebit, totalCredit, closingBalance, closingStatus);
+
+
+                                grandTotalCredit += totalCredit;
+                                grandTotalDebit += totalDebit;
+
+                                openingBalance = 0;
+                                openingStatus = "";
+                                totalDebit = 0;
+                                totalCredit = 0;
+                                closingBalance = 0;
+                                closingStatus = "";
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (var item in customerAndDodhiID)
+                        {
+                            int customerId = item.Key;
+
                             accountName = customers.GetCustomerNameById(customerId);
 
                             // caling parchi function to generate parchi of the provide customer
@@ -354,26 +388,27 @@ namespace DairyAccounting
 
                             openingBalance = 0;
                             openingStatus = "";
-                            totalDebit=0;
-                            totalCredit=0;
+                            totalDebit = 0;
+                            totalCredit = 0;
                             closingBalance = 0;
                             closingStatus = "";
+
                         }
                     }
                 }
-                else
+                else // for companies balances
                 {
-                    foreach (var item in customerAndDodhiID)
+                    foreach (var item in companies)
                     {
-                        int customerId = item.Key;
-
-                        accountName = customers.GetCustomerNameById(customerId);
+                        int companyId = item.Key;
+                        string companyName = item.Value;
+                        
 
                         // caling parchi function to generate parchi of the provide customer
-                        GetAccountSummary(out totalDebit, out totalCredit, out closingBalance, out closingStatus, customerId);
+                        GetAccountSummary(out totalDebit, out totalCredit, out closingBalance, out closingStatus, companyId);
 
                         // adding a row to the table as the new customer will come every time
-                        balanceTable.Rows.Add(customerId, accountName, openingBalance, openingStatus, totalDebit, totalCredit, closingBalance, closingStatus);
+                        balanceTable.Rows.Add(companyId, companyName, openingBalance, openingStatus, totalDebit, totalCredit, closingBalance, closingStatus);
 
 
                         grandTotalCredit += totalCredit;
@@ -388,6 +423,8 @@ namespace DairyAccounting
 
                     }
                 }
+
+                
 
                 dataGridView.DataSource = balanceTable;
 
@@ -410,7 +447,7 @@ namespace DairyAccounting
             }
         }
 
-        public void GetAccountSummary(out decimal totalDebit, out decimal totalCredit, out decimal closingBalance, out string closingStatus, int customerId)
+        public void GetAccountSummary(out decimal totalDebit, out decimal totalCredit, out decimal closingBalance, out string closingStatus, int accountId)
         {
             decimal openingBalance = 0;
             string openingStatus = "";
@@ -427,15 +464,15 @@ namespace DairyAccounting
                 string totalDebitQuery = @"
                 SELECT ISNULL(SUM(amount), 0) AS totalDebit
                 FROM (
-                    SELECT amount FROM Payments WHERE accountId = @customerId
+                    SELECT amount FROM Payments WHERE accountId = @accountId
                     UNION ALL
-                    SELECT amount FROM Sales WHERE companyId = @customerId
+                    SELECT amount FROM Sales WHERE companyId = @accountId
                 ) AS TransactionAmounts";
 
 
                 using (SqlCommand command = new SqlCommand(totalDebitQuery, dbConnection.connection))
                 {
-                    command.Parameters.AddWithValue("@customerId", customerId);
+                    command.Parameters.AddWithValue("@accountId", accountId);
 
                     totalDebit = Convert.ToDecimal(command.ExecuteScalar());
                 }
@@ -444,14 +481,16 @@ namespace DairyAccounting
                 string totalCreditQuery = @"
                 SELECT ISNULL(SUM(amount), 0) AS totalDebit
                 FROM (
-                    SELECT amount FROM Purchases WHERE customerID = @customerId
+                    SELECT amount FROM Purchases WHERE customerID = @accountId
                     UNION ALL
-                    SELECT amount FROM Receipts WHERE accountId = @customerId
+                    SELECT amount FROM Receipts WHERE accountId = @accountId
+                    UNION ALL
+                    SELECT amountReceived FROM Sales WHERE companyId = @accountId
                 ) AS TransactionAmounts";
 
                 using (SqlCommand command = new SqlCommand(totalCreditQuery, dbConnection.connection))
                 {
-                    command.Parameters.AddWithValue("@customerId", customerId);
+                    command.Parameters.AddWithValue("@accountId", accountId);
 
                     totalCredit = Convert.ToDecimal(command.ExecuteScalar());
                 }

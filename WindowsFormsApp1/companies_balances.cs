@@ -32,7 +32,25 @@ namespace WindowsFormsApp1
             decimal grandBalance = 0;
             string grandStatus = "";
 
-            parchi.getAllAccountsBalances(-1, dataGridView2, out grandTotalDebit, out grandTotalCredit);
+            parchi.getAllAccountsBalances(-1,true, dataGridView2, out grandTotalDebit, out grandTotalCredit);
+
+            grandBalance = grandTotalCredit - grandTotalDebit;
+            grandStatus = grandBalance > 0 ? "Credit" : "Debit";
+            grandBalance = Math.Abs(grandBalance);
+
+            txt_debit.Text = grandTotalDebit.ToString();
+            txt_credit.Text = grandTotalCredit.ToString();
+            txt_balance.Text = grandBalance.ToString() + " " + grandStatus;
+        }
+
+        private void companies_balances_Load(object sender, EventArgs e)
+        {
+            decimal grandTotalDebit = 0;
+            decimal grandTotalCredit = 0;
+            decimal grandBalance = 0;
+            string grandStatus = "";
+
+            parchi.getAllAccountsBalances(-1, true, dataGridView2, out grandTotalDebit, out grandTotalCredit);
 
             grandBalance = grandTotalCredit - grandTotalDebit;
             grandStatus = grandBalance > 0 ? "Credit" : "Debit";
