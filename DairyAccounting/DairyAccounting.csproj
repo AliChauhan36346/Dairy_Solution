@@ -66,6 +66,7 @@
     <Compile Include="ParchiClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RateAdjustments.cs" />
+    <Compile Include="ReportsClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="cashAccountSelectionForm.resx">

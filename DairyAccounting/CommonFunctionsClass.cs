@@ -379,15 +379,26 @@ namespace DairyAccounting
             }
         }
 
-        public decimal AveragePurchaseRate()
+        public decimal AverageRate(bool isCustomer)
         {
             decimal averageRate = 0;
+
+            string tableName = "";
+
+            if(isCustomer)
+            {
+                tableName = "CustomersTbl";
+            }
+            else
+            {
+                tableName = "CompaniesTbl";
+            }
 
             try
             {
                 dbConnection.openConnection();
 
-                string query = "SELECT AVG(rate) FROM CustomersTbl";
+                string query = $"SELECT AVG(rate) FROM {tableName}";
 
                 using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
                 {
