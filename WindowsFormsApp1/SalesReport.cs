@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class DailySalesReport : Form
+    public partial class SalesReport : Form
     {
-        public DailySalesReport()
+        public SalesReport()
         {
             InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -109,7 +109,6 @@ namespace DairyAccounting
             }
         }
 
-
         public void HandleAccountSuggestionKeyDown(TextBox id, TextBox name, ListBox listBox, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
@@ -380,8 +379,37 @@ namespace DairyAccounting
             }
         }
 
+        public decimal AveragePurchaseRate()
+        {
+            decimal averageRate = 0;
 
+            try
+            {
+                dbConnection.openConnection();
 
+                string query = "SELECT AVG(rate) FROM CustomersTbl";
+
+                using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
+                {
+                    object result = command.ExecuteScalar();
+
+                    if(result!=null)
+                    {
+                        averageRate = (decimal)result;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error calculating average rate: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dbConnection.closeConnection();
+            }
+
+            return averageRate;
+        }
 
     }
 }
