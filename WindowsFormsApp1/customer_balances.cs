@@ -103,6 +103,7 @@ namespace WindowsFormsApp1
             else if(chk_addressWise.Checked)
             {
                 // for future use
+                parchi.getAllAccountsBalances(-1, dataGridView2, out grandTotalDebit, out grandTotalCredit);
             }
             else
             {
