@@ -45,7 +45,6 @@
             this.txt_accountName = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.txt_status = new System.Windows.Forms.TextBox();
             this.txt_totalBalance = new System.Windows.Forms.TextBox();
             this.txt_totalCredit = new System.Windows.Forms.TextBox();
             this.txt_totalDebit = new System.Windows.Forms.TextBox();
@@ -96,13 +95,13 @@
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dataGridView1.Location = new System.Drawing.Point(0, 165);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 159);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(972, 459);
+            this.dataGridView1.Size = new System.Drawing.Size(972, 473);
             this.dataGridView1.TabIndex = 38;
             // 
             // panel1
@@ -245,67 +244,57 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.Silver;
             this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.txt_status);
             this.panel2.Controls.Add(this.txt_totalBalance);
             this.panel2.Controls.Add(this.txt_totalCredit);
             this.panel2.Controls.Add(this.txt_totalDebit);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 627);
+            this.panel2.Location = new System.Drawing.Point(0, 632);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(972, 50);
+            this.panel2.Size = new System.Drawing.Size(972, 45);
             this.panel2.TabIndex = 39;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.BackColor = System.Drawing.Color.Silver;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(483, 10);
+            this.label4.Location = new System.Drawing.Point(490, 11);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 25);
+            this.label4.Size = new System.Drawing.Size(75, 20);
             this.label4.TabIndex = 4;
             this.label4.Text = "Totals Rs";
             // 
-            // txt_status
-            // 
-            this.txt_status.Font = new System.Drawing.Font("Segoe UI", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_status.ForeColor = System.Drawing.Color.Blue;
-            this.txt_status.Location = new System.Drawing.Point(896, 8);
-            this.txt_status.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_status.Name = "txt_status";
-            this.txt_status.Size = new System.Drawing.Size(65, 29);
-            this.txt_status.TabIndex = 3;
-            // 
             // txt_totalBalance
             // 
-            this.txt_totalBalance.Font = new System.Drawing.Font("Segoe UI", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_totalBalance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_totalBalance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.txt_totalBalance.Location = new System.Drawing.Point(780, 8);
+            this.txt_totalBalance.Location = new System.Drawing.Point(784, 8);
             this.txt_totalBalance.Margin = new System.Windows.Forms.Padding(4);
             this.txt_totalBalance.Name = "txt_totalBalance";
-            this.txt_totalBalance.Size = new System.Drawing.Size(108, 29);
+            this.txt_totalBalance.Size = new System.Drawing.Size(179, 27);
             this.txt_totalBalance.TabIndex = 2;
             // 
             // txt_totalCredit
             // 
-            this.txt_totalCredit.Font = new System.Drawing.Font("Segoe UI", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_totalCredit.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_totalCredit.ForeColor = System.Drawing.Color.Green;
-            this.txt_totalCredit.Location = new System.Drawing.Point(678, 8);
+            this.txt_totalCredit.Location = new System.Drawing.Point(681, 8);
             this.txt_totalCredit.Margin = new System.Windows.Forms.Padding(4);
             this.txt_totalCredit.Name = "txt_totalCredit";
-            this.txt_totalCredit.Size = new System.Drawing.Size(99, 29);
+            this.txt_totalCredit.Size = new System.Drawing.Size(99, 27);
             this.txt_totalCredit.TabIndex = 1;
             // 
             // txt_totalDebit
             // 
-            this.txt_totalDebit.Font = new System.Drawing.Font("Segoe UI", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_totalDebit.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_totalDebit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txt_totalDebit.Location = new System.Drawing.Point(573, 8);
+            this.txt_totalDebit.Location = new System.Drawing.Point(578, 8);
             this.txt_totalDebit.Margin = new System.Windows.Forms.Padding(4);
             this.txt_totalDebit.Name = "txt_totalDebit";
-            this.txt_totalDebit.Size = new System.Drawing.Size(102, 29);
+            this.txt_totalDebit.Size = new System.Drawing.Size(99, 27);
             this.txt_totalDebit.TabIndex = 0;
             // 
             // lstSuggestions
@@ -383,7 +372,6 @@
         private System.Windows.Forms.Button btn_print;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txt_status;
         private System.Windows.Forms.TextBox txt_totalBalance;
         private System.Windows.Forms.TextBox txt_totalCredit;
         private System.Windows.Forms.TextBox txt_totalDebit;

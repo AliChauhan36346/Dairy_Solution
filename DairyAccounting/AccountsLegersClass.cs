@@ -24,7 +24,7 @@ namespace DairyAccounting
         // Method to retrieve IDs and names for all account types
 
 
-        public void GetCustomerLedger(DataGridView dataGridView, int id, DateTime fromDate, DateTime toDate, TextBox txtTotalDebit, TextBox txtTotalCredit, TextBox totalblance, TextBox balanceStatus ,Label balanceForward)
+        public void GetCustomerLedger(DataGridView dataGridView, int id, DateTime fromDate, DateTime toDate, out decimal totalDebit, out decimal totalCredit, out decimal totalBalance, out string bStatus ,out decimal balanceBroughtForward, out string forwardString)
         {
             DataTable ledgerTable = new DataTable();
             ledgerTable.Columns.Add("Date");
@@ -38,10 +38,13 @@ namespace DairyAccounting
 
 
             decimal runningBalance = 0;
-            decimal totalDebit = 0;
-            decimal totalCredit = 0;
-            decimal balanceBroughtForward = 0;
-            string bStatus="";
+            totalBalance = 0;
+            totalDebit = 0;
+            totalCredit = 0;
+            balanceBroughtForward = 0;
+            forwardString = "";
+            
+            bStatus="";
 
             try
             {
@@ -99,11 +102,11 @@ namespace DairyAccounting
                 runningBalance += balanceBroughtForward;
                 if( balanceBroughtForward > 0 )
                 {
-                    balanceForward.Text = "Balance Brought Forward:   " + balanceBroughtForward.ToString() + " Credit";
+                    forwardString = "Credit";
                 }
                 else
                 {
-                    balanceForward.Text = "Balance Brought Forward:   " + balanceBroughtForward.ToString() + " Debit";
+                    forwardString = "Debit";
                 }
                 
 
@@ -203,13 +206,10 @@ namespace DairyAccounting
             }
 
             // Update the UI
-            decimal totalBalance = Math.Abs(runningBalance);
+            totalBalance = Math.Abs(runningBalance);
 
             dataGridView.DataSource = ledgerTable;
-            txtTotalDebit.Text = totalDebit.ToString();
-            txtTotalCredit.Text = totalCredit.ToString();
-            totalblance.Text = totalBalance.ToString();
-            balanceStatus.Text = bStatus.ToString();
+            
 
             dataGridView.Columns["Date"].Width = 85;
             dataGridView.Columns["Tran.No"].Width = 80;

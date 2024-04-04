@@ -64,7 +64,7 @@
             // 
             this.btn_print.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_print.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btn_print.Location = new System.Drawing.Point(673, 14);
+            this.btn_print.Location = new System.Drawing.Point(674, 20);
             this.btn_print.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btn_print.Name = "btn_print";
             this.btn_print.Size = new System.Drawing.Size(69, 46);
@@ -78,7 +78,7 @@
             // 
             this.btn_display.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_display.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btn_display.Location = new System.Drawing.Point(604, 14);
+            this.btn_display.Location = new System.Drawing.Point(605, 20);
             this.btn_display.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btn_display.Name = "btn_display";
             this.btn_display.Size = new System.Drawing.Size(69, 46);
@@ -102,7 +102,7 @@
             // 
             this.Btn_dashboard.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_dashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Btn_dashboard.Location = new System.Drawing.Point(742, 14);
+            this.Btn_dashboard.Location = new System.Drawing.Point(743, 20);
             this.Btn_dashboard.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Btn_dashboard.Name = "Btn_dashboard";
             this.Btn_dashboard.Size = new System.Drawing.Size(75, 46);
@@ -119,12 +119,12 @@
             this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(0, 160);
+            this.dataGridView2.Location = new System.Drawing.Point(0, 145);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(1016, 480);
+            this.dataGridView2.Size = new System.Drawing.Size(1016, 502);
             this.dataGridView2.TabIndex = 14;
             // 
             // label1
@@ -262,10 +262,10 @@
             // 
             this.btn_printAndAddPayments.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_printAndAddPayments.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btn_printAndAddPayments.Location = new System.Drawing.Point(604, 62);
+            this.btn_printAndAddPayments.Location = new System.Drawing.Point(605, 68);
             this.btn_printAndAddPayments.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btn_printAndAddPayments.Name = "btn_printAndAddPayments";
-            this.btn_printAndAddPayments.Size = new System.Drawing.Size(90, 55);
+            this.btn_printAndAddPayments.Size = new System.Drawing.Size(90, 52);
             this.btn_printAndAddPayments.TabIndex = 42;
             this.btn_printAndAddPayments.TabStop = false;
             this.btn_printAndAddPayments.Text = "Print+Add Payments";
@@ -280,52 +280,52 @@
             this.panel2.Controls.Add(this.txt_totalParchiAmount);
             this.panel2.Controls.Add(this.txt_totalLitersAmount);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 642);
+            this.panel2.Location = new System.Drawing.Point(0, 648);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1016, 47);
+            this.panel2.Size = new System.Drawing.Size(1016, 41);
             this.panel2.TabIndex = 40;
             // 
             // txt_totalLiters
             // 
-            this.txt_totalLiters.Font = new System.Drawing.Font("Segoe UI", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_totalLiters.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_totalLiters.ForeColor = System.Drawing.Color.Green;
             this.txt_totalLiters.Location = new System.Drawing.Point(452, 7);
             this.txt_totalLiters.Margin = new System.Windows.Forms.Padding(4);
             this.txt_totalLiters.Name = "txt_totalLiters";
-            this.txt_totalLiters.Size = new System.Drawing.Size(119, 33);
+            this.txt_totalLiters.Size = new System.Drawing.Size(119, 27);
             this.txt_totalLiters.TabIndex = 5;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label5.Location = new System.Drawing.Point(378, 9);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(66, 25);
+            this.label5.Size = new System.Drawing.Size(51, 20);
             this.label5.TabIndex = 4;
             this.label5.Text = "Totals";
             // 
             // txt_totalParchiAmount
             // 
-            this.txt_totalParchiAmount.Font = new System.Drawing.Font("Segoe UI", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_totalParchiAmount.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_totalParchiAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txt_totalParchiAmount.Location = new System.Drawing.Point(705, 7);
             this.txt_totalParchiAmount.Margin = new System.Windows.Forms.Padding(4);
             this.txt_totalParchiAmount.Name = "txt_totalParchiAmount";
-            this.txt_totalParchiAmount.Size = new System.Drawing.Size(113, 33);
+            this.txt_totalParchiAmount.Size = new System.Drawing.Size(113, 27);
             this.txt_totalParchiAmount.TabIndex = 2;
             // 
             // txt_totalLitersAmount
             // 
-            this.txt_totalLitersAmount.Font = new System.Drawing.Font("Segoe UI", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_totalLitersAmount.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_totalLitersAmount.ForeColor = System.Drawing.Color.Red;
             this.txt_totalLitersAmount.Location = new System.Drawing.Point(574, 7);
             this.txt_totalLitersAmount.Margin = new System.Windows.Forms.Padding(4);
             this.txt_totalLitersAmount.Name = "txt_totalLitersAmount";
-            this.txt_totalLitersAmount.Size = new System.Drawing.Size(126, 33);
+            this.txt_totalLitersAmount.Size = new System.Drawing.Size(126, 27);
             this.txt_totalLitersAmount.TabIndex = 1;
             // 
             // printDocument2

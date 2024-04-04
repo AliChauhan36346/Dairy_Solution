@@ -250,10 +250,13 @@ namespace WindowsFormsApp1
         private int currentRow = 0;
         private void printDocument2_PrintPage(object sender, PrintPageEventArgs e)
         {
+            //e.HasMorePages = false;
+
             string companyName = "چوہان ڈیری فارمز"; // Your company name
 
             DateTime startDate = dtm_start.Value;
             DateTime endDate = dtm_end.Value;
+
 
             // Set font and brush for drawing
             Font headingfont = new Font("Times New Roman", 18, FontStyle.Bold);
@@ -266,15 +269,16 @@ namespace WindowsFormsApp1
 
             Pen pen = new Pen(Color.Black, 2);
 
+            
+
 
             int xAxis = 190;
-            e.HasMorePages = true;
             
             if(currentRow<dataGridView2.Rows.Count-1)
             {
 
                 DataGridViewRow row = dataGridView2.Rows[currentRow];
-                currentRow++;
+                
 
                 e.Graphics.DrawString(companyName, headingfont, brush, 70, 17); // Adjust the Y coordinate as needed
                 e.Graphics.DrawString("--------------------------------------------", linefont, brush, 20, 30); // Adjust the Y coordinate as needed
@@ -317,24 +321,35 @@ namespace WindowsFormsApp1
                     }
                 }
 
-                
-                e.Graphics.DrawString(row.Cells["Total Liters"].Value.ToString(), font, brush, 70, 200);
-                
-                e.Graphics.DrawString(row.Cells["Milk Amount"].Value.ToString(), font, brush, 70, 230);
+                if (row.Cells["Total Liters"].Value != null)
+                    e.Graphics.DrawString(row.Cells["Total Liters"].Value.ToString(), font, brush, 70, 200);
+                if (row.Cells["Milk Amount"].Value != null)
+                    e.Graphics.DrawString(row.Cells["Milk Amount"].Value.ToString(), font, brush, 70, 230);
 
                 // Calculate the position and size of the text
                 float xCoordinate = 70;
                 float yCoordinate = 260;
-                float textWidth = e.Graphics.MeasureString(row.Cells["Parchi Amount"].Value.ToString(), font).Width;
-                float textHeight = e.Graphics.MeasureString(row.Cells["Parchi Amount"].Value.ToString(), font).Height;
+
+                float textWidth = 0;
+                float textHeight = 0;
+                if (row.Cells["Parchi Amount"].Value != null)
+                {
+                    textWidth = e.Graphics.MeasureString(row.Cells["Parchi Amount"].Value.ToString(), font).Width;
+                }
+                if (row.Cells["Total Liters"].Value != null)
+                {
+                    textHeight = e.Graphics.MeasureString(row.Cells["Parchi Amount"].Value.ToString(), font).Height;
+                }
+                    
 
                 // Draw a rectangle around the text
                 e.Graphics.DrawRectangle(pen, xCoordinate, yCoordinate, textWidth, textHeight);
 
                 // Draw the text
-                e.Graphics.DrawString(row.Cells["Parchi Amount"].Value.ToString(), font, brush, xCoordinate, yCoordinate);
-
-                e.Graphics.DrawString(row.Cells["Closing Balance"].Value.ToString(), font, brush, 70, 290);
+                if (row.Cells["Parchi Amount"].Value != null)
+                    e.Graphics.DrawString(row.Cells["Parchi Amount"].Value.ToString(), font, brush, xCoordinate, yCoordinate);
+                if (row.Cells["Closing Balance"].Value != null)
+                    e.Graphics.DrawString(row.Cells["Closing Balance"].Value.ToString(), font, brush, 70, 290);
 
                 if (row.Cells["Status"].Value != null)
                 {
@@ -357,11 +372,11 @@ namespace WindowsFormsApp1
                 e.Graphics.DrawString("03346565189 :فون نمبر" + " ", infofont, brush, 128, 395);
                 e.Graphics.DrawString("آپ کے تعاون کا شکریہ", infofont, brush, 80, 425);
 
-                
-                //e.HasMorePages = true;
+
                 
 
-
+                currentRow++;
+                e.HasMorePages = true;
             }
             else
             {
@@ -369,16 +384,18 @@ namespace WindowsFormsApp1
                 e.HasMorePages=false;
             }
 
+
+
             
         }
 
 
         private void btn_print_Click(object sender, EventArgs e)
         {
-            printDialog1.Document = printDocument2;
+            //printDialog1.Document = printDocument2;
 
             // Set up event handler only once
-            printDocument2.PrintPage += printDocument2_PrintPage;
+            //printDocument2.PrintPage += printDocument2_PrintPage;
 
             printDocument2.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("pprnm", 285, 455);
 

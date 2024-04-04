@@ -21,6 +21,14 @@ namespace WindowsFormsApp1
         customer_balances customer_Balances = new customer_balances();
         public bool isFromOtherForm=false;
 
+        // for out values from leger calculator
+        decimal totalBalance;
+        decimal totalDebit;
+        decimal totalCredit;
+        decimal balanceBroughtForward;
+        string forwardString;
+        string bStatus;
+
         public int accountId;
         public string accountName;
 
@@ -50,7 +58,7 @@ namespace WindowsFormsApp1
 
             if(isFromOtherForm)
             {
-                accounts.GetCustomerLedger(dataGridView1, accountId, startDate.Date, dtm_to.Value, txt_totalDebit, txt_totalCredit, txt_totalBalance, txt_status, lbl_forwardBalance);
+                accounts.GetCustomerLedger(dataGridView1, accountId, startDate.Date, dtm_to.Value, out totalDebit, out totalCredit, out totalBalance, out bStatus, out balanceBroughtForward, out forwardString);
 
                 txt_accountId.Text = accountId.ToString();
                 txt_accountName.Text = accountName.ToString();
@@ -97,10 +105,13 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Invalid Account Id.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            
-            accounts.GetCustomerLedger(dataGridView1, accountId, startDate.Date, dtm_to.Value, txt_totalDebit,txt_totalCredit,txt_totalBalance, txt_status, lbl_forwardBalance);
 
+            accounts.GetCustomerLedger(dataGridView1, accountId, startDate.Date, dtm_to.Value, out totalDebit, out totalCredit, out totalBalance, out bStatus, out balanceBroughtForward, out forwardString);
 
+            lbl_forwardBalance.Text="Balance brought forward " + balanceBroughtForward.ToString() + " " + forwardString;
+            txt_totalDebit.Text = totalDebit.ToString();
+            txt_totalCredit.Text = totalCredit.ToString();
+            txt_totalBalance.Text=totalBalance.ToString() + " " + bStatus;
         }
 
         private void btn_print_Click(object sender, EventArgs e)
