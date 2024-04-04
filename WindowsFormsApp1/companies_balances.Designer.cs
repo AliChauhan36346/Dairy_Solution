@@ -62,6 +62,7 @@
             this.dataGridView2.Size = new System.Drawing.Size(979, 539);
             this.dataGridView2.TabIndex = 14;
             this.dataGridView2.TabStop = false;
+            this.dataGridView2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseDoubleClick);
             // 
             // btn_display
             // 

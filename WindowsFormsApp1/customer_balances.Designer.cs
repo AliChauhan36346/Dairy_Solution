@@ -39,10 +39,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txt_balance = new System.Windows.Forms.TextBox();
-            this.txt_credit = new System.Windows.Forms.TextBox();
-            this.txt_debit = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.txt_debit = new System.Windows.Forms.TextBox();
+            this.txt_credit = new System.Windows.Forms.TextBox();
+            this.txt_balance = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel2.SuspendLayout();
@@ -184,6 +184,7 @@
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(979, 527);
             this.dataGridView2.TabIndex = 12;
+            this.dataGridView2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseDoubleClick);
             // 
             // panel2
             // 
@@ -198,33 +199,6 @@
             this.panel2.Size = new System.Drawing.Size(979, 39);
             this.panel2.TabIndex = 13;
             // 
-            // txt_balance
-            // 
-            this.txt_balance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_balance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_balance.Location = new System.Drawing.Point(771, 6);
-            this.txt_balance.Name = "txt_balance";
-            this.txt_balance.Size = new System.Drawing.Size(201, 25);
-            this.txt_balance.TabIndex = 0;
-            // 
-            // txt_credit
-            // 
-            this.txt_credit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_credit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_credit.Location = new System.Drawing.Point(649, 6);
-            this.txt_credit.Name = "txt_credit";
-            this.txt_credit.Size = new System.Drawing.Size(116, 25);
-            this.txt_credit.TabIndex = 1;
-            // 
-            // txt_debit
-            // 
-            this.txt_debit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_debit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_debit.Location = new System.Drawing.Point(527, 6);
-            this.txt_debit.Name = "txt_debit";
-            this.txt_debit.Size = new System.Drawing.Size(116, 25);
-            this.txt_debit.TabIndex = 2;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -236,6 +210,33 @@
             this.label2.Size = new System.Drawing.Size(75, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "Totals Rs";
+            // 
+            // txt_debit
+            // 
+            this.txt_debit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_debit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_debit.Location = new System.Drawing.Point(527, 6);
+            this.txt_debit.Name = "txt_debit";
+            this.txt_debit.Size = new System.Drawing.Size(116, 25);
+            this.txt_debit.TabIndex = 2;
+            // 
+            // txt_credit
+            // 
+            this.txt_credit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_credit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_credit.Location = new System.Drawing.Point(649, 6);
+            this.txt_credit.Name = "txt_credit";
+            this.txt_credit.Size = new System.Drawing.Size(116, 25);
+            this.txt_credit.TabIndex = 1;
+            // 
+            // txt_balance
+            // 
+            this.txt_balance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_balance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_balance.Location = new System.Drawing.Point(771, 6);
+            this.txt_balance.Name = "txt_balance";
+            this.txt_balance.Size = new System.Drawing.Size(201, 25);
+            this.txt_balance.TabIndex = 0;
             // 
             // customer_balances
             // 

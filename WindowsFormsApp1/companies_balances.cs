@@ -60,5 +60,33 @@ namespace WindowsFormsApp1
             txt_credit.Text = grandTotalCredit.ToString();
             txt_balance.Text = grandBalance.ToString() + " " + grandStatus;
         }
+
+        private void dataGridView2_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            // Check if there's at least one row in the DataGridView
+            if (dataGridView2.SelectedRows.Count > 0)
+            {
+                int selectedIndex = dataGridView2.SelectedRows[0].Index;
+
+                // Check if the selected index is within the bounds of the data
+                if (selectedIndex >= 0 && selectedIndex < dataGridView2.RowCount - 1)
+                {
+                    // Get the selected row
+                    DataGridViewRow selectedRow = dataGridView2.SelectedRows[0];
+
+                    // Populate text boxes with data from the selected row
+                    int accountId = int.Parse(selectedRow.Cells["Id"].Value.ToString());
+                    string accountName = selectedRow.Cells["Account Name"].Value.ToString();
+
+                    legers leger = new legers();
+                    leger.isFromOtherForm = true;
+                    leger.accountId = accountId;
+                    leger.accountName = accountName;
+
+                    leger.ShowDialog();
+
+                }
+            }
+        }
     }
 }

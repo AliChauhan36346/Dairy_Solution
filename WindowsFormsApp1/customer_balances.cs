@@ -17,6 +17,12 @@ namespace WindowsFormsApp1
         AddCustomers customers = new AddCustomers();
         ParchiClass parchi = new ParchiClass();
 
+
+        decimal grandTotalDebit = 0;
+        decimal grandTotalCredit = 0;
+        decimal grandBalance = 0;
+        string grandStatus = "";
+
         public customer_balances()
         {
             InitializeComponent();
@@ -52,6 +58,17 @@ namespace WindowsFormsApp1
             {
                 cmbo_addressWise.Items.Add(address);
             }
+
+
+            parchi.getAllAccountsBalances(-1, false, dataGridView2, out grandTotalDebit, out grandTotalCredit);
+
+            grandBalance = grandTotalCredit - grandTotalDebit;
+            grandStatus = grandBalance > 0 ? "Credit" : "Debit";
+            grandBalance = Math.Abs(grandBalance);
+
+            txt_debit.Text = grandTotalDebit.ToString();
+            txt_credit.Text = grandTotalCredit.ToString();
+            txt_balance.Text = grandBalance.ToString() + "  " + grandStatus;
         }
 
         private void chk_dodhiWise_CheckedChanged(object sender, EventArgs e)
@@ -82,10 +99,7 @@ namespace WindowsFormsApp1
 
         private void btn_display_Click(object sender, EventArgs e)
         {
-            decimal grandTotalDebit=0;
-            decimal grandTotalCredit=0;
-            decimal grandBalance = 0;
-            string grandStatus="";
+            
 
             if(chk_dodhiWise.Checked)
             {
@@ -116,9 +130,37 @@ namespace WindowsFormsApp1
 
             txt_debit.Text=grandTotalDebit.ToString();
             txt_credit.Text=grandTotalCredit.ToString();
-            txt_balance.Text=grandBalance.ToString()+" "+grandStatus;
+            txt_balance.Text=grandBalance.ToString()+"  "+grandStatus;
 
 
+        }
+
+        private void dataGridView2_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            // Check if there's at least one row in the DataGridView
+            if (dataGridView2.SelectedRows.Count > 0)
+            {
+                int selectedIndex = dataGridView2.SelectedRows[0].Index;
+
+                // Check if the selected index is within the bounds of the data
+                if (selectedIndex >= 0 && selectedIndex < dataGridView2.RowCount - 1)
+                {
+                    // Get the selected row
+                    DataGridViewRow selectedRow = dataGridView2.SelectedRows[0];
+
+                    // Populate text boxes with data from the selected row
+                    int accountId = int.Parse(selectedRow.Cells["Id"].Value.ToString());
+                    string accountName = selectedRow.Cells["Account Name"].Value.ToString();
+
+                    legers leger = new legers();
+                    leger.isFromOtherForm= true;
+                    leger.accountId = accountId;
+                    leger.accountName = accountName;
+
+                    leger.ShowDialog();
+                   
+                }
+            }
         }
     }
 }

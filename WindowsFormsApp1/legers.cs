@@ -18,6 +18,11 @@ namespace WindowsFormsApp1
         AccountsLegersClass accounts = new AccountsLegersClass();
         CommonFunctionsClass commonFunctions = new CommonFunctionsClass();
         DateTime startDate = new DateTime(1900, 1, 1);
+        customer_balances customer_Balances = new customer_balances();
+        public bool isFromOtherForm=false;
+
+        public int accountId;
+        public string accountName;
 
         public legers()
         {
@@ -38,12 +43,22 @@ namespace WindowsFormsApp1
         private void legers_Load(object sender, EventArgs e)
         {
             lstSuggestions.Visible = false;
-            txt_accountId.Focus();
-
-                    
+            
 
             dtm_from.Enabled = false;
             dtm_to.Enabled = false;
+
+            if(isFromOtherForm)
+            {
+                accounts.GetCustomerLedger(dataGridView1, accountId, startDate.Date, dtm_to.Value, txt_totalDebit, txt_totalCredit, txt_totalBalance, txt_status, lbl_forwardBalance);
+
+                txt_accountId.Text = accountId.ToString();
+                txt_accountName.Text = accountName.ToString();
+            }
+
+            txt_accountId.Focus();
+            lstSuggestions.Visible = false;
+
         }
 
         private void txt_accountId_TextChanged(object sender, EventArgs e)
@@ -77,7 +92,7 @@ namespace WindowsFormsApp1
         private void btn_display_Click(object sender, EventArgs e)
         {
             //determining id belonging, wheather its customer,company,employee or account
-            if (!int.TryParse(txt_accountId.Text, out int accountId))
+            if (!int.TryParse(txt_accountId.Text, out accountId))
             {
                 MessageBox.Show("Invalid Account Id.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

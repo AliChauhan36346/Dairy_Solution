@@ -83,7 +83,6 @@ namespace DairyAccounting
             string closingStatus; // for closing balance status
             string customerName; // to store customerName
 
-
             // for grand total of the above values
             grandTotalLiters = 0;
             grandTotalMilkAmount = 0;
@@ -449,8 +448,8 @@ namespace DairyAccounting
 
         public void GetAccountSummary(out decimal totalDebit, out decimal totalCredit, out decimal closingBalance, out string closingStatus, int accountId)
         {
-            decimal openingBalance = 0;
-            string openingStatus = "";
+            //decimal openingBalance = 0;
+            //string openingStatus = "";
             totalDebit = 0;
             totalCredit = 0;
             closingBalance = 0;
