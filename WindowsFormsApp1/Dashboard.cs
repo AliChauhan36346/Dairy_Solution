@@ -241,5 +241,12 @@ namespace WindowsFormsApp1
             Change_Dodhi change_Dodhi = new Change_Dodhi();
             change_Dodhi.ShowDialog();
         }
+
+        private void salesReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SalesReport salesReport = new SalesReport();
+
+            salesReport.ShowDialog();
+        }
     }
 }

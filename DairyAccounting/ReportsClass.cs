@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace DairyAccounting
 {
-    internal class ReportsClass
+    public class ReportsClass
     {
         Connection dbConnection;
 
@@ -41,8 +41,8 @@ namespace DairyAccounting
             {
                 dbConnection.openConnection();
 
-                string salesReportQuery = "SELECT salesId, date, companyId, companyName, liters, lr, fat" +
-                    " tsLiters, amount FROM Sales WHERE date>=@startDate AND date<=@endDate";
+                string salesReportQuery = "SELECT salesId, date, companyId, company, liters, lr, fat, " +
+                    "tsLiters, amount FROM Sales WHERE date>=@startDate AND date<=@endDate";
 
                 using (SqlCommand command = new SqlCommand(salesReportQuery, dbConnection.connection))
                 {
@@ -56,7 +56,7 @@ namespace DairyAccounting
                             string date = ((DateTime)reader["date"]).ToString("dd-MM-yyyy");
                             int salesId = int.Parse(reader["salesId"].ToString());
                             int companyId = int.Parse(reader["companyId"].ToString());
-                            string companyName = reader["companyName"].ToString();
+                            string companyName = reader["company"].ToString();
                             decimal liters = decimal.Parse(reader["liters"].ToString());
                             decimal lr = decimal.Parse(reader["lr"].ToString());
                             decimal fat = decimal.Parse(reader["fat"].ToString());
@@ -84,15 +84,15 @@ namespace DairyAccounting
 
             dataGridView.DataSource = salesReport;
 
-            dataGridView.Columns["Sales Id"].Width = 100;
-            dataGridView.Columns["Date"].Width = 80;
-            dataGridView.Columns["Company Id"].Width = 100;
-            dataGridView.Columns["Company Name"].Width = 140;
+            dataGridView.Columns["Sales Id"].Width = 70;
+            dataGridView.Columns["Date"].Width = 75;
+            dataGridView.Columns["Company Id"].Width = 85;
+            dataGridView.Columns["Company Name"].Width = 150;
             dataGridView.Columns["Volume"].Width = 90;
             dataGridView.Columns["Lr"].Width = 60;
             dataGridView.Columns["Fat"].Width = 60;
-            dataGridView.Columns["Ts Volume"].Width = 100;
-            dataGridView.Columns["Amount"].Width = 100;
+            dataGridView.Columns["Ts Volume"].Width = 90;
+            dataGridView.Columns["Amount"].Width = 110;
         }
     }
 }
