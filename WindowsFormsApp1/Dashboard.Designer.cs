@@ -1133,6 +1133,7 @@
             this.purchaseReportToolStripMenuItem.Name = "purchaseReportToolStripMenuItem";
             this.purchaseReportToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.purchaseReportToolStripMenuItem.Text = "Purchase Report";
+            this.purchaseReportToolStripMenuItem.Click += new System.EventHandler(this.purchaseReportToolStripMenuItem_Click);
             // 
             // chilarReceiveReportToolStripMenuItem
             // 

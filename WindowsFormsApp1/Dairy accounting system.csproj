@@ -127,6 +127,12 @@
     <Compile Include="customer_balances.Designer.cs">
       <DependentUpon>customer_balances.cs</DependentUpon>
     </Compile>
+    <Compile Include="PurchaseReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReport.Designer.cs">
+      <DependentUpon>PurchaseReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="SalesReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -227,6 +233,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="customer_balances.resx">
       <DependentUpon>customer_balances.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseReport.resx">
+      <DependentUpon>PurchaseReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SalesReport.resx">
       <DependentUpon>SalesReport.cs</DependentUpon>

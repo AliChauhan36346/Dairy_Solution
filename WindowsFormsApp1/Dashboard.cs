@@ -248,5 +248,11 @@ namespace WindowsFormsApp1
 
             salesReport.ShowDialog();
         }
+
+        private void purchaseReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PurchaseReport purchaseReport = new PurchaseReport();
+            purchaseReport.ShowDialog();
+        }
     }
 }

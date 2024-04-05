@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lbl_avgPurchaseRate = new System.Windows.Forms.Label();
+            this.lbl_avgSalesRate = new System.Windows.Forms.Label();
+            this.Print = new System.Windows.Forms.Button();
+            this.btn_display = new System.Windows.Forms.Button();
             this.dtm_end = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.dtm_start = new System.Windows.Forms.DateTimePicker();
-            this.btn_display = new System.Windows.Forms.Button();
-            this.Print = new System.Windows.Forms.Button();
-            this.txt_totalAmount = new System.Windows.Forms.TextBox();
-            this.txt_volume = new System.Windows.Forms.TextBox();
-            this.txt_tsVolume = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.lbl_avgSalesRate = new System.Windows.Forms.Label();
-            this.lbl_avgPurchaseRate = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.txt_tsVolume = new System.Windows.Forms.TextBox();
+            this.txt_volume = new System.Windows.Forms.TextBox();
+            this.txt_totalAmount = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel2.SuspendLayout();
@@ -70,6 +70,108 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1015, 94);
             this.panel1.TabIndex = 8;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label5.Location = new System.Drawing.Point(774, 63);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(174, 20);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Average Purchase Rate:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label4.Location = new System.Drawing.Point(802, 32);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(146, 20);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Average Sales Rate:";
+            // 
+            // lbl_avgPurchaseRate
+            // 
+            this.lbl_avgPurchaseRate.AutoSize = true;
+            this.lbl_avgPurchaseRate.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_avgPurchaseRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lbl_avgPurchaseRate.Location = new System.Drawing.Point(948, 63);
+            this.lbl_avgPurchaseRate.Name = "lbl_avgPurchaseRate";
+            this.lbl_avgPurchaseRate.Size = new System.Drawing.Size(51, 20);
+            this.lbl_avgPurchaseRate.TabIndex = 17;
+            this.lbl_avgPurchaseRate.Text = "label5";
+            // 
+            // lbl_avgSalesRate
+            // 
+            this.lbl_avgSalesRate.AutoSize = true;
+            this.lbl_avgSalesRate.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_avgSalesRate.ForeColor = System.Drawing.Color.Green;
+            this.lbl_avgSalesRate.Location = new System.Drawing.Point(948, 32);
+            this.lbl_avgSalesRate.Name = "lbl_avgSalesRate";
+            this.lbl_avgSalesRate.Size = new System.Drawing.Size(51, 20);
+            this.lbl_avgSalesRate.TabIndex = 16;
+            this.lbl_avgSalesRate.Text = "label4";
+            // 
+            // Print
+            // 
+            this.Print.Location = new System.Drawing.Point(670, 32);
+            this.Print.Margin = new System.Windows.Forms.Padding(4);
+            this.Print.Name = "Print";
+            this.Print.Size = new System.Drawing.Size(78, 48);
+            this.Print.TabIndex = 15;
+            this.Print.Text = "Print";
+            this.Print.UseVisualStyleBackColor = true;
+            // 
+            // btn_display
+            // 
+            this.btn_display.Location = new System.Drawing.Point(584, 32);
+            this.btn_display.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_display.Name = "btn_display";
+            this.btn_display.Size = new System.Drawing.Size(78, 48);
+            this.btn_display.TabIndex = 14;
+            this.btn_display.Text = "Display";
+            this.btn_display.UseVisualStyleBackColor = true;
+            this.btn_display.Click += new System.EventHandler(this.btn_display_Click);
+            // 
+            // dtm_end
+            // 
+            this.dtm_end.CalendarTitleBackColor = System.Drawing.SystemColors.ControlText;
+            this.dtm_end.CalendarTitleForeColor = System.Drawing.Color.Maroon;
+            this.dtm_end.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtm_end.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtm_end.Location = new System.Drawing.Point(407, 52);
+            this.dtm_end.Margin = new System.Windows.Forms.Padding(4);
+            this.dtm_end.Name = "dtm_end";
+            this.dtm_end.Size = new System.Drawing.Size(157, 25);
+            this.dtm_end.TabIndex = 13;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label2.Location = new System.Drawing.Point(376, 55);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(24, 20);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "to";
+            // 
+            // dtm_start
+            // 
+            this.dtm_start.CalendarForeColor = System.Drawing.Color.Black;
+            this.dtm_start.CalendarTitleBackColor = System.Drawing.SystemColors.ControlText;
+            this.dtm_start.CalendarTitleForeColor = System.Drawing.Color.Black;
+            this.dtm_start.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtm_start.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtm_start.Location = new System.Drawing.Point(217, 52);
+            this.dtm_start.Margin = new System.Windows.Forms.Padding(4);
+            this.dtm_start.Name = "dtm_start";
+            this.dtm_start.Size = new System.Drawing.Size(153, 25);
+            this.dtm_start.TabIndex = 12;
             // 
             // label1
             // 
@@ -111,95 +213,10 @@
             this.panel2.Controls.Add(this.txt_totalAmount);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 636);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1015, 38);
             this.panel2.TabIndex = 16;
-            // 
-            // dtm_end
-            // 
-            this.dtm_end.CalendarTitleBackColor = System.Drawing.SystemColors.ControlText;
-            this.dtm_end.CalendarTitleForeColor = System.Drawing.Color.Maroon;
-            this.dtm_end.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtm_end.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtm_end.Location = new System.Drawing.Point(407, 52);
-            this.dtm_end.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dtm_end.Name = "dtm_end";
-            this.dtm_end.Size = new System.Drawing.Size(157, 25);
-            this.dtm_end.TabIndex = 13;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(376, 55);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(24, 20);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "to";
-            // 
-            // dtm_start
-            // 
-            this.dtm_start.CalendarForeColor = System.Drawing.Color.Black;
-            this.dtm_start.CalendarTitleBackColor = System.Drawing.SystemColors.ControlText;
-            this.dtm_start.CalendarTitleForeColor = System.Drawing.Color.Black;
-            this.dtm_start.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtm_start.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtm_start.Location = new System.Drawing.Point(217, 52);
-            this.dtm_start.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dtm_start.Name = "dtm_start";
-            this.dtm_start.Size = new System.Drawing.Size(153, 25);
-            this.dtm_start.TabIndex = 12;
-            // 
-            // btn_display
-            // 
-            this.btn_display.Location = new System.Drawing.Point(584, 32);
-            this.btn_display.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btn_display.Name = "btn_display";
-            this.btn_display.Size = new System.Drawing.Size(78, 48);
-            this.btn_display.TabIndex = 14;
-            this.btn_display.Text = "Display";
-            this.btn_display.UseVisualStyleBackColor = true;
-            this.btn_display.Click += new System.EventHandler(this.btn_display_Click);
-            // 
-            // Print
-            // 
-            this.Print.Location = new System.Drawing.Point(670, 32);
-            this.Print.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Print.Name = "Print";
-            this.Print.Size = new System.Drawing.Size(78, 48);
-            this.Print.TabIndex = 15;
-            this.Print.Text = "Print";
-            this.Print.UseVisualStyleBackColor = true;
-            // 
-            // txt_totalAmount
-            // 
-            this.txt_totalAmount.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_totalAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_totalAmount.Location = new System.Drawing.Point(905, 6);
-            this.txt_totalAmount.Name = "txt_totalAmount";
-            this.txt_totalAmount.Size = new System.Drawing.Size(100, 25);
-            this.txt_totalAmount.TabIndex = 0;
-            // 
-            // txt_volume
-            // 
-            this.txt_volume.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_volume.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_volume.Location = new System.Drawing.Point(527, 6);
-            this.txt_volume.Name = "txt_volume";
-            this.txt_volume.Size = new System.Drawing.Size(100, 25);
-            this.txt_volume.TabIndex = 1;
-            // 
-            // txt_tsVolume
-            // 
-            this.txt_tsVolume.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_tsVolume.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_tsVolume.Location = new System.Drawing.Point(794, 6);
-            this.txt_tsVolume.Name = "txt_tsVolume";
-            this.txt_tsVolume.Size = new System.Drawing.Size(100, 25);
-            this.txt_tsVolume.TabIndex = 2;
             // 
             // label3
             // 
@@ -212,49 +229,32 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Totals";
             // 
-            // lbl_avgSalesRate
+            // txt_tsVolume
             // 
-            this.lbl_avgSalesRate.AutoSize = true;
-            this.lbl_avgSalesRate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_avgSalesRate.ForeColor = System.Drawing.Color.Green;
-            this.lbl_avgSalesRate.Location = new System.Drawing.Point(932, 32);
-            this.lbl_avgSalesRate.Name = "lbl_avgSalesRate";
-            this.lbl_avgSalesRate.Size = new System.Drawing.Size(45, 17);
-            this.lbl_avgSalesRate.TabIndex = 16;
-            this.lbl_avgSalesRate.Text = "label4";
+            this.txt_tsVolume.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_tsVolume.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_tsVolume.Location = new System.Drawing.Point(794, 6);
+            this.txt_tsVolume.Name = "txt_tsVolume";
+            this.txt_tsVolume.Size = new System.Drawing.Size(100, 25);
+            this.txt_tsVolume.TabIndex = 2;
             // 
-            // lbl_avgPurchaseRate
+            // txt_volume
             // 
-            this.lbl_avgPurchaseRate.AutoSize = true;
-            this.lbl_avgPurchaseRate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_avgPurchaseRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbl_avgPurchaseRate.Location = new System.Drawing.Point(932, 63);
-            this.lbl_avgPurchaseRate.Name = "lbl_avgPurchaseRate";
-            this.lbl_avgPurchaseRate.Size = new System.Drawing.Size(45, 17);
-            this.lbl_avgPurchaseRate.TabIndex = 17;
-            this.lbl_avgPurchaseRate.Text = "label5";
+            this.txt_volume.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_volume.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_volume.Location = new System.Drawing.Point(527, 6);
+            this.txt_volume.Name = "txt_volume";
+            this.txt_volume.Size = new System.Drawing.Size(100, 25);
+            this.txt_volume.TabIndex = 1;
             // 
-            // label4
+            // txt_totalAmount
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Green;
-            this.label4.Location = new System.Drawing.Point(798, 32);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(128, 17);
-            this.label4.TabIndex = 18;
-            this.label4.Text = "Average Sales Rate:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label5.Location = new System.Drawing.Point(774, 63);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(152, 17);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "Average Purchase Rate:";
+            this.txt_totalAmount.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_totalAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_totalAmount.Location = new System.Drawing.Point(905, 6);
+            this.txt_totalAmount.Name = "txt_totalAmount";
+            this.txt_totalAmount.Size = new System.Drawing.Size(100, 25);
+            this.txt_totalAmount.TabIndex = 0;
             // 
             // SalesReport
             // 
@@ -266,7 +266,7 @@
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimizeBox = false;
             this.Name = "SalesReport";
             this.ShowInTaskbar = false;
