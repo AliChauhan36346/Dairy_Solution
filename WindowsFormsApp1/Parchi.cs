@@ -270,8 +270,6 @@ namespace WindowsFormsApp1
             Pen pen = new Pen(Color.Black, 2);
 
             
-
-
             int xAxis = 190;
             
             if(currentRow<dataGridView2.Rows.Count-1)
