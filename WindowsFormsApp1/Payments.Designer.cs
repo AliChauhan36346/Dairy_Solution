@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txt_accountBalance = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -41,7 +41,7 @@
             this.btn_deleteRecord = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.txt_cashAccountBalance = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lstAccountsSuggestion = new System.Windows.Forms.ListBox();
             this.txt_cashAccountId = new System.Windows.Forms.TextBox();
@@ -64,17 +64,18 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox9
+            // txt_accountBalance
             // 
-            this.textBox9.BackColor = System.Drawing.Color.Red;
-            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox9.ForeColor = System.Drawing.Color.White;
-            this.textBox9.Location = new System.Drawing.Point(899, 87);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(132, 27);
-            this.textBox9.TabIndex = 75;
-            this.textBox9.TabStop = false;
+            this.txt_accountBalance.BackColor = System.Drawing.Color.White;
+            this.txt_accountBalance.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_accountBalance.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_accountBalance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txt_accountBalance.Location = new System.Drawing.Point(886, 87);
+            this.txt_accountBalance.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.txt_accountBalance.Name = "txt_accountBalance";
+            this.txt_accountBalance.Size = new System.Drawing.Size(145, 27);
+            this.txt_accountBalance.TabIndex = 75;
+            this.txt_accountBalance.TabStop = false;
             // 
             // label7
             // 
@@ -246,17 +247,17 @@
             this.label13.TabIndex = 104;
             this.label13.Text = "Account Balance";
             // 
-            // textBox11
+            // txt_cashAccountBalance
             // 
-            this.textBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.textBox11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox11.ForeColor = System.Drawing.Color.Navy;
-            this.textBox11.Location = new System.Drawing.Point(899, 129);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(132, 27);
-            this.textBox11.TabIndex = 103;
-            this.textBox11.TabStop = false;
+            this.txt_cashAccountBalance.BackColor = System.Drawing.Color.White;
+            this.txt_cashAccountBalance.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_cashAccountBalance.ForeColor = System.Drawing.Color.Navy;
+            this.txt_cashAccountBalance.Location = new System.Drawing.Point(886, 129);
+            this.txt_cashAccountBalance.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.txt_cashAccountBalance.Name = "txt_cashAccountBalance";
+            this.txt_cashAccountBalance.Size = new System.Drawing.Size(145, 27);
+            this.txt_cashAccountBalance.TabIndex = 103;
+            this.txt_cashAccountBalance.TabStop = false;
             // 
             // groupBox1
             // 
@@ -475,8 +476,8 @@
             this.ClientSize = new System.Drawing.Size(1041, 690);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.textBox11);
-            this.Controls.Add(this.textBox9);
+            this.Controls.Add(this.txt_cashAccountBalance);
+            this.Controls.Add(this.txt_accountBalance);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
@@ -499,13 +500,13 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txt_accountBalance;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox txt_cashAccountBalance;
         private System.Windows.Forms.Button btn_newAccount;
         private System.Windows.Forms.Button btn_newCustomer;
         private System.Windows.Forms.Button btn_save;

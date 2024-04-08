@@ -54,5 +54,14 @@ namespace DairyAccounting
             }
         }
 
+        public string DatabaseName
+        {
+            get
+            {
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(connectionString);
+                return builder.InitialCatalog;
+            }
+        }
+
     }
 }

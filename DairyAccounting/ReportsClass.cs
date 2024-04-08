@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -12,6 +13,8 @@ namespace DairyAccounting
 {
     public class ReportsClass
     {
+        AddEmployees employees = new AddEmployees();
+
         Connection dbConnection;
 
         public ReportsClass()
@@ -209,6 +212,385 @@ namespace DairyAccounting
             dataGridView.Columns["Time"].Width = 70;
             dataGridView.Columns["Volume"].Width = 80;
             dataGridView.Columns["Amount"].Width = 120;
+        }
+
+        public void GetReceiveReport(DataGridView dataGridView, DateTime startDate, DateTime endDate,
+            int dodhiId, string time, out decimal totalReceive, out decimal tsReceive)
+        {
+            totalReceive = 0;
+            tsReceive = 0;
+
+
+            DataTable receiveReport = new DataTable();
+
+            receiveReport.Columns.Add("Id");
+            receiveReport.Columns.Add("Date");
+            receiveReport.Columns.Add("Dodhi Name");
+            receiveReport.Columns.Add("Time");
+            receiveReport.Columns.Add("Volume");
+            receiveReport.Columns.Add("LR");
+            receiveReport.Columns.Add("Fat%");
+            receiveReport.Columns.Add("Ts Volume");
+
+            string condition = "";
+
+            if (dodhiId != -1 && time == "")
+            {
+                condition = "WHERE date>=@startDate AND date<=@endDate AND dodhiId=@dodhiId";
+            }
+            else if (time != "" && dodhiId == -1)
+            {
+                condition = "WHERE date>=@startDate AND date<=@endDate AND time=@time";
+            }
+            else if (dodhiId != -1 && time != "")
+            {
+                condition = "WHERE date>=@startDate AND date<=@endDate AND dodhiId=@dodhiId AND time=@time";
+            }
+            else
+            {
+                condition = "WHERE date>=@startDate AND date<=@endDate";
+            }
+
+
+            try
+            {
+                dbConnection.openConnection();
+
+                string receiveReportQuery = $"SELECT chilarReceiveId, date, dodhi, time, grossLiters, lr, fat, tsLiters FROM ChilarReceive {condition}";
+
+                using (SqlCommand command = new SqlCommand(receiveReportQuery, dbConnection.connection))
+                {
+                    if (dodhiId != -1 && time == "")
+                    {
+                        command.Parameters.AddWithValue("@dodhiId", dodhiId);
+                        command.Parameters.AddWithValue("@startDate", startDate);
+                        command.Parameters.AddWithValue("@endDate", endDate);
+                    }
+                    else if (time != "" && dodhiId == -1)
+                    {
+                        command.Parameters.AddWithValue("@time", time);
+                        command.Parameters.AddWithValue("@startDate", startDate);
+                        command.Parameters.AddWithValue("@endDate", endDate);
+                    }
+                    else if (dodhiId != -1 && time != "")
+                    {
+                        command.Parameters.AddWithValue("@dodhiId", dodhiId);
+                        command.Parameters.AddWithValue("@time", time);
+                        command.Parameters.AddWithValue("@startDate", startDate);
+                        command.Parameters.AddWithValue("@endDate", endDate);
+                    }
+                    else
+                    {
+                        command.Parameters.AddWithValue("@startDate", startDate);
+                        command.Parameters.AddWithValue("@endDate", endDate);
+                    }
+
+
+
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                           
+                            int receiveId = int.Parse(reader["chilarReceiveId"].ToString());
+                            string date = ((DateTime)reader["date"]).ToString("dd-MM-yyyy");
+                            string dodhiName = reader["dodhi"].ToString();
+                            string rTime = reader["time"].ToString();
+                            decimal volume = decimal.Parse(reader["grossLiters"].ToString());
+                            decimal lr = decimal.Parse(reader["lr"].ToString());
+                            decimal fat = decimal.Parse(reader["fat"].ToString());
+                            decimal tsVolume = decimal.Parse(reader["tsLiters"].ToString());
+
+
+                            totalReceive += volume;
+                            tsReceive += tsVolume;
+
+                            receiveReport.Rows.Add(receiveId, date, dodhiName, rTime, volume, lr, fat, tsVolume);
+                        }
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error creating receive report: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dbConnection.closeConnection();
+            }
+
+            dataGridView.DataSource = receiveReport;
+
+            dataGridView.Columns["Id"].Width = 50;
+            dataGridView.Columns["Date"].Width = 80;
+            dataGridView.Columns["Dodhi Name"].Width = 135;
+            dataGridView.Columns["Time"].Width = 80;
+            dataGridView.Columns["Volume"].Width = 75;
+            dataGridView.Columns["LR"].Width = 55;
+            dataGridView.Columns["Fat%"].Width = 55;
+            dataGridView.Columns["Ts Volume"].Width = 90;
+        }
+
+        public void dodhiLossReport(DateTime startDate, DateTime endDate,int dodhiId, string time, out decimal totalPurchased, out decimal totalReceived, out decimal totalLoss, out string gainOrLoss)
+        {
+            totalPurchased = 0;
+            totalReceived = 0;
+            totalLoss = 0;
+            gainOrLoss = "";
+
+            string condition = "";
+
+            if (dodhiId != -1 && time == "")
+            {
+                condition = "WHERE date>=@startDate AND date<=@endDate AND dodhiId=@dodhiId";
+            }
+            else
+            {
+                condition = "WHERE date>=@startDate AND date<=@endDate AND dodhiId=@dodhiId AND time=@time";
+            }
+            
+
+            try
+            {
+                dbConnection.openConnection();
+
+                string receiveMilkQuery = $"SELECT grossLiters FROM ChilarReceive {condition}";
+                string purchaseMilkQuery = $"SELECT liters FROM Purchases {condition}";
+
+
+                using (SqlCommand command = new SqlCommand(receiveMilkQuery, dbConnection.connection))
+                {
+                    if (dodhiId != -1 && time == "")
+                    {
+                        command.Parameters.AddWithValue("@dodhiId", dodhiId);
+                        command.Parameters.AddWithValue("@startDate", startDate);
+                        command.Parameters.AddWithValue("@endDate", endDate);
+                    }
+                    else
+                    {
+                        command.Parameters.AddWithValue("@dodhiId", dodhiId);
+                        command.Parameters.AddWithValue("@time", time);
+                        command.Parameters.AddWithValue("@startDate", startDate);
+                        command.Parameters.AddWithValue("@endDate", endDate);
+                    }
+
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            decimal liters = decimal.Parse(reader["grossLiters"].ToString());
+
+                            totalReceived+= liters;
+                        }
+                    }
+                }
+
+                // to calculate total purchase milk for a single dodhi
+                using (SqlCommand command = new SqlCommand(purchaseMilkQuery, dbConnection.connection))
+                {
+                    if (dodhiId != -1 && time == "")
+                    {
+                        command.Parameters.AddWithValue("@dodhiId", dodhiId);
+                        command.Parameters.AddWithValue("@startDate", startDate);
+                        command.Parameters.AddWithValue("@endDate", endDate);
+                    }
+                    else
+                    {
+                        command.Parameters.AddWithValue("@dodhiId", dodhiId);
+                        command.Parameters.AddWithValue("@time", time);
+                        command.Parameters.AddWithValue("@startDate", startDate);
+                        command.Parameters.AddWithValue("@endDate", endDate);
+                    }
+
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            decimal liters = decimal.Parse(reader["liters"].ToString());
+
+                            totalPurchased+= liters;
+                        }
+                    }
+                }
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error creating single dodhi loss report: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dbConnection.closeConnection();
+            }
+
+            totalLoss = totalPurchased - totalReceived;
+
+            gainOrLoss = totalLoss > 0 ? "Loss" : "Gain";
+
+            totalLoss = Math.Abs(totalLoss);
+        }
+
+        public void GetAllDodhiLossReport(DataGridView dataGridView,DateTime startDate, DateTime endDate, int dodhiId, string time,
+            out decimal grandTotalPurchase, out decimal grandTotalReceive, out decimal grandTotalLoss, out string grandGainOrLoss)
+        {
+            DataTable dodhiLossTable = new DataTable();
+
+            dodhiLossTable.Columns.Add("Id");
+            dodhiLossTable.Columns.Add("Dodhi Name");
+            dodhiLossTable.Columns.Add("Purchased");
+            dodhiLossTable.Columns.Add("Received");
+            dodhiLossTable.Columns.Add("Difference");
+            dodhiLossTable.Columns.Add("Status");
+
+            grandTotalPurchase = 0;
+            grandTotalReceive = 0;
+            grandTotalLoss= 0;
+            grandGainOrLoss = "";
+
+            decimal totalReceive = 0;
+            decimal totalPurchase = 0;
+            decimal totalLoss= 0;
+            string gainOrLoss = "";
+
+            try
+            {
+                dbConnection.openConnection();
+
+                Dictionary<int, string> dodhiIdAndName = new Dictionary<int, string>();
+
+                dodhiIdAndName = employees.GetEmployeeIdsAndNames();
+
+                if(dodhiId!=-1 && time=="")
+                {
+                    foreach(var item in dodhiIdAndName)
+                    {
+                        int id = item.Key;
+                        string name = item.Value;
+
+                        if(id==dodhiId)
+                        {
+                            dodhiLossReport(startDate.Date, endDate.Date, id, time, out totalPurchase, 
+                                out totalReceive, out totalLoss, out gainOrLoss);
+
+                            dodhiLossTable.Rows.Add(id,name,totalPurchase,totalReceive,totalLoss,gainOrLoss);
+
+                            grandTotalReceive += totalReceive;
+                            grandTotalPurchase += totalPurchase;
+                            grandTotalLoss+= totalLoss;
+
+                            // setting the values zero for next use
+                            totalPurchase = 0;
+                            totalLoss = 0;
+                            totalReceive = 0;
+                            gainOrLoss = "";
+                        }
+                    }
+                }
+                else if(dodhiId==-1 && time!="")
+                {
+                    foreach (var item in dodhiIdAndName)
+                    {
+                        int id = item.Key;
+                        string name = item.Value;
+
+
+                        dodhiLossReport(startDate.Date, endDate.Date, id, time, out totalPurchase,
+                            out totalReceive, out totalLoss, out gainOrLoss);
+
+                        dodhiLossTable.Rows.Add(id, name, totalPurchase, totalReceive, totalLoss, gainOrLoss);
+
+                        grandTotalReceive += totalReceive;
+                        grandTotalPurchase += totalPurchase;
+                        grandTotalLoss += totalLoss;
+
+                        // setting the values zero for next use
+                        totalPurchase = 0;
+                        totalLoss = 0;
+                        totalReceive = 0;
+                        gainOrLoss = "";
+
+                    }
+                }
+                else if(dodhiId!=-1 &&  time!="")
+                {
+                    foreach (var item in dodhiIdAndName)
+                    {
+                        int id = item.Key;
+                        string name = item.Value;
+
+                        if(id==dodhiId)
+                        {
+                            dodhiLossReport(startDate.Date, endDate.Date, id, time, out totalPurchase,
+                            out totalReceive, out totalLoss, out gainOrLoss);
+
+                            dodhiLossTable.Rows.Add(id, name, totalPurchase, totalReceive, totalLoss, gainOrLoss);
+
+                            grandTotalReceive += totalReceive;
+                            grandTotalPurchase += totalPurchase;
+                            grandTotalLoss += totalLoss;
+
+                            // setting the values zero for next use
+                            totalPurchase = 0;
+                            totalLoss = 0;
+                            totalReceive = 0;
+                            gainOrLoss = "";
+                        }
+                        
+                        
+                    }
+                }
+                else
+                {
+                    foreach (var item in dodhiIdAndName)
+                    {
+                        int id = item.Key;
+                        string name = item.Value;
+
+                        
+                        dodhiLossReport(startDate.Date, endDate.Date, id, time, out totalPurchase,
+                        out totalReceive, out totalLoss, out gainOrLoss);
+
+                        dodhiLossTable.Rows.Add(id, name, totalPurchase, totalReceive, totalLoss, gainOrLoss);
+
+                        grandTotalReceive += totalReceive;
+                        grandTotalPurchase += totalPurchase;
+                        grandTotalLoss += totalLoss;
+
+                        // setting the values zero for next use
+                        totalPurchase = 0;
+                        totalLoss = 0;
+                        totalReceive = 0;
+                        gainOrLoss = "";
+                        
+
+
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error creating dodhi loss report: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dbConnection.closeConnection();
+            }
+
+            grandGainOrLoss = grandTotalPurchase > grandTotalReceive ? "Loss" : "Gain";
+
+            dataGridView.DataSource = dodhiLossTable;
+
+            dataGridView.Columns["Id"].Width = 50;
+            dataGridView.Columns["dodhi Name"].Width = 120;
+            dataGridView.Columns["Purchased"].Width = 80;
+            dataGridView.Columns["Received"].Width = 80;
+            dataGridView.Columns["Difference"].Width = 80;
+            dataGridView.Columns["Status"].Width = 65;
         }
     }
 }

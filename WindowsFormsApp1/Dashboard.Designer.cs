@@ -41,6 +41,8 @@
             this.dashBtn_accountsLeger = new System.Windows.Forms.Button();
             this.panel17 = new System.Windows.Forms.Panel();
             this.dashBtn_expense = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.dashBtn_addSales = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.panel16 = new System.Windows.Forms.Panel();
             this.dashBtn_parchi = new System.Windows.Forms.Button();
@@ -51,10 +53,8 @@
             this.dashBtn_cashReceipt = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dashBtn_addPurchase = new System.Windows.Forms.Button();
-            this.dashBtn_addSales = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.dtm_end = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.dtm_start = new System.Windows.Forms.DateTimePicker();
@@ -132,11 +132,11 @@
             this.panel19.SuspendLayout();
             this.panel18.SuspendLayout();
             this.panel17.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel11.SuspendLayout();
@@ -155,6 +155,7 @@
             this.panel1.Controls.Add(this.panel19);
             this.panel1.Controls.Add(this.panel18);
             this.panel1.Controls.Add(this.panel17);
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.panel16);
             this.panel1.Controls.Add(this.label1);
@@ -164,13 +165,13 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(252, 663);
+            this.panel1.Size = new System.Drawing.Size(224, 663);
             this.panel1.TabIndex = 0;
             // 
             // panel8
             // 
             this.panel8.Controls.Add(this.button1);
-            this.panel8.Location = new System.Drawing.Point(26, 460);
+            this.panel8.Location = new System.Drawing.Point(12, 452);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(195, 33);
             this.panel8.TabIndex = 15;
@@ -191,7 +192,7 @@
             // panel7
             // 
             this.panel7.Controls.Add(this.dashBtn_customerBalance);
-            this.panel7.Location = new System.Drawing.Point(26, 309);
+            this.panel7.Location = new System.Drawing.Point(12, 301);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(195, 33);
             this.panel7.TabIndex = 14;
@@ -212,7 +213,7 @@
             // panel6
             // 
             this.panel6.Controls.Add(this.dashBtn_companiesBalances);
-            this.panel6.Location = new System.Drawing.Point(26, 270);
+            this.panel6.Location = new System.Drawing.Point(12, 262);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(195, 33);
             this.panel6.TabIndex = 13;
@@ -233,7 +234,7 @@
             // panel19
             // 
             this.panel19.Controls.Add(this.dashBtn_chilarReceive);
-            this.panel19.Location = new System.Drawing.Point(26, 153);
+            this.panel19.Location = new System.Drawing.Point(12, 145);
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(195, 33);
             this.panel19.TabIndex = 12;
@@ -254,7 +255,7 @@
             // panel18
             // 
             this.panel18.Controls.Add(this.dashBtn_accountsLeger);
-            this.panel18.Location = new System.Drawing.Point(26, 346);
+            this.panel18.Location = new System.Drawing.Point(12, 338);
             this.panel18.Name = "panel18";
             this.panel18.Size = new System.Drawing.Size(195, 33);
             this.panel18.TabIndex = 11;
@@ -275,7 +276,7 @@
             // panel17
             // 
             this.panel17.Controls.Add(this.dashBtn_expense);
-            this.panel17.Location = new System.Drawing.Point(26, 382);
+            this.panel17.Location = new System.Drawing.Point(12, 374);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(195, 33);
             this.panel17.TabIndex = 10;
@@ -293,6 +294,27 @@
             this.dashBtn_expense.UseVisualStyleBackColor = false;
             this.dashBtn_expense.Click += new System.EventHandler(this.dashBtn_expense_Click);
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dashBtn_addSales);
+            this.panel2.Location = new System.Drawing.Point(12, 67);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(195, 33);
+            this.panel2.TabIndex = 2;
+            // 
+            // dashBtn_addSales
+            // 
+            this.dashBtn_addSales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dashBtn_addSales.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dashBtn_addSales.ForeColor = System.Drawing.Color.White;
+            this.dashBtn_addSales.Location = new System.Drawing.Point(-19, -11);
+            this.dashBtn_addSales.Name = "dashBtn_addSales";
+            this.dashBtn_addSales.Size = new System.Drawing.Size(233, 57);
+            this.dashBtn_addSales.TabIndex = 1;
+            this.dashBtn_addSales.Text = "Add Sales";
+            this.dashBtn_addSales.UseVisualStyleBackColor = false;
+            this.dashBtn_addSales.Click += new System.EventHandler(this.dashBtn_addSales_Click);
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -308,7 +330,7 @@
             // panel16
             // 
             this.panel16.Controls.Add(this.dashBtn_parchi);
-            this.panel16.Location = new System.Drawing.Point(26, 421);
+            this.panel16.Location = new System.Drawing.Point(12, 413);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(195, 33);
             this.panel16.TabIndex = 8;
@@ -330,19 +352,18 @@
             // 
             this.label1.AutoSize = true;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
-                | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(67, 11);
+            this.label1.Location = new System.Drawing.Point(62, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(119, 30);
+            this.label1.Size = new System.Drawing.Size(90, 37);
             this.label1.TabIndex = 9;
-            this.label1.Text = "Dashboard";
+            this.label1.Text = "Menu";
             // 
             // panel5
             // 
             this.panel5.Controls.Add(this.dashBtn_cashPayment);
-            this.panel5.Location = new System.Drawing.Point(26, 192);
+            this.panel5.Location = new System.Drawing.Point(12, 184);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(195, 33);
             this.panel5.TabIndex = 5;
@@ -363,7 +384,7 @@
             // panel4
             // 
             this.panel4.Controls.Add(this.dashBtn_cashReceipt);
-            this.panel4.Location = new System.Drawing.Point(26, 231);
+            this.panel4.Location = new System.Drawing.Point(12, 223);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(195, 33);
             this.panel4.TabIndex = 4;
@@ -384,7 +405,7 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.dashBtn_addPurchase);
-            this.panel3.Location = new System.Drawing.Point(26, 114);
+            this.panel3.Location = new System.Drawing.Point(12, 106);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(195, 33);
             this.panel3.TabIndex = 3;
@@ -402,52 +423,31 @@
             this.dashBtn_addPurchase.UseVisualStyleBackColor = false;
             this.dashBtn_addPurchase.Click += new System.EventHandler(this.dashBtn_addPurchase_Click);
             // 
-            // dashBtn_addSales
-            // 
-            this.dashBtn_addSales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dashBtn_addSales.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dashBtn_addSales.ForeColor = System.Drawing.Color.White;
-            this.dashBtn_addSales.Location = new System.Drawing.Point(-19, -8);
-            this.dashBtn_addSales.Name = "dashBtn_addSales";
-            this.dashBtn_addSales.Size = new System.Drawing.Size(233, 57);
-            this.dashBtn_addSales.TabIndex = 1;
-            this.dashBtn_addSales.Text = "Add Sales";
-            this.dashBtn_addSales.UseVisualStyleBackColor = false;
-            this.dashBtn_addSales.Click += new System.EventHandler(this.dashBtn_addSales_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.dashBtn_addSales);
-            this.panel2.Location = new System.Drawing.Point(26, 98);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(195, 33);
-            this.panel2.TabIndex = 2;
-            // 
             // panel9
             // 
-            this.panel9.BackColor = System.Drawing.Color.Gray;
-            this.panel9.Controls.Add(this.label8);
+            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel9.Controls.Add(this.label10);
             this.panel9.Controls.Add(this.dtm_end);
             this.panel9.Controls.Add(this.label2);
             this.panel9.Controls.Add(this.dtm_start);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel9.Location = new System.Drawing.Point(252, 24);
+            this.panel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel9.Location = new System.Drawing.Point(224, 24);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1106, 50);
+            this.panel9.Size = new System.Drawing.Size(1134, 50);
             this.panel9.TabIndex = 8;
             // 
-            // label8
+            // label10
             // 
-            this.label8.AutoSize = true;
-            this.label8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 15.75F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
-                | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(6, 13);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(301, 30);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "Welcome to Chauhan Dairies";
+            this.label10.AutoSize = true;
+            this.label10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label10.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(48, 8);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(170, 32);
+            this.label10.TabIndex = 12;
+            this.label10.Text = "DASHBOARD";
             // 
             // dtm_end
             // 
@@ -455,7 +455,7 @@
             this.dtm_end.CalendarTitleForeColor = System.Drawing.Color.Maroon;
             this.dtm_end.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtm_end.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtm_end.Location = new System.Drawing.Point(954, 15);
+            this.dtm_end.Location = new System.Drawing.Point(954, 11);
             this.dtm_end.Name = "dtm_end";
             this.dtm_end.Size = new System.Drawing.Size(135, 27);
             this.dtm_end.TabIndex = 10;
@@ -465,7 +465,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(928, 18);
+            this.label2.Location = new System.Drawing.Point(928, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(24, 20);
             this.label2.TabIndex = 9;
@@ -478,7 +478,7 @@
             this.dtm_start.CalendarTitleForeColor = System.Drawing.Color.Black;
             this.dtm_start.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtm_start.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtm_start.Location = new System.Drawing.Point(792, 15);
+            this.dtm_start.Location = new System.Drawing.Point(792, 11);
             this.dtm_start.Name = "dtm_start";
             this.dtm_start.Size = new System.Drawing.Size(132, 27);
             this.dtm_start.TabIndex = 9;
@@ -495,7 +495,7 @@
             this.panel10.Controls.Add(this.label3);
             this.panel10.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel10.Location = new System.Drawing.Point(292, 109);
+            this.panel10.Location = new System.Drawing.Point(278, 109);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(200, 191);
             this.panel10.TabIndex = 9;
@@ -592,7 +592,7 @@
             this.panel11.Controls.Add(this.lbl_avgFat);
             this.panel11.Controls.Add(this.label26);
             this.panel11.Controls.Add(this.label6);
-            this.panel11.Location = new System.Drawing.Point(1115, 109);
+            this.panel11.Location = new System.Drawing.Point(1101, 109);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(200, 191);
             this.panel11.TabIndex = 10;
@@ -687,7 +687,7 @@
             this.panel13.Controls.Add(this.label22);
             this.panel13.Controls.Add(this.label5);
             this.panel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.panel13.Location = new System.Drawing.Point(840, 109);
+            this.panel13.Location = new System.Drawing.Point(826, 109);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(200, 191);
             this.panel13.TabIndex = 10;
@@ -783,7 +783,7 @@
             this.panel14.Controls.Add(this.lbl_grossVolume);
             this.panel14.Controls.Add(this.label20);
             this.panel14.Controls.Add(this.label4);
-            this.panel14.Location = new System.Drawing.Point(566, 109);
+            this.panel14.Location = new System.Drawing.Point(552, 109);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(200, 191);
             this.panel14.TabIndex = 10;
@@ -881,7 +881,7 @@
             this.panel15.Controls.Add(this.label33);
             this.panel15.Controls.Add(this.label34);
             this.panel15.Controls.Add(this.label9);
-            this.panel15.Location = new System.Drawing.Point(292, 353);
+            this.panel15.Location = new System.Drawing.Point(278, 353);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(200, 191);
             this.panel15.TabIndex = 11;
@@ -1058,6 +1058,7 @@
             this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
             this.backupToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.backupToolStripMenuItem.Text = "Backup";
+            this.backupToolStripMenuItem.Click += new System.EventHandler(this.backupToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
@@ -1140,6 +1141,7 @@
             this.chilarReceiveReportToolStripMenuItem.Name = "chilarReceiveReportToolStripMenuItem";
             this.chilarReceiveReportToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.chilarReceiveReportToolStripMenuItem.Text = "Chilar Receive Report";
+            this.chilarReceiveReportToolStripMenuItem.Click += new System.EventHandler(this.chilarReceiveReportToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
@@ -1162,6 +1164,7 @@
             this.incomeReportToolStripMenuItem.Name = "incomeReportToolStripMenuItem";
             this.incomeReportToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.incomeReportToolStripMenuItem.Text = "Income Report";
+            this.incomeReportToolStripMenuItem.Click += new System.EventHandler(this.incomeReportToolStripMenuItem_Click);
             // 
             // balanceSheetToolStripMenuItem
             // 
@@ -1182,7 +1185,6 @@
             this.Controls.Add(this.panel14);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.panel9);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1196,6 +1198,7 @@
             this.Text = "Dashboard";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.Dashboard_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dashboard_FormClosing);
             this.Load += new System.EventHandler(this.Dashboard_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -1205,11 +1208,11 @@
             this.panel19.ResumeLayout(false);
             this.panel18.ResumeLayout(false);
             this.panel17.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             this.panel10.ResumeLayout(false);
@@ -1257,7 +1260,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Button dashBtn_parchi;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.Button dashBtn_accountsLeger;
         private System.Windows.Forms.Panel panel17;
@@ -1328,6 +1330,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem incomeReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem balanceSheetToolStripMenuItem;
+        private System.Windows.Forms.Label label10;
     }
 }
 

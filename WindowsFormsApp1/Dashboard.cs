@@ -254,5 +254,43 @@ namespace WindowsFormsApp1
             PurchaseReport purchaseReport = new PurchaseReport();
             purchaseReport.ShowDialog();
         }
+
+        private void chilarReceiveReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChilarReceiveReport chilarReceive=new ChilarReceiveReport();
+            chilarReceive.ShowDialog();
+        }
+
+        private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Do you want to save backup before closing?", "Backup", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                using (backupData BackupForm = new backupData())
+                {
+                    if (BackupForm.ShowDialog() == DialogResult.OK)
+                    {
+                        this.Close();
+                    }
+                }
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                e.Cancel = true; // Cancel the form closing event
+            }
+        }
+
+        private void backupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            backupData backupData= new backupData();
+            backupData.ShowDialog();
+            this.Close();
+        }
+
+        private void incomeReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IncomeStatement incomeStatement=new IncomeStatement();
+            incomeStatement.ShowDialog();
+        }
     }
 }

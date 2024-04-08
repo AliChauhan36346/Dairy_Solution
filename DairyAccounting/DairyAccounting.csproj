@@ -53,6 +53,7 @@
     <Compile Include="AddPayments.cs" />
     <Compile Include="AddPurchases.cs" />
     <Compile Include="AddSales.cs" />
+    <Compile Include="BackupRestoreClass.cs" />
     <Compile Include="cashAccountSelectionForm.cs">
       <SubType>Form</SubType>
     </Compile>

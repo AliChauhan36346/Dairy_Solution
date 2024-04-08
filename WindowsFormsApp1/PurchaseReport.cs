@@ -94,12 +94,20 @@ namespace WindowsFormsApp1
 
             if (chk_dodhi.Checked)
             {
-                dodhiId=employees.getDodhiIdByName(cmbo_dodhi.SelectedItem.ToString().Trim());
+                if(cmbo_dodhi.SelectedItem!=null)
+                {
+                    dodhiId = employees.getDodhiIdByName(cmbo_dodhi.SelectedItem.ToString().Trim());
+                }
+                
             }
             
             if(chk_time.Checked)
             {
-                time=cmbo_time.SelectedItem.ToString().Trim();
+                if( cmbo_time.SelectedItem!=null)
+                {
+                    time = cmbo_time.SelectedItem.ToString().Trim();
+                }
+                
             }
 
             purchaseR.GetPurchaseReport(dataGridView2, startDate.Date, endDate.Date, dodhiId, time, out volume, out tAmount);

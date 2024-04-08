@@ -79,6 +79,12 @@
     <Compile Include="Accounts.Designer.cs">
       <DependentUpon>Accounts.cs</DependentUpon>
     </Compile>
+    <Compile Include="backupData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="backupData.Designer.cs">
+      <DependentUpon>backupData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Change Dodhi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,12 @@
     </Compile>
     <Compile Include="chilar.Designer.cs">
       <DependentUpon>chilar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChilarReceiveReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChilarReceiveReport.Designer.cs">
+      <DependentUpon>ChilarReceiveReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Clear Transactions.cs">
       <SubType>Form</SubType>
@@ -126,6 +138,18 @@
     </Compile>
     <Compile Include="customer_balances.Designer.cs">
       <DependentUpon>customer_balances.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IncomeStatement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IncomeStatement.Designer.cs">
+      <DependentUpon>IncomeStatement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Password.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Password.Designer.cs">
+      <DependentUpon>Password.cs</DependentUpon>
     </Compile>
     <Compile Include="PurchaseReport.cs">
       <SubType>Form</SubType>
@@ -210,6 +234,9 @@
     <EmbeddedResource Include="Accounts.resx">
       <DependentUpon>Accounts.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="backupData.resx">
+      <DependentUpon>backupData.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Change Dodhi.resx">
       <DependentUpon>Change Dodhi.cs</DependentUpon>
     </EmbeddedResource>
@@ -218,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="chilar.resx">
       <DependentUpon>chilar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChilarReceiveReport.resx">
+      <DependentUpon>ChilarReceiveReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Clear Transactions.resx">
       <DependentUpon>Clear Transactions.cs</DependentUpon>
@@ -233,6 +263,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="customer_balances.resx">
       <DependentUpon>customer_balances.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IncomeStatement.resx">
+      <DependentUpon>IncomeStatement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Password.resx">
+      <DependentUpon>Password.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PurchaseReport.resx">
       <DependentUpon>PurchaseReport.cs</DependentUpon>

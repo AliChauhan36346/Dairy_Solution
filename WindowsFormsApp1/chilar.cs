@@ -17,6 +17,8 @@ namespace WindowsFormsApp1
         CommonFunctionsClass commonFunctions = new CommonFunctionsClass();
         DashboardClass dashboard = new DashboardClass();
 
+        bool isTruePassword = false;
+
         public chilar()
         {
             InitializeComponent();
@@ -345,35 +347,62 @@ namespace WindowsFormsApp1
             
         }
 
+        
+
+
+
         private void chlrBtn_deleteEntry_Click(object sender, EventArgs e)
         {
-            // Get the ID from the textbox
-            int id;
-            if (!int.TryParse(txt_id.Text, out id))
+           Password password=new Password();
+
+            if(password.ShowDialog()==DialogResult.OK)
             {
-                MessageBox.Show("Invalid ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                string enteredPassword = password.enteredPassword;
+
+                if (password.IsPasswordCorrect(enteredPassword))
+                {
+                    
+                    int id;
+                    if (!int.TryParse(txt_id.Text, out id))
+                    {
+                        MessageBox.Show("Invalid ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Prompt the user for confirmation
+                    DialogResult result = MessageBox.Show("Are you sure you want to delete this company?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    // If the user clicks Yes, proceed with deletion
+                    if (result == DialogResult.Yes)
+                    {
+                        // Call the removeCustomer method with the ID
+                        chilarReceive.removeChilarReceive(id);
+
+                        // Clear all the text boxes for new entries
+                        commonFunctions.ClearAllTextBoxes(this);
+
+                        // Refresh data in gridview after deletion
+                        getStats();
+                        chilarReceive.showDataInGridView(dataGridView2);
+                        txt_id.Text = chilarReceive.GetNextAvailableID().ToString();
+
+                        txt_dodhiId.Focus();
+                    }
+                        
+                    
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect password. Deletion aborted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+            
+            
+            
 
-            // Prompt the user for confirmation
-            DialogResult result = MessageBox.Show("Are you sure you want to delete this company?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            // If the user clicks Yes, proceed with deletion
-            if (result == DialogResult.Yes)
-            {
-                // Call the removeCustomer method with the ID
-                chilarReceive.removeChilarReceive(id);
 
-                // clearing all the text boxes for new entries
-                commonFunctions.ClearAllTextBoxes(this);
-
-                // for refreshing data in gridview after deletion
-                getStats();
-                chilarReceive.showDataInGridView(dataGridView2);
-                txt_id.Text = chilarReceive.GetNextAvailableID().ToString();
-
-                txt_dodhiId.Focus();
-            }
         }
 
         private void chilarBtn_addNew_Click(object sender, EventArgs e)
