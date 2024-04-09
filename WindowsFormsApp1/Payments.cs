@@ -171,7 +171,7 @@ namespace WindowsFormsApp1
 
 
                 // assigning values to emloyee object
-
+                payments.paymentId=int.Parse(txt_paymentId.Text);
                 payments.accountId = accountId;
                 payments.accountName = txt_accountName.Text.Trim();
                 payments.date = dtm_picker.Value;
@@ -291,6 +291,8 @@ namespace WindowsFormsApp1
                     txt_discription.Text = selectedRow.Cells["Discription"].Value.ToString();
                     txt_cashAccountId.Text = selectedRow.Cells["Account Id"].Value.ToString();
                     txt_cashAccountName.Text = selectedRow.Cells["Account Name"].Value.ToString();
+
+                    lstAccountsSuggestion.Visible=false;
                 }
             }
         }

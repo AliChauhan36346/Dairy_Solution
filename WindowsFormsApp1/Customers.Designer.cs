@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label5 = new System.Windows.Forms.Label();
             this.txt_rate = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -159,7 +158,7 @@
             // 
             this.lstDodhiSuggestions.FormattingEnabled = true;
             this.lstDodhiSuggestions.ItemHeight = 17;
-            this.lstDodhiSuggestions.Location = new System.Drawing.Point(114, 10);
+            this.lstDodhiSuggestions.Location = new System.Drawing.Point(114, 11);
             this.lstDodhiSuggestions.Name = "lstDodhiSuggestions";
             this.lstDodhiSuggestions.Size = new System.Drawing.Size(239, 174);
             this.lstDodhiSuggestions.TabIndex = 40;
@@ -361,14 +360,6 @@
             this.dataGridView2.MultiSelect = false;
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(857, 282);
             this.dataGridView2.TabIndex = 11;

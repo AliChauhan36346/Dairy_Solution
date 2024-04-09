@@ -19,8 +19,6 @@ namespace DairyAccounting
             dbConnection = new Connection();
         }
 
-
-
         public void getAverageLrFat(out string grossReceive,out string avgLr, out string avgFat, DateTime startDate, DateTime endDate)
         {
             avgLr = "";

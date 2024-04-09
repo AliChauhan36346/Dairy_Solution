@@ -65,6 +65,7 @@
     <Compile Include="AddEmployees.cs" />
     <Compile Include="DashboardClass.cs" />
     <Compile Include="ParchiClass.cs" />
+    <Compile Include="profitLoss.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RateAdjustments.cs" />
     <Compile Include="ReportsClass.cs" />

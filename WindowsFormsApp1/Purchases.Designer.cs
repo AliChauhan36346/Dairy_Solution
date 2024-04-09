@@ -37,7 +37,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.txt_totalPurchase = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.txt_customerBalance = new System.Windows.Forms.TextBox();
+            this.txt_accountBalance = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -188,18 +188,18 @@
             this.label12.TabIndex = 57;
             this.label12.Text = "Total Receive";
             // 
-            // txt_customerBalance
+            // txt_accountBalance
             // 
-            this.txt_customerBalance.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txt_customerBalance.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_customerBalance.Font = new System.Drawing.Font("Segoe UI Black", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_customerBalance.ForeColor = System.Drawing.Color.White;
-            this.txt_customerBalance.Location = new System.Drawing.Point(873, 101);
-            this.txt_customerBalance.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.txt_customerBalance.Name = "txt_customerBalance";
-            this.txt_customerBalance.ReadOnly = true;
-            this.txt_customerBalance.Size = new System.Drawing.Size(132, 27);
-            this.txt_customerBalance.TabIndex = 56;
+            this.txt_accountBalance.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txt_accountBalance.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_accountBalance.Font = new System.Drawing.Font("Segoe UI Black", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_accountBalance.ForeColor = System.Drawing.Color.White;
+            this.txt_accountBalance.Location = new System.Drawing.Point(873, 101);
+            this.txt_accountBalance.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.txt_accountBalance.Name = "txt_accountBalance";
+            this.txt_accountBalance.ReadOnly = true;
+            this.txt_accountBalance.Size = new System.Drawing.Size(132, 27);
+            this.txt_accountBalance.TabIndex = 56;
             // 
             // label1
             // 
@@ -550,7 +550,7 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.txt_totalPurchase);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.txt_customerBalance);
+            this.Controls.Add(this.txt_accountBalance);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -582,7 +582,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txt_totalPurchase;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txt_customerBalance;
+        private System.Windows.Forms.TextBox txt_accountBalance;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel1;

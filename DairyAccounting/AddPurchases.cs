@@ -215,6 +215,7 @@ namespace DairyAccounting
                     }
                 }
 
+
                 // Update SQL statement
                 string updateQuery = "UPDATE Purchases " +
                     "SET date=@date, customerId=@customerId, customerName=@customerName, dodhiId=@dodhiId, dodhi=@dodhi, time=@time, rate=@rate, liters=@liters, amount=@amount WHERE purchaseId = @purchaseId";

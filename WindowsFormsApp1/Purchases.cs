@@ -57,8 +57,20 @@ namespace WindowsFormsApp1
 
             txt_dodhiId.Text=customers.GetCustomerDodhiId(txt_id.Text).ToString();
 
+            decimal accountBalance;
+            string status;
 
-            
+            if (!int.TryParse(txt_id.Text, out int id))
+            {
+
+            }
+
+            commonFunctions.GetAccountSummary(out decimal totalDebit, out decimal totalCredit, out accountBalance, out status, id);
+
+            txt_accountBalance.Text = accountBalance.ToString() + " " + status;
+
+
+
         }
 
         private void Purchases_Load(object sender, EventArgs e)
@@ -203,7 +215,7 @@ namespace WindowsFormsApp1
                 }
 
                 // assigning values to emloyee object
-
+                purchases.purchaseId=int.Parse(txt_purchaseId.Text);
                 purchases.customerId = Id;
                 purchases.customerName = txt_customerName.Text.Trim();
                 purchases.date = dtm_picker.Value;

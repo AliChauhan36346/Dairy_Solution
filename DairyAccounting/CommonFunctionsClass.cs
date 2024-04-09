@@ -422,5 +422,68 @@ namespace DairyAccounting
             return averageRate;
         }
 
+        public void GetAccountSummary(out decimal totalDebit, out decimal totalCredit, out decimal closingBalance, out string closingStatus, int accountId)
+        {
+            //decimal openingBalance = 0;
+            //string openingStatus = "";
+            totalDebit = 0;
+            totalCredit = 0;
+            closingBalance = 0;
+            closingStatus = "";
+
+            try
+            {
+                dbConnection.openConnection();
+
+                // Calculate total debit (sum of negative amounts)
+                string totalDebitQuery = @"
+                SELECT ISNULL(SUM(amount), 0) AS totalDebit
+                FROM (
+                    SELECT amount FROM Payments WHERE accountId = @accountId
+                    UNION ALL
+                    SELECT amount FROM Sales WHERE companyId = @accountId
+                ) AS TransactionAmounts";
+
+
+                using (SqlCommand command = new SqlCommand(totalDebitQuery, dbConnection.connection))
+                {
+                    command.Parameters.AddWithValue("@accountId", accountId);
+
+                    totalDebit = Convert.ToDecimal(command.ExecuteScalar());
+                }
+
+                // Calculate total credit (sum of positive amounts)
+                string totalCreditQuery = @"
+                SELECT ISNULL(SUM(amount), 0) AS totalDebit
+                FROM (
+                    SELECT amount FROM Purchases WHERE customerID = @accountId
+                    UNION ALL
+                    SELECT amount FROM Receipts WHERE accountId = @accountId
+                    UNION ALL
+                    SELECT amountReceived FROM Sales WHERE companyId = @accountId
+                ) AS TransactionAmounts";
+
+                using (SqlCommand command = new SqlCommand(totalCreditQuery, dbConnection.connection))
+                {
+                    command.Parameters.AddWithValue("@accountId", accountId);
+
+                    totalCredit = Convert.ToDecimal(command.ExecuteScalar());
+                }
+
+                // Calculate closing balance
+                closingBalance = totalCredit - totalDebit;
+                closingStatus = closingBalance < 0 ? "Debit" : "Credit";
+                closingBalance = Math.Abs(closingBalance);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error calculating account summary: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dbConnection.closeConnection();
+            }
+        }
+
     }
 }

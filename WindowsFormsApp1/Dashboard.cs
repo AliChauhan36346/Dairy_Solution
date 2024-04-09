@@ -226,20 +226,69 @@ namespace WindowsFormsApp1
 
         private void rateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Change_Rates change_Rates = new Change_Rates();
-            change_Rates.ShowDialog();
+            Password password = new Password();
+
+            if (password.ShowDialog() == DialogResult.OK)
+            {
+                string enteredPassword = password.enteredPassword;
+
+                if (password.IsPasswordCorrect(enteredPassword))
+                {
+                    Change_Rates change_Rates = new Change_Rates();
+                    change_Rates.ShowDialog();
+
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect password. Deletion aborted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void clearTransToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Clear_Transactions clear_Transactions = new Clear_Transactions();
-            clear_Transactions.ShowDialog();
+            Password password = new Password();
+
+            if (password.ShowDialog() == DialogResult.OK)
+            {
+                string enteredPassword = password.enteredPassword;
+
+                if (password.IsPasswordCorrect(enteredPassword))
+                {
+                    Clear_Transactions clear_Transactions = new Clear_Transactions();
+                    clear_Transactions.ShowDialog();
+
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect password. Deletion aborted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            
         }
 
         private void customersDodhiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Change_Dodhi change_Dodhi = new Change_Dodhi();
-            change_Dodhi.ShowDialog();
+            
+
+            Password password = new Password();
+
+            if (password.ShowDialog() == DialogResult.OK)
+            {
+                string enteredPassword = password.enteredPassword;
+
+                if (password.IsPasswordCorrect(enteredPassword))
+                {
+                    Change_Dodhi change_Dodhi = new Change_Dodhi();
+                    change_Dodhi.ShowDialog();
+
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect password. Deletion aborted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void salesReportToolStripMenuItem_Click(object sender, EventArgs e)

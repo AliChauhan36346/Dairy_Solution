@@ -191,6 +191,39 @@ namespace WindowsFormsApp1
             }
 
         }
+
+        private void txt_companyName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+
+                // Move focus to the next control (text box)
+                this.SelectNextControl((Control)sender, true, true, true, true);
+            }
+        }
+
+        private void txt_address_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+
+                // Move focus to the next control (text box)
+                this.SelectNextControl((Control)sender, true, true, true, true);
+            }
+        }
+
+        private void txt_rate_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+
+                // Move focus to the next control (text box)
+                comBtn_Save.Focus();
+            }
+        }
     }
     
 }

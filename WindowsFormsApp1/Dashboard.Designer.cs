@@ -527,11 +527,11 @@
             // 
             this.lbl_grossReceive.AutoEllipsis = true;
             this.lbl_grossReceive.AutoSize = true;
-            this.lbl_grossReceive.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_grossReceive.Font = new System.Drawing.Font("Segoe UI Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_grossReceive.ForeColor = System.Drawing.Color.Green;
             this.lbl_grossReceive.Location = new System.Drawing.Point(86, 92);
             this.lbl_grossReceive.Name = "lbl_grossReceive";
-            this.lbl_grossReceive.Size = new System.Drawing.Size(68, 32);
+            this.lbl_grossReceive.Size = new System.Drawing.Size(62, 30);
             this.lbl_grossReceive.TabIndex = 4;
             this.lbl_grossReceive.Text = "1000";
             this.lbl_grossReceive.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -551,11 +551,11 @@
             // lbl_purchases
             // 
             this.lbl_purchases.AutoSize = true;
-            this.lbl_purchases.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_purchases.Font = new System.Drawing.Font("Segoe UI Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_purchases.ForeColor = System.Drawing.Color.MidnightBlue;
             this.lbl_purchases.Location = new System.Drawing.Point(86, 45);
             this.lbl_purchases.Name = "lbl_purchases";
-            this.lbl_purchases.Size = new System.Drawing.Size(68, 32);
+            this.lbl_purchases.Size = new System.Drawing.Size(62, 30);
             this.lbl_purchases.TabIndex = 2;
             this.lbl_purchases.Text = "1900";
             this.lbl_purchases.Click += new System.EventHandler(this.label10_Click);
@@ -717,11 +717,11 @@
             // lbl_stockSales
             // 
             this.lbl_stockSales.AutoSize = true;
-            this.lbl_stockSales.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_stockSales.Font = new System.Drawing.Font("Segoe UI Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_stockSales.ForeColor = System.Drawing.Color.MidnightBlue;
             this.lbl_stockSales.Location = new System.Drawing.Point(90, 91);
             this.lbl_stockSales.Name = "lbl_stockSales";
-            this.lbl_stockSales.Size = new System.Drawing.Size(68, 32);
+            this.lbl_stockSales.Size = new System.Drawing.Size(62, 30);
             this.lbl_stockSales.TabIndex = 10;
             this.lbl_stockSales.Text = "1900";
             this.lbl_stockSales.Click += new System.EventHandler(this.label23_Click);
@@ -741,11 +741,11 @@
             // 
             this.lbl_stockCReceive.AutoEllipsis = true;
             this.lbl_stockCReceive.AutoSize = true;
-            this.lbl_stockCReceive.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_stockCReceive.Font = new System.Drawing.Font("Segoe UI Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_stockCReceive.ForeColor = System.Drawing.Color.Green;
             this.lbl_stockCReceive.Location = new System.Drawing.Point(90, 44);
             this.lbl_stockCReceive.Name = "lbl_stockCReceive";
-            this.lbl_stockCReceive.Size = new System.Drawing.Size(68, 32);
+            this.lbl_stockCReceive.Size = new System.Drawing.Size(62, 30);
             this.lbl_stockCReceive.TabIndex = 6;
             this.lbl_stockCReceive.Text = "1000";
             this.lbl_stockCReceive.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -814,11 +814,11 @@
             // 
             this.lbl_tsVolume.AutoEllipsis = true;
             this.lbl_tsVolume.AutoSize = true;
-            this.lbl_tsVolume.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_tsVolume.Font = new System.Drawing.Font("Segoe UI Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_tsVolume.ForeColor = System.Drawing.Color.Green;
             this.lbl_tsVolume.Location = new System.Drawing.Point(88, 91);
             this.lbl_tsVolume.Name = "lbl_tsVolume";
-            this.lbl_tsVolume.Size = new System.Drawing.Size(68, 32);
+            this.lbl_tsVolume.Size = new System.Drawing.Size(62, 30);
             this.lbl_tsVolume.TabIndex = 10;
             this.lbl_tsVolume.Text = "1000";
             this.lbl_tsVolume.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -838,11 +838,11 @@
             // lbl_grossVolume
             // 
             this.lbl_grossVolume.AutoSize = true;
-            this.lbl_grossVolume.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_grossVolume.Font = new System.Drawing.Font("Segoe UI Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_grossVolume.ForeColor = System.Drawing.Color.MidnightBlue;
             this.lbl_grossVolume.Location = new System.Drawing.Point(88, 45);
             this.lbl_grossVolume.Name = "lbl_grossVolume";
-            this.lbl_grossVolume.Size = new System.Drawing.Size(68, 32);
+            this.lbl_grossVolume.Size = new System.Drawing.Size(62, 30);
             this.lbl_grossVolume.TabIndex = 8;
             this.lbl_grossVolume.Text = "1900";
             this.lbl_grossVolume.Click += new System.EventHandler(this.lbl_grossVolume_Click);

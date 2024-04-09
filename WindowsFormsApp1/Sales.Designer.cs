@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_newAccount = new System.Windows.Forms.Button();
             this.btn_newCompany = new System.Windows.Forms.Button();
@@ -73,7 +73,7 @@
             this.txt_liters = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_salesId = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txt_companyBalance = new System.Windows.Forms.TextBox();
             this.txt_tsSales = new System.Windows.Forms.TextBox();
             this.txt_grossSales = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -142,6 +142,7 @@
             this.btn_addNew.TabStop = false;
             this.btn_addNew.Text = "Add New";
             this.btn_addNew.UseVisualStyleBackColor = true;
+            this.btn_addNew.Click += new System.EventHandler(this.btn_addNew_Click);
             // 
             // btn_save
             // 
@@ -224,14 +225,14 @@
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1267, 279);
             this.dataGridView1.TabIndex = 3;
@@ -672,19 +673,18 @@
             this.txt_salesId.TabIndex = 35;
             this.txt_salesId.TabStop = false;
             // 
-            // textBox9
+            // txt_companyBalance
             // 
-            this.textBox9.BackColor = System.Drawing.Color.White;
-            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox9.Font = new System.Drawing.Font("Segoe UI Black", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.ForeColor = System.Drawing.Color.White;
-            this.textBox9.Location = new System.Drawing.Point(1121, 83);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(137, 29);
-            this.textBox9.TabIndex = 27;
-            this.textBox9.TabStop = false;
+            this.txt_companyBalance.BackColor = System.Drawing.Color.White;
+            this.txt_companyBalance.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_companyBalance.Font = new System.Drawing.Font("Segoe UI Black", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_companyBalance.ForeColor = System.Drawing.Color.White;
+            this.txt_companyBalance.Location = new System.Drawing.Point(1121, 83);
+            this.txt_companyBalance.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txt_companyBalance.Name = "txt_companyBalance";
+            this.txt_companyBalance.Size = new System.Drawing.Size(137, 29);
+            this.txt_companyBalance.TabIndex = 27;
+            this.txt_companyBalance.TabStop = false;
             // 
             // txt_tsSales
             // 
@@ -753,7 +753,7 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.txt_tsSales);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.textBox9);
+            this.Controls.Add(this.txt_companyBalance);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -821,7 +821,7 @@
         private System.Windows.Forms.TextBox txt_cashAccountId;
         private System.Windows.Forms.TextBox txt_cashAccountName;
         private System.Windows.Forms.ListBox lstAccountSuggestions;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txt_companyBalance;
         private System.Windows.Forms.TextBox txt_tsSales;
         private System.Windows.Forms.TextBox txt_grossSales;
         private System.Windows.Forms.Label label17;

@@ -18,6 +18,8 @@ namespace WindowsFormsApp1
         AddSales sales = new AddSales();
         CommonFunctionsClass commonFunctions= new CommonFunctionsClass();
         DashboardClass dashboard = new DashboardClass();
+        ParchiClass parchiClass = new ParchiClass();
+
 
         public Sales()
         {
@@ -63,14 +65,38 @@ namespace WindowsFormsApp1
         private void txt_id_Leave(object sender, EventArgs e)
         {
             // Hide the suggestion list
-            if(!lstCompanySuggestions.Focused)
+            if (!lstCompanySuggestions.Focused)
             {
                 lstCompanySuggestions.Visible = false;
             }
-            
 
-            txt_rate.Text = company.getcompanyRate(txt_id.Text.ToString()).ToString();
+            // Attempt to parse the account ID
+            if (!int.TryParse(txt_id.Text, out int accid))
+            {
+                MessageBox.Show("Invalid account ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Get the account rate
+            decimal accountRate = company.getcompanyRate(txt_id.Text);
+            txt_rate.Text = accountRate.ToString();
+
+            // Retrieve the account summary
+            decimal accountBalance;
+            string status;
+            parchiClass.GetAccountSummary(out decimal totalDebit, out decimal totalCredit, out accountBalance, out status, accid);
+
+            // Update the balance textbox
+            if (status != null)
+            {
+                txt_companyBalance.Text = $"{accountBalance} {status}";
+            }
+            else
+            {
+                txt_companyBalance.Text = "N/A"; // Set a default value if status is null
+            }
         }
+
 
         private void txt_id_KeyDown(object sender, KeyEventArgs e)
         {
@@ -360,8 +386,11 @@ namespace WindowsFormsApp1
                 // Clearing all the text boxes for new entries
                 commonFunctions.ClearAllTextBoxes(this);
 
+
+
                 // Show updated data in grid view
                 txt_salesId.Text = sales.GetNextAvailableID().ToString();
+                txt_tsStandard.Text = "13";
                 sales.showDataInGridView(dataGridView1);
                 txt_id.Focus();
                 getStats();
@@ -712,6 +741,18 @@ namespace WindowsFormsApp1
             txt_tsSales.Text = tsSales + " Ltrs";
             txt_grossSales.Text = grosSales + " Ltrs";
             txt_stockVolume.Text = stock.ToString() + " Ltrs";
+        }
+
+        private void btn_addNew_Click(object sender, EventArgs e)
+        {
+            commonFunctions.ClearAllTextBoxes(this);
+
+            // Show updated data in grid view
+            txt_salesId.Text = sales.GetNextAvailableID().ToString();
+            txt_tsStandard.Text = "13";
+            sales.showDataInGridView(dataGridView1);
+            txt_id.Focus();
+            getStats();
         }
     }
 

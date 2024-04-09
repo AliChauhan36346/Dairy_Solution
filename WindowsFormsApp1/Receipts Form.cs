@@ -49,6 +49,18 @@ namespace WindowsFormsApp1
             {
                 lstAccountsSuggestion.Visible = false;
             }
+
+            decimal accountBalance;
+            string status;
+
+            if (!int.TryParse(txt_accountId.Text, out int id))
+            {
+
+            }
+
+            commonFunctions.GetAccountSummary(out decimal totalDebit, out decimal totalCredit, out accountBalance, out status, id);
+
+            txt_accountBalance.Text = accountBalance.ToString() + " " + status;
         }
 
         private void txt_accountId_KeyDown(object sender, KeyEventArgs e)
@@ -167,7 +179,7 @@ namespace WindowsFormsApp1
 
 
                 // assigning values to emloyee object
-
+                receipts.receiptId = int.Parse(txt_receiptId.Text);
                 receipts.accountId = accountId;
                 receipts.accountName = txt_accountName.Text.Trim();
                 receipts.date = dtm_picker.Value;
@@ -217,6 +229,8 @@ namespace WindowsFormsApp1
                     txt_discription.Text = selectedRow.Cells["Discription"].Value.ToString();
                     txt_cashAccountId.Text = selectedRow.Cells["Account Id"].Value.ToString();
                     txt_cashAccountName.Text = selectedRow.Cells["Account Name"].Value.ToString();
+
+                    lstAccountsSuggestion.Visible = false;
                 }
             }
         }
