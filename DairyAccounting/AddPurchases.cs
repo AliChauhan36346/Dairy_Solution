@@ -129,6 +129,88 @@ namespace DairyAccounting
             }
         }
 
+        public int getLastRecordId()
+        {
+            int lastRecordId = 0;
+
+            try
+            {
+                dbConnection.openConnection();
+
+                string query = "SELECT TOP 1 PurchaseId FROM Purchases ORDER BY PurchaseId DESC";
+
+                using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
+                {
+                    object result = command.ExecuteScalar();
+                    if (result != DBNull.Value && result != null)
+                    {
+                        lastRecordId = Convert.ToInt32(result);
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error retrieving Purchase Id: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dbConnection.closeConnection();
+            }
+
+            return lastRecordId;
+        }
+
+        public void getPurchaseRecordDetail(int  purchaseId, out DateTime date, out int customerid, out string customerName,
+            out decimal liters, out decimal rate, out string time, out int dodhiId, out string dodhiName, out decimal totalAmount)
+        {
+
+            date = DateTime.MinValue;
+            customerid = 0;
+            customerName = "";
+            liters = 0;
+            rate = 0;
+            time = "";
+            dodhiId = 0;
+            dodhiName = "";
+            totalAmount = 0;
+
+            try
+            {
+                dbConnection.openConnection();
+
+                string query = "SELECT date, customerID, customerName, dodhiId, dodhi, time, rate, liters, amount FROM Purchases WHERE purchaseID=@purchaseID";
+
+                using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
+                {
+                    command.Parameters.AddWithValue("@purchaseID", purchaseId);
+
+                    using(SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            date = DateTime.Parse(reader["date"].ToString());
+                            customerid = int.Parse(reader["customerID"].ToString());
+                            customerName = reader["customerName"].ToString();
+                            liters = decimal.Parse(reader["liters"].ToString());
+                            rate = decimal.Parse(reader["rate"].ToString());
+                            time = reader["time"].ToString();
+                            dodhiId = int.Parse(reader["dodhiId"].ToString());
+                            dodhiName = reader["dodhi"].ToString();
+                            totalAmount = decimal.Parse(reader["amount"].ToString());
+                        }
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error retrieving purchase record: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dbConnection.closeConnection();
+            }
+
+        }
 
         public int GetNextAvailableId()
         {

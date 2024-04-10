@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button7 = new System.Windows.Forms.Button();
-            this.btn_addPurchase = new System.Windows.Forms.Button();
+            this.btn_save = new System.Windows.Forms.Button();
+            this.btn_addEmployee = new System.Windows.Forms.Button();
             this.btn_dashboard = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btn_addNew = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btn_deleteRecord = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txt_cashAccountId = new System.Windows.Forms.TextBox();
+            this.txt_cashAccountName = new System.Windows.Forms.TextBox();
             this.txt_discription = new System.Windows.Forms.RichTextBox();
             this.combo_expenseType = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -59,6 +59,8 @@
             this.e_discription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.e_employeeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.e_employeeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lstCashAccountSuggestions = new System.Windows.Forms.ListBox();
+            this.lstEmployeeSuggestions = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -68,12 +70,12 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.button7);
-            this.panel1.Controls.Add(this.btn_addPurchase);
+            this.panel1.Controls.Add(this.btn_save);
+            this.panel1.Controls.Add(this.btn_addEmployee);
             this.panel1.Controls.Add(this.btn_dashboard);
-            this.panel1.Controls.Add(this.button6);
+            this.panel1.Controls.Add(this.btn_addNew);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.btn_deleteRecord);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2, 7, 2, 7);
@@ -81,31 +83,32 @@
             this.panel1.Size = new System.Drawing.Size(931, 67);
             this.panel1.TabIndex = 13;
             // 
-            // button7
+            // btn_save
             // 
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button7.Location = new System.Drawing.Point(566, 4);
-            this.button7.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(88, 56);
-            this.button7.TabIndex = 6;
-            this.button7.Text = "Save";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btn_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_save.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_save.Location = new System.Drawing.Point(566, 4);
+            this.btn_save.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btn_save.Name = "btn_save";
+            this.btn_save.Size = new System.Drawing.Size(88, 56);
+            this.btn_save.TabIndex = 6;
+            this.btn_save.Text = "Save";
+            this.btn_save.UseVisualStyleBackColor = true;
+            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
-            // btn_addPurchase
+            // btn_addEmployee
             // 
-            this.btn_addPurchase.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_addPurchase.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btn_addPurchase.Location = new System.Drawing.Point(471, 4);
-            this.btn_addPurchase.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btn_addPurchase.Name = "btn_addPurchase";
-            this.btn_addPurchase.Size = new System.Drawing.Size(88, 56);
-            this.btn_addPurchase.TabIndex = 28;
-            this.btn_addPurchase.TabStop = false;
-            this.btn_addPurchase.Text = "Add Employee";
-            this.btn_addPurchase.UseVisualStyleBackColor = true;
-            this.btn_addPurchase.Click += new System.EventHandler(this.btn_addPurchase_Click);
+            this.btn_addEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_addEmployee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_addEmployee.Location = new System.Drawing.Point(471, 4);
+            this.btn_addEmployee.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btn_addEmployee.Name = "btn_addEmployee";
+            this.btn_addEmployee.Size = new System.Drawing.Size(88, 56);
+            this.btn_addEmployee.TabIndex = 28;
+            this.btn_addEmployee.TabStop = false;
+            this.btn_addEmployee.Text = "Add Employee";
+            this.btn_addEmployee.UseVisualStyleBackColor = true;
+            this.btn_addEmployee.Click += new System.EventHandler(this.btn_addPurchase_Click);
             // 
             // btn_dashboard
             // 
@@ -121,17 +124,17 @@
             this.btn_dashboard.UseVisualStyleBackColor = true;
             this.btn_dashboard.Click += new System.EventHandler(this.btn_dashboard_Click);
             // 
-            // button6
+            // btn_addNew
             // 
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button6.Location = new System.Drawing.Point(653, 4);
-            this.button6.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(88, 56);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "Add New";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btn_addNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_addNew.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_addNew.Location = new System.Drawing.Point(653, 4);
+            this.btn_addNew.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btn_addNew.Name = "btn_addNew";
+            this.btn_addNew.Size = new System.Drawing.Size(88, 56);
+            this.btn_addNew.TabIndex = 7;
+            this.btn_addNew.Text = "Add New";
+            this.btn_addNew.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -146,24 +149,24 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Expenses";
             // 
-            // button5
+            // btn_deleteRecord
             // 
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button5.Location = new System.Drawing.Point(835, 4);
-            this.button5.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(88, 56);
-            this.button5.TabIndex = 29;
-            this.button5.TabStop = false;
-            this.button5.Text = "Delete Record";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btn_deleteRecord.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_deleteRecord.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btn_deleteRecord.Location = new System.Drawing.Point(835, 4);
+            this.btn_deleteRecord.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btn_deleteRecord.Name = "btn_deleteRecord";
+            this.btn_deleteRecord.Size = new System.Drawing.Size(88, 56);
+            this.btn_deleteRecord.TabIndex = 29;
+            this.btn_deleteRecord.TabStop = false;
+            this.btn_deleteRecord.Text = "Delete Record";
+            this.btn_deleteRecord.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.txt_cashAccountId);
+            this.groupBox1.Controls.Add(this.txt_cashAccountName);
             this.groupBox1.Controls.Add(this.txt_discription);
             this.groupBox1.Controls.Add(this.combo_expenseType);
             this.groupBox1.Controls.Add(this.label11);
@@ -198,23 +201,26 @@
             this.label3.TabIndex = 20;
             this.label3.Text = "Cash Account";
             // 
-            // textBox1
+            // txt_cashAccountId
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(108, 69);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(77, 26);
-            this.textBox1.TabIndex = 18;
+            this.txt_cashAccountId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_cashAccountId.Location = new System.Drawing.Point(108, 69);
+            this.txt_cashAccountId.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.txt_cashAccountId.Name = "txt_cashAccountId";
+            this.txt_cashAccountId.Size = new System.Drawing.Size(77, 26);
+            this.txt_cashAccountId.TabIndex = 18;
+            this.txt_cashAccountId.TextChanged += new System.EventHandler(this.txt_cashAccountId_TextChanged);
+            this.txt_cashAccountId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_cashAccountId_KeyDown);
+            this.txt_cashAccountId.Leave += new System.EventHandler(this.txt_cashAccountId_Leave);
             // 
-            // textBox2
+            // txt_cashAccountName
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(187, 69);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(177, 26);
-            this.textBox2.TabIndex = 19;
+            this.txt_cashAccountName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_cashAccountName.Location = new System.Drawing.Point(187, 69);
+            this.txt_cashAccountName.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.txt_cashAccountName.Name = "txt_cashAccountName";
+            this.txt_cashAccountName.Size = new System.Drawing.Size(177, 26);
+            this.txt_cashAccountName.TabIndex = 19;
             // 
             // txt_discription
             // 
@@ -243,6 +249,7 @@
             this.combo_expenseType.Size = new System.Drawing.Size(256, 28);
             this.combo_expenseType.TabIndex = 1;
             this.combo_expenseType.SelectedIndexChanged += new System.EventHandler(this.combo_expenseType_SelectedIndexChanged);
+            this.combo_expenseType.KeyDown += new System.Windows.Forms.KeyEventHandler(this.combo_expenseType_KeyDown);
             // 
             // label11
             // 
@@ -300,6 +307,8 @@
             this.txt_employeeId.Name = "txt_employeeId";
             this.txt_employeeId.Size = new System.Drawing.Size(76, 26);
             this.txt_employeeId.TabIndex = 4;
+            this.txt_employeeId.TextChanged += new System.EventHandler(this.txt_employeeId_TextChanged);
+            this.txt_employeeId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_employeeId_KeyDown);
             // 
             // txt_employeeName
             // 
@@ -318,6 +327,7 @@
             this.txt_amount.Name = "txt_amount";
             this.txt_amount.Size = new System.Drawing.Size(256, 26);
             this.txt_amount.TabIndex = 2;
+            this.txt_amount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_amount_KeyDown);
             // 
             // label4
             // 
@@ -427,11 +437,31 @@
             this.e_employeeName.ReadOnly = true;
             this.e_employeeName.Width = 135;
             // 
+            // lstCashAccountSuggestions
+            // 
+            this.lstCashAccountSuggestions.FormattingEnabled = true;
+            this.lstCashAccountSuggestions.ItemHeight = 20;
+            this.lstCashAccountSuggestions.Location = new System.Drawing.Point(433, 135);
+            this.lstCashAccountSuggestions.Name = "lstCashAccountSuggestions";
+            this.lstCashAccountSuggestions.Size = new System.Drawing.Size(241, 84);
+            this.lstCashAccountSuggestions.TabIndex = 17;
+            // 
+            // lstEmployeeSuggestions
+            // 
+            this.lstEmployeeSuggestions.FormattingEnabled = true;
+            this.lstEmployeeSuggestions.ItemHeight = 20;
+            this.lstEmployeeSuggestions.Location = new System.Drawing.Point(345, 294);
+            this.lstEmployeeSuggestions.Name = "lstEmployeeSuggestions";
+            this.lstEmployeeSuggestions.Size = new System.Drawing.Size(241, 84);
+            this.lstEmployeeSuggestions.TabIndex = 18;
+            // 
             // expenseGeneral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 673);
+            this.Controls.Add(this.lstEmployeeSuggestions);
+            this.Controls.Add(this.lstCashAccountSuggestions);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
@@ -454,12 +484,12 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button btn_addPurchase;
+        private System.Windows.Forms.Button btn_save;
+        private System.Windows.Forms.Button btn_addEmployee;
         private System.Windows.Forms.Button btn_dashboard;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btn_addNew;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btn_deleteRecord;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RichTextBox txt_discription;
         private System.Windows.Forms.ComboBox combo_expenseType;
@@ -481,8 +511,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn e_discription;
         private System.Windows.Forms.DataGridViewTextBoxColumn e_employeeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn e_employeeName;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txt_cashAccountId;
+        private System.Windows.Forms.TextBox txt_cashAccountName;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ListBox lstCashAccountSuggestions;
+        private System.Windows.Forms.ListBox lstEmployeeSuggestions;
     }
 }

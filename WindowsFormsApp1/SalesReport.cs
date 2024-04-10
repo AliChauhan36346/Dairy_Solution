@@ -65,5 +65,32 @@ namespace WindowsFormsApp1
             lbl_avgPurchaseRate.Text = avgpurchase.ToString();
             lbl_avgSalesRate.Text = avgSale.ToString();
         }
+
+        private void dataGridView2_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            // Check if there's at least one row in the DataGridView
+            if (dataGridView2.SelectedRows.Count > 0)
+            {
+                int selectedIndex = dataGridView2.SelectedRows[0].Index;
+
+                // Check if the selected index is within the bounds of the data
+                if (selectedIndex >= 0 && selectedIndex < dataGridView2.RowCount - 1)
+                {
+                    // Get the selected row
+                    DataGridViewRow selectedRow = dataGridView2.SelectedRows[0];
+
+                    // Populate text boxes with data from the selected row
+                    int accountId = int.Parse(selectedRow.Cells["Sales Id"].Value.ToString());
+                    //string accountName = selectedRow.Cells["Account Name"].Value.ToString();
+
+                    Sales sales = new Sales();
+                    sales.isFromOtherForm = true;
+                    sales.salesId = accountId;
+
+                    sales.ShowDialog();
+
+                }
+            }
+        }
     }
 }

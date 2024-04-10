@@ -141,6 +141,7 @@ namespace WindowsFormsApp1
                 getStats();
                 txt_id.Text = chilarReceive.GetNextAvailableID().ToString();
                 chilarReceive.showDataInGridView(dataGridView2);
+                txt_tsStandard.Text = "13";
 
                 txt_dodhiId.Focus();
 
@@ -385,7 +386,7 @@ namespace WindowsFormsApp1
                         getStats();
                         chilarReceive.showDataInGridView(dataGridView2);
                         txt_id.Text = chilarReceive.GetNextAvailableID().ToString();
-
+                        txt_tsStandard.Text = "13";
                         txt_dodhiId.Focus();
                     }
                         
@@ -412,6 +413,7 @@ namespace WindowsFormsApp1
 
             getStats();
             txt_id.Text = chilarReceive.GetNextAvailableID().ToString();
+            txt_tsStandard.Text = "13";
             dtm_picker.Value = DateTime.Today;
 
             txt_dodhiId.Focus();
@@ -504,6 +506,7 @@ namespace WindowsFormsApp1
                 txt_id.Text = chilarReceive.GetNextAvailableID().ToString();
                 chilarReceive.showDataInGridView(dataGridView2);
                 dtm_picker.Value = DateTime.Today;
+                txt_tsStandard.Text = "13";
                 getStats();
 
                 txt_dodhiId.Focus();

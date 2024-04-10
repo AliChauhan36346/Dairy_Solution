@@ -20,6 +20,8 @@ namespace WindowsFormsApp1
         DashboardClass dashboard = new DashboardClass();
         ParchiClass parchiClass = new ParchiClass();
 
+        public bool isFromOtherForm=false;
+        public int salesId;
 
         public Sales()
         {
@@ -55,6 +57,30 @@ namespace WindowsFormsApp1
 
 
             getStats();
+
+            if(isFromOtherForm)
+            {
+                sales.getPurchaseRecordDetail(salesId, out DateTime date, out int companyId, out string companyName,
+                    out decimal liters, out decimal rate, out decimal lr, out decimal fat, out decimal tsStandard,
+                    out decimal tsLiters, out decimal amount, out decimal amountReceive, out int accId,
+                    out string accName, out decimal balance);
+
+                txt_salesId.Text=salesId.ToString();
+                dtm_picker.Value = date;
+                txt_id.Text=companyId.ToString();
+                txt_companyName.Text=companyName.ToString();
+                txt_rate.Text=rate.ToString();
+                txt_liters.Text=liters.ToString();
+                txt_lr.Text=lr.ToString();
+                txt_fat.Text = fat.ToString();
+                txt_tsStandard.Text=tsStandard.ToString();
+                txt_tsLiters.Text=tsLiters.ToString();
+                txt_totalAmount.Text=amount.ToString();
+                txt_amountReceived.Text=amountReceive.ToString();
+                txt_cashAccountId.Text=accId.ToString();
+                txt_cashAccountName.Text=accName.ToString();
+                txt_balance.Text=balance.ToString();
+            }
         }
 
         private void txt_id_TextChanged(object sender, EventArgs e)

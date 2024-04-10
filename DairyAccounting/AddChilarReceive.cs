@@ -37,7 +37,7 @@ namespace DairyAccounting
             decimal lrOperations;// for storing calculation with lr
             decimal volumeOperations;// for volume calculations
             decimal snf; // for storing snf 
-            decimal ts; // for storing ts
+            decimal ts=13; // for storing ts
 
             fatOperations = .22m * fat + .72m;
 

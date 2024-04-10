@@ -129,6 +129,100 @@ namespace DairyAccounting
             }
         }
 
+        public int getLastRecordId()
+        {
+            int lastRecordId = 0;
+
+            try
+            {
+                dbConnection.openConnection();
+
+                string query = "SELECT TOP 1 salesId FROM Sales ORDER BY salesId DESC";
+
+                using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
+                {
+                    object result = command.ExecuteScalar();
+                    if (result != DBNull.Value && result != null)
+                    {
+                        lastRecordId = Convert.ToInt32(result);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error retreiving last sales Id: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dbConnection.closeConnection();
+            }
+
+            return lastRecordId;
+        }
+
+        public void getPurchaseRecordDetail(int saleId, out DateTime date, out int companyid, out string companyName,
+            out decimal liters, out decimal rate, out decimal lr, out decimal fat, out decimal tsStandard,
+            out decimal tsLiters, out decimal amount, out decimal amountReceive, out int accId, out string accName,
+            out decimal balances)
+        {
+
+            date = DateTime.MinValue;
+            companyid = 0;
+            companyName = "";
+            liters = 0;
+            rate = 0;
+            lr = 0;
+            fat = 0;
+            tsStandard = 0;
+            tsLiters = 0;
+            amount = 0;
+            amountReceive = 0;
+            accId = 0;
+            accName = "";
+            balances = 0;
+
+            try
+            {
+                dbConnection.openConnection();
+
+                string query = "SELECT salesId, date, companyId, company, liters, rate, lr, fat, tsStandard, tsLiters, amount, amountReceived, accountId, accountName, balance FROM sales WHERE salesId=@salesId";
+
+                using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
+                {
+                    command.Parameters.AddWithValue("@salesId", saleId);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            date = DateTime.Parse(reader["date"].ToString());
+                            companyid = int.Parse(reader["companyId"].ToString());
+                            companyName = reader["company"].ToString();
+                            liters = decimal.Parse(reader["liters"].ToString());
+                            rate = decimal.Parse(reader["rate"].ToString());
+                            lr = decimal.Parse(reader["lr"].ToString());
+                            fat = decimal.Parse(reader["fat"].ToString());
+                            tsStandard = decimal.Parse(reader["tsStandard"].ToString());
+                            tsLiters = decimal.Parse(reader["tsLiters"].ToString());
+                            amount = decimal.Parse(reader["amount"].ToString());
+                            amountReceive = decimal.Parse(reader["amountReceived"].ToString());
+                            accId = int.Parse(reader["accountId"].ToString());
+                            accName = reader["accountName"].ToString();
+                            balances = decimal.Parse(reader["balance"].ToString());
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error retrieving purchase record: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dbConnection.closeConnection();
+            }
+
+        }
 
         public void showDataInGridView(DataGridView dataGridView)
         {

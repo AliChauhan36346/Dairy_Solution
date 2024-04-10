@@ -20,6 +20,9 @@ namespace WindowsFormsApp1
         CommonFunctionsClass commonFunctions = new CommonFunctionsClass();// common function accross all forms like search suggestions
         DashboardClass dashboard = new DashboardClass();
 
+        public bool isfromOtherForm = false;
+        public int purchaseId;
+
         public Purchases()
         {
             InitializeComponent();
@@ -96,6 +99,32 @@ namespace WindowsFormsApp1
             {
                 // Set the Evening radio button as checked
                 rdo_evening.Checked = true;
+            }
+
+            if(isfromOtherForm)
+            {
+                purchases.getPurchaseRecordDetail(purchaseId, out DateTime date, out int customerId,
+                    out string customerName, out decimal liters, out decimal rate, out string time, out int dodhiId,
+                    out string dodhiName, out decimal totalAmount);
+
+                txt_purchaseId.Text= purchaseId.ToString();
+                dtm_picker.Value= date;
+                txt_id.Text=customerId.ToString();
+                txt_customerName.Text= customerName.ToString();
+                txt_dodhiId.Text= dodhiId.ToString();
+                txt_dodhiName.Text = dodhiName;
+                txt_rate.Text= rate.ToString();
+                txt_liters.Text= liters.ToString();
+                txt_totalAmount.Text= totalAmount.ToString();
+
+                if(time=="Morning")
+                {
+                    rdo_morning.Checked = true;
+                }
+                else
+                {
+                    rdo_evening.Checked = true;
+                }
             }
         }
 
@@ -471,6 +500,84 @@ namespace WindowsFormsApp1
             txt_totalReceive.Text = grossReceive + " Ltrs";
             txt_totalPurchase.Text = totalPurchase + " Ltrs";
             txt_difference.Text=difference.ToString() + " Ltrs";
+            
+        }
+
+        private void btn_goBack_Click(object sender, EventArgs e)
+        {
+            int id=int.Parse(txt_purchaseId.Text);
+            id--;
+            if(id!=0)
+            {
+                purchases.getPurchaseRecordDetail(id, out DateTime date, out int customerId,
+                    out string customerName, out decimal liters, out decimal rate, out string time, out int dodhiId,
+                    out string dodhiName, out decimal totalAmount);
+
+                txt_purchaseId.Text = id.ToString();
+                if(date.Date>DateTime.MinValue && date.Date<DateTime.MaxValue)
+                {
+                    dtm_picker.Value = date.Date;
+                }
+               
+                txt_id.Text = customerId.ToString();
+                txt_customerName.Text = customerName.ToString();
+                txt_dodhiId.Text = dodhiId.ToString();
+                txt_dodhiName.Text = dodhiName;
+                txt_rate.Text = rate.ToString();
+                txt_liters.Text = liters.ToString();
+                txt_totalAmount.Text = totalAmount.ToString();
+
+                if (time == "Morning")
+                {
+                    //rdo_evening.Checked = false;
+                    rdo_morning.Checked = true;
+
+                }
+                else if (time == "Evening")
+                {
+                    rdo_evening.Checked = true;
+                    //rdo_morning.Checked = false;
+                }
+            }
+            
+        }
+
+        private void btn_goForward_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(txt_purchaseId.Text);
+            id++;
+
+            if(id<=purchases.getLastRecordId())
+            {
+                purchases.getPurchaseRecordDetail(id, out DateTime date, out int customerId,
+                    out string customerName, out decimal liters, out decimal rate, out string tim, out int dodhiId,
+                    out string dodhiName, out decimal totalAmount);
+
+                txt_purchaseId.Text = id.ToString();
+                if (date.Date > DateTime.MinValue && date.Date < DateTime.MaxValue)
+                {
+                    dtm_picker.Value = date.Date;
+                }
+                txt_id.Text = customerId.ToString();
+                txt_customerName.Text = customerName.ToString();
+                txt_dodhiId.Text = dodhiId.ToString();
+                txt_dodhiName.Text = dodhiName;
+                txt_rate.Text = rate.ToString();
+                txt_liters.Text = liters.ToString();
+                txt_totalAmount.Text = totalAmount.ToString();
+
+                if (tim== "Morning")
+                {
+                    // Set the Morning radio button as checked
+                    rdo_morning.Checked = true;
+                }
+                else
+                {
+                    // Set the Evening radio button as checked
+                    rdo_evening.Checked = true;
+                }
+            }
+
             
         }
     }

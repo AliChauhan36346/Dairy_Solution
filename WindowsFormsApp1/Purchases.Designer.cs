@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btn_addNew = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
@@ -44,7 +46,6 @@
             this.btn_newCustomer = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lstCustomersSuggestion = new System.Windows.Forms.ListBox();
             this.txt_dodhiId = new System.Windows.Forms.TextBox();
             this.txt_dodhiName = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -62,8 +63,11 @@
             this.txt_rate = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_purchaseId = new System.Windows.Forms.TextBox();
+            this.lstCustomersSuggestion = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_difference = new System.Windows.Forms.TextBox();
+            this.btn_goBack = new System.Windows.Forms.Button();
+            this.btn_goForward = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -219,7 +223,23 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView1.Location = new System.Drawing.Point(0, 376);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -276,7 +296,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.lstCustomersSuggestion);
             this.groupBox1.Controls.Add(this.txt_dodhiId);
             this.groupBox1.Controls.Add(this.txt_dodhiName);
             this.groupBox1.Controls.Add(this.label10);
@@ -302,18 +321,6 @@
             this.groupBox1.TabIndex = 69;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Purchase Info";
-            // 
-            // lstCustomersSuggestion
-            // 
-            this.lstCustomersSuggestion.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstCustomersSuggestion.FormattingEnabled = true;
-            this.lstCustomersSuggestion.ItemHeight = 17;
-            this.lstCustomersSuggestion.Location = new System.Drawing.Point(139, 89);
-            this.lstCustomersSuggestion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.lstCustomersSuggestion.Name = "lstCustomersSuggestion";
-            this.lstCustomersSuggestion.Size = new System.Drawing.Size(272, 191);
-            this.lstCustomersSuggestion.TabIndex = 70;
-            this.lstCustomersSuggestion.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstCustomersSuggestion_MouseDoubleClick);
             // 
             // txt_dodhiId
             // 
@@ -512,6 +519,18 @@
             this.txt_purchaseId.TabIndex = 69;
             this.txt_purchaseId.TabStop = false;
             // 
+            // lstCustomersSuggestion
+            // 
+            this.lstCustomersSuggestion.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstCustomersSuggestion.FormattingEnabled = true;
+            this.lstCustomersSuggestion.ItemHeight = 17;
+            this.lstCustomersSuggestion.Location = new System.Drawing.Point(506, 156);
+            this.lstCustomersSuggestion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lstCustomersSuggestion.Name = "lstCustomersSuggestion";
+            this.lstCustomersSuggestion.Size = new System.Drawing.Size(272, 191);
+            this.lstCustomersSuggestion.TabIndex = 70;
+            this.lstCustomersSuggestion.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstCustomersSuggestion_MouseDoubleClick);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -537,11 +556,34 @@
             this.txt_difference.Size = new System.Drawing.Size(132, 27);
             this.txt_difference.TabIndex = 70;
             // 
+            // btn_goBack
+            // 
+            this.btn_goBack.Location = new System.Drawing.Point(445, 95);
+            this.btn_goBack.Name = "btn_goBack";
+            this.btn_goBack.Size = new System.Drawing.Size(45, 37);
+            this.btn_goBack.TabIndex = 72;
+            this.btn_goBack.Text = "<<";
+            this.btn_goBack.UseVisualStyleBackColor = true;
+            this.btn_goBack.Click += new System.EventHandler(this.btn_goBack_Click);
+            // 
+            // btn_goForward
+            // 
+            this.btn_goForward.Location = new System.Drawing.Point(496, 95);
+            this.btn_goForward.Name = "btn_goForward";
+            this.btn_goForward.Size = new System.Drawing.Size(45, 37);
+            this.btn_goForward.TabIndex = 73;
+            this.btn_goForward.Text = ">>";
+            this.btn_goForward.UseVisualStyleBackColor = true;
+            this.btn_goForward.Click += new System.EventHandler(this.btn_goForward_Click);
+            // 
             // Purchases
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1014, 678);
+            this.Controls.Add(this.btn_goForward);
+            this.Controls.Add(this.btn_goBack);
+            this.Controls.Add(this.lstCustomersSuggestion);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txt_difference);
             this.Controls.Add(this.groupBox1);
@@ -609,5 +651,7 @@
         private System.Windows.Forms.TextBox txt_dodhiName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txt_difference;
+        private System.Windows.Forms.Button btn_goBack;
+        private System.Windows.Forms.Button btn_goForward;
     }
 }
