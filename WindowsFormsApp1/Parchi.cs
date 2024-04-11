@@ -254,8 +254,8 @@ namespace WindowsFormsApp1
 
             string companyName = "چوہان ڈیری فارمز"; // Your company name
 
-            DateTime startDate = dtm_start.Value;
-            DateTime endDate = dtm_end.Value;
+            DateTime startDate = dtm_start.Value.Date;
+            DateTime endDate = dtm_end.Value.Date;
 
 
             // Set font and brush for drawing
@@ -282,26 +282,30 @@ namespace WindowsFormsApp1
                 e.Graphics.DrawString("--------------------------------------------", linefont, brush, 20, 30); // Adjust the Y coordinate as needed
 
                 e.Graphics.DrawString(":اکاؤنٹ نمبر", font, brush, xAxis, 60);
-                e.Graphics.DrawString(":نام", font, brush, xAxis, 90);
+                //e.Graphics.DrawString(":نام", font, brush, xAxis, 90);
 
                 e.Graphics.DrawString("--------------------------------------------", linefont, brush, 20, 100);
 
                 e.Graphics.DrawString(":تاریخ", font, brush, 225, 125);
+                e.Graphics.DrawString(startDate.ToString("dd/MM/yyyy"), font, brush, 135, 125);
+                e.Graphics.DrawString("تا", font, brush, 115, 125);
+
+                e.Graphics.DrawString(endDate.ToString("dd/MM/yyyy"), font, brush, 20, 125);
 
                 e.Graphics.DrawString("--------------------------------------------", linefont, brush, 20, 140);
 
                 e.Graphics.DrawString(":سابقہ بیلنس", font, brush, xAxis, 170);
                 e.Graphics.DrawString(":ٹوٹل لیٹر", font, brush, xAxis, 200);
                 e.Graphics.DrawString(":دودھ رقم", font, brush, xAxis, 230);
-                e.Graphics.DrawString(":پرچی رقم", font, brush, xAxis, 260);
-                e.Graphics.DrawString(":بیلنس", font, brush, xAxis, 290);
+                e.Graphics.DrawString(":ادائیگی رقم", font, brush, xAxis, 290);
+                e.Graphics.DrawString(":بیلنس", font, brush, xAxis, 260);
 
                 //e.Graphics.DrawString(startDate.Date.ToString(), font, brush, 160, 130);
 
                 if (row.Cells["Id"].Value != null)
                     e.Graphics.DrawString(row.Cells["Id"].Value.ToString(), font, brush, 150, 60);
                 if (row.Cells["Customer Name"].Value != null)
-                    e.Graphics.DrawString(row.Cells["Customer Name"].Value.ToString(), font, brush, 70, 90);
+                    e.Graphics.DrawString(row.Cells["Customer Name"].Value.ToString(), font, brush, 20, 90);
                 if (row.Cells["Previous Balance"].Value != null)
                     e.Graphics.DrawString(row.Cells["Previous Balance"].Value.ToString(), font, brush, 70, 170);
 
@@ -326,7 +330,7 @@ namespace WindowsFormsApp1
 
                 // Calculate the position and size of the text
                 float xCoordinate = 70;
-                float yCoordinate = 260;
+                float yCoordinate = 290;
 
                 float textWidth = 0;
                 float textHeight = 0;
@@ -347,27 +351,27 @@ namespace WindowsFormsApp1
                 if (row.Cells["Parchi Amount"].Value != null)
                     e.Graphics.DrawString(row.Cells["Parchi Amount"].Value.ToString(), font, brush, xCoordinate, yCoordinate);
                 if (row.Cells["Closing Balance"].Value != null)
-                    e.Graphics.DrawString(row.Cells["Closing Balance"].Value.ToString(), font, brush, 70, 290);
+                    e.Graphics.DrawString(row.Cells["Closing Balance"].Value.ToString(), font, brush, 70, 260);
 
                 if (row.Cells["Status"].Value != null)
                 {
                     string cStatus = row.Cells["Status"].Value.ToString();
                     if (cStatus == "Credit")
                     {
-                        e.Graphics.DrawString("جمع", font, brush, 40, 290);
+                        e.Graphics.DrawString("جمع", font, brush, 40, 260);
                     }
                     else
                     {
-                        e.Graphics.DrawString("بنام", font, brush, 40, 290);
+                        e.Graphics.DrawString("بنام", font, brush, 40, 260);
                     }
                 }
 
                 e.Graphics.DrawString("--------------------------------------------", linefont, brush, 20, 310);
 
-                e.Graphics.DrawString("کسی بھی غلط حساب کی صورت میں جلد از جلد", infofont, brush, 19, 340);
-                e.Graphics.DrawString("ہم سے رابطہ کریں۔ شکریہ", infofont, brush, 130, 365);
+                e.Graphics.DrawString("کسی بھی غلط حساب کی صورت میں جلد از جلد", infofont, brush, 16, 340);
+                e.Graphics.DrawString("ہم سے رابطہ کریں۔ شکریہ", infofont, brush, 125, 365);
 
-                e.Graphics.DrawString("03346565189 :فون نمبر" + " ", infofont, brush, 128, 395);
+                e.Graphics.DrawString("03346565189 :فون نمبر" + " ", infofont, brush, 125, 395);
                 e.Graphics.DrawString("آپ کے تعاون کا شکریہ", infofont, brush, 80, 425);
 
                 currentRow++;

@@ -77,7 +77,7 @@
             // 
             this.btn_addNew.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_addNew.ForeColor = System.Drawing.Color.Black;
-            this.btn_addNew.Location = new System.Drawing.Point(734, 8);
+            this.btn_addNew.Location = new System.Drawing.Point(734, 3);
             this.btn_addNew.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btn_addNew.Name = "btn_addNew";
             this.btn_addNew.Size = new System.Drawing.Size(88, 56);
@@ -91,7 +91,7 @@
             // 
             this.btn_save.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_save.ForeColor = System.Drawing.Color.Black;
-            this.btn_save.Location = new System.Drawing.Point(647, 8);
+            this.btn_save.Location = new System.Drawing.Point(647, 3);
             this.btn_save.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(88, 56);
@@ -104,7 +104,7 @@
             // 
             this.btn_delete.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_delete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btn_delete.Location = new System.Drawing.Point(917, 8);
+            this.btn_delete.Location = new System.Drawing.Point(917, 3);
             this.btn_delete.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(88, 56);
@@ -118,7 +118,7 @@
             // 
             this.btn_update.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_update.ForeColor = System.Drawing.Color.Black;
-            this.btn_update.Location = new System.Drawing.Point(560, 8);
+            this.btn_update.Location = new System.Drawing.Point(560, 3);
             this.btn_update.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btn_update.Name = "btn_update";
             this.btn_update.Size = new System.Drawing.Size(88, 56);
@@ -132,7 +132,7 @@
             // 
             this.btn_dashboard.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_dashboard.ForeColor = System.Drawing.Color.Black;
-            this.btn_dashboard.Location = new System.Drawing.Point(830, 8);
+            this.btn_dashboard.Location = new System.Drawing.Point(830, 3);
             this.btn_dashboard.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btn_dashboard.Name = "btn_dashboard";
             this.btn_dashboard.Size = new System.Drawing.Size(88, 56);
@@ -211,7 +211,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
                 | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(2, 12);
+            this.label1.Location = new System.Drawing.Point(2, 11);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(170, 45);
@@ -220,13 +220,12 @@
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -241,8 +240,10 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridView1.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.dataGridView1.Location = new System.Drawing.Point(0, 376);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -265,14 +266,14 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2, 7, 2, 7);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1014, 73);
+            this.panel1.Size = new System.Drawing.Size(1014, 65);
             this.panel1.TabIndex = 33;
             // 
             // btn_newCustomer
             // 
             this.btn_newCustomer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_newCustomer.ForeColor = System.Drawing.Color.Black;
-            this.btn_newCustomer.Location = new System.Drawing.Point(465, 8);
+            this.btn_newCustomer.Location = new System.Drawing.Point(465, 3);
             this.btn_newCustomer.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btn_newCustomer.Name = "btn_newCustomer";
             this.btn_newCustomer.Size = new System.Drawing.Size(88, 56);
@@ -296,7 +297,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btn_goForward);
             this.groupBox1.Controls.Add(this.txt_dodhiId);
+            this.groupBox1.Controls.Add(this.btn_goBack);
             this.groupBox1.Controls.Add(this.txt_dodhiName);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.txt_id);
@@ -313,11 +316,11 @@
             this.groupBox1.Controls.Add(this.txt_rate);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txt_purchaseId);
-            this.groupBox1.Location = new System.Drawing.Point(16, 80);
+            this.groupBox1.Location = new System.Drawing.Point(14, 76);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.groupBox1.Size = new System.Drawing.Size(421, 288);
+            this.groupBox1.Size = new System.Drawing.Size(421, 282);
             this.groupBox1.TabIndex = 69;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Purchase Info";
@@ -423,7 +426,7 @@
             this.dtm_picker.Location = new System.Drawing.Point(221, 21);
             this.dtm_picker.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dtm_picker.Name = "dtm_picker";
-            this.dtm_picker.Size = new System.Drawing.Size(190, 27);
+            this.dtm_picker.Size = new System.Drawing.Size(93, 27);
             this.dtm_picker.TabIndex = 79;
             this.dtm_picker.TabStop = false;
             this.dtm_picker.Value = new System.DateTime(2024, 1, 31, 0, 0, 0, 0);
@@ -558,9 +561,9 @@
             // 
             // btn_goBack
             // 
-            this.btn_goBack.Location = new System.Drawing.Point(445, 95);
+            this.btn_goBack.Location = new System.Drawing.Point(322, 18);
             this.btn_goBack.Name = "btn_goBack";
-            this.btn_goBack.Size = new System.Drawing.Size(45, 37);
+            this.btn_goBack.Size = new System.Drawing.Size(45, 31);
             this.btn_goBack.TabIndex = 72;
             this.btn_goBack.Text = "<<";
             this.btn_goBack.UseVisualStyleBackColor = true;
@@ -568,9 +571,9 @@
             // 
             // btn_goForward
             // 
-            this.btn_goForward.Location = new System.Drawing.Point(496, 95);
+            this.btn_goForward.Location = new System.Drawing.Point(368, 18);
             this.btn_goForward.Name = "btn_goForward";
-            this.btn_goForward.Size = new System.Drawing.Size(45, 37);
+            this.btn_goForward.Size = new System.Drawing.Size(45, 31);
             this.btn_goForward.TabIndex = 73;
             this.btn_goForward.Text = ">>";
             this.btn_goForward.UseVisualStyleBackColor = true;
@@ -581,8 +584,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1014, 678);
-            this.Controls.Add(this.btn_goForward);
-            this.Controls.Add(this.btn_goBack);
             this.Controls.Add(this.lstCustomersSuggestion);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txt_difference);

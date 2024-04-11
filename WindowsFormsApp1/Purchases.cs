@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace WindowsFormsApp1
 {
@@ -312,41 +313,45 @@ namespace WindowsFormsApp1
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                int selectedIndex = dataGridView1.SelectedRows[0].Index;
 
-                DateTime.TryParse(row.Cells["Date"].Value.ToString(), out DateTime purchaseDate);
-
-
-
-                // Populate text boxes with data from the selected row
-                txt_id.Text = row.Cells["Id"].Value.ToString();
-                dtm_picker.Value = purchaseDate;
-
-                // check the radio button according to time 
-                if (row.Cells["Time"].Value.ToString().Trim() == "Morning")
+                // Check if the selected index is within the bounds of the data
+                if (selectedIndex >= 0 && selectedIndex < dataGridView1.RowCount - 1)
                 {
-                    //rdo_evening.Checked = false;
-                    rdo_morning.Checked = true;
+                    DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+                    DateTime.TryParse(row.Cells["Date"].Value.ToString(), out DateTime purchaseDate);
+
+                    // Populate text boxes with data from the selected row
+                    txt_id.Text = row.Cells["Id"].Value.ToString();
+                    dtm_picker.Value = purchaseDate;
+
+                    // check the radio button according to time 
+                    if (row.Cells["Time"].Value.ToString().Trim() == "Morning")
+                    {
+                        //rdo_evening.Checked = false;
+                        rdo_morning.Checked = true;
 
 
+                    }
+                    else
+                    {
+                        //rdo_morning.Checked= false;
+                        rdo_evening.Checked = true;
+                    }
+
+                    // populating text box 
+                    txt_purchaseId.Text = row.Cells["Id"].Value.ToString();
+                    txt_customerName.Text = row.Cells["Customer Name"].Value.ToString();
+                    txt_id.Text = row.Cells["Customer Id"].Value.ToString();
+                    txt_liters.Text = row.Cells["Gross Liters"].Value.ToString();
+                    txt_rate.Text = row.Cells["Rate"].Value.ToString();
+                    txt_totalAmount.Text = row.Cells["Amount"].Value.ToString();
+                    txt_dodhiId.Text = row.Cells["Dodhi Id"].Value.ToString();
+                    txt_dodhiName.Text = row.Cells["Dodhi Name"].Value.ToString();
+                    dtm_picker.Value = DateTime.Parse(row.Cells["Date"].Value.ToString());
                 }
-                else
-                {
-                    //rdo_morning.Checked= false;
-                    rdo_evening.Checked = true;
-                }
-                
-                // populating text box 
-                txt_purchaseId.Text = row.Cells["Id"].Value.ToString();
-                txt_customerName.Text = row.Cells["Customer Name"].Value.ToString();
-                txt_id.Text = row.Cells["Customer Id"].Value.ToString();
-                txt_liters.Text = row.Cells["Gross Liters"].Value.ToString();
-                txt_rate.Text = row.Cells["Rate"].Value.ToString();
-                txt_totalAmount.Text = row.Cells["Amount"].Value.ToString();
-                txt_dodhiId.Text = row.Cells["Dodhi Id"].Value.ToString();
-                txt_dodhiName.Text = row.Cells["Dodhi Name"].Value.ToString();
 
-                dtm_picker.Value = DateTime.Today;
             }
         }
 
@@ -451,8 +456,21 @@ namespace WindowsFormsApp1
 
         private void txt_liters_Leave(object sender, EventArgs e)
         {
-            
-            
+            decimal rate = 0;
+            decimal liters = 0;
+
+            if (!decimal.TryParse(txt_liters.Text, out liters))
+            {
+
+            }
+            if (!decimal.TryParse(txt_rate.Text, out rate))
+            {
+
+            }
+
+            decimal totalAmount = rate * liters;
+            txt_totalAmount.Text = totalAmount.ToString();
+
         }
 
         private void txt_rate_Leave(object sender, EventArgs e)
@@ -527,16 +545,17 @@ namespace WindowsFormsApp1
                 txt_liters.Text = liters.ToString();
                 txt_totalAmount.Text = totalAmount.ToString();
 
-                if (time == "Morning")
+                if (time.Equals("Morning", StringComparison.OrdinalIgnoreCase))
                 {
-                    //rdo_evening.Checked = false;
+                    // Set the Morning radio button as checked
                     rdo_morning.Checked = true;
-
+                    rdo_evening.Checked = false;
                 }
-                else if (time == "Evening")
+                else if (time.Equals("Evening", StringComparison.OrdinalIgnoreCase))
                 {
+                    // Set the Evening radio button as checked
                     rdo_evening.Checked = true;
-                    //rdo_morning.Checked = false;
+                    rdo_morning.Checked = false;
                 }
             }
             
@@ -550,7 +569,7 @@ namespace WindowsFormsApp1
             if(id<=purchases.getLastRecordId())
             {
                 purchases.getPurchaseRecordDetail(id, out DateTime date, out int customerId,
-                    out string customerName, out decimal liters, out decimal rate, out string tim, out int dodhiId,
+                    out string customerName, out decimal liters, out decimal rate, out string time, out int dodhiId,
                     out string dodhiName, out decimal totalAmount);
 
                 txt_purchaseId.Text = id.ToString();
@@ -566,15 +585,17 @@ namespace WindowsFormsApp1
                 txt_liters.Text = liters.ToString();
                 txt_totalAmount.Text = totalAmount.ToString();
 
-                if (tim== "Morning")
+                if (time.Equals("Morning", StringComparison.OrdinalIgnoreCase))
                 {
                     // Set the Morning radio button as checked
                     rdo_morning.Checked = true;
+                    rdo_evening.Checked = false;
                 }
-                else
+                else if (time.Equals("Evening", StringComparison.OrdinalIgnoreCase))
                 {
                     // Set the Evening radio button as checked
                     rdo_evening.Checked = true;
+                    rdo_morning.Checked = false;
                 }
             }
 

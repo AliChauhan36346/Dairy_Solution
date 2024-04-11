@@ -780,6 +780,75 @@ namespace WindowsFormsApp1
             txt_id.Focus();
             getStats();
         }
+
+        private void btn_goBack_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(txt_salesId.Text);
+            id--;
+            if (id != 0)
+            {
+                sales.getPurchaseRecordDetail(id, out DateTime date, out int companyId, out string companyName,
+                    out decimal liters, out decimal rate, out decimal lr, out decimal fat, out decimal tsStandard,
+                    out decimal tsLiters, out decimal amount, out decimal amountReceive, out int accId,
+                    out string accName, out decimal balance);
+
+                txt_salesId.Text = id.ToString();
+
+                if (date.Date > DateTime.MinValue && date.Date < DateTime.MaxValue)
+                {
+                    dtm_picker.Value = date.Date;
+                }
+                
+                txt_id.Text = companyId.ToString();
+                txt_companyName.Text = companyName.ToString();
+                txt_rate.Text = rate.ToString();
+                txt_liters.Text = liters.ToString();
+                txt_lr.Text = lr.ToString();
+                txt_fat.Text = fat.ToString();
+                txt_tsStandard.Text = tsStandard.ToString();
+                txt_tsLiters.Text = tsLiters.ToString();
+                txt_totalAmount.Text = amount.ToString();
+                txt_amountReceived.Text = amountReceive.ToString();
+                txt_cashAccountId.Text = accId.ToString();
+                txt_cashAccountName.Text = accName.ToString();
+                txt_balance.Text = balance.ToString();
+            }
+        }
+
+        private void btn_goForward_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(txt_salesId.Text);
+            id++;
+            if (id <= sales.getLastRecordId())
+            {
+                sales.getPurchaseRecordDetail(id, out DateTime date, out int companyId, out string companyName,
+                    out decimal liters, out decimal rate, out decimal lr, out decimal fat, out decimal tsStandard,
+                    out decimal tsLiters, out decimal amount, out decimal amountReceive, out int accId,
+                    out string accName, out decimal balance);
+
+                txt_salesId.Text = id.ToString();
+
+                if (date.Date > DateTime.MinValue && date.Date < DateTime.MaxValue)
+                {
+                    dtm_picker.Value = date.Date;
+                }
+
+                txt_id.Text = companyId.ToString();
+                txt_companyName.Text = companyName.ToString();
+                txt_rate.Text = rate.ToString();
+                txt_liters.Text = liters.ToString();
+                txt_lr.Text = lr.ToString();
+                txt_fat.Text = fat.ToString();
+                txt_tsStandard.Text = tsStandard.ToString();
+                txt_tsLiters.Text = tsLiters.ToString();
+                txt_totalAmount.Text = amount.ToString();
+                txt_amountReceived.Text = amountReceive.ToString();
+                txt_cashAccountId.Text = accId.ToString();
+                txt_cashAccountName.Text = accName.ToString();
+                txt_balance.Text = balance.ToString();
+            }
+            
+        }
     }
 
 

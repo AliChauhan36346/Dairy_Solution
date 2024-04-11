@@ -116,6 +116,17 @@ namespace DairyAccounting
 
                         // Bind the DataTable to the DataGridView
                         dataGridView.DataSource = dataTable;
+
+                        dataGridView.Columns["Id"].Width = 60;
+                        dataGridView.Columns["Date"].Width = 80;
+                        dataGridView.Columns["Time"].Width = 85;
+                        dataGridView.Columns["Customer Id"].Width = 80;
+                        dataGridView.Columns["Customer Name"].Width = 170;
+                        dataGridView.Columns["Dodhi Id"].Width = 75;
+                        dataGridView.Columns["Dodhi Name"].Width = 140;
+                        dataGridView.Columns["Gross Liters"].Width = 100;
+                        dataGridView.Columns["Rate"].Width = 75;
+                        dataGridView.Columns["Amount"].Width = 100;
                     }
                 }
             }
@@ -193,7 +204,7 @@ namespace DairyAccounting
                             customerName = reader["customerName"].ToString();
                             liters = decimal.Parse(reader["liters"].ToString());
                             rate = decimal.Parse(reader["rate"].ToString());
-                            time = reader["time"].ToString();
+                            time = reader["time"].ToString().Trim();
                             dodhiId = int.Parse(reader["dodhiId"].ToString());
                             dodhiName = reader["dodhi"].ToString();
                             totalAmount = decimal.Parse(reader["amount"].ToString());
