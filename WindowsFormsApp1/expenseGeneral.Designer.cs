@@ -285,7 +285,7 @@
             this.dtTm_date.Size = new System.Drawing.Size(175, 25);
             this.dtTm_date.TabIndex = 1;
             this.dtTm_date.TabStop = false;
-            this.dtTm_date.Value = new System.DateTime(2024, 2, 15, 0, 0, 0, 0);
+            this.dtTm_date.Value = new System.DateTime(2024, 4, 12, 0, 0, 0, 0);
             this.dtTm_date.ValueChanged += new System.EventHandler(this.dtTm_date_ValueChanged);
             // 
             // label7

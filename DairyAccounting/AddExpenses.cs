@@ -121,13 +121,13 @@ namespace DairyAccounting
                 dbConnection.openConnection();
 
                 // Initialize query to select all records 
-                string query = $"SELECT Expenseid, date, cashAccountId, cashAccountName, type, amount, discription, employeeId, employeeName FROM Expense WHERE date = @Today";
+                string query = $"SELECT Expenseid, date, cashAccountId, cashAccountName, type, amount, discription, employeeId, employeeName FROM Expense WHERE date=@date";
 
                 // Create a SqlCommand object
                 using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
                 {
                     // Add a parameter for the date
-                    command.Parameters.AddWithValue("@Today", today);
+                    command.Parameters.AddWithValue("@date", today);
 
                     using (SqlDataAdapter dataAdapter = new SqlDataAdapter(command))
                     {
@@ -137,7 +137,7 @@ namespace DairyAccounting
                         // Specify the desired column names
                         dataTable.Columns["Expenseid"].ColumnName = "Id";
                         dataTable.Columns["date"].ColumnName = "Date";
-                        dataTable.Columns["cashAccountId"].ColumnName = "Cash Id";
+                        dataTable.Columns["cashAccountId"].ColumnName = "CashId";
                         dataTable.Columns["cashAccountName"].ColumnName = "Cash Account Name";
                         dataTable.Columns["type"].ColumnName = "Expense Type";
                         dataTable.Columns["amount"].ColumnName = "Amount";
@@ -154,7 +154,7 @@ namespace DairyAccounting
                         // Set column widths
                         dataGridView.Columns["Id"].Width = 60;
                         dataGridView.Columns["Date"].Width = 90;
-                        dataGridView.Columns["Cash Id"].Width = 90;
+                        dataGridView.Columns["CashId"].Width = 90;
                         dataGridView.Columns["Cash Account Name"].Width = 150;
                         dataGridView.Columns["Expense Type"].Width = 100;
                         dataGridView.Columns["Amount"].Width = 90;
@@ -223,7 +223,7 @@ namespace DairyAccounting
                     int count = (int)checkCommand.ExecuteScalar();
                     if (count == 0)
                     {
-                        MessageBox.Show("Purchase record with the expense Id does not exist!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Expense record with the expense Id does not exist!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                 }
@@ -231,7 +231,7 @@ namespace DairyAccounting
 
                 // Update SQL statement
                 string updateQuery = "UPDATE Expense " +
-                    "SET date=@date, expenseId=@expenseId, cashAccountId=@cashAccountId, cashAccountName=@cashAccountName," +
+                    "SET date=@date, cashAccountId=@cashAccountId, cashAccountName=@cashAccountName," +
                     " type=@type, amount=@amount, discription=@discription, employeeId=@employeeId, employeeName=@employeeName WHERE ExpenseId = @expenseId";
 
 
@@ -246,8 +246,7 @@ namespace DairyAccounting
                     updateCommand.Parameters.AddWithValue("@amount", expense.amount);
                     updateCommand.Parameters.AddWithValue("@discription", expense.discription);
                     updateCommand.Parameters.AddWithValue("@employeeId", expense.employeeId);
-                    updateCommand.Parameters.AddWithValue("@amount", expense.amount);
-                    updateCommand.Parameters.AddWithValue("@purchaseId", expense.expenseId);
+                    updateCommand.Parameters.AddWithValue("@employeeName", expense.expenseId);
 
 
 

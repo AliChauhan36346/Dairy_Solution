@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -261,8 +262,8 @@ namespace WindowsFormsApp1
 
                     // Populate text boxes with data from the selected row
                     txt_expenseId.Text = selectedRow.Cells["Id"].Value.ToString();
-                    dtTm_date.Value = DateTime.Parse(selectedRow.Cells["Date"].Value.ToString());
-                    txt_cashAccountId.Text = selectedRow.Cells["Cash Id"].Value.ToString();
+                    DateTime date = DateTime.Parse(selectedRow.Cells["Date"].Value.ToString());
+                    txt_cashAccountId.Text = selectedRow.Cells["CashId"].Value.ToString();
                     txt_cashAccountName.Text = selectedRow.Cells["Cash Account Name"].Value.ToString();
                     txt_amount.Text = selectedRow.Cells["Amount"].Value.ToString();
                     txt_discription.Text = selectedRow.Cells["Description"].Value.ToString();
@@ -281,7 +282,9 @@ namespace WindowsFormsApp1
                         index++; // Increment index after each iteration
                     }
 
+                    dtTm_date.Value = date;
                 }
+
             }
         }
 
