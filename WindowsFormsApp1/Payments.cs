@@ -100,7 +100,7 @@ namespace WindowsFormsApp1
         private void Payments_Load(object sender, EventArgs e)
         {
             txt_paymentId.Text = payments.GetNextAvailableId().ToString();
-            payments.showDataInGridView(dataGridView1);
+            payments.showDataInGridView(dataGridView1,dtm_picker.Value.Date);
             dtm_picker.Value = DateTime.Today;
 
             lstAccountsSuggestion.Visible = false;
@@ -211,7 +211,7 @@ namespace WindowsFormsApp1
 
                 // Show updated data in grid view
                 txt_paymentId.Text = payments.GetNextAvailableId().ToString();
-                payments.showDataInGridView(dataGridView1);
+                payments.showDataInGridView(dataGridView1,dtm_picker.Value.Date);
 
                 txt_accountId.Focus();
 
@@ -280,7 +280,7 @@ namespace WindowsFormsApp1
 
                 // Show updated data in grid view
                 txt_paymentId.Text = payments.GetNextAvailableId().ToString();
-                payments.showDataInGridView(dataGridView1);
+                payments.showDataInGridView(dataGridView1,dtm_picker.Value.Date);
 
                 txt_accountId.Focus();
 
@@ -352,7 +352,7 @@ namespace WindowsFormsApp1
 
 
                         // for refreshing data in gridview after deletion
-                        payments.showDataInGridView(dataGridView1);
+                        payments.showDataInGridView(dataGridView1,dtm_picker.Value.Date);
                         txt_paymentId.Text = payments.GetNextAvailableId().ToString();
                     }
 
@@ -433,6 +433,11 @@ namespace WindowsFormsApp1
                 txt_cashAccountName.Text = cashAccName.ToString();
                 txt_discription.Text = discription.ToString();
             }
+        }
+
+        private void dtm_picker_ValueChanged(object sender, EventArgs e)
+        {
+            payments.showDataInGridView(dataGridView1, dtm_picker.Value.Date);
         }
     }
 

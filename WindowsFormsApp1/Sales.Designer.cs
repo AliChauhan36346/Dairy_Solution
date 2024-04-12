@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_newAccount = new System.Windows.Forms.Button();
             this.btn_newCompany = new System.Windows.Forms.Button();
@@ -43,7 +43,9 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_goForward = new System.Windows.Forms.Button();
             this.lstCompanySuggestions = new System.Windows.Forms.ListBox();
+            this.btn_goBack = new System.Windows.Forms.Button();
             this.lstAccountSuggestions = new System.Windows.Forms.ListBox();
             this.txt_cashAccountId = new System.Windows.Forms.TextBox();
             this.txt_cashAccountName = new System.Windows.Forms.TextBox();
@@ -78,8 +80,6 @@
             this.txt_grossSales = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txt_stockVolume = new System.Windows.Forms.TextBox();
-            this.btn_goForward = new System.Windows.Forms.Button();
-            this.btn_goBack = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -227,14 +227,14 @@
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1267, 279);
             this.dataGridView1.TabIndex = 3;
@@ -320,6 +320,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sales Detail";
             // 
+            // btn_goForward
+            // 
+            this.btn_goForward.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_goForward.Location = new System.Drawing.Point(372, 19);
+            this.btn_goForward.Name = "btn_goForward";
+            this.btn_goForward.Size = new System.Drawing.Size(45, 33);
+            this.btn_goForward.TabIndex = 75;
+            this.btn_goForward.Text = ">>";
+            this.btn_goForward.UseVisualStyleBackColor = true;
+            this.btn_goForward.Click += new System.EventHandler(this.btn_goForward_Click);
+            // 
             // lstCompanySuggestions
             // 
             this.lstCompanySuggestions.FormattingEnabled = true;
@@ -329,6 +340,17 @@
             this.lstCompanySuggestions.Size = new System.Drawing.Size(274, 224);
             this.lstCompanySuggestions.TabIndex = 36;
             this.lstCompanySuggestions.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstCompanySuggestions_MouseDoubleClick);
+            // 
+            // btn_goBack
+            // 
+            this.btn_goBack.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_goBack.Location = new System.Drawing.Point(326, 19);
+            this.btn_goBack.Name = "btn_goBack";
+            this.btn_goBack.Size = new System.Drawing.Size(45, 33);
+            this.btn_goBack.TabIndex = 74;
+            this.btn_goBack.Text = "<<";
+            this.btn_goBack.UseVisualStyleBackColor = true;
+            this.btn_goBack.Click += new System.EventHandler(this.btn_goBack_Click);
             // 
             // lstAccountSuggestions
             // 
@@ -581,6 +603,7 @@
             this.dtm_picker.Size = new System.Drawing.Size(102, 27);
             this.dtm_picker.TabIndex = 45;
             this.dtm_picker.TabStop = false;
+            this.dtm_picker.ValueChanged += new System.EventHandler(this.dtm_picker_ValueChanged);
             // 
             // label6
             // 
@@ -743,28 +766,6 @@
             this.txt_stockVolume.Size = new System.Drawing.Size(137, 29);
             this.txt_stockVolume.TabIndex = 36;
             this.txt_stockVolume.TabStop = false;
-            // 
-            // btn_goForward
-            // 
-            this.btn_goForward.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_goForward.Location = new System.Drawing.Point(372, 19);
-            this.btn_goForward.Name = "btn_goForward";
-            this.btn_goForward.Size = new System.Drawing.Size(45, 33);
-            this.btn_goForward.TabIndex = 75;
-            this.btn_goForward.Text = ">>";
-            this.btn_goForward.UseVisualStyleBackColor = true;
-            this.btn_goForward.Click += new System.EventHandler(this.btn_goForward_Click);
-            // 
-            // btn_goBack
-            // 
-            this.btn_goBack.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_goBack.Location = new System.Drawing.Point(326, 19);
-            this.btn_goBack.Name = "btn_goBack";
-            this.btn_goBack.Size = new System.Drawing.Size(45, 33);
-            this.btn_goBack.TabIndex = 74;
-            this.btn_goBack.Text = "<<";
-            this.btn_goBack.UseVisualStyleBackColor = true;
-            this.btn_goBack.Click += new System.EventHandler(this.btn_goBack_Click);
             // 
             // Sales
             // 

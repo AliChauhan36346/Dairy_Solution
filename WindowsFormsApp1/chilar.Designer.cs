@@ -36,6 +36,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.chlrBtn_deleteEntry = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_goForward = new System.Windows.Forms.Button();
+            this.btn_goBack = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.lstDodhiSuggestions = new System.Windows.Forms.ListBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -65,8 +67,6 @@
             this.txt_averagefat = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txt_grossReceive = new System.Windows.Forms.TextBox();
-            this.btn_goForward = new System.Windows.Forms.Button();
-            this.btn_goBack = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -203,6 +203,28 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Company Info";
             // 
+            // btn_goForward
+            // 
+            this.btn_goForward.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_goForward.Location = new System.Drawing.Point(238, 26);
+            this.btn_goForward.Name = "btn_goForward";
+            this.btn_goForward.Size = new System.Drawing.Size(45, 33);
+            this.btn_goForward.TabIndex = 90;
+            this.btn_goForward.Text = ">>";
+            this.btn_goForward.UseVisualStyleBackColor = true;
+            this.btn_goForward.Click += new System.EventHandler(this.btn_goForward_Click);
+            // 
+            // btn_goBack
+            // 
+            this.btn_goBack.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_goBack.Location = new System.Drawing.Point(192, 26);
+            this.btn_goBack.Name = "btn_goBack";
+            this.btn_goBack.Size = new System.Drawing.Size(45, 33);
+            this.btn_goBack.TabIndex = 89;
+            this.btn_goBack.Text = "<<";
+            this.btn_goBack.UseVisualStyleBackColor = true;
+            this.btn_goBack.Click += new System.EventHandler(this.btn_goBack_Click);
+            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -290,6 +312,7 @@
             this.dtm_picker.Size = new System.Drawing.Size(182, 27);
             this.dtm_picker.TabIndex = 46;
             this.dtm_picker.TabStop = false;
+            this.dtm_picker.ValueChanged += new System.EventHandler(this.dtm_picker_ValueChanged);
             // 
             // label9
             // 
@@ -569,28 +592,6 @@
             this.txt_grossReceive.Size = new System.Drawing.Size(132, 27);
             this.txt_grossReceive.TabIndex = 40;
             this.txt_grossReceive.TabStop = false;
-            // 
-            // btn_goForward
-            // 
-            this.btn_goForward.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_goForward.Location = new System.Drawing.Point(238, 26);
-            this.btn_goForward.Name = "btn_goForward";
-            this.btn_goForward.Size = new System.Drawing.Size(45, 33);
-            this.btn_goForward.TabIndex = 90;
-            this.btn_goForward.Text = ">>";
-            this.btn_goForward.UseVisualStyleBackColor = true;
-            this.btn_goForward.Click += new System.EventHandler(this.btn_goForward_Click);
-            // 
-            // btn_goBack
-            // 
-            this.btn_goBack.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_goBack.Location = new System.Drawing.Point(192, 26);
-            this.btn_goBack.Name = "btn_goBack";
-            this.btn_goBack.Size = new System.Drawing.Size(45, 33);
-            this.btn_goBack.TabIndex = 89;
-            this.btn_goBack.Text = "<<";
-            this.btn_goBack.UseVisualStyleBackColor = true;
-            this.btn_goBack.Click += new System.EventHandler(this.btn_goBack_Click);
             // 
             // chilar
             // 

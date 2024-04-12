@@ -286,7 +286,7 @@ namespace DairyAccounting
 
                 foreach (string table in transactionTables)
                 {
-                    string deleteQuery = $"DELETE FROM {table}";
+                    string deleteQuery = $"TRUNCATE TABLE {table}";
                     using (SqlCommand command = new SqlCommand(deleteQuery, dbConnection.connection, transaction))
                     {
                         command.ExecuteNonQuery();

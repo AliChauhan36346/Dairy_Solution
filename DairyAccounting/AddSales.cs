@@ -224,18 +224,18 @@ namespace DairyAccounting
 
         }
 
-        public void showDataInGridView(DataGridView dataGridView)
+        public void showDataInGridView(DataGridView dataGridView, DateTime date)
         {
-            DateTime today = DateTime.Today;
             try
             {
                 dbConnection.openConnection();
 
                 // Initialize query to select all records 
-                string query = $"SELECT salesId, date, companyId, company, liters, rate, lr, fat, tsStandard, tsLiters, amount, amountReceived, accountId, accountName, balance FROM sales";
+                string query = $"SELECT salesId, date, companyId, company, liters, rate, lr, fat, tsStandard, tsLiters, amount, amountReceived, accountId, accountName, balance FROM sales WHERE date=@date";
 
                 using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
                 {
+                    command.Parameters.AddWithValue("@date", date.Date);
                     using (SqlDataAdapter dataAdapter = new SqlDataAdapter(command))
                     {
                         DataTable dataTable = new DataTable();

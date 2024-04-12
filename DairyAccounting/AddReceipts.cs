@@ -77,17 +77,19 @@ namespace DairyAccounting
             }
         }
 
-        public void showDataInGridView(DataGridView dataGridView)
+        public void showDataInGridView(DataGridView dataGridView, DateTime date)
         {
             try
             {
                 dbConnection.openConnection();
 
                 // Initialize query to select all records 
-                string query = "SELECT receiptId, date, accountId, accountName, amount, cashAccountId, cashAccountName, discription FROM Receipts";
+                string query = "SELECT receiptId, date, accountId, accountName, amount, cashAccountId, cashAccountName, discription FROM Receipts WHERE date=@date";
 
                 using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
                 {
+                    command.Parameters.AddWithValue("@date", date.Date);
+
                     using (SqlDataAdapter dataAdapter = new SqlDataAdapter(command))
                     {
                         DataTable dataTable = new DataTable();

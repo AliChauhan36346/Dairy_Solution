@@ -80,7 +80,7 @@ namespace WindowsFormsApp1
         private void Purchases_Load(object sender, EventArgs e)
         {
             txt_purchaseId.Text = purchases.GetNextAvailableId().ToString();
-            purchases.showDataInGridView(dataGridView1);
+            purchases.showDataInGridView(dataGridView1, dtm_picker.Value.Date);
             lstCustomersSuggestion.Visible = false;
             dtm_picker.Value = DateTime.Today;
 
@@ -264,7 +264,7 @@ namespace WindowsFormsApp1
 
                 // Show updated data in grid view
                 txt_purchaseId.Text = purchases.GetNextAvailableId().ToString();
-                purchases.showDataInGridView(dataGridView1);
+                purchases.showDataInGridView(dataGridView1, dtm_picker.Value.Date);
                 getStats();
                 txt_id.Focus();
 
@@ -304,7 +304,7 @@ namespace WindowsFormsApp1
                 getStats();
 
                 // for refreshing data in gridview after deletion
-                purchases.showDataInGridView(dataGridView1);
+                purchases.showDataInGridView(dataGridView1,dtm_picker.Value.Date);
                 txt_purchaseId.Text = purchases.GetNextAvailableId().ToString();
             }
         }
@@ -441,7 +441,7 @@ namespace WindowsFormsApp1
 
                 // Show updated data in grid view
                 txt_purchaseId.Text = purchases.GetNextAvailableId().ToString();
-                purchases.showDataInGridView(dataGridView1);
+                purchases.showDataInGridView(dataGridView1,dtm_picker.Value.Date);
 
                 dtm_picker.Value = DateTime.Today;
                 getStats();
@@ -600,6 +600,11 @@ namespace WindowsFormsApp1
             }
 
             
+        }
+
+        private void dtm_picker_ValueChanged(object sender, EventArgs e)
+        {
+            purchases.showDataInGridView(dataGridView1, dtm_picker.Value.Date);
         }
     }
 }

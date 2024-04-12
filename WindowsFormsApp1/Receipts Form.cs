@@ -109,7 +109,7 @@ namespace WindowsFormsApp1
         private void Receipts_Form_Load(object sender, EventArgs e)
         {
             txt_receiptId.Text = receipts.GetNextAvailableId().ToString();
-            receipts.showDataInGridView(dataGridView1);
+            receipts.showDataInGridView(dataGridView1,dtm_picker.Value.Date);
             dtm_picker.Value = DateTime.Today;
 
             lstAccountsSuggestion.Visible = false;
@@ -221,7 +221,7 @@ namespace WindowsFormsApp1
 
                 // Show updated data in grid view
                 txt_receiptId.Text = receipts.GetNextAvailableId().ToString();
-                receipts.showDataInGridView(dataGridView1);
+                receipts.showDataInGridView(dataGridView1,dtm_picker.Value.Date);
 
                 txt_accountId.Focus();
             }
@@ -284,7 +284,7 @@ namespace WindowsFormsApp1
 
 
                 // for refreshing data in gridview after deletion
-                receipts.showDataInGridView(dataGridView1);
+                receipts.showDataInGridView(dataGridView1,dtm_picker.Value.Date);
                 txt_receiptId.Text = receipts.GetNextAvailableId().ToString();
             }
         }
@@ -361,7 +361,7 @@ namespace WindowsFormsApp1
 
                 // Show updated data in grid view
                 txt_receiptId.Text = receipts.GetNextAvailableId().ToString();
-                receipts.showDataInGridView(dataGridView1);
+                receipts.showDataInGridView(dataGridView1,dtm_picker.Value.Date);
 
                 txt_accountId.Focus();
 
@@ -417,6 +417,11 @@ namespace WindowsFormsApp1
                 txt_cashAccountName.Text = cashAccName.ToString();
                 txt_discription.Text = discription.ToString();
             }
+        }
+
+        private void dtm_picker_ValueChanged(object sender, EventArgs e)
+        {
+            receipts.showDataInGridView(dataGridView1, dtm_picker.Value.Date);
         }
     }
 }

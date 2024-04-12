@@ -46,7 +46,7 @@ namespace WindowsFormsApp1
         private void Sales_Load(object sender, EventArgs e)
         {
             txt_salesId.Text = sales.GetNextAvailableID().ToString();
-            sales.showDataInGridView(dataGridView1);
+            sales.showDataInGridView(dataGridView1,dtm_picker.Value.Date);
             lstCompanySuggestions.Visible = false;
             lstAccountSuggestions.Visible = false;
             dtm_picker.Value = DateTime.Today;
@@ -417,7 +417,7 @@ namespace WindowsFormsApp1
                 // Show updated data in grid view
                 txt_salesId.Text = sales.GetNextAvailableID().ToString();
                 txt_tsStandard.Text = "13";
-                sales.showDataInGridView(dataGridView1);
+                sales.showDataInGridView(dataGridView1, dtm_picker.Value.Date);
                 txt_id.Focus();
                 getStats();
             }
@@ -452,7 +452,7 @@ namespace WindowsFormsApp1
 
 
                 // for refreshing data in gridview after deletion
-                sales.showDataInGridView(dataGridView1);
+                sales.showDataInGridView(dataGridView1, dtm_picker.Value.Date);
                 txt_salesId.Text = sales.GetNextAvailableID().ToString();
                 getStats();
             }
@@ -737,7 +737,7 @@ namespace WindowsFormsApp1
 
                 // Show updated data in grid view
                 txt_salesId.Text = sales.GetNextAvailableID().ToString();
-                sales.showDataInGridView(dataGridView1);
+                sales.showDataInGridView(dataGridView1,dtm_picker.Value.Date);
                 getStats();
                 txt_id.Focus();
             }
@@ -776,7 +776,7 @@ namespace WindowsFormsApp1
             // Show updated data in grid view
             txt_salesId.Text = sales.GetNextAvailableID().ToString();
             txt_tsStandard.Text = "13";
-            sales.showDataInGridView(dataGridView1);
+            sales.showDataInGridView(dataGridView1,dtm_picker.Value.Date);
             txt_id.Focus();
             getStats();
         }
@@ -848,6 +848,11 @@ namespace WindowsFormsApp1
                 txt_balance.Text = balance.ToString();
             }
             
+        }
+
+        private void dtm_picker_ValueChanged(object sender, EventArgs e)
+        {
+            sales.showDataInGridView(dataGridView1, dtm_picker.Value.Date);
         }
     }
 

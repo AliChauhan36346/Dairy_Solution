@@ -43,6 +43,8 @@
             this.label13 = new System.Windows.Forms.Label();
             this.txt_cashAccountBalance = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_goForward = new System.Windows.Forms.Button();
+            this.btn_goBack = new System.Windows.Forms.Button();
             this.lstAccountsSuggestion = new System.Windows.Forms.ListBox();
             this.txt_cashAccountId = new System.Windows.Forms.TextBox();
             this.lstAccountSuggestion = new System.Windows.Forms.ListBox();
@@ -59,8 +61,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txt_paymentId = new System.Windows.Forms.TextBox();
             this.txt_cashAccountName = new System.Windows.Forms.TextBox();
-            this.btn_goForward = new System.Windows.Forms.Button();
-            this.btn_goBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -291,6 +291,28 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Payment Detail";
             // 
+            // btn_goForward
+            // 
+            this.btn_goForward.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_goForward.Location = new System.Drawing.Point(257, 19);
+            this.btn_goForward.Name = "btn_goForward";
+            this.btn_goForward.Size = new System.Drawing.Size(45, 33);
+            this.btn_goForward.TabIndex = 125;
+            this.btn_goForward.Text = ">>";
+            this.btn_goForward.UseVisualStyleBackColor = true;
+            this.btn_goForward.Click += new System.EventHandler(this.btn_goForward_Click);
+            // 
+            // btn_goBack
+            // 
+            this.btn_goBack.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_goBack.Location = new System.Drawing.Point(211, 19);
+            this.btn_goBack.Name = "btn_goBack";
+            this.btn_goBack.Size = new System.Drawing.Size(45, 33);
+            this.btn_goBack.TabIndex = 124;
+            this.btn_goBack.Text = "<<";
+            this.btn_goBack.UseVisualStyleBackColor = true;
+            this.btn_goBack.Click += new System.EventHandler(this.btn_goBack_Click);
+            // 
             // lstAccountsSuggestion
             // 
             this.lstAccountsSuggestion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -414,6 +436,7 @@
             this.dtm_picker.TabIndex = 1;
             this.dtm_picker.TabStop = false;
             this.dtm_picker.Value = new System.DateTime(2024, 1, 29, 0, 0, 0, 0);
+            this.dtm_picker.ValueChanged += new System.EventHandler(this.dtm_picker_ValueChanged);
             // 
             // label6
             // 
@@ -473,28 +496,6 @@
             this.txt_cashAccountName.Size = new System.Drawing.Size(199, 27);
             this.txt_cashAccountName.TabIndex = 123;
             this.txt_cashAccountName.TabStop = false;
-            // 
-            // btn_goForward
-            // 
-            this.btn_goForward.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_goForward.Location = new System.Drawing.Point(257, 19);
-            this.btn_goForward.Name = "btn_goForward";
-            this.btn_goForward.Size = new System.Drawing.Size(45, 33);
-            this.btn_goForward.TabIndex = 125;
-            this.btn_goForward.Text = ">>";
-            this.btn_goForward.UseVisualStyleBackColor = true;
-            this.btn_goForward.Click += new System.EventHandler(this.btn_goForward_Click);
-            // 
-            // btn_goBack
-            // 
-            this.btn_goBack.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_goBack.Location = new System.Drawing.Point(211, 19);
-            this.btn_goBack.Name = "btn_goBack";
-            this.btn_goBack.Size = new System.Drawing.Size(45, 33);
-            this.btn_goBack.TabIndex = 124;
-            this.btn_goBack.Text = "<<";
-            this.btn_goBack.UseVisualStyleBackColor = true;
-            this.btn_goBack.Click += new System.EventHandler(this.btn_goBack_Click);
             // 
             // Payments
             // 

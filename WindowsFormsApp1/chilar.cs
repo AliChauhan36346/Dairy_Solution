@@ -36,7 +36,7 @@ namespace WindowsFormsApp1
         {
             txt_tsStandard.Text = "13";
             txt_id.Text = chilarReceive.GetNextAvailableID().ToString();
-            chilarReceive.showDataInGridView(dataGridView2);
+            chilarReceive.showDataInGridView(dataGridView2,dtm_picker.Value.Date);
             lstDodhiSuggestions.Visible = false;
             dtm_picker.Value = DateTime.Today;
             getStats();
@@ -169,7 +169,7 @@ namespace WindowsFormsApp1
                 // Show updated data in grid view
                 getStats();
                 txt_id.Text = chilarReceive.GetNextAvailableID().ToString();
-                chilarReceive.showDataInGridView(dataGridView2);
+                chilarReceive.showDataInGridView(dataGridView2,dtm_picker.Value.Date);
                 txt_tsStandard.Text = "13";
 
                 txt_dodhiId.Focus();
@@ -413,7 +413,7 @@ namespace WindowsFormsApp1
 
                         // Refresh data in gridview after deletion
                         getStats();
-                        chilarReceive.showDataInGridView(dataGridView2);
+                        chilarReceive.showDataInGridView(dataGridView2,dtm_picker.Value.Date);
                         txt_id.Text = chilarReceive.GetNextAvailableID().ToString();
                         txt_tsStandard.Text = "13";
                         txt_dodhiId.Focus();
@@ -533,7 +533,7 @@ namespace WindowsFormsApp1
 
                 // Show updated data in grid view
                 txt_id.Text = chilarReceive.GetNextAvailableID().ToString();
-                chilarReceive.showDataInGridView(dataGridView2);
+                chilarReceive.showDataInGridView(dataGridView2,dtm_picker.Value.Date);
                 dtm_picker.Value = DateTime.Today;
                 txt_tsStandard.Text = "13";
                 getStats();
@@ -643,6 +643,11 @@ namespace WindowsFormsApp1
                     rdo_evening.Checked = true;
                 }
             }
+        }
+
+        private void dtm_picker_ValueChanged(object sender, EventArgs e)
+        {
+            chilarReceive.showDataInGridView(dataGridView2, dtm_picker.Value.Date);
         }
     }
 }
