@@ -247,5 +247,85 @@ namespace DairyAccounting
                 dbConnection.closeConnection();
             }
         }
+
+        public int getLastRecordId()
+        {
+            int lastRecordId = 0;
+
+            try
+            {
+                dbConnection.openConnection();
+
+                string query = "SELECT TOP 1 receiptId FROM Receipts ORDER BY receiptId DESC";
+
+                using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
+                {
+                    object result = command.ExecuteScalar();
+                    if (result != DBNull.Value && result != null)
+                    {
+                        lastRecordId = Convert.ToInt32(result);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error retrieving last receipt Id: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dbConnection.closeConnection();
+            }
+
+            return lastRecordId;
+        }
+
+        public void getPurchaseRecordDetail(int receId, out DateTime date, out int accountId, out string accountName, out decimal amount,
+            out int cashAccountId, out string cashAccountName, out string discription)
+        {
+
+            date = DateTime.MinValue;
+            accountId = 0;
+            accountName = "";
+            amount = 0;
+            cashAccountId = 0;
+            cashAccountName = "";
+            discription = "";
+
+            try
+            {
+                dbConnection.openConnection();
+
+                string query = "SELECT date, accountId, accountName, amount, cashAccountId, cashAccountName, discription FROM Receipts WHERE receiptId=@receiptId";
+
+                using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
+                {
+                    command.Parameters.AddWithValue("@receiptId", receId);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            date = DateTime.Parse(reader["date"].ToString());
+                            accountId = int.Parse(reader["accountId"].ToString());
+                            accountName = reader["accountName"].ToString();
+                            amount = decimal.Parse(reader["amount"].ToString());
+                            cashAccountId = int.Parse(reader["cashAccountId"].ToString());
+                            cashAccountName = reader["cashAccountName"].ToString();
+                            discription = reader["discription"].ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error retrieving payment record: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dbConnection.closeConnection();
+            }
+
+
+        }
     }
 }

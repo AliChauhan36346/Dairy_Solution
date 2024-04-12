@@ -19,6 +19,9 @@ namespace WindowsFormsApp1
         CommonFunctionsClass commonFunctions = new CommonFunctionsClass();
         ParchiClass ParchiClass = new ParchiClass();
 
+        public bool isFromOtherForm=false;
+        public int paymentId = 0;
+
         public Payments()
         {
             InitializeComponent();
@@ -33,6 +36,10 @@ namespace WindowsFormsApp1
         {
             //commonFunctions.ShowAccountSuggestions(txt_accountId, lstAccountsSuggestion, "customer");
             commonFunctions.ShowAllAccountSuggestions(txt_accountId.Text, lstAccountsSuggestion);
+            if(!txt_accountId.Focused)
+            {
+                lstAccountsSuggestion.Visible = false;
+            }
         }
 
         private void txt_accountId_Leave(object sender, EventArgs e)
@@ -99,6 +106,21 @@ namespace WindowsFormsApp1
             lstAccountsSuggestion.Visible = false;
             lstAccountSuggestion.Visible = false;
             txt_accountId.Focus();
+
+            if(isFromOtherForm)
+            {
+                payments.getPurchaseRecordDetail(paymentId, out DateTime date, out int accId,
+                    out string accName, out decimal amount, out int cashAccId, out string cashAccName, out string discription);
+
+                txt_paymentId.Text = paymentId.ToString();
+                dtm_picker.Value= date;
+                txt_accountId.Text= accId.ToString();
+                txt_accountName.Text=accName.ToString();
+                txt_amount.Text=amount.ToString();
+                txt_cashAccountId.Text=cashAccId.ToString();
+                txt_cashAccountName.Text = cashAccName.ToString();
+                txt_discription.Text=discription.ToString();
+            }
         }
 
         private void txt_cashAccountId_TextChanged(object sender, EventArgs e)
@@ -364,6 +386,53 @@ namespace WindowsFormsApp1
         {
             Customers customers=new Customers();
             customers.ShowDialog();
+        }
+
+        private void btn_goBack_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(txt_paymentId.Text);
+            id--;
+            if (id != 0)
+            {
+                payments.getPurchaseRecordDetail(id, out DateTime date, out int accId,
+                    out string accName, out decimal amount, out int cashAccId, out string cashAccName, out string discription);
+
+                txt_paymentId.Text = id.ToString();
+                if (date.Date > DateTime.MinValue && date.Date < DateTime.MaxValue)
+                {
+                    dtm_picker.Value = date.Date;
+                }
+                txt_accountId.Text = accId.ToString();
+                txt_accountName.Text = accName.ToString();
+                txt_amount.Text = amount.ToString();
+                txt_cashAccountId.Text = cashAccId.ToString();
+                txt_cashAccountName.Text = cashAccName.ToString();
+                txt_discription.Text = discription.ToString();
+            }
+        }
+
+        private void btn_goForward_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(txt_paymentId.Text);
+            id++;
+
+            if (id <= payments.getLastRecordId())
+            {
+                payments.getPurchaseRecordDetail(id, out DateTime date, out int accId,
+                    out string accName, out decimal amount, out int cashAccId, out string cashAccName, out string discription);
+
+                txt_paymentId.Text = id.ToString();
+                if (date.Date > DateTime.MinValue && date.Date < DateTime.MaxValue)
+                {
+                    dtm_picker.Value = date.Date;
+                }
+                txt_accountId.Text = accId.ToString();
+                txt_accountName.Text = accName.ToString();
+                txt_amount.Text = amount.ToString();
+                txt_cashAccountId.Text = cashAccId.ToString();
+                txt_cashAccountName.Text = cashAccName.ToString();
+                txt_discription.Text = discription.ToString();
+            }
         }
     }
 

@@ -42,13 +42,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txt_Volume = new System.Windows.Forms.TextBox();
-            this.txt_tsVolume = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.txt_totalPurchased = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_totalReive = new System.Windows.Forms.TextBox();
             this.txt_lossAndStatus = new System.Windows.Forms.TextBox();
-            this.txt_totalPurchased = new System.Windows.Forms.TextBox();
+            this.txt_Volume = new System.Windows.Forms.TextBox();
+            this.txt_tsVolume = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -111,6 +111,7 @@
             this.dataGridView2.Size = new System.Drawing.Size(666, 456);
             this.dataGridView2.TabIndex = 21;
             this.dataGridView2.TabStop = false;
+            this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
             // 
             // panel1
             // 
@@ -249,6 +250,49 @@
             this.panel2.Size = new System.Drawing.Size(1213, 38);
             this.panel2.TabIndex = 22;
             // 
+            // txt_totalPurchased
+            // 
+            this.txt_totalPurchased.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_totalPurchased.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_totalPurchased.Location = new System.Drawing.Point(893, 6);
+            this.txt_totalPurchased.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_totalPurchased.Name = "txt_totalPurchased";
+            this.txt_totalPurchased.Size = new System.Drawing.Size(80, 25);
+            this.txt_totalPurchased.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Black", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label4.Location = new System.Drawing.Point(821, 8);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 21);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Totals";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // txt_totalReive
+            // 
+            this.txt_totalReive.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_totalReive.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_totalReive.Location = new System.Drawing.Point(979, 6);
+            this.txt_totalReive.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_totalReive.Name = "txt_totalReive";
+            this.txt_totalReive.Size = new System.Drawing.Size(80, 25);
+            this.txt_totalReive.TabIndex = 5;
+            // 
+            // txt_lossAndStatus
+            // 
+            this.txt_lossAndStatus.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_lossAndStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_lossAndStatus.Location = new System.Drawing.Point(1065, 6);
+            this.txt_lossAndStatus.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_lossAndStatus.Name = "txt_lossAndStatus";
+            this.txt_lossAndStatus.Size = new System.Drawing.Size(140, 25);
+            this.txt_lossAndStatus.TabIndex = 4;
+            // 
             // txt_Volume
             // 
             this.txt_Volume.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -285,49 +329,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(521, 456);
             this.dataGridView1.TabIndex = 23;
             this.dataGridView1.TabStop = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Black", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(821, 8);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 21);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Totals";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // txt_totalReive
-            // 
-            this.txt_totalReive.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_totalReive.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_totalReive.Location = new System.Drawing.Point(979, 6);
-            this.txt_totalReive.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_totalReive.Name = "txt_totalReive";
-            this.txt_totalReive.Size = new System.Drawing.Size(80, 25);
-            this.txt_totalReive.TabIndex = 5;
-            // 
-            // txt_lossAndStatus
-            // 
-            this.txt_lossAndStatus.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_lossAndStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_lossAndStatus.Location = new System.Drawing.Point(1065, 6);
-            this.txt_lossAndStatus.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_lossAndStatus.Name = "txt_lossAndStatus";
-            this.txt_lossAndStatus.Size = new System.Drawing.Size(140, 25);
-            this.txt_lossAndStatus.TabIndex = 4;
-            // 
-            // txt_totalPurchased
-            // 
-            this.txt_totalPurchased.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_totalPurchased.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_totalPurchased.Location = new System.Drawing.Point(893, 6);
-            this.txt_totalPurchased.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_totalPurchased.Name = "txt_totalPurchased";
-            this.txt_totalPurchased.Size = new System.Drawing.Size(80, 25);
-            this.txt_totalPurchased.TabIndex = 7;
             // 
             // label5
             // 

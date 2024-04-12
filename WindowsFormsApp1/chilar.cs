@@ -17,6 +17,9 @@ namespace WindowsFormsApp1
         CommonFunctionsClass commonFunctions = new CommonFunctionsClass();
         DashboardClass dashboard = new DashboardClass();
 
+        public bool isFromOtherForm = false;
+        public int chilarReceiveId;
+
         bool isTruePassword = false;
 
         public chilar()
@@ -49,6 +52,32 @@ namespace WindowsFormsApp1
             {
                 // Set the Evening radio button as checked
                 rdo_evening.Checked = true;
+            }
+
+            if (isFromOtherForm)
+            {
+                chilarReceive.getPurchaseRecordDetail(chilarReceiveId, out DateTime date, out int dodhiId, out string dodhiName,
+                    out decimal grossLiters, out decimal lr, out decimal fat, out string time, out int tsStandar, out decimal tsLiters);
+
+                txt_id.Text = chilarReceiveId.ToString();
+                dtm_picker.Value = date;
+                txt_dodhiId.Text = dodhiId.ToString();
+                txt_dodhiName.Text = dodhiName;
+                txt_lr.Text = lr.ToString();
+                txt_liters.Text = grossLiters.ToString();
+                txt_fat.Text = fat.ToString();
+                txt_tsStandard.Text = tsStandar.ToString();
+                txt_tsLiters.Text= tsLiters.ToString();
+
+
+                if (time == "Morning")
+                {
+                    rdo_morning.Checked = true;
+                }
+                else
+                {
+                    rdo_evening.Checked = true;
+                }
             }
 
 
@@ -543,5 +572,77 @@ namespace WindowsFormsApp1
             txt_grossReceive.Text = grossReceive + " Ltrs";
         }
 
+        private void btn_goBack_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(txt_id.Text);
+            id--;
+            if (id != 0)
+            {
+                chilarReceive.getPurchaseRecordDetail(id, out DateTime date, out int dodhiId, out string dodhiName,
+                    out decimal grossLiters, out decimal lr, out decimal fat, out string time, out int tsStandar, out decimal tsLiters);
+
+                txt_id.Text = id.ToString();
+
+                if (date.Date > DateTime.MinValue && date.Date < DateTime.MaxValue)
+                {
+                    dtm_picker.Value = date.Date;
+                }
+
+                txt_dodhiId.Text = dodhiId.ToString();
+                txt_dodhiName.Text = dodhiName;
+                txt_lr.Text = lr.ToString();
+                txt_liters.Text = grossLiters.ToString();
+                txt_fat.Text = fat.ToString();
+                txt_tsStandard.Text = tsStandar.ToString();
+                txt_tsLiters.Text = tsLiters.ToString();
+
+
+                if (time == "Morning")
+                {
+                    rdo_morning.Checked = true;
+                }
+                else
+                {
+                    rdo_evening.Checked = true;
+                }
+            }
+        }
+
+        private void btn_goForward_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(txt_id.Text);
+            id++;
+
+            if (id <= chilarReceive.getLastRecordId())
+            {
+                chilarReceive.getPurchaseRecordDetail(id, out DateTime date, out int dodhiId, out string dodhiName,
+                    out decimal grossLiters, out decimal lr, out decimal fat, out string time, out int tsStandar, out decimal tsLiters);
+
+                txt_id.Text = id.ToString();
+
+                if (date.Date > DateTime.MinValue && date.Date < DateTime.MaxValue)
+                {
+                    dtm_picker.Value = date.Date;
+                }
+
+                txt_dodhiId.Text = dodhiId.ToString();
+                txt_dodhiName.Text = dodhiName;
+                txt_lr.Text = lr.ToString();
+                txt_liters.Text = grossLiters.ToString();
+                txt_fat.Text = fat.ToString();
+                txt_tsStandard.Text = tsStandar.ToString();
+                txt_tsLiters.Text = tsLiters.ToString();
+
+
+                if (time == "Morning")
+                {
+                    rdo_morning.Checked = true;
+                }
+                else
+                {
+                    rdo_evening.Checked = true;
+                }
+            }
+        }
     }
 }

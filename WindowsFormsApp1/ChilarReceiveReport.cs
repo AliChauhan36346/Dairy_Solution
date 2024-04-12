@@ -134,5 +134,30 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView2.SelectedRows.Count > 0)
+            {
+                int selectedIndex = dataGridView2.SelectedRows[0].Index;
+
+                // Check if the selected index is within the bounds of the data
+                if (selectedIndex >= 0 && selectedIndex < dataGridView2.RowCount - 1)
+                {
+                    // Get the selected row
+                    DataGridViewRow selectedRow = dataGridView2.SelectedRows[0];
+
+                    // Populate text boxes with data from the selected row
+                    int chilarReceiveId = int.Parse(selectedRow.Cells["Id"].Value.ToString());
+
+                    chilar chilar = new chilar();
+                    chilar.isFromOtherForm = true;
+                    chilar.chilarReceiveId = chilarReceiveId;
+
+                    chilar.ShowDialog();
+
+                }
+            }
+        }
     }
 }

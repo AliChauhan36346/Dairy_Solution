@@ -274,5 +274,90 @@ namespace DairyAccounting
             }
         }
 
+        public int getLastRecordId()
+        {
+            int lastRecordId = 0;
+
+            try
+            {
+                dbConnection.openConnection();
+
+                string query = "SELECT TOP 1 chilarReceiveId FROM ChilarReceive ORDER BY chilarReceiveId DESC";
+
+                using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
+                {
+                    object result = command.ExecuteScalar();
+                    if (result != DBNull.Value && result != null)
+                    {
+                        lastRecordId = Convert.ToInt32(result);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error retrieving last chilar receive Id: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dbConnection.closeConnection();
+            }
+
+            return lastRecordId;
+        }
+
+        public void getPurchaseRecordDetail(int chilarId, out DateTime date, out int dodhiId, out string dodhiName,
+            out decimal grossliters, out decimal lr, out decimal fat, out string time, out int tsStandar, out decimal tsLiters)
+        {
+
+            date = DateTime.MinValue;
+            dodhiId = 0;
+            dodhiName = "";
+            grossliters = 0;
+            lr = 0;
+            fat = 0;
+            time = "";
+            dodhiId = 0;
+            dodhiName = "";
+            tsLiters = 0;
+            tsStandar = 0;
+
+            try
+            {
+                dbConnection.openConnection();
+
+                string query = "SELECT date, time, dodhiId, dodhi, lr, grossLiters, fat, tsStandard, tsLiters FROM ChilarReceive WHERE chilarReceiveId=@chilarReceiveId";
+
+                using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
+                {
+                    command.Parameters.AddWithValue("@chilarReceiveId", chilarId);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            date = DateTime.Parse(reader["date"].ToString());
+                            grossliters = decimal.Parse(reader["grossLiters"].ToString());
+                            lr = decimal.Parse(reader["lr"].ToString());
+                            time = reader["time"].ToString().Trim();
+                            dodhiId = int.Parse(reader["dodhiId"].ToString());
+                            dodhiName = reader["dodhi"].ToString();
+                            fat = decimal.Parse(reader["fat"].ToString());
+                            tsStandar = int.Parse(reader["tsStandard"].ToString());
+                            tsLiters = decimal.Parse(reader["tsLiters"].ToString());
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error retrieving chilar receive record: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dbConnection.closeConnection();
+            }
+
+        }
+
     }
 }

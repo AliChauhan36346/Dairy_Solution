@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Security.Cryptography.Pkcs;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -146,6 +147,73 @@ namespace WindowsFormsApp1
         private void dtm_from_ValueChanged(object sender, EventArgs e)
         {
             startDate=dtm_from.Value;
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                int selectedIndex = dataGridView1.SelectedRows[0].Index;
+
+                // Check if the selected index is within the bounds of the data
+                if (selectedIndex >= 0 && selectedIndex < dataGridView1.RowCount)
+                {
+                    // Get the selected row
+                    DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+
+                    // Populate text boxes with data from the selected row
+                    string transactionId = selectedRow.Cells["Tran.No"].Value.ToString();
+
+                    // Find the index where the digits start
+                    int index = 0;
+                    for (int i = 0; i < transactionId.Length; i++)
+                    {
+                        if (char.IsDigit(transactionId[i]))
+                        {
+                            index = i;
+                            break;
+                        }
+                    }
+
+                    // Separate the number part and the other part
+                    string formCode = transactionId.Substring(0, index); // "pv"
+                    string numberPart = transactionId.Substring(index); // "12"
+
+                    int id= int.Parse(numberPart);
+
+                    if(formCode=="PV")
+                    {
+                        Purchases purchases = new Purchases();
+                        purchases.isfromOtherForm = true;
+                        purchases.purchaseId= id;
+                        purchases.ShowDialog();
+                    }
+                    else if(formCode=="CPV")
+                    {
+                        Payments payments = new Payments();
+                        payments.isFromOtherForm = true;
+                        payments.paymentId= id;
+                        payments.ShowDialog();
+                    }
+                    else if(formCode=="CRV")
+                    {
+                        Receipts_Form receipts = new Receipts_Form();
+                        receipts.isFromOtherForm= true;
+                        receipts.receiptId= id;
+                        receipts.ShowDialog();
+                    }
+                    else if(formCode=="SV")
+                    {
+                        Sales sales = new Sales();
+                        sales.isFromOtherForm = true;
+                        sales.salesId = id;
+                        sales.ShowDialog();
+                    }
+
+                    
+
+                }
+            }
         }
     }
 }

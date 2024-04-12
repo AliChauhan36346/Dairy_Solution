@@ -17,6 +17,9 @@ namespace WindowsFormsApp1
         CommonFunctionsClass commonFunctions=new CommonFunctionsClass();
         AddReceipts receipts=new AddReceipts();
 
+        public bool isFromOtherForm = false;
+        public int receiptId = 0;
+
 
         public Receipts_Form()
         {
@@ -41,6 +44,11 @@ namespace WindowsFormsApp1
         private void txt_accountId_TextChanged(object sender, EventArgs e)
         {
             commonFunctions.ShowAllAccountSuggestions(txt_accountId.Text, lstAccountsSuggestion);
+
+            if(!txt_accountId.Focused)
+            {
+                lstAccountsSuggestion.Visible = false;
+            }
         }
 
         private void txt_accountId_Leave(object sender, EventArgs e)
@@ -108,6 +116,22 @@ namespace WindowsFormsApp1
             lstAccountSuggestion.Visible = false;
 
             txt_accountId.Focus();
+
+            if (isFromOtherForm)
+            {
+                receipts.getPurchaseRecordDetail(receiptId, out DateTime date, out int accId,
+                    out string accName, out decimal amount, out int cashAccId, out string cashAccName, out string discription);
+
+                txt_receiptId.Text = receiptId.ToString();
+                dtm_picker.Value = date;
+                txt_accountId.Text = accId.ToString();
+                txt_accountName.Text = accName.ToString();
+                txt_amount.Text = amount.ToString();
+                txt_cashAccountId.Text = cashAccId.ToString();
+                txt_cashAccountName.Text = cashAccName.ToString();
+                txt_discription.Text = discription.ToString();
+            }
+
         }
 
         private void txt_cashAccountId_TextChanged(object sender, EventArgs e)
@@ -345,6 +369,53 @@ namespace WindowsFormsApp1
             catch (Exception ex)
             {
                 MessageBox.Show("Error in form code: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btn_goBack_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(txt_receiptId.Text);
+            id--;
+            if (id != 0)
+            {
+                receipts.getPurchaseRecordDetail(id, out DateTime date, out int accId,
+                    out string accName, out decimal amount, out int cashAccId, out string cashAccName, out string discription);
+
+                txt_receiptId.Text = id.ToString();
+                if (date.Date > DateTime.MinValue && date.Date < DateTime.MaxValue)
+                {
+                    dtm_picker.Value = date.Date;
+                }
+                txt_accountId.Text = accId.ToString();
+                txt_accountName.Text = accName.ToString();
+                txt_amount.Text = amount.ToString();
+                txt_cashAccountId.Text = cashAccId.ToString();
+                txt_cashAccountName.Text = cashAccName.ToString();
+                txt_discription.Text = discription.ToString();
+            }
+        }
+
+        private void btn_goForward_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(txt_receiptId.Text);
+            id++;
+
+            if (id <= receipts.getLastRecordId())
+            {
+                receipts.getPurchaseRecordDetail(id, out DateTime date, out int accId,
+                    out string accName, out decimal amount, out int cashAccId, out string cashAccName, out string discription);
+
+                txt_receiptId.Text = id.ToString();
+                if (date.Date > DateTime.MinValue && date.Date < DateTime.MaxValue)
+                {
+                    dtm_picker.Value = date.Date;
+                }
+                txt_accountId.Text = accId.ToString();
+                txt_accountName.Text = accName.ToString();
+                txt_amount.Text = amount.ToString();
+                txt_cashAccountId.Text = cashAccId.ToString();
+                txt_cashAccountName.Text = cashAccName.ToString();
+                txt_discription.Text = discription.ToString();
             }
         }
     }

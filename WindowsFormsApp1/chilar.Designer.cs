@@ -65,6 +65,8 @@
             this.txt_averagefat = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txt_grossReceive = new System.Windows.Forms.TextBox();
+            this.btn_goForward = new System.Windows.Forms.Button();
+            this.btn_goBack = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -169,6 +171,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btn_goForward);
+            this.groupBox1.Controls.Add(this.btn_goBack);
             this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.lstDodhiSuggestions);
             this.groupBox1.Controls.Add(this.label13);
@@ -283,7 +287,7 @@
             this.dtm_picker.Location = new System.Drawing.Point(101, 68);
             this.dtm_picker.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dtm_picker.Name = "dtm_picker";
-            this.dtm_picker.Size = new System.Drawing.Size(138, 27);
+            this.dtm_picker.Size = new System.Drawing.Size(182, 27);
             this.dtm_picker.TabIndex = 46;
             this.dtm_picker.TabStop = false;
             // 
@@ -566,6 +570,28 @@
             this.txt_grossReceive.TabIndex = 40;
             this.txt_grossReceive.TabStop = false;
             // 
+            // btn_goForward
+            // 
+            this.btn_goForward.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_goForward.Location = new System.Drawing.Point(238, 26);
+            this.btn_goForward.Name = "btn_goForward";
+            this.btn_goForward.Size = new System.Drawing.Size(45, 33);
+            this.btn_goForward.TabIndex = 90;
+            this.btn_goForward.Text = ">>";
+            this.btn_goForward.UseVisualStyleBackColor = true;
+            this.btn_goForward.Click += new System.EventHandler(this.btn_goForward_Click);
+            // 
+            // btn_goBack
+            // 
+            this.btn_goBack.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_goBack.Location = new System.Drawing.Point(192, 26);
+            this.btn_goBack.Name = "btn_goBack";
+            this.btn_goBack.Size = new System.Drawing.Size(45, 33);
+            this.btn_goBack.TabIndex = 89;
+            this.btn_goBack.Text = "<<";
+            this.btn_goBack.UseVisualStyleBackColor = true;
+            this.btn_goBack.Click += new System.EventHandler(this.btn_goBack_Click);
+            // 
             // chilar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -638,5 +664,7 @@
         private System.Windows.Forms.RadioButton rdo_morning;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button btn_goForward;
+        private System.Windows.Forms.Button btn_goBack;
     }
 }

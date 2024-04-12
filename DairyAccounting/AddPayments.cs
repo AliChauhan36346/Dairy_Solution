@@ -124,13 +124,13 @@ namespace DairyAccounting
                         dataGridView.DataSource = dataTable;
 
                         dataGridView.Columns["Id"].Width = 70;
-                        dataGridView.Columns["Date"].Width = 100;
-                        dataGridView.Columns["Customer Id"].Width = 115;
-                        dataGridView.Columns["Customer Name"].Width = 160;
-                        dataGridView.Columns["Amount"].Width = 110;
-                        dataGridView.Columns["Account Id"].Width = 110;
+                        dataGridView.Columns["Date"].Width = 85;
+                        dataGridView.Columns["Customer Id"].Width = 90;
+                        dataGridView.Columns["Customer Name"].Width = 220;
+                        dataGridView.Columns["Amount"].Width = 90;
+                        dataGridView.Columns["Account Id"].Width = 80;
                         dataGridView.Columns["Account Name"].Width = 140;
-                        dataGridView.Columns["Discription"].Width = 190;
+                        dataGridView.Columns["Discription"].Width = 215;
                     }
                 }
             }
@@ -274,6 +274,86 @@ namespace DairyAccounting
             {
                 dbConnection.closeConnection();
             }
+        }
+
+        public void getPurchaseRecordDetail(int payId, out DateTime date, out int accountId, out string accountName, out decimal amount,
+            out int cashAccountId, out string cashAccountName, out string discription)
+        {
+
+            date = DateTime.MinValue;
+            accountId = 0;
+            accountName = "";
+            amount = 0;
+            cashAccountId = 0;
+            cashAccountName = "";
+            discription = "";
+
+            try
+            {
+                dbConnection.openConnection();
+
+                string query = "SELECT date, accountId, accountName, amount, cashAccountId, cashAccountName, discription FROM Payments WHERE PaymentId=@PaymentId";
+
+                using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
+                {
+                    command.Parameters.AddWithValue("@PaymentId", payId);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            date = DateTime.Parse(reader["date"].ToString());
+                            accountId = int.Parse(reader["accountId"].ToString());
+                            accountName = reader["accountName"].ToString();
+                            amount = decimal.Parse(reader["amount"].ToString());
+                            cashAccountId = int.Parse(reader["cashAccountId"].ToString());
+                            cashAccountName = reader["cashAccountName"].ToString();
+                            discription = reader["discription"].ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error retrieving payment record: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dbConnection.closeConnection();
+            }
+
+            
+        }
+
+        public int getLastRecordId()
+        {
+            int lastRecordId = 0;
+
+            try
+            {
+                dbConnection.openConnection();
+
+                string query = "SELECT TOP 1 PaymentId FROM Payments ORDER BY PaymentId DESC";
+
+                using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
+                {
+                    object result = command.ExecuteScalar();
+                    if (result != DBNull.Value && result != null)
+                    {
+                        lastRecordId = Convert.ToInt32(result);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error retrieving last payment Id: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dbConnection.closeConnection();
+            }
+
+            return lastRecordId;
         }
 
     }

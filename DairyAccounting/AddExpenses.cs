@@ -112,49 +112,54 @@ namespace DairyAccounting
             return nextExpenseId;
         }
 
-        public void showDataInGridView(DataGridView dataGridView)
+        public void showDataInGridView(DataGridView dataGridView, DateTime date)
         {
-            DateTime today = DateTime.Today;
+            DateTime today = date.Date;
 
             try
             {
                 dbConnection.openConnection();
 
                 // Initialize query to select all records 
-                string query = $"SELECT Expenseid, date, cashAccountId, cashAccountName, type, amount, discription, employeeId, employeeName WHERE date={today}";
+                string query = $"SELECT Expenseid, date, cashAccountId, cashAccountName, type, amount, discription, employeeId, employeeName FROM Expense WHERE date = @Today";
 
+                // Create a SqlCommand object
                 using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
                 {
+                    // Add a parameter for the date
+                    command.Parameters.AddWithValue("@Today", today);
+
                     using (SqlDataAdapter dataAdapter = new SqlDataAdapter(command))
                     {
                         DataTable dataTable = new DataTable();
                         dataAdapter.Fill(dataTable);
 
                         // Specify the desired column names
-                        dataTable.Columns["ExpenseId"].ColumnName = "Id";
+                        dataTable.Columns["Expenseid"].ColumnName = "Id";
                         dataTable.Columns["date"].ColumnName = "Date";
-                        dataTable.Columns["cashAccountId"].ColumnName = " Cash Id";
+                        dataTable.Columns["cashAccountId"].ColumnName = "Cash Id";
                         dataTable.Columns["cashAccountName"].ColumnName = "Cash Account Name";
                         dataTable.Columns["type"].ColumnName = "Expense Type";
                         dataTable.Columns["amount"].ColumnName = "Amount";
-                        dataTable.Columns["discription"].ColumnName = "Discription";
-                        dataTable.Columns["employeeId"].ColumnName = "Id";
+                        dataTable.Columns["discription"].ColumnName = "Description";
+                        dataTable.Columns["employeeId"].ColumnName = "Employee Id";
                         dataTable.Columns["employeeName"].ColumnName = "Employee Name";
 
-                        // Sort the records in descending order by customer purchasepurchaseId
+                        // Sort the records in descending order by expenseId
                         dataTable.DefaultView.Sort = "Id DESC";
 
                         // Bind the DataTable to the DataGridView
                         dataGridView.DataSource = dataTable;
 
-                        dataGridView.Columns["Id"].Width = 70;
-                        dataGridView.Columns["Date"].Width = 100;
-                        dataGridView.Columns["Cash Id"].Width = 100;
+                        // Set column widths
+                        dataGridView.Columns["Id"].Width = 60;
+                        dataGridView.Columns["Date"].Width = 90;
+                        dataGridView.Columns["Cash Id"].Width = 90;
                         dataGridView.Columns["Cash Account Name"].Width = 150;
-                        dataGridView.Columns["Expense Type"].Width = 110;
-                        dataGridView.Columns["Amount"].Width = 100;
-                        dataGridView.Columns["Account Discription"].Width = 140;
-                        dataGridView.Columns["Employee Id"].Width = 100;
+                        dataGridView.Columns["Expense Type"].Width = 100;
+                        dataGridView.Columns["Amount"].Width = 90;
+                        dataGridView.Columns["Description"].Width = 140;
+                        dataGridView.Columns["Employee Id"].Width = 90;
                         dataGridView.Columns["Employee Name"].Width = 150;
                     }
                 }
@@ -169,6 +174,7 @@ namespace DairyAccounting
             }
         }
 
+
         public void removeExpenses(int expenseId) // to delete the expense
         {
             try
@@ -176,12 +182,12 @@ namespace DairyAccounting
                 dbConnection.openConnection();
 
                 // for deletionn
-                string query = "DELETE FROM Expense WHERE purchaseId=@purchaseId";
+                string query = "DELETE FROM Expense WHERE ExpenseId=@ExpenseId";
 
                 using (SqlCommand deleteCommand = new SqlCommand(query, dbConnection.connection))
                 {
                     //adding purchasepurchaseId parameter
-                    deleteCommand.Parameters.AddWithValue("@purchaseId", expenseId);
+                    deleteCommand.Parameters.AddWithValue("@ExpenseId", expenseId);
 
                     deleteCommand.ExecuteNonQuery();
 

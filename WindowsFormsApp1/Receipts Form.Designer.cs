@@ -58,6 +58,8 @@
             this.txt_cashAccountId = new System.Windows.Forms.TextBox();
             this.txt_accountBalance = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btn_goForward = new System.Windows.Forms.Button();
+            this.btn_goBack = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -235,6 +237,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btn_goForward);
+            this.groupBox1.Controls.Add(this.btn_goBack);
             this.groupBox1.Controls.Add(this.lstAccountsSuggestion);
             this.groupBox1.Controls.Add(this.txt_cashAccountName);
             this.groupBox1.Controls.Add(this.lstAccountSuggestion);
@@ -377,7 +381,7 @@
             this.dtm_picker.Location = new System.Drawing.Point(202, 26);
             this.dtm_picker.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dtm_picker.Name = "dtm_picker";
-            this.dtm_picker.Size = new System.Drawing.Size(182, 27);
+            this.dtm_picker.Size = new System.Drawing.Size(96, 27);
             this.dtm_picker.TabIndex = 105;
             this.dtm_picker.TabStop = false;
             this.dtm_picker.Value = new System.DateTime(2024, 1, 28, 0, 0, 0, 0);
@@ -454,6 +458,28 @@
             this.textBox1.Size = new System.Drawing.Size(132, 27);
             this.textBox1.TabIndex = 105;
             // 
+            // btn_goForward
+            // 
+            this.btn_goForward.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_goForward.Location = new System.Drawing.Point(345, 22);
+            this.btn_goForward.Name = "btn_goForward";
+            this.btn_goForward.Size = new System.Drawing.Size(45, 33);
+            this.btn_goForward.TabIndex = 127;
+            this.btn_goForward.Text = ">>";
+            this.btn_goForward.UseVisualStyleBackColor = true;
+            this.btn_goForward.Click += new System.EventHandler(this.btn_goForward_Click);
+            // 
+            // btn_goBack
+            // 
+            this.btn_goBack.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_goBack.Location = new System.Drawing.Point(299, 22);
+            this.btn_goBack.Name = "btn_goBack";
+            this.btn_goBack.Size = new System.Drawing.Size(45, 33);
+            this.btn_goBack.TabIndex = 126;
+            this.btn_goBack.Text = "<<";
+            this.btn_goBack.UseVisualStyleBackColor = true;
+            this.btn_goBack.Click += new System.EventHandler(this.btn_goBack_Click);
+            // 
             // Receipts_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -515,5 +541,7 @@
         private System.Windows.Forms.ListBox lstAccountSuggestion;
         private System.Windows.Forms.TextBox txt_accountBalance;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btn_goForward;
+        private System.Windows.Forms.Button btn_goBack;
     }
 }

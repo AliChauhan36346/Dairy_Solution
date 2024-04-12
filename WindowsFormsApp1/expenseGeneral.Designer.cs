@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_update = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
             this.btn_addEmployee = new System.Windows.Forms.Button();
             this.btn_dashboard = new System.Windows.Forms.Button();
@@ -52,13 +53,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txt_expenseId = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.e_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.expenseType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.e_amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.e_discription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.e_employeeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.e_employeeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lstCashAccountSuggestions = new System.Windows.Forms.ListBox();
             this.lstEmployeeSuggestions = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
@@ -70,6 +64,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btn_update);
             this.panel1.Controls.Add(this.btn_save);
             this.panel1.Controls.Add(this.btn_addEmployee);
             this.panel1.Controls.Add(this.btn_dashboard);
@@ -82,6 +77,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(931, 67);
             this.panel1.TabIndex = 13;
+            // 
+            // btn_update
+            // 
+            this.btn_update.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_update.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_update.Location = new System.Drawing.Point(479, 4);
+            this.btn_update.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btn_update.Name = "btn_update";
+            this.btn_update.Size = new System.Drawing.Size(88, 56);
+            this.btn_update.TabIndex = 30;
+            this.btn_update.TabStop = false;
+            this.btn_update.Text = "Update Expense";
+            this.btn_update.UseVisualStyleBackColor = true;
+            this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
             // 
             // btn_save
             // 
@@ -100,7 +109,7 @@
             // 
             this.btn_addEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_addEmployee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btn_addEmployee.Location = new System.Drawing.Point(471, 4);
+            this.btn_addEmployee.Location = new System.Drawing.Point(384, 4);
             this.btn_addEmployee.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btn_addEmployee.Name = "btn_addEmployee";
             this.btn_addEmployee.Size = new System.Drawing.Size(88, 56);
@@ -135,6 +144,7 @@
             this.btn_addNew.TabIndex = 7;
             this.btn_addNew.Text = "Add New";
             this.btn_addNew.UseVisualStyleBackColor = true;
+            this.btn_addNew.Click += new System.EventHandler(this.btn_addNew_Click);
             // 
             // label1
             // 
@@ -161,6 +171,7 @@
             this.btn_deleteRecord.TabStop = false;
             this.btn_deleteRecord.Text = "Delete Record";
             this.btn_deleteRecord.UseVisualStyleBackColor = true;
+            this.btn_deleteRecord.Click += new System.EventHandler(this.btn_deleteRecord_Click);
             // 
             // groupBox1
             // 
@@ -234,6 +245,7 @@
             // 
             // combo_expenseType
             // 
+            this.combo_expenseType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combo_expenseType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combo_expenseType.FormattingEnabled = true;
             this.combo_expenseType.Items.AddRange(new object[] {
@@ -274,6 +286,7 @@
             this.dtTm_date.TabIndex = 1;
             this.dtTm_date.TabStop = false;
             this.dtTm_date.Value = new System.DateTime(2024, 2, 15, 0, 0, 0, 0);
+            this.dtTm_date.ValueChanged += new System.EventHandler(this.dtTm_date_ValueChanged);
             // 
             // label7
             // 
@@ -373,69 +386,16 @@
             this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
-            this.e_date,
-            this.expenseType,
-            this.e_amount,
-            this.e_discription,
-            this.e_employeeId,
-            this.e_employeeName});
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView2.Location = new System.Drawing.Point(0, 385);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(931, 288);
             this.dataGridView2.TabIndex = 16;
             this.dataGridView2.TabStop = false;
-            // 
-            // Id
-            // 
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Width = 60;
-            // 
-            // e_date
-            // 
-            this.e_date.HeaderText = "Date";
-            this.e_date.Name = "e_date";
-            this.e_date.ReadOnly = true;
-            // 
-            // expenseType
-            // 
-            this.expenseType.HeaderText = "Expense Type";
-            this.expenseType.Name = "expenseType";
-            this.expenseType.ReadOnly = true;
-            this.expenseType.Width = 110;
-            // 
-            // e_amount
-            // 
-            this.e_amount.HeaderText = "Expense Amount";
-            this.e_amount.Name = "e_amount";
-            this.e_amount.ReadOnly = true;
-            // 
-            // e_discription
-            // 
-            this.e_discription.HeaderText = "Discription";
-            this.e_discription.Name = "e_discription";
-            this.e_discription.ReadOnly = true;
-            this.e_discription.Width = 185;
-            // 
-            // e_employeeId
-            // 
-            this.e_employeeId.HeaderText = "Eployee Id";
-            this.e_employeeId.Name = "e_employeeId";
-            this.e_employeeId.ReadOnly = true;
-            this.e_employeeId.Width = 70;
-            // 
-            // e_employeeName
-            // 
-            this.e_employeeName.HeaderText = "Employee Name";
-            this.e_employeeName.Name = "e_employeeName";
-            this.e_employeeName.ReadOnly = true;
-            this.e_employeeName.Width = 135;
+            this.dataGridView2.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_CellMouseDoubleClick);
             // 
             // lstCashAccountSuggestions
             // 
@@ -504,17 +464,11 @@
         private System.Windows.Forms.TextBox txt_employeeName;
         private System.Windows.Forms.TextBox txt_employeeId;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn e_date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn expenseType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn e_amount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn e_discription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn e_employeeId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn e_employeeName;
         private System.Windows.Forms.TextBox txt_cashAccountId;
         private System.Windows.Forms.TextBox txt_cashAccountName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListBox lstCashAccountSuggestions;
         private System.Windows.Forms.ListBox lstEmployeeSuggestions;
+        private System.Windows.Forms.Button btn_update;
     }
 }
