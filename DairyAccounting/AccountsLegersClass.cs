@@ -220,5 +220,89 @@ namespace DairyAccounting
             dataGridView.Columns["Status"].Width = 80;
         }
 
+
+        public void GetCustomerMilkCard(int id, DateTime startDate, DateTime endDate,
+    out decimal morningTotal, out decimal eveningTotal, out decimal milkTotal,
+    out decimal totalMilkAmount, DataGridView dataGridView)
+        {
+            morningTotal = 0;
+            eveningTotal = 0;
+            milkTotal = 0;
+            totalMilkAmount = 0;
+
+            DataTable milkCard = new DataTable();
+
+            milkCard.Columns.Add("Date");
+            milkCard.Columns.Add("Morning");
+            milkCard.Columns.Add("Evening");
+            milkCard.Columns.Add("Total");
+            milkCard.Columns.Add("Rate");
+            milkCard.Columns.Add("Amount");
+
+            try
+            {
+                dbConnection.openConnection();
+
+                string query = "SELECT date, time, liters, amount, rate FROM Purchases WHERE " +
+                    "customerID=@customerId AND date>=@startDate AND date<=@endDate ORDER BY date";
+
+                using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
+                {
+                    command.Parameters.AddWithValue("@customerId", id);
+                    command.Parameters.AddWithValue("@startDate", startDate);
+                    command.Parameters.AddWithValue("@endDate", endDate);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string date = ((DateTime)reader["date"]).ToString("dd-MM-yyyy");
+                            string time = reader["time"].ToString().Trim();
+                            decimal liters = decimal.Parse(reader["liters"].ToString());
+                            decimal rate = decimal.Parse(reader["rate"].ToString());
+                            decimal amount = decimal.Parse(reader["amount"].ToString());
+
+                            if(time=="Morning")
+                            {
+                                morningTotal += liters;
+                                milkTotal += liters;
+                                totalMilkAmount += amount;
+
+                                milkCard.Rows.Add(date, liters, "", milkTotal, rate, amount);
+                            }
+                            else
+                            {
+                                eveningTotal += liters;
+                                milkTotal += liters;
+                                totalMilkAmount += amount;
+
+                                milkCard.Rows.Add(date, "", liters, milkTotal, rate, amount);
+                            }
+                            
+                        }
+                    }
+                }
+
+                dataGridView.DataSource = milkCard;
+
+                dataGridView.Columns["Date"].Width = 90;
+                dataGridView.Columns["Morning"].Width = 90;
+                dataGridView.Columns["Evening"].Width = 90;
+                dataGridView.Columns["Total"].Width = 90;
+                dataGridView.Columns["Rate"].Width = 80;
+                dataGridView.Columns["Amount"].Width = 100;
+            }
+            catch (Exception ex)
+            {
+                // Handle exception
+                MessageBox.Show("Error retrieving milk card data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dbConnection.closeConnection();
+            }
+        }
+
+
     }
 }

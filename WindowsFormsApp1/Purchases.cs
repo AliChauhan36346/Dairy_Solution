@@ -41,7 +41,7 @@ namespace WindowsFormsApp1
         private void btn_newCustomer_Click(object sender, EventArgs e)
         {
             Customers customers = new Customers();
-            customers.Show();
+            customers.ShowDialog();
         }
 
         private void btn_dashboard_Click(object sender, EventArgs e)

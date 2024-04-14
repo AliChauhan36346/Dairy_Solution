@@ -219,9 +219,6 @@ namespace DairyAccounting
         }
 
 
-
-
-
         public void getParchi(out decimal previousBalance, out string balanceStatus, out decimal totalMilk, out decimal milkAmount, out decimal parchiAmount, out decimal closingBalance, out string closingStatus, int customerId, DateTime startDate, DateTime endDate)
         {
             previousBalance = 0;

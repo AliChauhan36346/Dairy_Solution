@@ -295,5 +295,13 @@ namespace WindowsFormsApp1
                 cusBtn_save.Focus();
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Employees employees = new Employees();
+            employees.ShowDialog();
+        }
+
+        
     }
 }

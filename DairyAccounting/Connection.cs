@@ -12,8 +12,7 @@ namespace DairyAccounting
     internal class Connection
     {
         // Connection string for SQL Server database connection
-        private readonly string connectionString = "Data Source=DESKTOP-6T1BFNC\\SQLEXPRESS;Initial Catalog=dairyDataBase;Integrated Security=True;Encrypt=False;"
-;
+        private readonly string connectionString = @"Data Source=DESKTOP-6T1BFNC\SQLEXPRESS;Initial Catalog=dairyDataBase;Integrated Security=True";
 
         // SqlConnection object
         public SqlConnection connection;
