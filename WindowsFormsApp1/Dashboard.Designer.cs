@@ -115,7 +115,6 @@
             this.rateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.customersDodhiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salesReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.purchaseReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -125,6 +124,8 @@
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.incomeReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.balanceSheetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -1077,7 +1078,8 @@
             this.rateToolStripMenuItem,
             this.toolStripSeparator4,
             this.customersDodhiToolStripMenuItem,
-            this.toolStripMenuItem6});
+            this.toolStripMenuItem6,
+            this.toolStripMenuItem7});
             this.maintainToolStripMenuItem.Name = "maintainToolStripMenuItem";
             this.maintainToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.maintainToolStripMenuItem.Text = "Maintain";
@@ -1085,27 +1087,21 @@
             // rateToolStripMenuItem
             // 
             this.rateToolStripMenuItem.Name = "rateToolStripMenuItem";
-            this.rateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.rateToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.rateToolStripMenuItem.Text = "Rate Setting";
             this.rateToolStripMenuItem.Click += new System.EventHandler(this.rateToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(219, 6);
             // 
             // customersDodhiToolStripMenuItem
             // 
             this.customersDodhiToolStripMenuItem.Name = "customersDodhiToolStripMenuItem";
-            this.customersDodhiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.customersDodhiToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.customersDodhiToolStripMenuItem.Text = "Customers Dodhi";
             this.customersDodhiToolStripMenuItem.Click += new System.EventHandler(this.customersDodhiToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem6
-            // 
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem6.Text = "toolStripMenuItem6";
             // 
             // reportsToolStripMenuItem
             // 
@@ -1171,6 +1167,18 @@
             this.balanceSheetToolStripMenuItem.Name = "balanceSheetToolStripMenuItem";
             this.balanceSheetToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.balanceSheetToolStripMenuItem.Text = "Balance Sheet";
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(219, 6);
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(222, 22);
+            this.toolStripMenuItem7.Text = "Accounts Opening Balances";
+            this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItem7_Click);
             // 
             // Dashboard
             // 
@@ -1320,7 +1328,6 @@
         private System.Windows.Forms.ToolStripMenuItem rateToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem customersDodhiToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salesReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem purchaseReportToolStripMenuItem;
@@ -1331,6 +1338,8 @@
         private System.Windows.Forms.ToolStripMenuItem incomeReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem balanceSheetToolStripMenuItem;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
     }
 }
 

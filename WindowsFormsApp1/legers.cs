@@ -18,6 +18,7 @@ namespace WindowsFormsApp1
     {
         AccountsLegersClass accounts = new AccountsLegersClass();
         CommonFunctionsClass commonFunctions = new CommonFunctionsClass();
+        milk_card milkCard= new milk_card();
         DateTime startDate = new DateTime(1900, 1, 1);
         customer_balances customer_Balances = new customer_balances();
         public bool isFromOtherForm=false;
@@ -40,8 +41,7 @@ namespace WindowsFormsApp1
 
         private void btn_milkCard_Click(object sender, EventArgs e)
         {
-            milk_card milk_Card = new milk_card();
-            milk_Card.ShowDialog();
+            milkCard.ShowDialog();
         }
 
         private void btn_dashboard_Click(object sender, EventArgs e)
@@ -73,6 +73,7 @@ namespace WindowsFormsApp1
         private void txt_accountId_TextChanged(object sender, EventArgs e)
         {
             commonFunctions.ShowAllAccountSuggestions(txt_accountId.Text, lstSuggestions);
+
         }
 
 
@@ -106,6 +107,9 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Invalid Account Id.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            milkCard.id=accountId;
+            milkCard.name = txt_accountName.Text;
 
             accounts.GetCustomerLedger(dataGridView1, accountId, startDate.Date, dtm_to.Value, out totalDebit, out totalCredit, out totalBalance, out bStatus, out balanceBroughtForward, out forwardString);
 

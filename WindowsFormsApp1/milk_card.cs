@@ -16,7 +16,8 @@ namespace WindowsFormsApp1
     {
         AccountsLegersClass accountsLegersClass = new AccountsLegersClass();
         CommonFunctionsClass CommonFunctions = new CommonFunctionsClass();
-        public int id;
+        public int id=-1;
+        public string name;
 
         public milk_card()
         {
@@ -26,6 +27,23 @@ namespace WindowsFormsApp1
         private void milk_card_Load(object sender, EventArgs e)
         {
             lstAccountSuggestions.Visible = false;
+
+            if(id!=-1)
+            {
+                txt_accountId.Text = id.ToString();
+                txt_accountName.Text = name;
+                button1.Focus();
+
+                accountsLegersClass.GetCustomerMilkCard(id, dtm_startDate.Value.Date, dtm_endDate.Value.Date,
+                out decimal morningTotal, out decimal eveningTotal, out decimal milkTotal,
+                out decimal totalMilkAmount, dataGridView2);
+
+                txt_totalLiters.Text = milkTotal.ToString();
+                txt_totalMorning.Text = morningTotal.ToString();
+                totalEvening.Text = eveningTotal.ToString();
+                totalMilkAmount = Math.Round(totalMilkAmount, 1);
+                txt_totalAmount.Text = totalMilkAmount.ToString();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

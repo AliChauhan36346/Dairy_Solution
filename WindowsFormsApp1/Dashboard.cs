@@ -341,5 +341,11 @@ namespace WindowsFormsApp1
             IncomeStatement incomeStatement=new IncomeStatement();
             incomeStatement.ShowDialog();
         }
+
+        private void toolStripMenuItem7_Click(object sender, EventArgs e)
+        {
+            Accounts_Opening_Balances opening_Balances = new Accounts_Opening_Balances();
+            opening_Balances.ShowDialog();
+        }
     }
 }

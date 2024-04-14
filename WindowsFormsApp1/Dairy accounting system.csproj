@@ -82,6 +82,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accounts Opening Balances.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounts Opening Balances.Designer.cs">
+      <DependentUpon>Accounts Opening Balances.cs</DependentUpon>
+    </Compile>
     <Compile Include="Accounts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -240,6 +246,9 @@
     <Compile Include="TsCalculator.Designer.cs">
       <DependentUpon>TsCalculator.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Accounts Opening Balances.resx">
+      <DependentUpon>Accounts Opening Balances.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Accounts.resx">
       <DependentUpon>Accounts.cs</DependentUpon>
     </EmbeddedResource>
