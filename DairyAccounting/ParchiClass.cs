@@ -282,6 +282,10 @@ namespace DairyAccounting
                 closingStatus = closingBalance < 0 ? "Debit" : "Credit";
                 closingBalance = Math.Abs(closingBalance);
                 previousBalance = Math.Abs(previousBalance);
+
+                parchiAmount=Math.Round(parchiAmount,0);
+                closingBalance = Math.Round(closingBalance, 0);
+                previousBalance=Math.Round(previousBalance, 0);
             }
             catch (Exception ex)
             {

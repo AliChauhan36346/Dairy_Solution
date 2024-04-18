@@ -795,8 +795,10 @@ namespace WindowsFormsApp1
             xAxis += 100;
             e.Graphics.DrawString(txt_totalParchiAmount.Text, heading4, brush, xAxis, yAxis);
             xAxis += 120;
-            e.Graphics.DrawString(balance.ToString() + "  " + status,heading4,brush, xAxis, yAxis);
-            yAxis += 40;
+            e.Graphics.DrawString(balance.ToString(),heading4,brush, xAxis, yAxis);
+            xAxis += 85;
+            e.Graphics.DrawString(status,heading4,brush, xAxis, yAxis);
+            yAxis += 30;
             e.Graphics.DrawLine(pen, 300, yAxis, e.PageBounds.Width - 50, yAxis);
 
             headerPrinted = false;
