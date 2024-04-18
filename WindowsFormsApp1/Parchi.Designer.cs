@@ -36,6 +36,7 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_paymentList = new System.Windows.Forms.Button();
             this.chk_dodhiWise = new System.Windows.Forms.CheckBox();
             this.chk_singleCustomer = new System.Windows.Forms.CheckBox();
             this.txt_accountName = new System.Windows.Forms.TextBox();
@@ -55,6 +56,7 @@
             this.lstAccountSuggestions = new System.Windows.Forms.ListBox();
             this.lbl_status = new System.Windows.Forms.Label();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -144,6 +146,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btn_paymentList);
             this.panel1.Controls.Add(this.chk_dodhiWise);
             this.panel1.Controls.Add(this.chk_singleCustomer);
             this.panel1.Controls.Add(this.txt_accountName);
@@ -165,6 +168,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1016, 134);
             this.panel1.TabIndex = 13;
+            // 
+            // btn_paymentList
+            // 
+            this.btn_paymentList.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_paymentList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_paymentList.Location = new System.Drawing.Point(606, 68);
+            this.btn_paymentList.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btn_paymentList.Name = "btn_paymentList";
+            this.btn_paymentList.Size = new System.Drawing.Size(87, 52);
+            this.btn_paymentList.TabIndex = 124;
+            this.btn_paymentList.TabStop = false;
+            this.btn_paymentList.Text = "Print Payment List";
+            this.btn_paymentList.UseVisualStyleBackColor = true;
+            this.btn_paymentList.Click += new System.EventHandler(this.btn_paymentList_Click);
             // 
             // chk_dodhiWise
             // 
@@ -262,13 +279,13 @@
             // 
             this.btn_printAndAddPayments.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_printAndAddPayments.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btn_printAndAddPayments.Location = new System.Drawing.Point(605, 68);
+            this.btn_printAndAddPayments.Location = new System.Drawing.Point(693, 68);
             this.btn_printAndAddPayments.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btn_printAndAddPayments.Name = "btn_printAndAddPayments";
-            this.btn_printAndAddPayments.Size = new System.Drawing.Size(90, 52);
+            this.btn_printAndAddPayments.Size = new System.Drawing.Size(69, 52);
             this.btn_printAndAddPayments.TabIndex = 42;
             this.btn_printAndAddPayments.TabStop = false;
-            this.btn_printAndAddPayments.Text = "Print+Add Payments";
+            this.btn_printAndAddPayments.Text = "Add Payments";
             this.btn_printAndAddPayments.UseVisualStyleBackColor = true;
             this.btn_printAndAddPayments.Click += new System.EventHandler(this.btn_printAndAddPayments_Click);
             // 
@@ -368,6 +385,10 @@
             // 
             this.printDialog1.UseEXDialog = true;
             // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
             // Parchi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -421,5 +442,7 @@
         private System.Windows.Forms.ListBox lstAccountSuggestions;
         private System.Windows.Forms.Label lbl_status;
         private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Windows.Forms.Button btn_paymentList;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }
