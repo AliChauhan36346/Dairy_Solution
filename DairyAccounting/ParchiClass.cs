@@ -286,6 +286,7 @@ namespace DairyAccounting
                 parchiAmount=Math.Round(parchiAmount,0);
                 closingBalance = Math.Round(closingBalance, 0);
                 previousBalance=Math.Round(previousBalance, 0);
+                milkAmount=Math.Round(milkAmount,0);
             }
             catch (Exception ex)
             {

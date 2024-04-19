@@ -258,6 +258,7 @@ namespace WindowsFormsApp1
             //e.HasMorePages = false;
 
             string companyName = "چوہان ڈیری فارمز"; // Your company name
+            string addres = "چک نمبر 189 گ ب پتلی، ٹوبہ ٹیک سنگھ";
 
             DateTime startDate = dtm_start.Value.Date;
             DateTime endDate = dtm_end.Value.Date;
@@ -266,6 +267,7 @@ namespace WindowsFormsApp1
             // Set font and brush for drawing
             Font headingfont = new Font("Times New Roman", 18, FontStyle.Bold);
             Font font = new Font("Times New Roman", 13, FontStyle.Regular);
+            Font address = new Font("Times New Roman", 12, FontStyle.Regular);
             Font linefont = new Font("Jameel Noori Nastaleeq", 12, FontStyle.Regular);
             Font infofont = new Font("Times New Roman", 11, FontStyle.Regular);
             Font nofont = new Font("Jameel Noori Nastaleeq", 9, FontStyle.Regular);
@@ -292,8 +294,11 @@ namespace WindowsFormsApp1
                     
 
                     e.Graphics.DrawString(companyName, headingfont, brush, xAxis, yAxis); // Adjust the Y coordinate as needed
+                    yAxis += 35;
                     xAxis -= 40;//15
-                    yAxis += 13;//30
+                    e.Graphics.DrawString(addres, address, brush, xAxis, yAxis);
+                    
+                    yAxis += 5;//30
                     e.Graphics.DrawString("--------------------------------------------", linefont, brush, xAxis, yAxis); // Adjust the Y coordinate as needed
                     xAxis += 160;//175
                     yAxis += 30;//60
@@ -432,8 +437,10 @@ namespace WindowsFormsApp1
                     xAxis = horizotalElement;
 
                     e.Graphics.DrawString(companyName, headingfont, brush, xAxis, yAxis); // Adjust the Y coordinate as needed
+                    yAxis += 35;
                     xAxis -= 40;//15
-                    yAxis += 13;//30
+                    e.Graphics.DrawString(addres, address, brush, xAxis, yAxis);
+                    yAxis += 5;//30
                     e.Graphics.DrawString("--------------------------------------------", linefont, brush, xAxis, yAxis); // Adjust the Y coordinate as needed
                     xAxis += 160;//175
                     yAxis += 30;//60
@@ -638,8 +645,8 @@ namespace WindowsFormsApp1
             Font headingFont = new Font("Segoe UI", 28, FontStyle.Bold | FontStyle.Underline);
             Font subHeading = new Font("Segoe UI", 24, FontStyle.Bold);
             Font heading3 = new Font("Segoe UI", 16, FontStyle.Bold | FontStyle.Italic); 
-            Font heading4 = new Font("Segoe UI", 14, FontStyle.Bold | FontStyle.Italic); 
-            Font detail = new Font("Segoe UI Semibold", 12, FontStyle.Regular); 
+            Font heading4 = new Font("Segoe UI", 12, FontStyle.Bold | FontStyle.Italic); 
+            Font detail = new Font("Segoe UI Semibold", 11, FontStyle.Regular); 
 
             Pen pen = new Pen(Color.Black, 2);
             Brush brush = Brushes.Black;
@@ -668,7 +675,7 @@ namespace WindowsFormsApp1
             string date = "From Date " + startDate.ToString("dd/MM/yyyy") + "  to  " + endDate.ToString("dd/MM/yyyy");
 
             int xAxis = 50;
-            int yAxis = 240;
+            int yAxis = 215;
 
 
             if (!headerPrinted)
@@ -688,11 +695,11 @@ namespace WindowsFormsApp1
 
                 // Draw the heading centered horizontally
                 e.Graphics.DrawString(headingText, headingFont, brush, xCenter, y);
-                y += 70;
+                y += 60;
                 e.Graphics.DrawString(dodhi, subHeading, brush, dodhiCenter, y);
-                y += 70;
+                y += 60;
                 e.Graphics.DrawString(date, heading3, brush, dateCenter, y);
-                y += 40;
+                y += 35;
                 e.Graphics.DrawLine(pen, 50, y, e.PageBounds.Width - 50, y);
 
                 // Draw a single rectangle around all the text
@@ -710,18 +717,20 @@ namespace WindowsFormsApp1
 
                 // Draw the text within the rectangle
                 e.Graphics.DrawString("Acc Id", heading4, brush, xAxis, yAxis);
-                xAxis += 75;//170
-                e.Graphics.DrawString("Account Name", heading4, brush, xAxis, yAxis);
-                xAxis += 300;//570
+                xAxis += 70;//170
+                e.Graphics.DrawString("Name", heading4, brush, xAxis, yAxis);
+                xAxis += 190;//570
+                e.Graphics.DrawString("pBalance", heading4,brush, xAxis, yAxis);
+                xAxis += 125;
                 e.Graphics.DrawString("Liters", heading4, brush, xAxis, yAxis);
-                xAxis += 100;
-                e.Graphics.DrawString("Payment", heading4, brush, xAxis, yAxis);
-                xAxis += 120;
+                xAxis += 80;
+                e.Graphics.DrawString("Amount", heading4, brush, xAxis, yAxis);
+                xAxis += 90;
+                e.Graphics.DrawString("Parchi", heading4, brush, xAxis, yAxis);
+                xAxis += 90;
                 e.Graphics.DrawString("Balance", heading4, brush, xAxis, yAxis);
-                xAxis += 85;
-                e.Graphics.DrawString("Status", heading4, brush, xAxis, yAxis);
 
-                yAxis = 280;//260
+                yAxis = 250;//260
                 xAxis = 50;//50
 
                 headerPrinted = true;
@@ -740,17 +749,20 @@ namespace WindowsFormsApp1
                 row = dataGridView2.Rows[currentRow];
 
                 e.Graphics.DrawString(row.Cells["Id"].Value.ToString(),detail,brush, xAxis, yAxis);
-                xAxis += 75;
+                xAxis += 70;
                 e.Graphics.DrawString(row.Cells["Customer Name"].Value.ToString(),detail,brush, xAxis, yAxis);
-                xAxis += 300;
+                xAxis += 190;
+                e.Graphics.DrawString(row.Cells["Previous Balance"].Value.ToString() + " " + row.Cells["pStatus"].Value.ToString(), detail, brush, xAxis, yAxis);
+                xAxis += 125;
                 e.Graphics.DrawString(row.Cells["Total Liters"].Value.ToString(), detail, brush, xAxis, yAxis);
-                xAxis += 100;
-                e.Graphics.DrawString(row.Cells["Parchi Amount"].Value.ToString(), detail, brush, xAxis, yAxis);
-                xAxis += 120;
-                e.Graphics.DrawString(row.Cells["Closing Balance"].Value.ToString(), detail, brush, xAxis, yAxis);
-                xAxis += 85;
-                e.Graphics.DrawString(row.Cells["Status"].Value.ToString(), detail, brush, xAxis, yAxis);
-                yAxis += 22;
+                xAxis += 80;
+                e.Graphics.DrawString(row.Cells["Milk Amount"].Value.ToString(), detail, brush, xAxis, yAxis);
+                xAxis += 90;
+                e.Graphics.DrawString(row.Cells["Parchi Amount"].Value.ToString(), heading4, brush, xAxis, yAxis);
+                xAxis += 90;
+                e.Graphics.DrawString(row.Cells["Closing Balance"].Value.ToString()+ " "+ row.Cells["Status"].Value.ToString(), detail, brush, xAxis, yAxis);
+                yAxis += 20;
+
                 e.Graphics.DrawLine(pen, 50, yAxis, e.PageBounds.Width - 50, yAxis);
 
 
@@ -790,14 +802,14 @@ namespace WindowsFormsApp1
             balance = Math.Round(balance, 0);
 
             e.Graphics.DrawString("TOTALS:", heading4, brush, xAxis, yAxis);
-            xAxis += 120;
+            xAxis += 135;
             e.Graphics.DrawString(txt_totalLiters.Text, heading4, brush, xAxis, yAxis);
-            xAxis += 100;
+            xAxis += 80;
+            e.Graphics.DrawString(txt_totalLitersAmount.Text, heading4, brush, xAxis, yAxis);
+            xAxis += 90;
             e.Graphics.DrawString(txt_totalParchiAmount.Text, heading4, brush, xAxis, yAxis);
-            xAxis += 120;
-            e.Graphics.DrawString(balance.ToString(),heading4,brush, xAxis, yAxis);
-            xAxis += 85;
-            e.Graphics.DrawString(status,heading4,brush, xAxis, yAxis);
+            xAxis += 90;
+            e.Graphics.DrawString(balance.ToString()+" "+status,heading4,brush, xAxis, yAxis);
             yAxis += 30;
             e.Graphics.DrawLine(pen, 300, yAxis, e.PageBounds.Width - 50, yAxis);
 
