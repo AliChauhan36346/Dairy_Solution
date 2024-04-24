@@ -355,7 +355,7 @@ namespace DairyAccounting
                                 accountName = customers.GetCustomerNameById(customerId);
 
                                 // caling parchi function to generate parchi of the provide customer
-                                GetAccountSummary(out totalDebit, out totalCredit, out closingBalance, out closingStatus, customerId);
+                                GetAccountSummary(out openingBalance, out openingStatus, out totalDebit, out totalCredit, out closingBalance, out closingStatus, customerId);
 
                                 // adding a row to the table as the new customer will come every time
                                 balanceTable.Rows.Add(customerId, accountName, openingBalance, openingStatus, totalDebit, totalCredit, closingBalance, closingStatus);
@@ -382,7 +382,7 @@ namespace DairyAccounting
                             accountName = customers.GetCustomerNameById(customerId);
 
                             // caling parchi function to generate parchi of the provide customer
-                            GetAccountSummary(out totalDebit, out totalCredit, out closingBalance, out closingStatus, customerId);
+                            GetAccountSummary(out openingBalance, out openingStatus, out totalDebit, out totalCredit, out closingBalance, out closingStatus, customerId);
 
                             // adding a row to the table as the new customer will come every time
                             balanceTable.Rows.Add(customerId, accountName, openingBalance, openingStatus, totalDebit, totalCredit, closingBalance, closingStatus);
@@ -410,7 +410,7 @@ namespace DairyAccounting
                         
 
                         // caling parchi function to generate parchi of the provide customer
-                        GetAccountSummary(out totalDebit, out totalCredit, out closingBalance, out closingStatus, companyId);
+                        GetAccountSummary(out openingBalance, out openingStatus,out totalDebit, out totalCredit, out closingBalance, out closingStatus, companyId);
 
                         // adding a row to the table as the new customer will come every time
                         balanceTable.Rows.Add(companyId, companyName, openingBalance, openingStatus, totalDebit, totalCredit, closingBalance, closingStatus);
@@ -452,10 +452,10 @@ namespace DairyAccounting
             }
         }
 
-        public void GetAccountSummary(out decimal totalDebit, out decimal totalCredit, out decimal closingBalance, out string closingStatus, int accountId)
+        public void GetAccountSummary(out decimal openingBalance, out string openingStatus ,out decimal totalDebit, out decimal totalCredit, out decimal closingBalance, out string closingStatus, int accountId)
         {
-            //decimal openingBalance = 0;
-            //string openingStatus = "";
+            openingBalance = 0;
+            openingStatus = "";
             totalDebit = 0;
             totalCredit = 0;
             closingBalance = 0;
@@ -465,6 +465,19 @@ namespace DairyAccounting
             {
                 dbConnection.openConnection();
 
+                string openingBalanceQuery = "SELECT ISNULL(SUM(amount), 0) AS OpeningBalance" +
+                    " FROM (SELECT -debit AS amount FROM OpeningBalances WHERE accountId=@accountId" +
+                    " UNION ALL" +
+                    " SELECT credit AS amount FROM OpeningBalances WHERE accountId=@accountID)" +
+                    " AS TransactionAmounts";
+
+                using (SqlCommand command = new SqlCommand(openingBalanceQuery, dbConnection.connection))
+                {
+                    command.Parameters.AddWithValue("@accountId", accountId);
+
+                    openingBalance = Convert.ToDecimal(command.ExecuteScalar());
+                }
+
                 // Calculate total debit (sum of negative amounts)
                 string totalDebitQuery = @"
                 SELECT ISNULL(SUM(amount), 0) AS totalDebit
@@ -472,7 +485,7 @@ namespace DairyAccounting
                     SELECT amount FROM Payments WHERE accountId = @accountId
                     UNION ALL
                     SELECT amount FROM Sales WHERE companyId = @accountId
-                ) AS TransactionAmounts";
+                ) AS TransactionAmount";
 
 
                 using (SqlCommand command = new SqlCommand(totalDebitQuery, dbConnection.connection))
@@ -491,7 +504,7 @@ namespace DairyAccounting
                     SELECT amount FROM Receipts WHERE accountId = @accountId
                     UNION ALL
                     SELECT amountReceived FROM Sales WHERE companyId = @accountId
-                ) AS TransactionAmounts";
+                ) AS TransactionAmounted";
 
                 using (SqlCommand command = new SqlCommand(totalCreditQuery, dbConnection.connection))
                 {
@@ -501,8 +514,10 @@ namespace DairyAccounting
                 }
 
                 // Calculate closing balance
-                closingBalance = totalCredit - totalDebit;
+                closingBalance = closingBalance + totalCredit - totalDebit;
+                openingStatus = openingBalance < 0 ? "Debit" : "Credit";
                 closingStatus = closingBalance < 0 ? "Debit" : "Credit";
+                openingBalance = Math.Abs(openingBalance);
                 closingBalance = Math.Abs(closingBalance);
             }
             catch (Exception ex)
