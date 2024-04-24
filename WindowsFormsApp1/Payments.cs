@@ -57,7 +57,7 @@ namespace WindowsFormsApp1
 
             }
 
-            ParchiClass.GetAccountSummary(out decimal totalDebit,out decimal totalCredit,out accountBalance,out status,id);
+            ParchiClass.GetAccountSummary(out decimal openingBalance, out string openingStatus,out decimal totalDebit,out decimal totalCredit,out accountBalance,out status,id);
 
             txt_accountBalance.Text=accountBalance.ToString() + " " + status;
         }

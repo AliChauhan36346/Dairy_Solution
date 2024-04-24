@@ -110,7 +110,7 @@ namespace WindowsFormsApp1
             // Retrieve the account summary
             decimal accountBalance;
             string status;
-            parchiClass.GetAccountSummary(out decimal totalDebit, out decimal totalCredit, out accountBalance, out status, accid);
+            parchiClass.GetAccountSummary(out decimal openingBalance, out string openingStatus, out decimal totalDebit, out decimal totalCredit, out accountBalance, out status, accid);
 
             // Update the balance textbox
             if (status != null)
