@@ -84,6 +84,10 @@ namespace WindowsFormsApp1
                 openingBalances.showDataInGridView(dataGridView1);
                 txt_openingBalanceId.Text = openingBalances.GetNextAvailableID().ToString();
 
+                openingBalances.GetTotalDebitCredit(out decimal totalDebit, out decimal totalCredit);
+                txt_totalDebit.Text = totalDebit.ToString();
+                txt_totalCredit.Text = totalCredit.ToString();
+
                 //move focus for smooth next record entry
                 txt_accountId.Focus();
 
@@ -113,6 +117,10 @@ namespace WindowsFormsApp1
             txt_openingBalanceId.Text = openingBalances.GetNextAvailableID().ToString();
 
             openingBalances.showDataInGridView(dataGridView1);
+
+            openingBalances.GetTotalDebitCredit(out decimal totalDebit, out decimal totalCredit);
+            txt_totalDebit.Text = totalDebit.ToString();
+            txt_totalCredit.Text = totalCredit.ToString();
         }
 
         private void txt_accountId_KeyDown(object sender, KeyEventArgs e)
@@ -199,6 +207,7 @@ namespace WindowsFormsApp1
         {
             if (txt_debit.Text != "")
             {
+                
                 txt_credit.Enabled = false;
             }
             else
@@ -265,7 +274,7 @@ namespace WindowsFormsApp1
                 openingBalances.accountName = txt_accountName.Text;
                 openingBalances.debit = debit;
                 openingBalances.credit = credit;
-                openingBalances.openingBalanceId = openingBalances.GetNextAvailableID();
+                openingBalances.openingBalanceId = int.Parse(txt_openingBalanceId.Text);
 
 
                 openingBalances.updateOpeningBalance(openingBalances);
@@ -273,6 +282,9 @@ namespace WindowsFormsApp1
                 // Show updated data in grid view
                 openingBalances.showDataInGridView(dataGridView1);
                 txt_openingBalanceId.Text = openingBalances.GetNextAvailableID().ToString();
+                openingBalances.GetTotalDebitCredit(out decimal totalDebit, out decimal totalCredit);
+                txt_totalDebit.Text= totalDebit.ToString();
+                txt_totalCredit.Text = totalCredit.ToString();
                 txt_accountId.Focus();
 
 
@@ -312,12 +324,66 @@ namespace WindowsFormsApp1
 
                 // for refreshing data in gridview after deletion
                 openingBalances.showDataInGridView(dataGridView1 );
+
+                openingBalances.GetTotalDebitCredit(out decimal totalDebit, out decimal totalCredit);
+                txt_totalDebit.Text = totalDebit.ToString();
+                txt_totalCredit.Text = totalCredit.ToString();
             }
         }
 
         private void dataGridView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                int selectedIndex = dataGridView1.SelectedRows[0].Index;
 
+                // Check if the selected index is within the bounds of the data
+                if (selectedIndex >= 0 && selectedIndex < dataGridView1.RowCount - 1)
+                {
+                    // Get the selected row
+                    DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+
+                    // Populate text boxes with data from the selected row
+                    txt_openingBalanceId.Text = selectedRow.Cells["Id"].Value.ToString();
+                    txt_accountId.Text = selectedRow.Cells["Account Id"].Value.ToString();
+                    txt_accountName.Text = selectedRow.Cells["Account Name"].Value.ToString();
+                    if (decimal.TryParse(selectedRow.Cells["Debit"].Value.ToString(),out decimal debit))
+                    {
+                        if(debit!=0)
+                        {
+                            txt_debit.Text = selectedRow.Cells["Debit"].Value.ToString();
+                        }
+                    }
+
+                    if(decimal.TryParse(selectedRow.Cells["Credit"].Value.ToString(), out decimal credit))
+                    {
+                        if(credit!=0)
+                        {
+                            txt_credit.Text = selectedRow.Cells["Credit"].Value.ToString();
+                        }
+                    }
+                    
+                    
+                }
+            }
+        }
+
+        private void btn_customer_Click(object sender, EventArgs e)
+        {
+            Customers customers = new Customers();
+            customers.ShowDialog();
+        }
+
+        private void btn_company_Click(object sender, EventArgs e)
+        {
+            Companies company = new Companies();
+            company.ShowDialog();
+        }
+
+        private void btn_account_Click(object sender, EventArgs e)
+        {
+            Accounts accounts = new Accounts();
+            accounts.ShowDialog();
         }
     }
 }

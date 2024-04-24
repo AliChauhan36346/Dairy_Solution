@@ -82,6 +82,7 @@
             this.btn_account.TabIndex = 4;
             this.btn_account.Text = "New Account";
             this.btn_account.UseVisualStyleBackColor = true;
+            this.btn_account.Click += new System.EventHandler(this.btn_account_Click);
             // 
             // btn_company
             // 
@@ -91,6 +92,7 @@
             this.btn_company.TabIndex = 3;
             this.btn_company.Text = "New Company";
             this.btn_company.UseVisualStyleBackColor = true;
+            this.btn_company.Click += new System.EventHandler(this.btn_company_Click);
             // 
             // btn_customer
             // 
@@ -100,6 +102,7 @@
             this.btn_customer.TabIndex = 2;
             this.btn_customer.Text = "New Customer";
             this.btn_customer.UseVisualStyleBackColor = true;
+            this.btn_customer.Click += new System.EventHandler(this.btn_customer_Click);
             // 
             // btn_save
             // 
@@ -139,17 +142,21 @@
             // txt_totalCredit
             // 
             this.txt_totalCredit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_totalCredit.Location = new System.Drawing.Point(724, 140);
+            this.txt_totalCredit.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_totalCredit.ForeColor = System.Drawing.Color.Green;
+            this.txt_totalCredit.Location = new System.Drawing.Point(748, 140);
             this.txt_totalCredit.Name = "txt_totalCredit";
-            this.txt_totalCredit.Size = new System.Drawing.Size(138, 25);
+            this.txt_totalCredit.Size = new System.Drawing.Size(114, 25);
             this.txt_totalCredit.TabIndex = 8;
             // 
             // txt_totalDebit
             // 
             this.txt_totalDebit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_totalDebit.Location = new System.Drawing.Point(724, 102);
+            this.txt_totalDebit.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_totalDebit.ForeColor = System.Drawing.Color.Red;
+            this.txt_totalDebit.Location = new System.Drawing.Point(748, 102);
             this.txt_totalDebit.Name = "txt_totalDebit";
-            this.txt_totalDebit.Size = new System.Drawing.Size(138, 25);
+            this.txt_totalDebit.Size = new System.Drawing.Size(114, 25);
             this.txt_totalDebit.TabIndex = 7;
             // 
             // label6
@@ -157,7 +164,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label6.Location = new System.Drawing.Point(620, 104);
+            this.label6.Location = new System.Drawing.Point(652, 105);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(90, 20);
             this.label6.TabIndex = 9;
@@ -168,7 +175,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Green;
-            this.label7.Location = new System.Drawing.Point(615, 141);
+            this.label7.Location = new System.Drawing.Point(647, 142);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(95, 20);
             this.label7.TabIndex = 10;

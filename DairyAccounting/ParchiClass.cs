@@ -239,6 +239,10 @@ namespace DairyAccounting
                 FROM (
                     SELECT amount FROM Purchases WHERE customerID = @customerId AND date < @startDate
                     UNION ALL
+                    SELECT -Debit FROM OpeningBalances WHERE AccountId=@customerId
+                    UNION ALL
+                    SELECT credit From OpeningBalances WHERE AccountId=@customerId
+                    UNION ALL
                     SELECT -amount FROM Payments WHERE accountId = @customerId
                     UNION ALL
                     SELECT amount FROM Receipts WHERE accountId = @customerId

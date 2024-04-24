@@ -184,7 +184,7 @@ namespace DairyAccounting
                 dbConnection.openConnection();
 
                 // Check if the OpeningBalance ID exists
-                string checkQuery = "SELECT COUNT(*) FROM CompaniesTbl WHERE OpeningBalanceId = @id";
+                string checkQuery = "SELECT COUNT(*) FROM OpeningBalances WHERE OpeningBalanceId = @id";
                 using (SqlCommand checkCommand = new SqlCommand(checkQuery, dbConnection.connection))
                 {
                     checkCommand.Parameters.AddWithValue("@id", OpeningBalance.openingBalanceId);
@@ -197,7 +197,7 @@ namespace DairyAccounting
                 }
 
                 // Update SQL statement
-                string updateQuery = "UPDATE CompaniesTbl " +
+                string updateQuery = "UPDATE OpeningBalances " +
                     "SET accountId = @accountId, accountName = @accountName, debit = @debit, credit=@credit WHERE OpeningBalanceId = @id";
 
 
@@ -218,6 +218,43 @@ namespace DairyAccounting
             catch (Exception ex)
             {
                 MessageBox.Show("Error updating OpeningBalance: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dbConnection.closeConnection();
+            }
+        }
+
+        public void GetTotalDebitCredit(out decimal totalDebit, out decimal totalCredit)
+        {
+            totalCredit=0;
+            totalDebit = 0;
+
+            try
+            {
+                dbConnection.openConnection();
+
+                string debitSum = "SELECT debit, credit FROM OpeningBalances";
+
+
+                using (SqlCommand command = new SqlCommand(debitSum, dbConnection.connection))
+                {
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        decimal debit = decimal.Parse(reader["debit"].ToString());
+                        decimal credit = decimal.Parse(reader["credit"].ToString());
+
+                        totalDebit += debit;
+                        totalCredit += credit;
+                    }
+                }
+                
+            }
+            catch(Exception ex) 
+            {
+                MessageBox.Show("Error retrieving next available ID: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
