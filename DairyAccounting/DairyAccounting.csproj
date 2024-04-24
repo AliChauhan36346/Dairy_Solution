@@ -79,6 +79,7 @@
     <Compile Include="Connection.cs" />
     <Compile Include="AddEmployees.cs" />
     <Compile Include="DashboardClass.cs" />
+    <Compile Include="OpeningBalances.cs" />
     <Compile Include="ParchiClass.cs" />
     <Compile Include="profitLoss.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

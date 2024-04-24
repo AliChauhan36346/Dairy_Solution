@@ -251,8 +251,9 @@ namespace WindowsFormsApp1
         private void txt_dodhiId_KeyDown(object sender, KeyEventArgs e)
         {
             commonFunctions.HandleAccountSuggestionKeyDown(txt_dodhiId, txt_dodhiName, lstDodhiSuggestions, e);
-            if(e.KeyCode==Keys.Enter)
+            if (e.KeyCode==Keys.Enter)
             {
+                
                 txt_liters.Focus();
             }
         }
