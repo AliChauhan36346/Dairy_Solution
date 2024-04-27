@@ -57,6 +57,8 @@
             this.lbl_status = new System.Windows.Forms.Label();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.rdo_printPreview = new System.Windows.Forms.RadioButton();
+            this.rdo_pringDialog = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -146,6 +148,8 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.rdo_pringDialog);
+            this.panel1.Controls.Add(this.rdo_printPreview);
             this.panel1.Controls.Add(this.btn_paymentList);
             this.panel1.Controls.Add(this.chk_dodhiWise);
             this.panel1.Controls.Add(this.chk_singleCustomer);
@@ -389,6 +393,30 @@
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
+            // rdo_printPreview
+            // 
+            this.rdo_printPreview.AutoSize = true;
+            this.rdo_printPreview.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdo_printPreview.Location = new System.Drawing.Point(845, 23);
+            this.rdo_printPreview.Name = "rdo_printPreview";
+            this.rdo_printPreview.Size = new System.Drawing.Size(108, 21);
+            this.rdo_printPreview.TabIndex = 125;
+            this.rdo_printPreview.TabStop = true;
+            this.rdo_printPreview.Text = "Print Preview";
+            this.rdo_printPreview.UseVisualStyleBackColor = true;
+            // 
+            // rdo_pringDialog
+            // 
+            this.rdo_pringDialog.AutoSize = true;
+            this.rdo_pringDialog.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdo_pringDialog.Location = new System.Drawing.Point(845, 50);
+            this.rdo_pringDialog.Name = "rdo_pringDialog";
+            this.rdo_pringDialog.Size = new System.Drawing.Size(106, 21);
+            this.rdo_pringDialog.TabIndex = 126;
+            this.rdo_pringDialog.TabStop = true;
+            this.rdo_pringDialog.Text = "Print Diaglog";
+            this.rdo_pringDialog.UseVisualStyleBackColor = true;
+            // 
             // Parchi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -444,5 +472,7 @@
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.Button btn_paymentList;
         private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.RadioButton rdo_pringDialog;
+        private System.Windows.Forms.RadioButton rdo_printPreview;
     }
 }

@@ -222,7 +222,7 @@ namespace WindowsFormsApp1
             decimal credit2 = 0;
 
             //validating that both debit and credit are equal
-            decimal amount1=-1,amount2=0;
+            decimal amount1=0,amount2=0;
             bool isDebit = true;
 
             // first account
@@ -230,15 +230,19 @@ namespace WindowsFormsApp1
             {
                 if(!decimal.TryParse(txt_debit1.Text, out amount1))
                 {
-                    
+                    MessageBox.Show("Invalid amount for account 1!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
+                isDebit = true;
             }
             else if(txt_credit1.Text!="")
             {
                 if (!decimal.TryParse(txt_credit1.Text, out amount1))
                 {
-                    isDebit = false;
+                    MessageBox.Show("Invalid amount for account 1!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
+                isDebit = false;
             }
 
             //second account
@@ -248,22 +252,34 @@ namespace WindowsFormsApp1
                 {
                     if (!decimal.TryParse(txt_debit2.Text, out amount2))
                     {
-
+                        MessageBox.Show("Invalid amount for account 2!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Total Debit and Credit must be equall!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Amount cannot be debited for both accounts!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 
             }
             else if (txt_credit2.Text != "")
             {
-                if (!decimal.TryParse(txt_credit2.Text, out amount2))
+                if(isDebit)
                 {
-
+                    if (!decimal.TryParse(txt_credit2.Text, out amount2))
+                    {
+                        MessageBox.Show("Invalid amount for account 2!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
+                else
+                {
+                    MessageBox.Show("Amount cannot be credited for both accounts!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                
+
             }
 
             // validating
@@ -423,8 +439,8 @@ namespace WindowsFormsApp1
                 {
                     txt_accountId2.Text = accounts[1].accountId.ToString();
                     txt_accountName2.Text = accounts[1].accountName;
-                    decimal debit2 = accounts[0].debit;
-                    decimal credit2 = accounts[0].credit;
+                    decimal debit2 = accounts[1].debit;
+                    decimal credit2 = accounts[1].credit;
 
                     txt_debit2.Text = debit2.ToString();
                     txt_credit2.Text = credit2.ToString();
@@ -518,8 +534,8 @@ namespace WindowsFormsApp1
                 {
                     txt_accountId2.Text = accounts[1].accountId.ToString();
                     txt_accountName2.Text = accounts[1].accountName;
-                    decimal debit2 = accounts[0].debit;
-                    decimal credit2 = accounts[0].credit;
+                    decimal debit2 = accounts[1].debit;
+                    decimal credit2 = accounts[1].credit;
 
                     txt_debit2.Text = debit2.ToString();
                     txt_credit2.Text = credit2.ToString();

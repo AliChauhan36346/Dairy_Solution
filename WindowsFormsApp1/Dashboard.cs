@@ -353,5 +353,10 @@ namespace WindowsFormsApp1
             GeneralJournal generalJournal=new GeneralJournal();
             generalJournal.ShowDialog();
         }
+
+        private void toolStripMenuItem8_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -596,24 +596,42 @@ namespace WindowsFormsApp1
 
         private void btn_print_Click(object sender, EventArgs e)
         {
-            //printDialog1.Document = printDocument2;
+            //
 
             // Set up event handler only once
             //printDocument2.PrintPage += printDocument2_PrintPage;
 
             //printDocument2.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("pprnm", 285, 455);//455
 
-            // Create PrintPreviewDialog and assign the document
-            PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
-            printPreviewDialog.Document = printDocument2;
+            
 
-            // Show the print preview dialog
-            DialogResult result = printPreviewDialog.ShowDialog();
-
-            if (result == DialogResult.OK)
+            if(rdo_printPreview.Checked)
             {
-                currentRow = 0; // Reset rowIndex before printing
-                printDocument2.Print();
+                // Create PrintPreviewDialog and assign the document
+                PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
+                printPreviewDialog.Document = printDocument2;
+
+                // Show the print preview dialog
+                DialogResult result = printPreviewDialog.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    currentRow = 0; // Reset rowIndex before printing
+                    printDocument2.Print();
+                }
+            }
+            if(rdo_pringDialog.Checked)
+            {
+                printDialog1.Document = printDocument2;
+
+                // Show the print preview dialog
+                DialogResult result = printDialog1.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    currentRow = 0; // Reset rowIndex before printing
+                    printDocument2.Print();
+                }
             }
         }
 
