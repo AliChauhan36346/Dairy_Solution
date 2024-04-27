@@ -750,7 +750,7 @@ namespace WindowsFormsApp1
         // get the basic info like gross sales and ts sales and stock
         private void getStats()
         {
-            DateTime today = DateTime.Now;
+            DateTime today = DateTime.Today;
 
             string grosSales;
             string tsSales;

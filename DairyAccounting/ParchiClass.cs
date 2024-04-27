@@ -243,6 +243,10 @@ namespace DairyAccounting
                     UNION ALL
                     SELECT credit From OpeningBalances WHERE AccountId=@customerId
                     UNION ALL
+                    SELECT -Debit FROM JournalVoucher WHERE AccountId=@customerId
+                    UNION ALL
+                    SELECT Credit FROM JournalVoucher WHERE AccountId=@customerId
+                    UNION ALL
                     SELECT -amount FROM Payments WHERE accountId = @customerId
                     UNION ALL
                     SELECT amount FROM Receipts WHERE accountId = @customerId
@@ -485,6 +489,8 @@ namespace DairyAccounting
                     SELECT amount FROM Payments WHERE accountId = @accountId
                     UNION ALL
                     SELECT amount FROM Sales WHERE companyId = @accountId
+                    UNION ALL
+                    SELECT Debit FROM JournalVoucher WHERE AccountId=@accountId
                 ) AS TransactionAmount";
 
 
@@ -504,6 +510,8 @@ namespace DairyAccounting
                     SELECT amount FROM Receipts WHERE accountId = @accountId
                     UNION ALL
                     SELECT amountReceived FROM Sales WHERE companyId = @accountId
+                    UNION ALL
+                    SELECT Credit FROM JournalVoucher WHERE AccountId=@accountId
                 ) AS TransactionAmounted";
 
                 using (SqlCommand command = new SqlCommand(totalCreditQuery, dbConnection.connection))

@@ -503,7 +503,7 @@ namespace WindowsFormsApp1
 
         private void getStats()
         {
-            DateTime today = DateTime.Now;
+            DateTime today = DateTime.Today;
 
             string grossReceive;
             string totalPurchase;

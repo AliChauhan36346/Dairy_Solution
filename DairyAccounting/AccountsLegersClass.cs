@@ -60,6 +60,14 @@ namespace DairyAccounting
 
                     UNION ALL
 
+                    SELECT debit AS debit, credit AS credit FROM OpeningBalances WHERE accountId=@id
+
+                    UNION ALL
+
+                    SELECT debit AS debit, credit AS credit FROM JournalVoucher WHERE accountId=@id AND date<@fromDate
+
+                    UNION ALL
+
                     SELECT 0 AS debit, amountReceived AS credit
                     FROM Sales 
                     WHERE companyId = @id AND date < @fromDate
@@ -117,6 +125,11 @@ namespace DairyAccounting
                 amount AS credit
                 FROM Purchases 
                 WHERE customerID = @id AND date >= @fromDate AND date <= @toDate
+
+                UNION ALL
+
+                SELECT date, 'JV' + CAST(journalId AS NVARCHAR(50)) AS transactionNo, discription AS discription, debit AS debit, credit AS credit FROM JournalVoucher
+                WHERE accountId=@id AND date>=@fromDate AND date<=@toDate
 
                 UNION ALL
 
