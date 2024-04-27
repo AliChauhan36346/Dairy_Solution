@@ -115,6 +115,8 @@
             this.rateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.customersDodhiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salesReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.purchaseReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -124,8 +126,8 @@
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.incomeReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.balanceSheetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.btn_journalVoucher = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -145,11 +147,13 @@
             this.panel14.SuspendLayout();
             this.panel15.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.panel12.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel1.Controls.Add(this.panel12);
             this.panel1.Controls.Add(this.panel8);
             this.panel1.Controls.Add(this.panel7);
             this.panel1.Controls.Add(this.panel6);
@@ -1103,6 +1107,18 @@
             this.customersDodhiToolStripMenuItem.Text = "Customers Dodhi";
             this.customersDodhiToolStripMenuItem.Click += new System.EventHandler(this.customersDodhiToolStripMenuItem_Click);
             // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(219, 6);
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(222, 22);
+            this.toolStripMenuItem7.Text = "Accounts Opening Balances";
+            this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItem7_Click);
+            // 
             // reportsToolStripMenuItem
             // 
             this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1168,17 +1184,26 @@
             this.balanceSheetToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.balanceSheetToolStripMenuItem.Text = "Balance Sheet";
             // 
-            // toolStripMenuItem6
+            // panel12
             // 
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(219, 6);
+            this.panel12.Controls.Add(this.btn_journalVoucher);
+            this.panel12.Location = new System.Drawing.Point(12, 487);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(195, 33);
+            this.panel12.TabIndex = 16;
             // 
-            // toolStripMenuItem7
+            // btn_journalVoucher
             // 
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(222, 22);
-            this.toolStripMenuItem7.Text = "Accounts Opening Balances";
-            this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItem7_Click);
+            this.btn_journalVoucher.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_journalVoucher.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_journalVoucher.ForeColor = System.Drawing.Color.White;
+            this.btn_journalVoucher.Location = new System.Drawing.Point(-19, -18);
+            this.btn_journalVoucher.Name = "btn_journalVoucher";
+            this.btn_journalVoucher.Size = new System.Drawing.Size(233, 67);
+            this.btn_journalVoucher.TabIndex = 1;
+            this.btn_journalVoucher.Text = "Journal Voucher";
+            this.btn_journalVoucher.UseVisualStyleBackColor = false;
+            this.btn_journalVoucher.Click += new System.EventHandler(this.btn_journalVoucher_Click);
             // 
             // Dashboard
             // 
@@ -1235,6 +1260,7 @@
             this.panel15.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.panel12.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1340,6 +1366,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Button btn_journalVoucher;
     }
 }
 

@@ -294,8 +294,6 @@ namespace DairyAccounting
             }
         }
 
-
-
         public int GetNextAvailableID()
         {
             // Logic to retrieve the next available ID from the database
@@ -418,6 +416,7 @@ namespace DairyAccounting
                 dbConnection.closeConnection();
             }
         }
+
 
 
     }

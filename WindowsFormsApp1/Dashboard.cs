@@ -347,5 +347,11 @@ namespace WindowsFormsApp1
             Accounts_Opening_Balances opening_Balances = new Accounts_Opening_Balances();
             opening_Balances.ShowDialog();
         }
+
+        private void btn_journalVoucher_Click(object sender, EventArgs e)
+        {
+            GeneralJournal generalJournal=new GeneralJournal();
+            generalJournal.ShowDialog();
+        }
     }
 }

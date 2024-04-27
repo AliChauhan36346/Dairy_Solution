@@ -42,7 +42,7 @@ namespace DairyAccounting
                 {
                     command.Connection = dbConnection.connection;
                     command.CommandText = "INSERT INTO OpeningBalances(accountId, accountName, debit, credit) " +
-                                          "VALUES (@accountId, @accountName, @credit, @debit)";
+                                          "VALUES (@accountId, @accountName, @debit, @credit)";
                     command.Parameters.AddWithValue("@accountId", openningBalance.accountId);
                     command.Parameters.AddWithValue("@accountName", openningBalance.accountName);
                     command.Parameters.AddWithValue("@debit", openningBalance.debit);

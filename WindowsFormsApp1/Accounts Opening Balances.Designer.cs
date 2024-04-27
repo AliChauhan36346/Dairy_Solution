@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_delete = new System.Windows.Forms.Button();
+            this.btn_update = new System.Windows.Forms.Button();
             this.btn_account = new System.Windows.Forms.Button();
             this.btn_company = new System.Windows.Forms.Button();
             this.btn_customer = new System.Windows.Forms.Button();
@@ -49,8 +51,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txt_openingBalanceId = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btn_update = new System.Windows.Forms.Button();
-            this.btn_delete = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -73,6 +73,28 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(874, 62);
             this.panel1.TabIndex = 0;
+            // 
+            // btn_delete
+            // 
+            this.btn_delete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btn_delete.Location = new System.Drawing.Point(401, 3);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(75, 52);
+            this.btn_delete.TabIndex = 22;
+            this.btn_delete.Text = "Delete";
+            this.btn_delete.UseVisualStyleBackColor = true;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
+            // 
+            // btn_update
+            // 
+            this.btn_update.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btn_update.Location = new System.Drawing.Point(477, 3);
+            this.btn_update.Name = "btn_update";
+            this.btn_update.Size = new System.Drawing.Size(75, 52);
+            this.btn_update.TabIndex = 5;
+            this.btn_update.Text = "Update";
+            this.btn_update.UseVisualStyleBackColor = true;
+            this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
             // 
             // btn_account
             // 
@@ -273,28 +295,6 @@
             this.label2.Size = new System.Drawing.Size(19, 17);
             this.label2.TabIndex = 12;
             this.label2.Text = "Id";
-            // 
-            // btn_update
-            // 
-            this.btn_update.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btn_update.Location = new System.Drawing.Point(477, 3);
-            this.btn_update.Name = "btn_update";
-            this.btn_update.Size = new System.Drawing.Size(75, 52);
-            this.btn_update.TabIndex = 5;
-            this.btn_update.Text = "Update";
-            this.btn_update.UseVisualStyleBackColor = true;
-            this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
-            // 
-            // btn_delete
-            // 
-            this.btn_delete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btn_delete.Location = new System.Drawing.Point(401, 3);
-            this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(75, 52);
-            this.btn_delete.TabIndex = 22;
-            this.btn_delete.Text = "Delete";
-            this.btn_delete.UseVisualStyleBackColor = true;
-            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // Accounts_Opening_Balances
             // 
