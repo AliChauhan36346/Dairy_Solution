@@ -93,13 +93,13 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel15 = new System.Windows.Forms.Panel();
-            this.label35 = new System.Windows.Forms.Label();
+            this.lbl_paymentAmount = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
+            this.lbl_currentBalance = new System.Windows.Forms.Label();
+            this.lbl_totalReceipts = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
+            this.lbl_accOpeningBalance = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -130,6 +130,8 @@
             this.balanceSheetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
             this.label8 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel12.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -547,6 +549,7 @@
             this.lbl_PdodhiLoss.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lbl_PdodhiLoss.Location = new System.Drawing.Point(86, 134);
             this.lbl_PdodhiLoss.Name = "lbl_PdodhiLoss";
+            this.lbl_PdodhiLoss.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lbl_PdodhiLoss.Size = new System.Drawing.Size(49, 37);
             this.lbl_PdodhiLoss.TabIndex = 5;
             this.lbl_PdodhiLoss.Text = "23";
@@ -559,6 +562,7 @@
             this.lbl_grossReceive.ForeColor = System.Drawing.Color.Green;
             this.lbl_grossReceive.Location = new System.Drawing.Point(86, 92);
             this.lbl_grossReceive.Name = "lbl_grossReceive";
+            this.lbl_grossReceive.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lbl_grossReceive.Size = new System.Drawing.Size(62, 30);
             this.lbl_grossReceive.TabIndex = 4;
             this.lbl_grossReceive.Text = "1000";
@@ -583,6 +587,7 @@
             this.lbl_purchases.ForeColor = System.Drawing.Color.MidnightBlue;
             this.lbl_purchases.Location = new System.Drawing.Point(86, 45);
             this.lbl_purchases.Name = "lbl_purchases";
+            this.lbl_purchases.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lbl_purchases.Size = new System.Drawing.Size(62, 30);
             this.lbl_purchases.TabIndex = 2;
             this.lbl_purchases.Text = "1900";
@@ -738,6 +743,7 @@
             this.lbl_stockOrLoss.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lbl_stockOrLoss.Location = new System.Drawing.Point(90, 134);
             this.lbl_stockOrLoss.Name = "lbl_stockOrLoss";
+            this.lbl_stockOrLoss.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lbl_stockOrLoss.Size = new System.Drawing.Size(49, 37);
             this.lbl_stockOrLoss.TabIndex = 13;
             this.lbl_stockOrLoss.Text = "23";
@@ -749,6 +755,7 @@
             this.lbl_stockSales.ForeColor = System.Drawing.Color.MidnightBlue;
             this.lbl_stockSales.Location = new System.Drawing.Point(90, 91);
             this.lbl_stockSales.Name = "lbl_stockSales";
+            this.lbl_stockSales.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lbl_stockSales.Size = new System.Drawing.Size(62, 30);
             this.lbl_stockSales.TabIndex = 10;
             this.lbl_stockSales.Text = "1900";
@@ -773,6 +780,7 @@
             this.lbl_stockCReceive.ForeColor = System.Drawing.Color.Green;
             this.lbl_stockCReceive.Location = new System.Drawing.Point(90, 44);
             this.lbl_stockCReceive.Name = "lbl_stockCReceive";
+            this.lbl_stockCReceive.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lbl_stockCReceive.Size = new System.Drawing.Size(62, 30);
             this.lbl_stockCReceive.TabIndex = 6;
             this.lbl_stockCReceive.Text = "1000";
@@ -806,7 +814,9 @@
             this.panel14.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel14.Controls.Add(this.label15);
             this.panel14.Controls.Add(this.lbl_tsLoss);
+            this.panel14.Controls.Add(this.label12);
             this.panel14.Controls.Add(this.lbl_tsVolume);
+            this.panel14.Controls.Add(this.label11);
             this.panel14.Controls.Add(this.lable);
             this.panel14.Controls.Add(this.lbl_grossVolume);
             this.panel14.Controls.Add(this.label20);
@@ -832,8 +842,9 @@
             this.lbl_tsLoss.AutoSize = true;
             this.lbl_tsLoss.Font = new System.Drawing.Font("Segoe UI Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_tsLoss.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbl_tsLoss.Location = new System.Drawing.Point(88, 134);
+            this.lbl_tsLoss.Location = new System.Drawing.Point(89, 135);
             this.lbl_tsLoss.Name = "lbl_tsLoss";
+            this.lbl_tsLoss.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lbl_tsLoss.Size = new System.Drawing.Size(49, 37);
             this.lbl_tsLoss.TabIndex = 11;
             this.lbl_tsLoss.Text = "23";
@@ -844,8 +855,9 @@
             this.lbl_tsVolume.AutoSize = true;
             this.lbl_tsVolume.Font = new System.Drawing.Font("Segoe UI Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_tsVolume.ForeColor = System.Drawing.Color.Green;
-            this.lbl_tsVolume.Location = new System.Drawing.Point(88, 91);
+            this.lbl_tsVolume.Location = new System.Drawing.Point(89, 92);
             this.lbl_tsVolume.Name = "lbl_tsVolume";
+            this.lbl_tsVolume.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lbl_tsVolume.Size = new System.Drawing.Size(62, 30);
             this.lbl_tsVolume.TabIndex = 10;
             this.lbl_tsVolume.Text = "1000";
@@ -868,8 +880,9 @@
             this.lbl_grossVolume.AutoSize = true;
             this.lbl_grossVolume.Font = new System.Drawing.Font("Segoe UI Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_grossVolume.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.lbl_grossVolume.Location = new System.Drawing.Point(88, 45);
+            this.lbl_grossVolume.Location = new System.Drawing.Point(89, 46);
             this.lbl_grossVolume.Name = "lbl_grossVolume";
+            this.lbl_grossVolume.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lbl_grossVolume.Size = new System.Drawing.Size(62, 30);
             this.lbl_grossVolume.TabIndex = 8;
             this.lbl_grossVolume.Text = "1900";
@@ -900,13 +913,13 @@
             // panel15
             // 
             this.panel15.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel15.Controls.Add(this.label35);
+            this.panel15.Controls.Add(this.lbl_paymentAmount);
             this.panel15.Controls.Add(this.label36);
             this.panel15.Controls.Add(this.label29);
-            this.panel15.Controls.Add(this.label30);
-            this.panel15.Controls.Add(this.label31);
+            this.panel15.Controls.Add(this.lbl_currentBalance);
+            this.panel15.Controls.Add(this.lbl_totalReceipts);
             this.panel15.Controls.Add(this.label32);
-            this.panel15.Controls.Add(this.label33);
+            this.panel15.Controls.Add(this.lbl_accOpeningBalance);
             this.panel15.Controls.Add(this.label34);
             this.panel15.Controls.Add(this.label9);
             this.panel15.Location = new System.Drawing.Point(278, 353);
@@ -914,18 +927,18 @@
             this.panel15.Size = new System.Drawing.Size(200, 191);
             this.panel15.TabIndex = 11;
             // 
-            // label35
+            // lbl_paymentAmount
             // 
-            this.label35.AutoEllipsis = true;
-            this.label35.AutoSize = true;
-            this.label35.Font = new System.Drawing.Font("Segoe UI Black", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label35.Location = new System.Drawing.Point(108, 107);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(66, 25);
-            this.label35.TabIndex = 20;
-            this.label35.Text = "12500";
-            this.label35.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lbl_paymentAmount.AutoEllipsis = true;
+            this.lbl_paymentAmount.AutoSize = true;
+            this.lbl_paymentAmount.Font = new System.Drawing.Font("Segoe UI Black", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_paymentAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lbl_paymentAmount.Location = new System.Drawing.Point(107, 110);
+            this.lbl_paymentAmount.Name = "lbl_paymentAmount";
+            this.lbl_paymentAmount.Size = new System.Drawing.Size(56, 21);
+            this.lbl_paymentAmount.TabIndex = 20;
+            this.lbl_paymentAmount.Text = "12500";
+            this.lbl_paymentAmount.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label36
             // 
@@ -949,29 +962,29 @@
             this.label29.TabIndex = 18;
             this.label29.Text = "Current Balance";
             // 
-            // label30
+            // lbl_currentBalance
             // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Segoe UI Black", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.ForeColor = System.Drawing.Color.Lime;
-            this.label30.Location = new System.Drawing.Point(108, 143);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(93, 25);
-            this.label30.TabIndex = 17;
-            this.label30.Text = "2300000";
+            this.lbl_currentBalance.AutoSize = true;
+            this.lbl_currentBalance.Font = new System.Drawing.Font("Segoe UI Black", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_currentBalance.ForeColor = System.Drawing.Color.Lime;
+            this.lbl_currentBalance.Location = new System.Drawing.Point(107, 146);
+            this.lbl_currentBalance.Name = "lbl_currentBalance";
+            this.lbl_currentBalance.Size = new System.Drawing.Size(77, 21);
+            this.lbl_currentBalance.TabIndex = 17;
+            this.lbl_currentBalance.Text = "2300000";
             // 
-            // label31
+            // lbl_totalReceipts
             // 
-            this.label31.AutoEllipsis = true;
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Segoe UI Black", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.ForeColor = System.Drawing.Color.Green;
-            this.label31.Location = new System.Drawing.Point(108, 75);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(56, 25);
-            this.label31.TabIndex = 16;
-            this.label31.Text = "9780";
-            this.label31.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lbl_totalReceipts.AutoEllipsis = true;
+            this.lbl_totalReceipts.AutoSize = true;
+            this.lbl_totalReceipts.Font = new System.Drawing.Font("Segoe UI Black", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_totalReceipts.ForeColor = System.Drawing.Color.Green;
+            this.lbl_totalReceipts.Location = new System.Drawing.Point(107, 78);
+            this.lbl_totalReceipts.Name = "lbl_totalReceipts";
+            this.lbl_totalReceipts.Size = new System.Drawing.Size(49, 21);
+            this.lbl_totalReceipts.TabIndex = 16;
+            this.lbl_totalReceipts.Text = "9780";
+            this.lbl_totalReceipts.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label32
             // 
@@ -984,16 +997,16 @@
             this.label32.TabIndex = 15;
             this.label32.Text = "Receipts";
             // 
-            // label33
+            // lbl_accOpeningBalance
             // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Segoe UI Black", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label33.Location = new System.Drawing.Point(108, 44);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(56, 25);
-            this.label33.TabIndex = 14;
-            this.label33.Text = "1900";
+            this.lbl_accOpeningBalance.AutoSize = true;
+            this.lbl_accOpeningBalance.Font = new System.Drawing.Font("Segoe UI Black", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_accOpeningBalance.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.lbl_accOpeningBalance.Location = new System.Drawing.Point(107, 47);
+            this.lbl_accOpeningBalance.Name = "lbl_accOpeningBalance";
+            this.lbl_accOpeningBalance.Size = new System.Drawing.Size(48, 21);
+            this.lbl_accOpeningBalance.TabIndex = 14;
+            this.lbl_accOpeningBalance.Text = "1900";
             // 
             // label34
             // 
@@ -1227,6 +1240,30 @@
             this.label8.TabIndex = 13;
             this.label8.Text = "A Sofware developed by ALI ABBAS";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label11.Location = new System.Drawing.Point(663, 50);
+            this.label11.Name = "label11";
+            this.label11.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label11.Size = new System.Drawing.Size(0, 32);
+            this.label11.TabIndex = 12;
+            // 
+            // label12
+            // 
+            this.label12.AutoEllipsis = true;
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Green;
+            this.label12.Location = new System.Drawing.Point(663, 88);
+            this.label12.Name = "label12";
+            this.label12.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label12.Size = new System.Drawing.Size(0, 32);
+            this.label12.TabIndex = 14;
+            this.label12.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1350,12 +1387,12 @@
         private System.Windows.Forms.Label lbl_avgFat;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label lbl_currentBalance;
+        private System.Windows.Forms.Label lbl_totalReceipts;
         private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label lbl_accOpeningBalance;
         private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label lbl_paymentAmount;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label lbl_stockCReceive;
         private System.Windows.Forms.Label label22;
@@ -1393,6 +1430,8 @@
         private System.Windows.Forms.Button btn_journalVoucher;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
     }
 }
 

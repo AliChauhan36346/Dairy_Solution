@@ -54,6 +54,8 @@ namespace WindowsFormsApp1
 
             lbl_status.Visible = false;
 
+            rdo_printPreview.Checked = true;
+
             
         }
 

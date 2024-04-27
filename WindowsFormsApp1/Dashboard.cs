@@ -172,8 +172,16 @@ namespace WindowsFormsApp1
 
 
             // for bank/cash card
+            dashboard.getAccountOpeningBalance(dtm_start.Value.Date, out decimal openingAmount);
+            dashboard.GetTotalPaymentAmount(dtm_start.Value.Date,dtm_end.Value.Date, out decimal totalPaymentAmount);
+            dashboard.GetTotalReceiptAmount(dtm_start.Value.Date,dtm_end.Value.Date, out decimal totalReceiptAmount);
+            lbl_accOpeningBalance.Text= openingAmount.ToString();
+            lbl_paymentAmount.Text = totalPaymentAmount.ToString();
+            lbl_totalReceipts.Text= totalReceiptAmount.ToString();
 
+            decimal currentBalane = openingAmount > 0 ? (openingAmount + totalReceiptAmount) - totalPaymentAmount : (openingAmount - totalPaymentAmount) + totalReceiptAmount;
 
+            lbl_currentBalance.Text=currentBalane.ToString();
 
 
 
