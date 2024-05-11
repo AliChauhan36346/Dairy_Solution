@@ -18,6 +18,8 @@ namespace WindowsFormsApp1
         CommonFunctionsClass CommonFunctions = new CommonFunctionsClass();
         public int id=-1;
         public string name;
+        public DateTime startDate;
+        public DateTime endDate;
 
         public milk_card()
         {
@@ -27,6 +29,9 @@ namespace WindowsFormsApp1
         private void milk_card_Load(object sender, EventArgs e)
         {
             lstAccountSuggestions.Visible = false;
+
+            dtm_startDate.Value= startDate;
+            dtm_endDate.Value= endDate;
 
             if(id!=-1)
             {

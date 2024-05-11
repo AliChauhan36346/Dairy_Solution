@@ -522,7 +522,7 @@ namespace DairyAccounting
                 }
 
                 // Calculate closing balance
-                closingBalance = closingBalance + totalCredit - totalDebit;
+                closingBalance = openingBalance + totalCredit - totalDebit;
                 openingStatus = openingBalance < 0 ? "Debit" : "Credit";
                 closingStatus = closingBalance < 0 ? "Debit" : "Credit";
                 openingBalance = Math.Abs(openingBalance);

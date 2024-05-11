@@ -56,14 +56,7 @@ namespace WindowsFormsApp1
             txt_volume.Text = volume.ToString();
             txt_tsVolume.Text = tsVolume.ToString();
 
-            decimal avgSale = commonFunctions.AverageRate(false);
-            decimal avgpurchase = commonFunctions.AverageRate(true);
-
-            avgSale=Math.Round(avgSale, 2);
-            avgpurchase = Math.Round(avgpurchase, 2);
-
-            lbl_avgPurchaseRate.Text = avgpurchase.ToString();
-            lbl_avgSalesRate.Text = avgSale.ToString();
+            
         }
 
         private void dataGridView2_MouseDoubleClick(object sender, MouseEventArgs e)

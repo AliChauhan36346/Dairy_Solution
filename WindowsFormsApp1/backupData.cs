@@ -46,7 +46,7 @@ namespace WindowsFormsApp1
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Backup files (*.bak)|*.bak"; // Filter for backup files
-            saveFileDialog.FileName = "dairyDatabase_backup_" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".bak"; // Default file name with timestamp
+            //saveFileDialog.FileName = "dairyDatabase_backup_" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".bak"; // Default file name with timestamp
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -58,6 +58,16 @@ namespace WindowsFormsApp1
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void backupData_Load(object sender, EventArgs e)
         {
 
         }

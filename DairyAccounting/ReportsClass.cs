@@ -592,5 +592,105 @@ namespace DairyAccounting
             dataGridView.Columns["Difference"].Width = 80;
             dataGridView.Columns["Status"].Width = 65;
         }
+
+        public decimal GetExpenseReport(DataGridView dataGridView, DateTime startDate, DateTime endDate, string ExpenseType)
+        {
+            decimal total = 0;
+
+            DataTable expenseTable = new DataTable();
+
+            expenseTable.Columns.Add("Id");
+            expenseTable.Columns.Add("Date");
+            expenseTable.Columns.Add("Acc Id");
+            expenseTable.Columns.Add("Acc Name");
+            expenseTable.Columns.Add("Expense Type");
+            expenseTable.Columns.Add("Discription");
+            expenseTable.Columns.Add("Emp Id");
+            expenseTable.Columns.Add("Emp Name");
+            expenseTable.Columns.Add("Amount");
+
+            
+
+            try
+            {
+
+                dbConnection.openConnection();
+
+                string query;
+
+                if (ExpenseType == "")
+                {
+                    query = "SELECT ExpenseId, date, cashAccountId, cashAccountName, type, amount, discription, employeeId, employeeName FROM Expense WHERE date>=@startDate AND date<=@endDate";
+                }
+                else
+                {
+                    query = "SELECT ExpenseId, date, cashAccountId, cashAccountName, type, amount, discription, employeeId, employeeName FROM Expense WHERE type=@type AND date>=@startDate AND date<=@endDate";
+                }
+
+                
+
+                using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
+                {
+                    if(ExpenseType=="")
+                    {
+                        command.Parameters.AddWithValue("@startDate", startDate);
+                        command.Parameters.AddWithValue("@endDate", endDate);
+                    }
+                    else
+                    {
+                        command.Parameters.AddWithValue("@type", ExpenseType);
+                        command.Parameters.AddWithValue("@startDate", startDate);
+                        command.Parameters.AddWithValue("@endDate", endDate);
+                    }
+                    
+
+                    using(SqlDataReader reader=command.ExecuteReader())
+                    {
+                        while(reader.Read())
+                        {
+                            string id = reader["ExpenseId"].ToString();
+                            string date = ((DateTime)reader["date"]).ToString("dd-MM-yyyy");
+                            string accId = reader["cashAccountId"].ToString();
+                            string accName = reader["cashAccountName"].ToString();
+                            string type = reader["type"].ToString();
+                            string discription = reader["discription"].ToString();
+                            string empId = reader["employeeId"].ToString();
+                            string empName = reader["employeeName"].ToString();
+                            decimal amount = (decimal)reader["amount"];
+
+                            total += amount;
+
+                            expenseTable.Rows.Add(id,date,accId,accName,type, discription,empId,empName,amount);
+                        }
+                    }
+
+                }
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error creating expense report: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dbConnection.closeConnection();
+            }
+
+            dataGridView.DataSource = expenseTable;
+
+            dataGridView.Columns["Id"].Width = 60;
+            dataGridView.Columns["date"].Width = 90;
+            dataGridView.Columns["Acc Id"].Width = 60;
+            dataGridView.Columns["Acc Name"].Width = 120;
+            dataGridView.Columns["Expense Type"].Width = 115;
+            dataGridView.Columns["Discription"].Width = 152;
+            dataGridView.Columns["Emp Id"].Width = 60;
+            dataGridView.Columns["Emp Name"].Width = 130;
+            dataGridView.Columns["Amount"].Width = 100;
+
+
+
+            return total;
+        }
     }
 }

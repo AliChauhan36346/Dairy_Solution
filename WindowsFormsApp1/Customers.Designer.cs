@@ -45,6 +45,7 @@
             this.txt_Id = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.btn_updateRecord = new System.Windows.Forms.Button();
             this.cusBtn_dashboard = new System.Windows.Forms.Button();
             this.cusBtn_addNew = new System.Windows.Forms.Button();
@@ -53,9 +54,9 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.cusBtn_find = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.txt_cusName = new System.Windows.Forms.TextBox();
+            this.txt_cusId = new System.Windows.Forms.TextBox();
+            this.lstCustomerSuggestions = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -276,6 +277,20 @@
             this.panel1.Size = new System.Drawing.Size(857, 62);
             this.panel1.TabIndex = 7;
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.button1.Location = new System.Drawing.Point(351, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(81, 52);
+            this.button1.TabIndex = 31;
+            this.button1.TabStop = false;
+            this.button1.Text = "Add Employee";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // btn_updateRecord
             // 
             this.btn_updateRecord.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -380,6 +395,7 @@
             this.cusBtn_find.TabStop = false;
             this.cusBtn_find.Text = "Find";
             this.cusBtn_find.UseVisualStyleBackColor = true;
+            this.cusBtn_find.Click += new System.EventHandler(this.cusBtn_find_Click);
             // 
             // label6
             // 
@@ -393,48 +409,46 @@
             this.label6.TabIndex = 35;
             this.label6.Text = "Find Customer";
             // 
-            // textBox1
+            // txt_cusName
             // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(689, 85);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(158, 27);
-            this.textBox1.TabIndex = 40;
-            this.textBox1.TabStop = false;
+            this.txt_cusName.BackColor = System.Drawing.Color.White;
+            this.txt_cusName.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_cusName.Location = new System.Drawing.Point(689, 85);
+            this.txt_cusName.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.txt_cusName.Name = "txt_cusName";
+            this.txt_cusName.ReadOnly = true;
+            this.txt_cusName.Size = new System.Drawing.Size(158, 27);
+            this.txt_cusName.TabIndex = 40;
+            this.txt_cusName.TabStop = false;
             // 
-            // textBox2
+            // txt_cusId
             // 
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(608, 85);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(79, 27);
-            this.textBox2.TabIndex = 39;
+            this.txt_cusId.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_cusId.Location = new System.Drawing.Point(608, 85);
+            this.txt_cusId.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.txt_cusId.Name = "txt_cusId";
+            this.txt_cusId.Size = new System.Drawing.Size(79, 27);
+            this.txt_cusId.TabIndex = 39;
+            this.txt_cusId.TextChanged += new System.EventHandler(this.txt_cusId_TextChanged);
+            this.txt_cusId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_cusId_KeyDown);
             // 
-            // button1
+            // lstCustomerSuggestions
             // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button1.Location = new System.Drawing.Point(351, 4);
-            this.button1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(81, 52);
-            this.button1.TabIndex = 31;
-            this.button1.TabStop = false;
-            this.button1.Text = "Add Employee";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.lstCustomerSuggestions.FormattingEnabled = true;
+            this.lstCustomerSuggestions.ItemHeight = 20;
+            this.lstCustomerSuggestions.Location = new System.Drawing.Point(621, 179);
+            this.lstCustomerSuggestions.Name = "lstCustomerSuggestions";
+            this.lstCustomerSuggestions.Size = new System.Drawing.Size(226, 84);
+            this.lstCustomerSuggestions.TabIndex = 41;
             // 
             // Customers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(857, 676);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.lstCustomerSuggestions);
+            this.Controls.Add(this.txt_cusName);
+            this.Controls.Add(this.txt_cusId);
             this.Controls.Add(this.cusBtn_find);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.dataGridView2);
@@ -447,7 +461,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Customers";
             this.Load += new System.EventHandler(this.Customers_Load);
-            
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -484,8 +497,9 @@
         private System.Windows.Forms.TextBox txt_dodhiName;
         private System.Windows.Forms.TextBox txt_dodhiId;
         private System.Windows.Forms.ListBox lstDodhiSuggestions;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txt_cusName;
+        private System.Windows.Forms.TextBox txt_cusId;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ListBox lstCustomerSuggestions;
     }
 }

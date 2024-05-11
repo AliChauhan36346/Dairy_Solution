@@ -33,13 +33,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.btn_backup = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btn_restore = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btn_restore = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -91,6 +91,32 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Back-Up Data";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Green;
+            this.label3.Location = new System.Drawing.Point(6, 74);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(513, 20);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "It is recommended to store your database in D or E drive of your computer";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Blue;
+            this.label2.Location = new System.Drawing.Point(6, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(590, 40);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Tip: Always back up the database to a different drive than the actual database.Th" +
+    "en,\r\nif you get a disk crash, you will not lose your backup file along with the " +
+    "database.";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // btn_backup
             // 
@@ -116,40 +142,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Restore Data";
             // 
-            // btn_restore
+            // label5
             // 
-            this.btn_restore.Location = new System.Drawing.Point(584, 84);
-            this.btn_restore.Name = "btn_restore";
-            this.btn_restore.Size = new System.Drawing.Size(86, 54);
-            this.btn_restore.TabIndex = 0;
-            this.btn_restore.Text = "Restore Data";
-            this.btn_restore.UseVisualStyleBackColor = true;
-            this.btn_restore.Click += new System.EventHandler(this.btn_restore_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Blue;
-            this.label2.Location = new System.Drawing.Point(6, 24);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(590, 40);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Tip: Always back up the database to a different drive than the actual database.Th" +
-    "en,\r\nif you get a disk crash, you will not lose your backup file along with the " +
-    "database.";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Green;
-            this.label3.Location = new System.Drawing.Point(6, 74);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(513, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "It is recommended to store your database in D or E drive of your computer";
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Blue;
+            this.label5.Location = new System.Drawing.Point(7, 69);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(578, 60);
+            this.label5.TabIndex = 3;
+            this.label5.Text = resources.GetString("label5.Text");
             // 
             // label4
             // 
@@ -163,16 +165,15 @@
             this.label4.Text = "Verify Backup Integrity: Before starting the restore process, verify the integrit" +
     "y of\r\nthe backup files to ensure they are valid and not corrupted.";
             // 
-            // label5
+            // btn_restore
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Blue;
-            this.label5.Location = new System.Drawing.Point(7, 69);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(578, 60);
-            this.label5.TabIndex = 3;
-            this.label5.Text = resources.GetString("label5.Text");
+            this.btn_restore.Location = new System.Drawing.Point(584, 84);
+            this.btn_restore.Name = "btn_restore";
+            this.btn_restore.Size = new System.Drawing.Size(86, 54);
+            this.btn_restore.TabIndex = 0;
+            this.btn_restore.Text = "Restore Data";
+            this.btn_restore.UseVisualStyleBackColor = true;
+            this.btn_restore.Click += new System.EventHandler(this.btn_restore_Click);
             // 
             // backupData
             // 
@@ -188,6 +189,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "backupData";
             this.Text = "Backu-Up Utility";
+            this.Load += new System.EventHandler(this.backupData_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);

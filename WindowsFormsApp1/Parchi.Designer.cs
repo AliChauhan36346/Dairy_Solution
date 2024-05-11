@@ -36,6 +36,8 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.rdo_pringDialog = new System.Windows.Forms.RadioButton();
+            this.rdo_printPreview = new System.Windows.Forms.RadioButton();
             this.btn_paymentList = new System.Windows.Forms.Button();
             this.chk_dodhiWise = new System.Windows.Forms.CheckBox();
             this.chk_singleCustomer = new System.Windows.Forms.CheckBox();
@@ -57,8 +59,7 @@
             this.lbl_status = new System.Windows.Forms.Label();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.rdo_printPreview = new System.Windows.Forms.RadioButton();
-            this.rdo_pringDialog = new System.Windows.Forms.RadioButton();
+            this.printDialog2 = new System.Windows.Forms.PrintDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -172,6 +173,30 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1016, 134);
             this.panel1.TabIndex = 13;
+            // 
+            // rdo_pringDialog
+            // 
+            this.rdo_pringDialog.AutoSize = true;
+            this.rdo_pringDialog.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdo_pringDialog.Location = new System.Drawing.Point(845, 50);
+            this.rdo_pringDialog.Name = "rdo_pringDialog";
+            this.rdo_pringDialog.Size = new System.Drawing.Size(106, 21);
+            this.rdo_pringDialog.TabIndex = 126;
+            this.rdo_pringDialog.TabStop = true;
+            this.rdo_pringDialog.Text = "Print Diaglog";
+            this.rdo_pringDialog.UseVisualStyleBackColor = true;
+            // 
+            // rdo_printPreview
+            // 
+            this.rdo_printPreview.AutoSize = true;
+            this.rdo_printPreview.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdo_printPreview.Location = new System.Drawing.Point(845, 23);
+            this.rdo_printPreview.Name = "rdo_printPreview";
+            this.rdo_printPreview.Size = new System.Drawing.Size(108, 21);
+            this.rdo_printPreview.TabIndex = 125;
+            this.rdo_printPreview.TabStop = true;
+            this.rdo_printPreview.Text = "Print Preview";
+            this.rdo_printPreview.UseVisualStyleBackColor = true;
             // 
             // btn_paymentList
             // 
@@ -393,29 +418,9 @@
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
-            // rdo_printPreview
+            // printDialog2
             // 
-            this.rdo_printPreview.AutoSize = true;
-            this.rdo_printPreview.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdo_printPreview.Location = new System.Drawing.Point(845, 23);
-            this.rdo_printPreview.Name = "rdo_printPreview";
-            this.rdo_printPreview.Size = new System.Drawing.Size(108, 21);
-            this.rdo_printPreview.TabIndex = 125;
-            this.rdo_printPreview.TabStop = true;
-            this.rdo_printPreview.Text = "Print Preview";
-            this.rdo_printPreview.UseVisualStyleBackColor = true;
-            // 
-            // rdo_pringDialog
-            // 
-            this.rdo_pringDialog.AutoSize = true;
-            this.rdo_pringDialog.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdo_pringDialog.Location = new System.Drawing.Point(845, 50);
-            this.rdo_pringDialog.Name = "rdo_pringDialog";
-            this.rdo_pringDialog.Size = new System.Drawing.Size(106, 21);
-            this.rdo_pringDialog.TabIndex = 126;
-            this.rdo_pringDialog.TabStop = true;
-            this.rdo_pringDialog.Text = "Print Diaglog";
-            this.rdo_pringDialog.UseVisualStyleBackColor = true;
+            this.printDialog2.UseEXDialog = true;
             // 
             // Parchi
             // 
@@ -474,5 +479,6 @@
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.RadioButton rdo_pringDialog;
         private System.Windows.Forms.RadioButton rdo_printPreview;
+        private System.Windows.Forms.PrintDialog printDialog2;
     }
 }

@@ -50,14 +50,7 @@ namespace WindowsFormsApp1
             txt_totalAmount.Text=tAmount.ToString();
             txt_Volume.Text=volume.ToString();
 
-            decimal avgSale = commonFunctions.AverageRate(false);
-            decimal avgpurchase = commonFunctions.AverageRate(true);
-
-            avgSale = Math.Round(avgSale, 2);
-            avgpurchase = Math.Round(avgpurchase, 2);
-
-            lbl_avgPurchaseRate.Text = avgpurchase.ToString();
-            lbl_avgSalesRate.Text = avgSale.ToString();
+            
         }
 
         private void chk_time_CheckedChanged(object sender, EventArgs e)
@@ -141,6 +134,11 @@ namespace WindowsFormsApp1
 
                 }
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

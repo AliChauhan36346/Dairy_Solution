@@ -26,6 +26,7 @@ namespace DairyAccounting
                 dbConnection.openConnection();
 
                 string backupQuery = $"BACKUP DATABASE [{dbConnection.DatabaseName}] TO DISK = '{backupPath}'";
+                //string backupQuery = $"BACKUP DATABASE [{dbConnection.DatabaseName}] TO DISK = '{backupPath}' WITH NOFORMAT, NOINIT, SKIP, NOREWIND, NOUNLOAD,  STATS = 10";
 
                 using (SqlCommand command = new SqlCommand(backupQuery, dbConnection.connection))
                 {

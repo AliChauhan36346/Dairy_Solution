@@ -55,6 +55,8 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.lstCashAccountSuggestions = new System.Windows.Forms.ListBox();
             this.lstEmployeeSuggestions = new System.Windows.Forms.ListBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -175,6 +177,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lstCashAccountSuggestions);
+            this.groupBox1.Controls.Add(this.lstEmployeeSuggestions);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txt_cashAccountId);
             this.groupBox1.Controls.Add(this.txt_cashAccountName);
@@ -199,6 +205,7 @@
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Expense Info";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // label3
             // 
@@ -282,7 +289,7 @@
             this.dtTm_date.Location = new System.Drawing.Point(187, 33);
             this.dtTm_date.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dtTm_date.Name = "dtTm_date";
-            this.dtTm_date.Size = new System.Drawing.Size(175, 25);
+            this.dtTm_date.Size = new System.Drawing.Size(91, 25);
             this.dtTm_date.TabIndex = 1;
             this.dtTm_date.TabStop = false;
             this.dtTm_date.Value = new System.DateTime(2024, 4, 12, 0, 0, 0, 0);
@@ -400,28 +407,42 @@
             // lstCashAccountSuggestions
             // 
             this.lstCashAccountSuggestions.FormattingEnabled = true;
-            this.lstCashAccountSuggestions.ItemHeight = 20;
-            this.lstCashAccountSuggestions.Location = new System.Drawing.Point(433, 135);
+            this.lstCashAccountSuggestions.Location = new System.Drawing.Point(107, 91);
             this.lstCashAccountSuggestions.Name = "lstCashAccountSuggestions";
-            this.lstCashAccountSuggestions.Size = new System.Drawing.Size(241, 84);
+            this.lstCashAccountSuggestions.Size = new System.Drawing.Size(256, 95);
             this.lstCashAccountSuggestions.TabIndex = 17;
             // 
             // lstEmployeeSuggestions
             // 
             this.lstEmployeeSuggestions.FormattingEnabled = true;
-            this.lstEmployeeSuggestions.ItemHeight = 20;
-            this.lstEmployeeSuggestions.Location = new System.Drawing.Point(345, 294);
+            this.lstEmployeeSuggestions.Location = new System.Drawing.Point(106, 152);
             this.lstEmployeeSuggestions.Name = "lstEmployeeSuggestions";
-            this.lstEmployeeSuggestions.Size = new System.Drawing.Size(241, 84);
+            this.lstEmployeeSuggestions.Size = new System.Drawing.Size(258, 95);
             this.lstEmployeeSuggestions.TabIndex = 18;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(282, 31);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(40, 29);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "<<";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(324, 31);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(40, 29);
+            this.button2.TabIndex = 22;
+            this.button2.Text = ">>";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // expenseGeneral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 673);
-            this.Controls.Add(this.lstEmployeeSuggestions);
-            this.Controls.Add(this.lstCashAccountSuggestions);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
@@ -470,5 +491,7 @@
         private System.Windows.Forms.ListBox lstCashAccountSuggestions;
         private System.Windows.Forms.ListBox lstEmployeeSuggestions;
         private System.Windows.Forms.Button btn_update;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

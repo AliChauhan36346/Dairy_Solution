@@ -19,6 +19,7 @@ namespace WindowsFormsApp1
         AccountsLegersClass accounts = new AccountsLegersClass();
         CommonFunctionsClass commonFunctions = new CommonFunctionsClass();
         milk_card milkCard= new milk_card();
+        MilkCardCompany companyMilkCard=new MilkCardCompany();
         DateTime startDate = new DateTime(1900, 1, 1);
         customer_balances customer_Balances = new customer_balances();
         public bool isFromOtherForm=false;
@@ -41,7 +42,20 @@ namespace WindowsFormsApp1
 
         private void btn_milkCard_Click(object sender, EventArgs e)
         {
-            milkCard.ShowDialog();
+
+            
+
+            if(int.TryParse(txt_accountId.Text, out int id))
+            {
+                if(id>=20000 && id<25000)
+                {
+                    companyMilkCard.ShowDialog();
+                }
+                else
+                {
+                    milkCard.ShowDialog();
+                }
+            }
         }
 
         private void btn_dashboard_Click(object sender, EventArgs e)
@@ -77,9 +91,6 @@ namespace WindowsFormsApp1
         }
 
 
-
-
-
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
@@ -107,11 +118,29 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Invalid Account Id.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
+            // setting values for milk card when the user open it already loaded
             milkCard.id=accountId;
             milkCard.name = txt_accountName.Text;
+            milkCard.startDate = dtm_from.Value;
+            milkCard.endDate = dtm_to.Value;
+
+            // company milk card
+            companyMilkCard.id = accountId;
+            companyMilkCard.name= txt_accountName.Text;
+            companyMilkCard.startDate=dtm_from.Value;
+            companyMilkCard.endDate=dtm_to.Value;
+
+
 
             accounts.GetCustomerLedger(dataGridView1, accountId, startDate.Date, dtm_to.Value, out totalDebit, out totalCredit, out totalBalance, out bStatus, out balanceBroughtForward, out forwardString);
+
+            // convenience round off
+            totalBalance = Math.Round(totalBalance, 0);
+            balanceBroughtForward=Math.Round(balanceBroughtForward,0);
+            balanceBroughtForward = Math.Abs(balanceBroughtForward);
+            totalCredit = Math.Round(totalCredit, 0);
+            totalDebit=Math.Round(totalDebit,0);
+
 
             lbl_forwardBalance.Text="Balance brought forward " + balanceBroughtForward.ToString() + " " + forwardString;
             txt_totalDebit.Text = totalDebit.ToString();
@@ -121,17 +150,170 @@ namespace WindowsFormsApp1
 
         private void btn_print_Click(object sender, EventArgs e)
         {
-            PrintDocument printDocument = new PrintDocument();
-            printDocument.PrintPage += printDocument1_PrintPage;
-
             PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
-            printPreviewDialog.Document = printDocument;
-            printPreviewDialog.ShowDialog();
+            printPreviewDialog.Document = printDocument1;
+
+            // Show the print preview dialog
+            DialogResult result = printPreviewDialog.ShowDialog();
+
+            
+            currrentRow = 0;
+            forwardBalancePrinted= false;
+            headerPrinted= false;
+            
+
+            if (result == DialogResult.OK)
+            {
+                printDocument1.Print();
+            }
         }
 
+
+        bool headerPrinted = false;
+        int currrentRow = 0;
+        bool forwardBalancePrinted = false;
+        //decimal totalCredit = 0;
+        //decimal totalDebit = 0;
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            
+            Font heading1 = new Font("Segoe UI", 22, FontStyle.Bold);
+            Font heading2 = new Font("Segoe UI", 18, FontStyle.Bold | FontStyle.Italic);
+            Font heading3 = new Font("Times New Roman", 12, FontStyle.Bold | FontStyle.Italic);
+            Font detail = new Font("Times New Roman", 10, FontStyle.Regular);
+
+            Pen pen = new Pen(Color.Black, 2);
+            Brush brush = Brushes.Black;
+
+            string date;
+
+            if (chkBox_fromDate.Checked)
+            {
+                date = "Leger for the date started on " + dtm_from.Value.Date.ToString("dd-MM-yyyy") + " To " + dtm_to.Value.Date.ToString("dd-MM-yyyy");
+            }
+            else
+            {
+                date = "Leger for the date ended on " + dtm_to.Value.Date.ToString("dd-MM-yyyy");
+            }
+
+
+            int xAxis = 50;
+            int yAxis = 25;
+
+            if(!headerPrinted)
+            {
+                e.Graphics.DrawString("Chauhan Dairy Farms", heading1, brush, xAxis, yAxis);
+                yAxis += 45;
+                e.Graphics.DrawString(txt_accountId.Text + "   " + txt_accountName.Text, heading2, brush, xAxis, yAxis);
+                yAxis += 30;
+                e.Graphics.DrawString(date, heading2, brush, xAxis, yAxis);
+                yAxis += 55;
+
+                int rectHeight = heading3.Height;
+                e.Graphics.DrawRectangle(pen, xAxis, yAxis, e.PageBounds.Width - 100, rectHeight+1);
+
+                e.Graphics.DrawString("تاریخ", heading3,brush,xAxis+15, yAxis);
+                xAxis += 90;
+                e.Graphics.DrawString("ٹرانزیکشن نمبر", heading3,brush,xAxis-20, yAxis+2);
+                xAxis += 100;
+                e.Graphics.DrawString("وضاحت", heading3,brush,xAxis, yAxis+2);
+                xAxis += 250;
+                e.Graphics.DrawString("بنام", heading3,brush,xAxis, yAxis + 2);
+                xAxis += 100;
+                e.Graphics.DrawString("جمع", heading3,brush,xAxis, yAxis + 2);
+                xAxis += 100;
+                e.Graphics.DrawString("بقیہ", heading3,brush,xAxis+ 10, yAxis + 2);
+
+                //setting the axis for the rows 
+                xAxis = 50;
+                yAxis = 190;
+
+                //header printed
+                headerPrinted = true;
+            }
+            else
+            {
+                // for the new page without header
+                xAxis = 50;
+                yAxis = 50;
+            }
+
+
+            if(balanceBroughtForward!=0 && !forwardBalancePrinted)
+            {
+                e.Graphics.DrawString("آگے لایا گیا بیلنس", detail, brush, 240, yAxis);
+
+                if (forwardString=="Credit")
+                    e.Graphics.DrawString(balanceBroughtForward.ToString()+ "  جمع", detail, brush, 690, yAxis);
+                else if(forwardString=="Debit")
+                    e.Graphics.DrawString(balanceBroughtForward.ToString() + "  بنام", detail, brush, 690, yAxis);
+
+                yAxis += 30;
+                xAxis = 50;
+
+                forwardBalancePrinted = true;
+
+            }
+
+            //printing rows 
+            while(currrentRow<dataGridView1.Rows.Count)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+
+                // giving the current row to print
+                row = dataGridView1.Rows[currrentRow];
+
+                e.Graphics.DrawString(row.Cells["Date"].Value.ToString(), detail, brush, xAxis+5, yAxis);
+                xAxis += 90;
+                e.Graphics.DrawString(row.Cells["Tran.No"].Value.ToString(), detail, brush, xAxis+10, yAxis);
+                xAxis += 100;
+                e.Graphics.DrawString(row.Cells["Description"].Value.ToString(), detail, brush, xAxis, yAxis);
+                xAxis += 250;
+                e.Graphics.DrawString(row.Cells["Debit"].Value.ToString(), detail, brush, xAxis, yAxis);
+                xAxis += 100;
+                e.Graphics.DrawString(row.Cells["Credit"].Value.ToString(), detail, brush, xAxis, yAxis);
+                xAxis += 100;
+
+                
+                
+
+                if (row.Cells["Status"].Value.ToString().Trim()=="credit")
+                {
+                    e.Graphics.DrawString(row.Cells["Balance"].Value.ToString() + "  " + "جمع", detail, brush, xAxis, yAxis);
+
+
+                }
+                else
+                {
+                    e.Graphics.DrawString(row.Cells["Balance"].Value.ToString() + "  " + "بنام", detail, brush, xAxis, yAxis);
+                }
+                
+
+                xAxis = 50;
+                yAxis += 30;
+
+                currrentRow++;
+
+                if (yAxis + 25 >e.MarginBounds.Bottom)
+                {
+                    e.HasMorePages = true;
+                    return;
+                }
+            }
+            xAxis = 50;
+            int recHeight = heading3.Height;
+            e.Graphics.DrawRectangle(pen, xAxis, yAxis, e.PageBounds.Width - 100, recHeight + 1);
+            xAxis += 300;
+            e.Graphics.DrawString("Total Rs",heading3,brush, xAxis, yAxis);
+            xAxis += 140;
+            e.Graphics.DrawString(totalDebit.ToString(),heading3,brush, xAxis, yAxis);
+            xAxis += 100;
+            e.Graphics.DrawString(totalCredit.ToString(),heading3,brush, xAxis, yAxis);
+            xAxis += 100;
+            if(bStatus=="credit")
+                e.Graphics.DrawString(totalBalance.ToString()+ "  جمع", heading3, brush, xAxis, yAxis);
+            else if(bStatus=="debit")
+                e.Graphics.DrawString(totalBalance.ToString() + "  بنام", heading3, brush, xAxis, yAxis);
+
         }
 
         private void chkBox_fromDate_CheckedChanged(object sender, EventArgs e)

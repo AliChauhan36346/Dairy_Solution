@@ -366,5 +366,22 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void toolStripMenuItem9_Click(object sender, EventArgs e)
+        {
+            Statistics stats = new Statistics();
+            stats.ShowDialog();
+        }
+
+        private void lbl_dodhiLoss_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void expenseReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExpenseReport expenseReport=new ExpenseReport();
+            expenseReport.ShowDialog();
+        }
     }
 }

@@ -318,8 +318,6 @@ namespace DairyAccounting
             
         }
 
-        
-
         public decimal getCustomerRate(string id)
         {
             decimal rate = 0; // Initialize rate
@@ -358,7 +356,6 @@ namespace DairyAccounting
 
             return rate;
         }
-
 
         public int GetCustomerDodhiId(string customerId)
         {
@@ -434,6 +431,61 @@ namespace DairyAccounting
             return addresses;
         }
 
+
+        public void GetCustomerDetail(int id,out int cusId, out string name, out decimal rate, out int creditLimit,
+            out int dodhiId, out string dodhiName, out string address)
+        {
+            cusId = 0;
+            name = "";
+            rate = 0;
+            creditLimit = 0;
+            dodhiId = 0;
+            dodhiName = "";
+            address = "";
+
+            bool customerFound = false;
+
+            try
+            {
+                dbConnection.openConnection();
+
+                string query = "SELECT customerId,name,rate,dodhiId,dodhi,rate,creditLimit,address FROM CustomersTbl WHERE customerId=@id";
+
+                using(SqlCommand command=new SqlCommand(query, dbConnection.connection))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while(reader.Read())
+                    {
+                        customerFound = true;
+
+                        cusId = int.Parse(reader["customerId"].ToString());
+                        name = reader["Name"].ToString();
+                        rate = decimal.Parse(reader["rate"].ToString());
+                        dodhiId = int.Parse(reader["dodhiId"].ToString());
+                        dodhiName = reader["dodhi"].ToString();
+                        address = reader["address"].ToString();
+                        creditLimit = int.Parse(reader["creditLimit"].ToString());
+                    }
+
+                    if(!customerFound)
+                    {
+                        MessageBox.Show("Customer not fount!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error retrieving customer detail: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dbConnection.closeConnection();
+            }
+        }
 
     }
 }

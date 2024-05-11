@@ -276,11 +276,11 @@ namespace DairyAccounting
                 // Clear only transactions, not entities
                 if (entitiesAlso == 0)
                 {
-                    transactionTables = new string[] { "ChilarReceive", "Expense", "Payments", "Purchases", "Receipts", "Sales" };
+                    transactionTables = new string[] { "ChilarReceive", "Expense", "Payments", "Purchases", "Receipts", "Sales", "JournalVoucher", "OpeningBalances" };
                 }
                 else//clears entities and transaction, all of the data
                 {
-                    transactionTables = new string[] { "ChilarReceive", "Expense", "Payments", "Purchases", "Receipts", "Sales", "cashBankAccount", "CompaniesTbl", "CustomersTbl", "EmployeesTbl", "Users" };
+                    transactionTables = new string[] { "ChilarReceive", "Expense", "Payments", "Purchases", "Receipts", "Sales", "cashBankAccount", "CompaniesTbl", "CustomersTbl", "EmployeesTbl", "Users", "JournalVoucher", "OpeningBalances" };
                 }
 
 
@@ -387,30 +387,46 @@ namespace DairyAccounting
 
             if(isCustomer)
             {
-                tableName = "CustomersTbl";
+                tableName = "Purchases";
             }
             else
             {
-                tableName = "CompaniesTbl";
+                tableName = "Sales";
             }
 
             try
             {
-                dbConnection.openConnection();
-
-                string query = $"SELECT AVG(rate) FROM {tableName}";
+                string query = $"SELECT SUM(amount) AS totalAmount, SUM(liters) AS totalLiters FROM {tableName}";
 
                 using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
                 {
-                    object result = command.ExecuteScalar();
+                    SqlDataReader reader = command.ExecuteReader();
 
-                    if(result!=null)
+                    if (reader.Read())
                     {
-                        averageRate = (decimal)result;
+                        decimal totalAmount=1;
+                        decimal totalLiters=1;
+                        // Check if the totalAmount column is not null and retrieve its value
+                        if (!reader.IsDBNull(reader.GetOrdinal("totalAmount")))
+                        {
+                            totalAmount = reader.GetDecimal(reader.GetOrdinal("totalAmount"));
+                            // Use totalAmount as needed
+                        }
+
+                        // Check if the totalLiters column is not null and retrieve its value
+                        if (!reader.IsDBNull(reader.GetOrdinal("totalLiters")))
+                        {
+                            totalLiters = reader.GetDecimal(reader.GetOrdinal("totalLiters"));
+                            // Use totalLiters as needed
+                        }
+
+                        averageRate=totalAmount/totalLiters;
                     }
+                    reader.Close();
                 }
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Error calculating average rate: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

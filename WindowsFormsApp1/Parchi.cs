@@ -613,12 +613,15 @@ namespace WindowsFormsApp1
                 PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
                 printPreviewDialog.Document = printDocument2;
 
+                
+
                 // Show the print preview dialog
                 DialogResult result = printPreviewDialog.ShowDialog();
 
                 if (result == DialogResult.OK)
                 {
                     currentRow = 0; // Reset rowIndex before printing
+                    
                     printDocument2.Print();
                 }
             }
@@ -639,21 +642,41 @@ namespace WindowsFormsApp1
 
         private void btn_paymentList_Click(object sender, EventArgs e)
         {
-            PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
-            printPreviewDialog.Document = printDocument1;
-
-            // Show the print preview dialog
-            DialogResult result = printPreviewDialog.ShowDialog();
-
-            currentRow = 0; // Reset rowIndex before printing
-
-            totalCredit = 0;
-            totalDebit = 0;
-
-            if (result == DialogResult.OK)
+            if(rdo_pringDialog.Checked)
             {
-                printDocument1.Print();
+                printDialog2.Document = printDocument1;
+                DialogResult result = printDialog2.ShowDialog();
+
+                currentRow = 0; // Reset rowIndex before printing
+
+                totalCredit = 0;
+                totalDebit = 0;
+
+                if (result==DialogResult.OK)
+                {
+                    printDocument1.Print();
+                }
             }
+            else if(rdo_printPreview.Checked)
+            {
+                PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
+                printPreviewDialog.Document = printDocument1;
+
+                // Show the print preview dialog
+                DialogResult result = printPreviewDialog.ShowDialog();
+
+                currentRow = 0; // Reset rowIndex before printing
+
+                totalCredit = 0;
+                totalDebit = 0;
+
+                if (result == DialogResult.OK)
+                {
+                    printDocument1.Print();
+                }
+            }
+
+            
         }
 
 
@@ -681,7 +704,7 @@ namespace WindowsFormsApp1
             //dodhi
             if(chk_dodhiWise.Checked)
             {
-                dodhi="("+cmbo_dodhi.SelectedItem.ToString().Trim()+")";
+                dodhi=(cmbo_dodhi.SelectedItem.ToString().Trim());
             }
             else
             {
@@ -726,9 +749,11 @@ namespace WindowsFormsApp1
                 
                 int rectWidth = 230; // Adjust this as needed
 
-                int maxWidth = (int)Math.Max(e.Graphics.MeasureString("Account Id", heading4).Width,
-                                              Math.Max(e.Graphics.MeasureString("Account Name", heading4).Width,
-                                                       e.Graphics.MeasureString("Payment Amount", heading4).Width));
+                //int maxWidth = (int)Math.Max(e.Graphics.MeasureString("Account Id", heading4).Width,
+                                              //Math.Max(e.Graphics.MeasureString("Account Name", heading4).Width,
+                                                      // e.Graphics.MeasureString("Payment Amount", heading4).Width));
+
+
                 int totalWidth = 3 * rectWidth + 2 * 30; // Total width of all text and spacing
                 int rectHeight = (int)heading4.Height; // Height of the text
 
@@ -750,7 +775,7 @@ namespace WindowsFormsApp1
                 xAxis += 90;
                 e.Graphics.DrawString("Balance", heading4, brush, xAxis, yAxis);
 
-                yAxis = 250;//260
+                yAxis = 250;//260   
                 xAxis = 50;//50
 
                 headerPrinted = true;

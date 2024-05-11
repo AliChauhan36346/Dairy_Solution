@@ -105,6 +105,8 @@ namespace WindowsFormsApp1
 
             txt_Id.Text = customers.GetNextAvailableID().ToString();
 
+            lstCustomerSuggestions.Visible = false;
+
         }
 
         private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -302,6 +304,41 @@ namespace WindowsFormsApp1
             employees.ShowDialog();
         }
 
-        
+        private void txt_cusId_TextChanged(object sender, EventArgs e)
+        {
+            CommonFunctions.ShowAccountSuggestions(txt_cusId, lstCustomerSuggestions, "customer");
+        }
+
+        private void txt_cusId_KeyDown(object sender, KeyEventArgs e)
+        {
+            CommonFunctions.HandleAccountSuggestionKeyDown(txt_cusId, txt_cusName, lstCustomerSuggestions, e);
+
+            if(e.KeyCode==Keys.Enter)
+            {
+                lstCustomerSuggestions.Visible = false;
+
+                cusBtn_find.Focus();
+            }
+        }
+
+        private void cusBtn_find_Click(object sender, EventArgs e)
+        {
+            if(!int.TryParse(txt_cusId.Text, out int id))
+            {
+                return;
+            }
+
+            customers.GetCustomerDetail(id, out int cusId, out string name, out decimal rate, out int creditLimit,
+            out int dodhiId, out string dodhiName, out string address);
+
+            txt_Id.Text = cusId.ToString();
+            txt_customerName.Text = name;
+            txt_rate.Text=rate.ToString();
+            txt_creditLimit.Text=creditLimit.ToString();
+            txt_dodhiId.Text = dodhiId.ToString();
+            txt_dodhiName.Text = dodhiName.ToString();
+            txt_address.Text = address;
+
+        }
     }
 }

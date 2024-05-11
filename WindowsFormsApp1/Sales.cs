@@ -854,6 +854,11 @@ namespace WindowsFormsApp1
         {
             sales.showDataInGridView(dataGridView1, dtm_picker.Value.Date);
         }
+
+        private void label18_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 

@@ -23,7 +23,6 @@ namespace DairyAccounting
 
         // Method to retrieve IDs and names for all account types
 
-
         public void GetCustomerLedger(DataGridView dataGridView, int id, DateTime fromDate, DateTime toDate, out decimal totalDebit, out decimal totalCredit, out decimal totalBalance, out string bStatus ,out decimal balanceBroughtForward, out string forwardString)
         {
             DataTable ledgerTable = new DataTable();
@@ -181,7 +180,7 @@ namespace DairyAccounting
                         while (reader.Read())
                         {
                             
-                            string date = ((DateTime)reader["date"]).ToString("dd-MM-yyyy"); // Change the format as needed
+                            string date = ((DateTime)reader["date"]).ToString("dd-MM-yy"); // Change the format as needed
                             string transactionNo = reader["transactionNo"].ToString();
                             string description = reader["description"].ToString();
                             string debit = reader["debit"].ToString();
@@ -196,6 +195,10 @@ namespace DairyAccounting
                             string status = runningBalance >= 0 ? "credit" : "debit";
 
                             bStatus = status;
+
+
+                            runningBalance = Math.Round(runningBalance, 1);
+
 
                             // Add row to ledger table
                             ledgerTable.Rows.Add(date, transactionNo, description, debit, credit, Math.Abs(runningBalance), status);
@@ -235,8 +238,8 @@ namespace DairyAccounting
 
 
         public void GetCustomerMilkCard(int id, DateTime startDate, DateTime endDate,
-    out decimal morningTotal, out decimal eveningTotal, out decimal milkTotal,
-    out decimal totalMilkAmount, DataGridView dataGridView)
+            out decimal morningTotal, out decimal eveningTotal, out decimal milkTotal,
+            out decimal totalMilkAmount, DataGridView dataGridView)
         {
             morningTotal = 0;
             eveningTotal = 0;
@@ -298,9 +301,9 @@ namespace DairyAccounting
 
                 dataGridView.DataSource = milkCard;
 
-                dataGridView.Columns["Date"].Width = 90;
-                dataGridView.Columns["Morning"].Width = 90;
-                dataGridView.Columns["Evening"].Width = 90;
+                dataGridView.Columns["Date"].Width = 100;
+                dataGridView.Columns["Morning"].Width = 85;
+                dataGridView.Columns["Evening"].Width = 85;
                 dataGridView.Columns["Total"].Width = 90;
                 dataGridView.Columns["Rate"].Width = 80;
                 dataGridView.Columns["Amount"].Width = 100;
@@ -309,6 +312,77 @@ namespace DairyAccounting
             {
                 // Handle exception
                 MessageBox.Show("Error retrieving milk card data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dbConnection.closeConnection();
+            }
+        }
+
+
+        public void getCompanyMilkCard(int id, DateTime startDate, DateTime endDate, out decimal grossLtrs,
+            out decimal tsLtrs, out decimal totalAmount, DataGridView dataGridView)
+        {
+            grossLtrs = 0;
+            tsLtrs = 0;
+            totalAmount = 0;
+
+            DataTable milkCard = new DataTable();
+
+            milkCard.Columns.Add("Date");
+            milkCard.Columns.Add("Volume");
+            milkCard.Columns.Add("Fat%");
+            milkCard.Columns.Add("LR");
+            milkCard.Columns.Add("Ts Volume");
+            milkCard.Columns.Add("Rate");
+            milkCard.Columns.Add("Amount");
+
+            try
+            {
+                dbConnection.openConnection();
+
+                string query = "SELECT date, liters, lr, fat, tsLiters, rate, amount FROM Sales WHERE companyId=@id AND date>=@startDate AND date<=@endDate ORDER BY date";
+
+                using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
+                {
+                    command.Parameters.AddWithValue("@startDate", startDate);
+                    command.Parameters.AddWithValue("@endDate", endDate);
+                    command.Parameters.AddWithValue("@id", id);
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while(reader.Read())
+                    {
+                        string date = ((DateTime)reader["date"]).ToString("dd-MM-yyyy");
+                        decimal volume = decimal.Parse(reader["liters"].ToString());
+                        decimal fat = decimal.Parse(reader["fat"].ToString());
+                        decimal lr = decimal.Parse(reader["lr"].ToString());
+                        decimal tsVolume = decimal.Parse(reader["tsLiters"].ToString());
+                        decimal rate = decimal.Parse(reader["rate"].ToString());
+                        decimal amount = decimal.Parse(reader["amount"].ToString());
+
+                        milkCard.Rows.Add(date, volume, fat, lr, tsVolume, rate, amount);
+
+                        grossLtrs += volume;
+                        tsLtrs += tsVolume;
+                        totalAmount += amount;
+
+                    }
+                }
+
+                dataGridView.DataSource = milkCard;
+
+                dataGridView.Columns["Date"].Width = 90;
+                dataGridView.Columns["Volume"].Width = 100;
+                dataGridView.Columns["Fat%"].Width = 70;
+                dataGridView.Columns["LR"].Width = 70;
+                dataGridView.Columns["Ts Volume"].Width = 100;
+                dataGridView.Columns["Rate"].Width = 80;
+                dataGridView.Columns["Amount"].Width = 100;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error retrieving company milk card data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

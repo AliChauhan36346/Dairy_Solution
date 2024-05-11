@@ -358,5 +358,10 @@ namespace WindowsFormsApp1
 
             txt_cashAccountId.Focus();
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

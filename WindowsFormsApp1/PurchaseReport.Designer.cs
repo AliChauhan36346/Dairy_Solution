@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             this.txt_totalAmount = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lbl_avgPurchaseRate = new System.Windows.Forms.Label();
-            this.lbl_avgSalesRate = new System.Windows.Forms.Label();
             this.Print = new System.Windows.Forms.Button();
             this.btn_display = new System.Windows.Forms.Button();
             this.dtm_end = new System.Windows.Forms.DateTimePicker();
@@ -62,54 +58,6 @@
             this.txt_totalAmount.Name = "txt_totalAmount";
             this.txt_totalAmount.Size = new System.Drawing.Size(116, 25);
             this.txt_totalAmount.TabIndex = 0;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(825, 110);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(174, 20);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "Average Purchase Rate:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(853, 80);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(146, 20);
-            this.label4.TabIndex = 18;
-            this.label4.Text = "Average Sales Rate:";
-            // 
-            // lbl_avgPurchaseRate
-            // 
-            this.lbl_avgPurchaseRate.AutoSize = true;
-            this.lbl_avgPurchaseRate.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_avgPurchaseRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbl_avgPurchaseRate.Location = new System.Drawing.Point(1000, 110);
-            this.lbl_avgPurchaseRate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_avgPurchaseRate.Name = "lbl_avgPurchaseRate";
-            this.lbl_avgPurchaseRate.Size = new System.Drawing.Size(51, 20);
-            this.lbl_avgPurchaseRate.TabIndex = 17;
-            this.lbl_avgPurchaseRate.Text = "label5";
-            // 
-            // lbl_avgSalesRate
-            // 
-            this.lbl_avgSalesRate.AutoSize = true;
-            this.lbl_avgSalesRate.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_avgSalesRate.ForeColor = System.Drawing.Color.Green;
-            this.lbl_avgSalesRate.Location = new System.Drawing.Point(1000, 80);
-            this.lbl_avgSalesRate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_avgSalesRate.Name = "lbl_avgSalesRate";
-            this.lbl_avgSalesRate.Size = new System.Drawing.Size(51, 20);
-            this.lbl_avgSalesRate.TabIndex = 16;
-            this.lbl_avgSalesRate.Text = "label4";
             // 
             // Print
             // 
@@ -238,15 +186,11 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.chk_time);
             this.panel1.Controls.Add(this.cmbo_time);
             this.panel1.Controls.Add(this.chk_dodhi);
             this.panel1.Controls.Add(this.cmbo_dodhi);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.lbl_avgPurchaseRate);
-            this.panel1.Controls.Add(this.lbl_avgSalesRate);
             this.panel1.Controls.Add(this.Print);
             this.panel1.Controls.Add(this.btn_display);
             this.panel1.Controls.Add(this.dtm_end);
@@ -259,6 +203,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1084, 148);
             this.panel1.TabIndex = 17;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // chk_time
             // 
@@ -340,10 +285,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox txt_totalAmount;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lbl_avgPurchaseRate;
-        private System.Windows.Forms.Label lbl_avgSalesRate;
         private System.Windows.Forms.Button Print;
         private System.Windows.Forms.Button btn_display;
         private System.Windows.Forms.DateTimePicker dtm_end;
