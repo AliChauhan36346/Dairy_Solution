@@ -31,11 +31,13 @@ namespace WindowsFormsApp1
         private void dtm_start_ValueChanged(object sender, EventArgs e)
         {
             lbl_avgSaleRate.Text = statisticsClass.AverageRateCompany(dtm_start.Value.Date, dtm_end.Value.Date).ToString();
+            lbl_avgSRate.Text = statisticsClass.AverageRateCompanyGrossLtrs(dtm_start.Value.Date, dtm_end.Value.Date).ToString();
         }
 
         private void dtm_end_ValueChanged(object sender, EventArgs e)
         {
             lbl_avgSaleRate.Text = statisticsClass.AverageRateCompany(dtm_start.Value.Date, dtm_end.Value.Date).ToString();
+            lbl_avgSRate.Text = statisticsClass.AverageRateCompanyGrossLtrs(dtm_start.Value.Date, dtm_end.Value.Date).ToString();
         }
     }
 }

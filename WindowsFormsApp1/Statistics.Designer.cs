@@ -96,8 +96,8 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Black", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Teal;
-            this.label2.Location = new System.Drawing.Point(57, 169);
+            this.label2.ForeColor = System.Drawing.Color.MediumTurquoise;
+            this.label2.Location = new System.Drawing.Point(57, 196);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(199, 20);
             this.label2.TabIndex = 1;
@@ -120,7 +120,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Black", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Teal;
-            this.label4.Location = new System.Drawing.Point(46, 197);
+            this.label4.Location = new System.Drawing.Point(46, 224);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(211, 20);
             this.label4.TabIndex = 3;
@@ -130,8 +130,8 @@
             // 
             this.lbl_avgSaleRate.AutoSize = true;
             this.lbl_avgSaleRate.Font = new System.Drawing.Font("Segoe UI Black", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_avgSaleRate.ForeColor = System.Drawing.Color.Teal;
-            this.lbl_avgSaleRate.Location = new System.Drawing.Point(259, 169);
+            this.lbl_avgSaleRate.ForeColor = System.Drawing.Color.MediumTurquoise;
+            this.lbl_avgSaleRate.Location = new System.Drawing.Point(259, 196);
             this.lbl_avgSaleRate.Name = "lbl_avgSaleRate";
             this.lbl_avgSaleRate.Size = new System.Drawing.Size(42, 20);
             this.lbl_avgSaleRate.TabIndex = 5;
@@ -142,7 +142,7 @@
             this.lbl_avgPurchaseRate.AutoSize = true;
             this.lbl_avgPurchaseRate.Font = new System.Drawing.Font("Segoe UI Black", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_avgPurchaseRate.ForeColor = System.Drawing.Color.Teal;
-            this.lbl_avgPurchaseRate.Location = new System.Drawing.Point(259, 197);
+            this.lbl_avgPurchaseRate.Location = new System.Drawing.Point(259, 224);
             this.lbl_avgPurchaseRate.Name = "lbl_avgPurchaseRate";
             this.lbl_avgPurchaseRate.Size = new System.Drawing.Size(42, 20);
             this.lbl_avgPurchaseRate.TabIndex = 6;
@@ -263,7 +263,7 @@
             this.lbl_avgSRate.AutoSize = true;
             this.lbl_avgSRate.Font = new System.Drawing.Font("Segoe UI Black", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_avgSRate.ForeColor = System.Drawing.Color.Teal;
-            this.lbl_avgSRate.Location = new System.Drawing.Point(259, 225);
+            this.lbl_avgSRate.Location = new System.Drawing.Point(259, 168);
             this.lbl_avgSRate.Name = "lbl_avgSRate";
             this.lbl_avgSRate.Size = new System.Drawing.Size(42, 20);
             this.lbl_avgSRate.TabIndex = 21;
@@ -274,7 +274,7 @@
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Segoe UI Black", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.Teal;
-            this.label20.Location = new System.Drawing.Point(80, 225);
+            this.label20.Location = new System.Drawing.Point(80, 168);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(176, 20);
             this.label20.TabIndex = 20;

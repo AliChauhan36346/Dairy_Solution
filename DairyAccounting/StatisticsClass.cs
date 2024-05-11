@@ -75,6 +75,8 @@ namespace DairyAccounting
                 dbConnection.closeConnection();
             }
 
+
+            averageRate=Math.Round(averageRate,2);
             return averageRate;
         }
 
@@ -128,6 +130,7 @@ namespace DairyAccounting
                 dbConnection.closeConnection();
             }
 
+            averageRate=Math.Round(averageRate, 2);
             return averageRate;
         }
 
@@ -181,6 +184,7 @@ namespace DairyAccounting
                 dbConnection.closeConnection();
             }
 
+            averageRate=Math.Round(averageRate,2);
             return averageRate;
         }
     }
