@@ -41,6 +41,7 @@
             this.txt_debit = new System.Windows.Forms.TextBox();
             this.txt_credit = new System.Windows.Forms.TextBox();
             this.txt_balance = new System.Windows.Forms.TextBox();
+            this.txt_grandOpeningBalance = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -158,6 +159,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Silver;
+            this.panel2.Controls.Add(this.txt_grandOpeningBalance);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.txt_debit);
             this.panel2.Controls.Add(this.txt_credit);
@@ -174,7 +176,7 @@
             this.label2.BackColor = System.Drawing.Color.Silver;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(443, 8);
+            this.label2.Location = new System.Drawing.Point(220, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 20);
             this.label2.TabIndex = 3;
@@ -206,6 +208,15 @@
             this.txt_balance.Name = "txt_balance";
             this.txt_balance.Size = new System.Drawing.Size(201, 25);
             this.txt_balance.TabIndex = 0;
+            // 
+            // txt_grandOpeningBalance
+            // 
+            this.txt_grandOpeningBalance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_grandOpeningBalance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_grandOpeningBalance.Location = new System.Drawing.Point(320, 5);
+            this.txt_grandOpeningBalance.Name = "txt_grandOpeningBalance";
+            this.txt_grandOpeningBalance.Size = new System.Drawing.Size(201, 25);
+            this.txt_grandOpeningBalance.TabIndex = 5;
             // 
             // companies_balances
             // 
@@ -246,5 +257,6 @@
         private System.Windows.Forms.TextBox txt_debit;
         private System.Windows.Forms.TextBox txt_credit;
         private System.Windows.Forms.TextBox txt_balance;
+        private System.Windows.Forms.TextBox txt_grandOpeningBalance;
     }
 }

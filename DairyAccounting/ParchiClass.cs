@@ -307,7 +307,7 @@ namespace DairyAccounting
         }
 
         public void getAllAccountsBalances(int dodhiId, bool isCompany, DataGridView dataGridView, 
-            out decimal grandTotalDebit, out decimal grandTotalCredit)
+            out decimal grandTotalDebit, out decimal grandTotalCredit,out decimal grandOpeningBalance, out string grandOpeningStatus)
         {
             DataTable balanceTable = new DataTable();
 
@@ -323,6 +323,10 @@ namespace DairyAccounting
 
             grandTotalCredit = 0;
             grandTotalDebit = 0;
+            grandOpeningBalance = 0;
+            grandOpeningStatus = "";
+            
+
 
             decimal openingBalance = 0;
             string openingStatus = "";
@@ -331,6 +335,9 @@ namespace DairyAccounting
             decimal closingBalance;
             string closingStatus = "";
             string accountName;
+
+            decimal grandOpeningDebit=0;
+            decimal grandOpeningCredit=0;
 
             try
             {
@@ -368,6 +375,19 @@ namespace DairyAccounting
                                 grandTotalCredit += totalCredit;
                                 grandTotalDebit += totalDebit;
 
+                                //calculating total opening debt and credit amount
+                                if(openingStatus=="Credit")
+                                {
+                                    grandOpeningCredit += openingBalance;
+                                }
+                                else if(openingStatus=="Debit")
+                                {
+                                    grandOpeningDebit += openingBalance;
+                                }
+                                // calculating total opening balance and status
+                                
+
+                                // setting values to zero for next the next customer
                                 openingBalance = 0;
                                 openingStatus = "";
                                 totalDebit = 0;
@@ -394,6 +414,17 @@ namespace DairyAccounting
 
                             grandTotalCredit += totalCredit;
                             grandTotalDebit += totalDebit;
+
+                            if (openingStatus == "Credit")
+                            {
+                                grandOpeningCredit += openingBalance;
+                            }
+                            else if (openingStatus == "Debit")
+                            {
+                                grandOpeningDebit += openingBalance;
+                            }
+
+                            
 
                             openingBalance = 0;
                             openingStatus = "";
@@ -423,6 +454,17 @@ namespace DairyAccounting
                         grandTotalCredit += totalCredit;
                         grandTotalDebit += totalDebit;
 
+                        if (openingStatus == "Credit")
+                        {
+                            grandOpeningCredit += openingBalance;
+                        }
+                        else if (openingStatus == "Debit")
+                        {
+                            grandOpeningDebit += openingBalance;
+                        }
+
+                        
+
                         openingBalance = 0;
                         openingStatus = "";
                         totalDebit = 0;
@@ -433,7 +475,10 @@ namespace DairyAccounting
                     }
                 }
 
-                
+                grandOpeningBalance = grandOpeningCredit - grandOpeningDebit;
+                grandOpeningStatus = grandOpeningBalance > 0 ? "Credit" : "Debit";
+                //grandOpeningBalance = Math.Abs(grandOpeningBalance);
+
 
                 dataGridView.DataSource = balanceTable;
 

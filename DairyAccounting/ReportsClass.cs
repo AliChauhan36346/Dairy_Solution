@@ -72,7 +72,7 @@ namespace DairyAccounting
                             tsVolume += tsLiters;
                             tAmount += amount;
 
-                            salesReport.Rows.Add(salesId,date,companyId,companyName, liters, lr, fat, tsVolume, amount);
+                            salesReport.Rows.Add(salesId,date,companyId,companyName, liters, lr, fat, liters, amount);
                         }
                     }
                 }

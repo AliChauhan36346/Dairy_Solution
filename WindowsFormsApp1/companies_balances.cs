@@ -32,11 +32,16 @@ namespace WindowsFormsApp1
             decimal grandBalance = 0;
             string grandStatus = "";
 
-            parchi.getAllAccountsBalances(-1,true, dataGridView2, out grandTotalDebit, out grandTotalCredit);
+            decimal grandOpeningBalance = 0;
+            string grandOpeningStatus = "";
+
+            parchi.getAllAccountsBalances(-1,true, dataGridView2, out grandTotalDebit, out grandTotalCredit, out grandOpeningBalance, out grandOpeningStatus);
 
             grandBalance = grandTotalCredit - grandTotalDebit;
+            grandBalance += grandOpeningBalance;
             grandStatus = grandBalance > 0 ? "Credit" : "Debit";
             grandBalance = Math.Abs(grandBalance);
+            grandOpeningBalance= Math.Abs(grandOpeningBalance);
 
             txt_debit.Text = grandTotalDebit.ToString();
             txt_credit.Text = grandTotalCredit.ToString();
@@ -50,15 +55,20 @@ namespace WindowsFormsApp1
             decimal grandBalance = 0;
             string grandStatus = "";
 
-            parchi.getAllAccountsBalances(-1, true, dataGridView2, out grandTotalDebit, out grandTotalCredit);
+            decimal grandOpeningBalance = 0;
+            string grandOpeningStatus = "";
+
+            parchi.getAllAccountsBalances(-1, true, dataGridView2, out grandTotalDebit, out grandTotalCredit, out grandOpeningBalance, out grandOpeningStatus);
 
             grandBalance = grandTotalCredit - grandTotalDebit;
+            grandBalance += grandOpeningBalance;
             grandStatus = grandBalance > 0 ? "Credit" : "Debit";
             grandBalance = Math.Abs(grandBalance);
 
             txt_debit.Text = grandTotalDebit.ToString();
             txt_credit.Text = grandTotalCredit.ToString();
             txt_balance.Text = grandBalance.ToString() + " " + grandStatus;
+            txt_grandOpeningBalance.Text = grandOpeningBalance.ToString() + "  " + grandOpeningStatus.ToString();
         }
 
         private void dataGridView2_MouseDoubleClick(object sender, MouseEventArgs e)

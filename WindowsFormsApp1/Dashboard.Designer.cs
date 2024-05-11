@@ -477,7 +477,7 @@
             this.label13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label13.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(1049, 11);
+            this.label13.Location = new System.Drawing.Point(749, 12);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(55, 26);
             this.label13.TabIndex = 13;
@@ -501,7 +501,7 @@
             this.dtm_end.CalendarTitleForeColor = System.Drawing.Color.Maroon;
             this.dtm_end.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtm_end.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtm_end.Location = new System.Drawing.Point(919, 11);
+            this.dtm_end.Location = new System.Drawing.Point(979, 11);
             this.dtm_end.Name = "dtm_end";
             this.dtm_end.Size = new System.Drawing.Size(113, 27);
             this.dtm_end.TabIndex = 10;
@@ -511,7 +511,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(886, 14);
+            this.label2.Location = new System.Drawing.Point(946, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(24, 20);
             this.label2.TabIndex = 9;
@@ -524,7 +524,7 @@
             this.dtm_start.CalendarTitleForeColor = System.Drawing.Color.Black;
             this.dtm_start.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtm_start.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtm_start.Location = new System.Drawing.Point(757, 11);
+            this.dtm_start.Location = new System.Drawing.Point(817, 11);
             this.dtm_start.Name = "dtm_start";
             this.dtm_start.Size = new System.Drawing.Size(115, 27);
             this.dtm_start.TabIndex = 9;
@@ -562,12 +562,12 @@
             // lbl_PdodhiLoss
             // 
             this.lbl_PdodhiLoss.AutoSize = true;
-            this.lbl_PdodhiLoss.Font = new System.Drawing.Font("Segoe UI Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_PdodhiLoss.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_PdodhiLoss.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbl_PdodhiLoss.Location = new System.Drawing.Point(6, 162);
+            this.lbl_PdodhiLoss.Location = new System.Drawing.Point(8, 169);
             this.lbl_PdodhiLoss.Name = "lbl_PdodhiLoss";
             this.lbl_PdodhiLoss.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lbl_PdodhiLoss.Size = new System.Drawing.Size(49, 37);
+            this.lbl_PdodhiLoss.Size = new System.Drawing.Size(42, 32);
             this.lbl_PdodhiLoss.TabIndex = 5;
             this.lbl_PdodhiLoss.Text = "23";
             // 
@@ -756,12 +756,12 @@
             // lbl_stockOrLoss
             // 
             this.lbl_stockOrLoss.AutoSize = true;
-            this.lbl_stockOrLoss.Font = new System.Drawing.Font("Segoe UI Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_stockOrLoss.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_stockOrLoss.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbl_stockOrLoss.Location = new System.Drawing.Point(7, 167);
+            this.lbl_stockOrLoss.Location = new System.Drawing.Point(7, 169);
             this.lbl_stockOrLoss.Name = "lbl_stockOrLoss";
             this.lbl_stockOrLoss.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lbl_stockOrLoss.Size = new System.Drawing.Size(49, 37);
+            this.lbl_stockOrLoss.Size = new System.Drawing.Size(42, 32);
             this.lbl_stockOrLoss.TabIndex = 13;
             this.lbl_stockOrLoss.Text = "23";
             // 
@@ -848,7 +848,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label15.Location = new System.Drawing.Point(107, 178);
+            this.label15.Location = new System.Drawing.Point(107, 175);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(97, 24);
             this.label15.TabIndex = 12;
@@ -857,12 +857,12 @@
             // lbl_tsLoss
             // 
             this.lbl_tsLoss.AutoSize = true;
-            this.lbl_tsLoss.Font = new System.Drawing.Font("Segoe UI Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_tsLoss.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_tsLoss.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbl_tsLoss.Location = new System.Drawing.Point(6, 168);
+            this.lbl_tsLoss.Location = new System.Drawing.Point(6, 169);
             this.lbl_tsLoss.Name = "lbl_tsLoss";
             this.lbl_tsLoss.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lbl_tsLoss.Size = new System.Drawing.Size(49, 37);
+            this.lbl_tsLoss.Size = new System.Drawing.Size(42, 32);
             this.lbl_tsLoss.TabIndex = 11;
             this.lbl_tsLoss.Text = "23";
             // 
