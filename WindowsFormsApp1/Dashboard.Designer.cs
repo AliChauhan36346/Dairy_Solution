@@ -387,7 +387,7 @@
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Segoe UI Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(33, 4);
+            this.label1.Location = new System.Drawing.Point(48, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(148, 37);
             this.label1.TabIndex = 9;
@@ -489,7 +489,7 @@
             this.label10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label10.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(15, 8);
+            this.label10.Location = new System.Drawing.Point(9, 8);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(274, 32);
             this.label10.TabIndex = 12;
@@ -564,7 +564,7 @@
             this.lbl_PdodhiLoss.AutoSize = true;
             this.lbl_PdodhiLoss.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_PdodhiLoss.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbl_PdodhiLoss.Location = new System.Drawing.Point(8, 169);
+            this.lbl_PdodhiLoss.Location = new System.Drawing.Point(2, 169);
             this.lbl_PdodhiLoss.Name = "lbl_PdodhiLoss";
             this.lbl_PdodhiLoss.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lbl_PdodhiLoss.Size = new System.Drawing.Size(42, 32);
@@ -577,7 +577,7 @@
             this.lbl_grossReceive.AutoSize = true;
             this.lbl_grossReceive.Font = new System.Drawing.Font("Segoe UI Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_grossReceive.ForeColor = System.Drawing.Color.Green;
-            this.lbl_grossReceive.Location = new System.Drawing.Point(6, 106);
+            this.lbl_grossReceive.Location = new System.Drawing.Point(2, 106);
             this.lbl_grossReceive.Name = "lbl_grossReceive";
             this.lbl_grossReceive.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lbl_grossReceive.Size = new System.Drawing.Size(62, 30);
@@ -602,7 +602,7 @@
             this.lbl_purchases.AutoSize = true;
             this.lbl_purchases.Font = new System.Drawing.Font("Segoe UI Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_purchases.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.lbl_purchases.Location = new System.Drawing.Point(6, 47);
+            this.lbl_purchases.Location = new System.Drawing.Point(2, 47);
             this.lbl_purchases.Name = "lbl_purchases";
             this.lbl_purchases.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lbl_purchases.Size = new System.Drawing.Size(62, 30);
@@ -758,7 +758,7 @@
             this.lbl_stockOrLoss.AutoSize = true;
             this.lbl_stockOrLoss.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_stockOrLoss.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbl_stockOrLoss.Location = new System.Drawing.Point(7, 169);
+            this.lbl_stockOrLoss.Location = new System.Drawing.Point(3, 169);
             this.lbl_stockOrLoss.Name = "lbl_stockOrLoss";
             this.lbl_stockOrLoss.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lbl_stockOrLoss.Size = new System.Drawing.Size(42, 32);
@@ -770,7 +770,7 @@
             this.lbl_stockSales.AutoSize = true;
             this.lbl_stockSales.Font = new System.Drawing.Font("Segoe UI Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_stockSales.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.lbl_stockSales.Location = new System.Drawing.Point(7, 112);
+            this.lbl_stockSales.Location = new System.Drawing.Point(3, 112);
             this.lbl_stockSales.Name = "lbl_stockSales";
             this.lbl_stockSales.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lbl_stockSales.Size = new System.Drawing.Size(62, 30);
@@ -795,7 +795,7 @@
             this.lbl_stockCReceive.AutoSize = true;
             this.lbl_stockCReceive.Font = new System.Drawing.Font("Segoe UI Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_stockCReceive.ForeColor = System.Drawing.Color.Green;
-            this.lbl_stockCReceive.Location = new System.Drawing.Point(7, 52);
+            this.lbl_stockCReceive.Location = new System.Drawing.Point(3, 52);
             this.lbl_stockCReceive.Name = "lbl_stockCReceive";
             this.lbl_stockCReceive.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lbl_stockCReceive.Size = new System.Drawing.Size(62, 30);
@@ -859,7 +859,7 @@
             this.lbl_tsLoss.AutoSize = true;
             this.lbl_tsLoss.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_tsLoss.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbl_tsLoss.Location = new System.Drawing.Point(6, 169);
+            this.lbl_tsLoss.Location = new System.Drawing.Point(3, 169);
             this.lbl_tsLoss.Name = "lbl_tsLoss";
             this.lbl_tsLoss.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lbl_tsLoss.Size = new System.Drawing.Size(42, 32);
@@ -885,7 +885,7 @@
             this.lbl_tsVolume.AutoSize = true;
             this.lbl_tsVolume.Font = new System.Drawing.Font("Segoe UI Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_tsVolume.ForeColor = System.Drawing.Color.Green;
-            this.lbl_tsVolume.Location = new System.Drawing.Point(6, 114);
+            this.lbl_tsVolume.Location = new System.Drawing.Point(3, 114);
             this.lbl_tsVolume.Name = "lbl_tsVolume";
             this.lbl_tsVolume.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lbl_tsVolume.Size = new System.Drawing.Size(62, 30);
@@ -921,7 +921,7 @@
             this.lbl_grossVolume.AutoSize = true;
             this.lbl_grossVolume.Font = new System.Drawing.Font("Segoe UI Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_grossVolume.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.lbl_grossVolume.Location = new System.Drawing.Point(6, 56);
+            this.lbl_grossVolume.Location = new System.Drawing.Point(3, 56);
             this.lbl_grossVolume.Name = "lbl_grossVolume";
             this.lbl_grossVolume.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lbl_grossVolume.Size = new System.Drawing.Size(62, 30);

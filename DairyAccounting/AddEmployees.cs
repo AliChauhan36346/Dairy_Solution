@@ -305,7 +305,7 @@ namespace DairyAccounting
                         }
                         else
                         {
-                            MessageBox.Show("Dodhi ID not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //MessageBox.Show("Dodhi ID not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return string.Empty;
                         }
                     }

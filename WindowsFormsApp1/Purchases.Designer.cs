@@ -38,13 +38,13 @@
             this.label13 = new System.Windows.Forms.Label();
             this.txt_totalPurchase = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.txt_accountBalance = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_newCustomer = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lstCustomersSuggestion = new System.Windows.Forms.ListBox();
             this.btn_goForward = new System.Windows.Forms.Button();
             this.txt_dodhiId = new System.Windows.Forms.TextBox();
             this.btn_goBack = new System.Windows.Forms.Button();
@@ -64,9 +64,9 @@
             this.txt_rate = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_purchaseId = new System.Windows.Forms.TextBox();
-            this.lstCustomersSuggestion = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_difference = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -191,19 +191,6 @@
             this.label12.TabIndex = 57;
             this.label12.Text = "Total Receive کل وصول";
             // 
-            // txt_accountBalance
-            // 
-            this.txt_accountBalance.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txt_accountBalance.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_accountBalance.Font = new System.Drawing.Font("Segoe UI Black", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_accountBalance.ForeColor = System.Drawing.Color.White;
-            this.txt_accountBalance.Location = new System.Drawing.Point(873, 101);
-            this.txt_accountBalance.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.txt_accountBalance.Name = "txt_accountBalance";
-            this.txt_accountBalance.ReadOnly = true;
-            this.txt_accountBalance.Size = new System.Drawing.Size(132, 27);
-            this.txt_accountBalance.TabIndex = 56;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -316,6 +303,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Purchase Info";
             // 
+            // lstCustomersSuggestion
+            // 
+            this.lstCustomersSuggestion.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstCustomersSuggestion.FormattingEnabled = true;
+            this.lstCustomersSuggestion.ItemHeight = 21;
+            this.lstCustomersSuggestion.Location = new System.Drawing.Point(201, 89);
+            this.lstCustomersSuggestion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lstCustomersSuggestion.Name = "lstCustomersSuggestion";
+            this.lstCustomersSuggestion.Size = new System.Drawing.Size(344, 193);
+            this.lstCustomersSuggestion.TabIndex = 70;
+            this.lstCustomersSuggestion.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstCustomersSuggestion_MouseDoubleClick);
+            // 
             // btn_goForward
             // 
             this.btn_goForward.Location = new System.Drawing.Point(490, 18);
@@ -370,6 +369,7 @@
             // txt_id
             // 
             this.txt_id.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_id.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txt_id.Location = new System.Drawing.Point(201, 61);
             this.txt_id.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txt_id.Name = "txt_id";
@@ -458,6 +458,7 @@
             // txt_customerName
             // 
             this.txt_customerName.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_customerName.ForeColor = System.Drawing.Color.Red;
             this.txt_customerName.Location = new System.Drawing.Point(304, 61);
             this.txt_customerName.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txt_customerName.Name = "txt_customerName";
@@ -534,18 +535,6 @@
             this.txt_purchaseId.TabIndex = 69;
             this.txt_purchaseId.TabStop = false;
             // 
-            // lstCustomersSuggestion
-            // 
-            this.lstCustomersSuggestion.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstCustomersSuggestion.FormattingEnabled = true;
-            this.lstCustomersSuggestion.ItemHeight = 21;
-            this.lstCustomersSuggestion.Location = new System.Drawing.Point(201, 89);
-            this.lstCustomersSuggestion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.lstCustomersSuggestion.Name = "lstCustomersSuggestion";
-            this.lstCustomersSuggestion.Size = new System.Drawing.Size(344, 193);
-            this.lstCustomersSuggestion.TabIndex = 70;
-            this.lstCustomersSuggestion.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstCustomersSuggestion_MouseDoubleClick);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -571,11 +560,22 @@
             this.txt_difference.Size = new System.Drawing.Size(132, 27);
             this.txt_difference.TabIndex = 70;
             // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.textBox1.Location = new System.Drawing.Point(873, 100);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(132, 27);
+            this.textBox1.TabIndex = 72;
+            // 
             // Purchases
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1014, 678);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txt_difference);
             this.Controls.Add(this.groupBox1);
@@ -584,7 +584,6 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.txt_totalPurchase);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.txt_accountBalance);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -616,7 +615,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txt_totalPurchase;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txt_accountBalance;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel1;
@@ -645,5 +643,6 @@
         private System.Windows.Forms.TextBox txt_difference;
         private System.Windows.Forms.Button btn_goBack;
         private System.Windows.Forms.Button btn_goForward;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

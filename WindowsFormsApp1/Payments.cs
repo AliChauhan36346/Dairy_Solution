@@ -54,7 +54,7 @@ namespace WindowsFormsApp1
 
             if(!int.TryParse(txt_accountId.Text, out int id))
             {
-
+                return;
             }
 
             ParchiClass.GetAccountSummary(out decimal openingBalance, out string openingStatus,out decimal totalDebit,out decimal totalCredit,out accountBalance,out status,id);

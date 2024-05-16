@@ -58,8 +58,8 @@
             this.txt_accountName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_cashAccountId = new System.Windows.Forms.TextBox();
-            this.txt_accountBalance = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -227,7 +227,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.label13.Location = new System.Drawing.Point(666, 138);
             this.label13.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label13.Name = "label13";
@@ -258,7 +258,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.groupBox1.Size = new System.Drawing.Size(394, 264);
+            this.groupBox1.Size = new System.Drawing.Size(487, 264);
             this.groupBox1.TabIndex = 103;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Receipt Detail";
@@ -266,7 +266,7 @@
             // btn_goForward
             // 
             this.btn_goForward.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_goForward.Location = new System.Drawing.Point(345, 22);
+            this.btn_goForward.Location = new System.Drawing.Point(345, 21);
             this.btn_goForward.Name = "btn_goForward";
             this.btn_goForward.Size = new System.Drawing.Size(45, 33);
             this.btn_goForward.TabIndex = 127;
@@ -277,7 +277,7 @@
             // btn_goBack
             // 
             this.btn_goBack.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_goBack.Location = new System.Drawing.Point(299, 22);
+            this.btn_goBack.Location = new System.Drawing.Point(299, 21);
             this.btn_goBack.Name = "btn_goBack";
             this.btn_goBack.Size = new System.Drawing.Size(45, 33);
             this.btn_goBack.TabIndex = 126;
@@ -289,10 +289,10 @@
             // 
             this.lstAccountsSuggestion.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstAccountsSuggestion.FormattingEnabled = true;
-            this.lstAccountsSuggestion.Location = new System.Drawing.Point(127, 91);
+            this.lstAccountsSuggestion.Location = new System.Drawing.Point(126, 91);
             this.lstAccountsSuggestion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lstAccountsSuggestion.Name = "lstAccountsSuggestion";
-            this.lstAccountsSuggestion.Size = new System.Drawing.Size(257, 160);
+            this.lstAccountsSuggestion.Size = new System.Drawing.Size(351, 160);
             this.lstAccountsSuggestion.TabIndex = 111;
             this.lstAccountsSuggestion.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstAccountsSuggestion_MouseDoubleClick);
             // 
@@ -304,7 +304,7 @@
             this.txt_cashAccountName.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txt_cashAccountName.Name = "txt_cashAccountName";
             this.txt_cashAccountName.ReadOnly = true;
-            this.txt_cashAccountName.Size = new System.Drawing.Size(182, 27);
+            this.txt_cashAccountName.Size = new System.Drawing.Size(275, 27);
             this.txt_cashAccountName.TabIndex = 113;
             this.txt_cashAccountName.TabStop = false;
             // 
@@ -315,7 +315,7 @@
             this.lstAccountSuggestion.ItemHeight = 15;
             this.lstAccountSuggestion.Location = new System.Drawing.Point(126, 167);
             this.lstAccountSuggestion.Name = "lstAccountSuggestion";
-            this.lstAccountSuggestion.Size = new System.Drawing.Size(258, 94);
+            this.lstAccountSuggestion.Size = new System.Drawing.Size(351, 94);
             this.lstAccountSuggestion.TabIndex = 112;
             // 
             // label3
@@ -334,13 +334,14 @@
             // 
             this.txt_discription.Location = new System.Drawing.Point(126, 181);
             this.txt_discription.Name = "txt_discription";
-            this.txt_discription.Size = new System.Drawing.Size(260, 61);
+            this.txt_discription.Size = new System.Drawing.Size(351, 61);
             this.txt_discription.TabIndex = 3;
             this.txt_discription.Text = "";
             // 
             // txt_accountId
             // 
             this.txt_accountId.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_accountId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txt_accountId.Location = new System.Drawing.Point(126, 64);
             this.txt_accountId.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txt_accountId.Name = "txt_accountId";
@@ -368,7 +369,7 @@
             this.txt_amount.Location = new System.Drawing.Point(126, 102);
             this.txt_amount.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txt_amount.Name = "txt_amount";
-            this.txt_amount.Size = new System.Drawing.Size(258, 27);
+            this.txt_amount.Size = new System.Drawing.Size(351, 27);
             this.txt_amount.TabIndex = 1;
             this.txt_amount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_amount_KeyDown);
             // 
@@ -400,7 +401,7 @@
             // 
             this.dtm_picker.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtm_picker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtm_picker.Location = new System.Drawing.Point(202, 26);
+            this.dtm_picker.Location = new System.Drawing.Point(202, 25);
             this.dtm_picker.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dtm_picker.Name = "dtm_picker";
             this.dtm_picker.Size = new System.Drawing.Size(96, 27);
@@ -424,10 +425,11 @@
             // txt_accountName
             // 
             this.txt_accountName.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_accountName.ForeColor = System.Drawing.Color.Red;
             this.txt_accountName.Location = new System.Drawing.Point(202, 64);
             this.txt_accountName.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txt_accountName.Name = "txt_accountName";
-            this.txt_accountName.Size = new System.Drawing.Size(182, 27);
+            this.txt_accountName.Size = new System.Drawing.Size(275, 27);
             this.txt_accountName.TabIndex = 103;
             this.txt_accountName.TabStop = false;
             // 
@@ -455,19 +457,6 @@
             this.txt_cashAccountId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_cashAccountId_KeyDown);
             this.txt_cashAccountId.Leave += new System.EventHandler(this.txt_cashAccountId_Leave);
             // 
-            // txt_accountBalance
-            // 
-            this.txt_accountBalance.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txt_accountBalance.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_accountBalance.Font = new System.Drawing.Font("Segoe UI Black", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_accountBalance.ForeColor = System.Drawing.Color.White;
-            this.txt_accountBalance.Location = new System.Drawing.Point(785, 89);
-            this.txt_accountBalance.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.txt_accountBalance.Name = "txt_accountBalance";
-            this.txt_accountBalance.ReadOnly = true;
-            this.txt_accountBalance.Size = new System.Drawing.Size(132, 27);
-            this.txt_accountBalance.TabIndex = 104;
-            // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -481,13 +470,23 @@
             this.textBox1.Size = new System.Drawing.Size(132, 27);
             this.textBox1.TabIndex = 105;
             // 
+            // textBox2
+            // 
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.textBox2.Location = new System.Drawing.Point(784, 89);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(132, 27);
+            this.textBox2.TabIndex = 106;
+            // 
             // Receipts_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(932, 667);
+            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.txt_accountBalance);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.panel1);
@@ -540,9 +539,9 @@
         private System.Windows.Forms.TextBox txt_cashAccountName;
         private System.Windows.Forms.ListBox lstAccountsSuggestion;
         private System.Windows.Forms.ListBox lstAccountSuggestion;
-        private System.Windows.Forms.TextBox txt_accountBalance;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btn_goForward;
         private System.Windows.Forms.Button btn_goBack;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

@@ -37,6 +37,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_deleteRecord = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lstCashAccountSuggestions = new System.Windows.Forms.ListBox();
+            this.lstEmployeeSuggestions = new System.Windows.Forms.ListBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txt_cashAccountId = new System.Windows.Forms.TextBox();
             this.txt_cashAccountName = new System.Windows.Forms.TextBox();
@@ -53,10 +57,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txt_expenseId = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.lstCashAccountSuggestions = new System.Windows.Forms.ListBox();
-            this.lstEmployeeSuggestions = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -207,6 +207,40 @@
             this.groupBox1.Text = "Expense Info";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // lstCashAccountSuggestions
+            // 
+            this.lstCashAccountSuggestions.FormattingEnabled = true;
+            this.lstCashAccountSuggestions.Location = new System.Drawing.Point(107, 91);
+            this.lstCashAccountSuggestions.Name = "lstCashAccountSuggestions";
+            this.lstCashAccountSuggestions.Size = new System.Drawing.Size(256, 95);
+            this.lstCashAccountSuggestions.TabIndex = 17;
+            // 
+            // lstEmployeeSuggestions
+            // 
+            this.lstEmployeeSuggestions.FormattingEnabled = true;
+            this.lstEmployeeSuggestions.Location = new System.Drawing.Point(106, 152);
+            this.lstEmployeeSuggestions.Name = "lstEmployeeSuggestions";
+            this.lstEmployeeSuggestions.Size = new System.Drawing.Size(258, 95);
+            this.lstEmployeeSuggestions.TabIndex = 18;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(324, 31);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(40, 29);
+            this.button2.TabIndex = 22;
+            this.button2.Text = ">>";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(282, 31);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(40, 29);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "<<";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -292,7 +326,7 @@
             this.dtTm_date.Size = new System.Drawing.Size(91, 25);
             this.dtTm_date.TabIndex = 1;
             this.dtTm_date.TabStop = false;
-            this.dtTm_date.Value = new System.DateTime(2024, 4, 12, 0, 0, 0, 0);
+            this.dtTm_date.Value = new System.DateTime(2024, 5, 12, 0, 0, 0, 0);
             this.dtTm_date.ValueChanged += new System.EventHandler(this.dtTm_date_ValueChanged);
             // 
             // label7
@@ -403,40 +437,6 @@
             this.dataGridView2.TabIndex = 16;
             this.dataGridView2.TabStop = false;
             this.dataGridView2.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_CellMouseDoubleClick);
-            // 
-            // lstCashAccountSuggestions
-            // 
-            this.lstCashAccountSuggestions.FormattingEnabled = true;
-            this.lstCashAccountSuggestions.Location = new System.Drawing.Point(107, 91);
-            this.lstCashAccountSuggestions.Name = "lstCashAccountSuggestions";
-            this.lstCashAccountSuggestions.Size = new System.Drawing.Size(256, 95);
-            this.lstCashAccountSuggestions.TabIndex = 17;
-            // 
-            // lstEmployeeSuggestions
-            // 
-            this.lstEmployeeSuggestions.FormattingEnabled = true;
-            this.lstEmployeeSuggestions.Location = new System.Drawing.Point(106, 152);
-            this.lstEmployeeSuggestions.Name = "lstEmployeeSuggestions";
-            this.lstEmployeeSuggestions.Size = new System.Drawing.Size(258, 95);
-            this.lstEmployeeSuggestions.TabIndex = 18;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(282, 31);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(40, 29);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "<<";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(324, 31);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(40, 29);
-            this.button2.TabIndex = 22;
-            this.button2.Text = ">>";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // expenseGeneral
             // 

@@ -20,6 +20,7 @@ namespace WindowsFormsApp1
         AddEmployees employees = new AddEmployees();// to get employee name by id
         CommonFunctionsClass commonFunctions = new CommonFunctionsClass();// common function accross all forms like search suggestions
         DashboardClass dashboard = new DashboardClass();
+        ParchiClass parchi = new ParchiClass();
 
         public bool isfromOtherForm = false;
         public int purchaseId;
@@ -61,19 +62,15 @@ namespace WindowsFormsApp1
 
             txt_dodhiId.Text=customers.GetCustomerDodhiId(txt_id.Text).ToString();
 
-            decimal accountBalance;
-            string status;
 
             if (!int.TryParse(txt_id.Text, out int id))
             {
-
+                return;
             }
 
-            commonFunctions.GetAccountSummary(out decimal totalDebit, out decimal totalCredit, out accountBalance, out status, id);
-
-            txt_accountBalance.Text = accountBalance.ToString() + " " + status;
-
-
+            parchi.GetAccountSummary(out decimal op, out string os, out decimal td, out decimal tc, out decimal closingBalnce, out string closingStatus, id);
+            closingBalnce = Math.Round(closingBalnce, 0);
+            textBox1.Text = closingBalnce.ToString() + " " + closingStatus.ToString();
 
         }
 
@@ -172,7 +169,7 @@ namespace WindowsFormsApp1
 
                 // Transfer the selected suggestion to the TextBoxes
                 txt_customerName.Text = parts[1]; // Name TextBox
-                txt_id.Text = parts[0].Substring(3); // ID TextBox
+                txt_id.Text = parts[0].Trim(); // ID TextBox
 
                 // Hide the suggestion list
                 lstCustomersSuggestion.Visible = false;
@@ -503,7 +500,7 @@ namespace WindowsFormsApp1
 
         private void getStats()
         {
-            DateTime today = DateTime.Today;
+            DateTime today = dtm_picker.Value.Date;
 
             string grossReceive;
             string totalPurchase;
@@ -605,6 +602,7 @@ namespace WindowsFormsApp1
         private void dtm_picker_ValueChanged(object sender, EventArgs e)
         {
             purchases.showDataInGridView(dataGridView1, dtm_picker.Value.Date);
+            getStats();
         }
     }
 }

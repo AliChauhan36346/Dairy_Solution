@@ -111,16 +111,8 @@ namespace WindowsFormsApp1
             decimal accountBalance;
             string status;
             parchiClass.GetAccountSummary(out decimal openingBalance, out string openingStatus, out decimal totalDebit, out decimal totalCredit, out accountBalance, out status, accid);
-
-            // Update the balance textbox
-            if (status != null)
-            {
-                txt_companyBalance.Text = $"{accountBalance} {status}";
-            }
-            else
-            {
-                txt_companyBalance.Text = "N/A"; // Set a default value if status is null
-            }
+            accountBalance = Math.Round(accountBalance, 0);
+            textBox1.Text=accountBalance.ToString()+" "+status;
         }
 
 
@@ -750,7 +742,7 @@ namespace WindowsFormsApp1
         // get the basic info like gross sales and ts sales and stock
         private void getStats()
         {
-            DateTime today = DateTime.Today;
+            DateTime today = dtm_picker.Value.Date;
 
             string grosSales;
             string tsSales;
@@ -853,6 +845,7 @@ namespace WindowsFormsApp1
         private void dtm_picker_ValueChanged(object sender, EventArgs e)
         {
             sales.showDataInGridView(dataGridView1, dtm_picker.Value.Date);
+            getStats();
         }
 
         private void label18_Click(object sender, EventArgs e)

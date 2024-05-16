@@ -704,7 +704,15 @@ namespace WindowsFormsApp1
             //dodhi
             if(chk_dodhiWise.Checked)
             {
-                dodhi=(cmbo_dodhi.SelectedItem.ToString().Trim());
+                if(cmbo_dodhi.SelectedItem != null)
+                {
+                    dodhi = (cmbo_dodhi.SelectedItem.ToString().Trim());
+                }
+                else
+                {
+                    return;
+                }
+                
             }
             else
             {
@@ -748,10 +756,6 @@ namespace WindowsFormsApp1
                 // Draw a single rectangle around all the text
                 
                 int rectWidth = 230; // Adjust this as needed
-
-                //int maxWidth = (int)Math.Max(e.Graphics.MeasureString("Account Id", heading4).Width,
-                                              //Math.Max(e.Graphics.MeasureString("Account Name", heading4).Width,
-                                                      // e.Graphics.MeasureString("Payment Amount", heading4).Width));
 
 
                 int totalWidth = 3 * rectWidth + 2 * 30; // Total width of all text and spacing
@@ -860,6 +864,157 @@ namespace WindowsFormsApp1
 
             headerPrinted = false;
             e.HasMorePages = false;
+        }
+
+        private void printDocument3_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            Font headingFont = new Font("Times New Roman", 24, FontStyle.Bold);
+            Font heading1 = new Font("Times New Roman", 18, FontStyle.Bold);
+            Font heading2 = new Font("Times New Roman", 14, FontStyle.Bold | FontStyle.Italic);
+            Font heading3 = new Font("Times New Roman", 13, FontStyle.Bold);
+            Font detail = new Font("Times New Roman", 11, FontStyle.Regular | FontStyle.Bold);
+
+            Pen pen = new Pen(Color.Black, 2);
+            Brush brush = Brushes.Black;
+
+            //heading
+            string headingText = "کسٹمر کی فہرست";
+            string dodhi;
+
+            //dodhi
+            if (chk_dodhiWise.Checked)
+            {
+                if (cmbo_dodhi.SelectedItem != null)
+                {
+                    dodhi = (cmbo_dodhi.SelectedItem.ToString().Trim());
+                }
+                else
+                {
+                    return;
+                }
+
+            }
+            else
+            {
+                dodhi = "(ALL DODHI)";
+            }
+
+
+            // Calculate the width of the heading text
+            SizeF headingSize = e.Graphics.MeasureString(headingText, headingFont);
+            SizeF dodhiSize = e.Graphics.MeasureString(dodhi, heading1);
+
+            float xCenter = (e.PageBounds.Width - headingSize.Width) / 2;
+            float dodhiCenter = (e.PageBounds.Width - dodhiSize.Width) / 2;
+
+            int xAxis = 20;
+            int yAxis = 20;
+
+            e.Graphics.DrawString(headingText, headingFont, brush, xCenter, yAxis);
+            yAxis += 50;
+            e.Graphics.DrawString(dodhi, heading1, brush, dodhiCenter, yAxis);
+            yAxis += 30;
+            e.Graphics.DrawLine(pen, 20, yAxis, e.PageBounds.Width - 20, yAxis);
+            e.Graphics.DrawLine(pen, 20, yAxis, 20, e.MarginBounds.Bottom+60);
+            e.Graphics.DrawLine(pen, e.PageBounds.Width-20, yAxis, e.PageBounds.Width-20, e.MarginBounds.Bottom+60);
+            yAxis += 10;
+            e.Graphics.DrawString("نام", heading3, brush, e.PageBounds.Width-120, yAxis-2);
+            
+            e.Graphics.DrawLine(pen, e.PageBounds.Width - 290, yAxis-9, e.PageBounds.Width - 290, e.MarginBounds.Bottom+60);
+            e.Graphics.DrawString("صبح", heading3, brush, e.PageBounds.Width-340, yAxis-2);
+            e.Graphics.DrawLine(pen, e.PageBounds.Width - 355, yAxis - 9, e.PageBounds.Width - 355, e.MarginBounds.Bottom+60);
+            e.Graphics.DrawString("شام", heading3, brush, e.PageBounds.Width - 405, yAxis-2);
+            e.Graphics.DrawLine(pen, e.PageBounds.Width - 425, yAxis - 9, e.PageBounds.Width - 425, e.MarginBounds.Bottom+60);
+            e.Graphics.DrawLine(pen, e.PageBounds.Width - 429, yAxis - 9, e.PageBounds.Width - 429, e.MarginBounds.Bottom+60);
+            e.Graphics.DrawString("نام", heading3, brush, e.PageBounds.Width - 510, yAxis - 2);
+            e.Graphics.DrawLine(pen, e.PageBounds.Width - 700, yAxis - 9, e.PageBounds.Width - 700, e.MarginBounds.Bottom + 60);
+            e.Graphics.DrawString("صبح", heading3, brush, e.PageBounds.Width - 745, yAxis - 2);
+            e.Graphics.DrawLine(pen, e.PageBounds.Width - 765, yAxis - 9, e.PageBounds.Width - 765, e.MarginBounds.Bottom + 60);
+            e.Graphics.DrawString("شام", heading3, brush, e.PageBounds.Width - 810, yAxis - 2);
+            yAxis += 20;
+
+            while(yAxis+20<e.MarginBounds.Bottom+90)
+            {
+                e.Graphics.DrawLine(pen, 20, yAxis, e.PageBounds.Width - 20, yAxis);
+                yAxis += 30;
+            }
+
+            yAxis = 135;
+            xAxis = e.PageBounds.Width - 290;
+
+            bool isSecondIteration = false;
+
+            while (currentRow<dataGridView2.Rows.Count-1)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+
+                row = dataGridView2.Rows[currentRow];
+
+                e.Graphics.DrawString(row.Cells["Customer Name"].Value.ToString(), detail, brush, xAxis, yAxis);
+
+                yAxis += 30;
+
+                currentRow++;
+
+                if (yAxis+30>e.MarginBounds.Bottom+90)
+                {
+                    yAxis = 135;
+                    xAxis = e.PageBounds.Width - 699;
+
+                    if(isSecondIteration)
+                    {
+                        e.HasMorePages = true;
+                        break;
+                    }
+
+                    isSecondIteration = true;
+
+                    
+                }
+
+                
+            }
+
+        }
+
+        private void btn_printCusList_Click(object sender, EventArgs e)
+        {
+            if (rdo_pringDialog.Checked)
+            {
+                printDialog3.Document = printDocument3;
+                DialogResult result = printDialog3.ShowDialog();
+
+                
+
+                if (result == DialogResult.OK)
+                {
+                    printDocument3.Print();
+                    currentRow = 0; // Reset rowIndex before printing
+
+                    totalCredit = 0;
+                    totalDebit = 0;
+                }
+            }
+            else if (rdo_printPreview.Checked)
+            {
+                PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
+                printPreviewDialog.Document = printDocument3;
+
+                // Show the print preview dialog
+                DialogResult result = printPreviewDialog.ShowDialog();
+
+                currentRow = 0; // Reset rowIndex before printing
+
+                totalCredit = 0;
+                totalDebit = 0;
+
+                if (result == DialogResult.OK)
+                {
+                    printDocument3.Print();
+                }
+            }
+
+            
         }
     }
 

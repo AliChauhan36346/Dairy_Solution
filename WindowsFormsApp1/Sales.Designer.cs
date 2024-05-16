@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_newAccount = new System.Windows.Forms.Button();
             this.btn_newCompany = new System.Windows.Forms.Button();
@@ -44,7 +44,9 @@
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label18 = new System.Windows.Forms.Label();
+            this.lstCompanySuggestions = new System.Windows.Forms.ListBox();
             this.btn_goForward = new System.Windows.Forms.Button();
+            this.lstAccountSuggestions = new System.Windows.Forms.ListBox();
             this.btn_goBack = new System.Windows.Forms.Button();
             this.txt_cashAccountId = new System.Windows.Forms.TextBox();
             this.txt_cashAccountName = new System.Windows.Forms.TextBox();
@@ -74,13 +76,11 @@
             this.txt_liters = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_salesId = new System.Windows.Forms.TextBox();
-            this.lstCompanySuggestions = new System.Windows.Forms.ListBox();
-            this.lstAccountSuggestions = new System.Windows.Forms.ListBox();
-            this.txt_companyBalance = new System.Windows.Forms.TextBox();
             this.txt_tsSales = new System.Windows.Forms.TextBox();
             this.txt_grossSales = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txt_stockVolume = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -227,14 +227,14 @@
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1267, 279);
             this.dataGridView1.TabIndex = 3;
@@ -334,6 +334,16 @@
             this.label18.Text = "موصول ہوئی رقم";
             this.label18.Click += new System.EventHandler(this.label18_Click);
             // 
+            // lstCompanySuggestions
+            // 
+            this.lstCompanySuggestions.FormattingEnabled = true;
+            this.lstCompanySuggestions.ItemHeight = 20;
+            this.lstCompanySuggestions.Location = new System.Drawing.Point(165, 85);
+            this.lstCompanySuggestions.Name = "lstCompanySuggestions";
+            this.lstCompanySuggestions.Size = new System.Drawing.Size(326, 204);
+            this.lstCompanySuggestions.TabIndex = 36;
+            this.lstCompanySuggestions.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstCompanySuggestions_MouseDoubleClick);
+            // 
             // btn_goForward
             // 
             this.btn_goForward.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -344,6 +354,16 @@
             this.btn_goForward.Text = ">>";
             this.btn_goForward.UseVisualStyleBackColor = true;
             this.btn_goForward.Click += new System.EventHandler(this.btn_goForward_Click);
+            // 
+            // lstAccountSuggestions
+            // 
+            this.lstAccountSuggestions.FormattingEnabled = true;
+            this.lstAccountSuggestions.ItemHeight = 20;
+            this.lstAccountSuggestions.Location = new System.Drawing.Point(165, 115);
+            this.lstAccountSuggestions.Name = "lstAccountSuggestions";
+            this.lstAccountSuggestions.Size = new System.Drawing.Size(326, 124);
+            this.lstAccountSuggestions.TabIndex = 37;
+            this.lstAccountSuggestions.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstAccountSuggestions_MouseDoubleClick);
             // 
             // btn_goBack
             // 
@@ -409,6 +429,7 @@
             // txt_id
             // 
             this.txt_id.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_id.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txt_id.Location = new System.Drawing.Point(165, 58);
             this.txt_id.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txt_id.Name = "txt_id";
@@ -615,6 +636,7 @@
             // 
             this.txt_companyName.BackColor = System.Drawing.Color.White;
             this.txt_companyName.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_companyName.ForeColor = System.Drawing.Color.Red;
             this.txt_companyName.Location = new System.Drawing.Point(266, 58);
             this.txt_companyName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txt_companyName.Name = "txt_companyName";
@@ -694,39 +716,6 @@
             this.txt_salesId.TabIndex = 35;
             this.txt_salesId.TabStop = false;
             // 
-            // lstCompanySuggestions
-            // 
-            this.lstCompanySuggestions.FormattingEnabled = true;
-            this.lstCompanySuggestions.ItemHeight = 20;
-            this.lstCompanySuggestions.Location = new System.Drawing.Point(165, 85);
-            this.lstCompanySuggestions.Name = "lstCompanySuggestions";
-            this.lstCompanySuggestions.Size = new System.Drawing.Size(326, 204);
-            this.lstCompanySuggestions.TabIndex = 36;
-            this.lstCompanySuggestions.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstCompanySuggestions_MouseDoubleClick);
-            // 
-            // lstAccountSuggestions
-            // 
-            this.lstAccountSuggestions.FormattingEnabled = true;
-            this.lstAccountSuggestions.ItemHeight = 20;
-            this.lstAccountSuggestions.Location = new System.Drawing.Point(165, 115);
-            this.lstAccountSuggestions.Name = "lstAccountSuggestions";
-            this.lstAccountSuggestions.Size = new System.Drawing.Size(326, 124);
-            this.lstAccountSuggestions.TabIndex = 37;
-            this.lstAccountSuggestions.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstAccountSuggestions_MouseDoubleClick);
-            // 
-            // txt_companyBalance
-            // 
-            this.txt_companyBalance.BackColor = System.Drawing.Color.White;
-            this.txt_companyBalance.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_companyBalance.Font = new System.Drawing.Font("Segoe UI Black", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_companyBalance.ForeColor = System.Drawing.Color.White;
-            this.txt_companyBalance.Location = new System.Drawing.Point(1121, 83);
-            this.txt_companyBalance.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txt_companyBalance.Name = "txt_companyBalance";
-            this.txt_companyBalance.Size = new System.Drawing.Size(137, 29);
-            this.txt_companyBalance.TabIndex = 27;
-            this.txt_companyBalance.TabStop = false;
-            // 
             // txt_tsSales
             // 
             this.txt_tsSales.BackColor = System.Drawing.Color.White;
@@ -781,11 +770,21 @@
             this.txt_stockVolume.TabIndex = 36;
             this.txt_stockVolume.TabStop = false;
             // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(1120, 84);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(137, 29);
+            this.textBox1.TabIndex = 38;
+            // 
             // Sales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1267, 692);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.txt_stockVolume);
             this.Controls.Add(this.groupBox1);
@@ -794,7 +793,6 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.txt_tsSales);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.txt_companyBalance);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -862,7 +860,6 @@
         private System.Windows.Forms.TextBox txt_cashAccountId;
         private System.Windows.Forms.TextBox txt_cashAccountName;
         private System.Windows.Forms.ListBox lstAccountSuggestions;
-        private System.Windows.Forms.TextBox txt_companyBalance;
         private System.Windows.Forms.TextBox txt_tsSales;
         private System.Windows.Forms.TextBox txt_grossSales;
         private System.Windows.Forms.Label label17;
@@ -870,5 +867,6 @@
         private System.Windows.Forms.Button btn_goForward;
         private System.Windows.Forms.Button btn_goBack;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

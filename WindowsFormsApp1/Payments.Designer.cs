@@ -285,7 +285,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.groupBox1.Size = new System.Drawing.Size(415, 308);
+            this.groupBox1.Size = new System.Drawing.Size(477, 308);
             this.groupBox1.TabIndex = 109;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Payment Detail";
@@ -293,7 +293,7 @@
             // btn_goForward
             // 
             this.btn_goForward.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_goForward.Location = new System.Drawing.Point(257, 19);
+            this.btn_goForward.Location = new System.Drawing.Point(257, 16);
             this.btn_goForward.Name = "btn_goForward";
             this.btn_goForward.Size = new System.Drawing.Size(45, 33);
             this.btn_goForward.TabIndex = 125;
@@ -304,7 +304,7 @@
             // btn_goBack
             // 
             this.btn_goBack.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_goBack.Location = new System.Drawing.Point(211, 19);
+            this.btn_goBack.Location = new System.Drawing.Point(121, 16);
             this.btn_goBack.Name = "btn_goBack";
             this.btn_goBack.Size = new System.Drawing.Size(45, 33);
             this.btn_goBack.TabIndex = 124;
@@ -320,7 +320,7 @@
             this.lstAccountsSuggestion.Location = new System.Drawing.Point(120, 128);
             this.lstAccountsSuggestion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lstAccountsSuggestion.Name = "lstAccountsSuggestion";
-            this.lstAccountsSuggestion.Size = new System.Drawing.Size(287, 174);
+            this.lstAccountsSuggestion.Size = new System.Drawing.Size(347, 174);
             this.lstAccountsSuggestion.TabIndex = 110;
             this.lstAccountsSuggestion.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstCustomersSuggestion_MouseDoubleClick);
             // 
@@ -340,10 +340,10 @@
             // 
             this.lstAccountSuggestion.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstAccountSuggestion.FormattingEnabled = true;
-            this.lstAccountSuggestion.Location = new System.Drawing.Point(120, 205);
+            this.lstAccountSuggestion.Location = new System.Drawing.Point(120, 207);
             this.lstAccountSuggestion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lstAccountSuggestion.Name = "lstAccountSuggestion";
-            this.lstAccountSuggestion.Size = new System.Drawing.Size(287, 95);
+            this.lstAccountSuggestion.Size = new System.Drawing.Size(347, 95);
             this.lstAccountSuggestion.TabIndex = 111;
             // 
             // txt_discription
@@ -352,7 +352,7 @@
             this.txt_discription.Location = new System.Drawing.Point(120, 222);
             this.txt_discription.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txt_discription.Name = "txt_discription";
-            this.txt_discription.Size = new System.Drawing.Size(287, 65);
+            this.txt_discription.Size = new System.Drawing.Size(347, 65);
             this.txt_discription.TabIndex = 3;
             this.txt_discription.Text = "";
             // 
@@ -374,17 +374,18 @@
             this.txt_amount.Location = new System.Drawing.Point(120, 139);
             this.txt_amount.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txt_amount.Name = "txt_amount";
-            this.txt_amount.Size = new System.Drawing.Size(287, 27);
+            this.txt_amount.Size = new System.Drawing.Size(347, 27);
             this.txt_amount.TabIndex = 1;
             this.txt_amount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_amount_KeyDown);
             // 
             // txt_accountName
             // 
             this.txt_accountName.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_accountName.ForeColor = System.Drawing.Color.Red;
             this.txt_accountName.Location = new System.Drawing.Point(208, 101);
             this.txt_accountName.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txt_accountName.Name = "txt_accountName";
-            this.txt_accountName.Size = new System.Drawing.Size(199, 27);
+            this.txt_accountName.Size = new System.Drawing.Size(259, 27);
             this.txt_accountName.TabIndex = 118;
             this.txt_accountName.TabStop = false;
             // 
@@ -452,6 +453,7 @@
             // txt_accountId
             // 
             this.txt_accountId.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_accountId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txt_accountId.Location = new System.Drawing.Point(120, 101);
             this.txt_accountId.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txt_accountId.Name = "txt_accountId";
@@ -477,13 +479,14 @@
             // 
             this.txt_paymentId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_paymentId.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_paymentId.Location = new System.Drawing.Point(120, 22);
+            this.txt_paymentId.Location = new System.Drawing.Point(169, 19);
             this.txt_paymentId.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txt_paymentId.Name = "txt_paymentId";
             this.txt_paymentId.ReadOnly = true;
             this.txt_paymentId.Size = new System.Drawing.Size(85, 27);
             this.txt_paymentId.TabIndex = 109;
             this.txt_paymentId.TabStop = false;
+            this.txt_paymentId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txt_cashAccountName
             // 
@@ -492,7 +495,7 @@
             this.txt_cashAccountName.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txt_cashAccountName.Name = "txt_cashAccountName";
             this.txt_cashAccountName.ReadOnly = true;
-            this.txt_cashAccountName.Size = new System.Drawing.Size(199, 27);
+            this.txt_cashAccountName.Size = new System.Drawing.Size(259, 27);
             this.txt_cashAccountName.TabIndex = 123;
             this.txt_cashAccountName.TabStop = false;
             // 

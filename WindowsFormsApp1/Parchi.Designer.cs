@@ -36,6 +36,7 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_printCusList = new System.Windows.Forms.Button();
             this.rdo_pringDialog = new System.Windows.Forms.RadioButton();
             this.rdo_printPreview = new System.Windows.Forms.RadioButton();
             this.btn_paymentList = new System.Windows.Forms.Button();
@@ -60,6 +61,8 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDialog2 = new System.Windows.Forms.PrintDialog();
+            this.printDocument3 = new System.Drawing.Printing.PrintDocument();
+            this.printDialog3 = new System.Windows.Forms.PrintDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -95,6 +98,7 @@
             // 
             // cmbo_dodhi
             // 
+            this.cmbo_dodhi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbo_dodhi.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbo_dodhi.FormattingEnabled = true;
             this.cmbo_dodhi.Location = new System.Drawing.Point(342, 20);
@@ -149,6 +153,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btn_printCusList);
             this.panel1.Controls.Add(this.rdo_pringDialog);
             this.panel1.Controls.Add(this.rdo_printPreview);
             this.panel1.Controls.Add(this.btn_paymentList);
@@ -173,6 +178,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1016, 134);
             this.panel1.TabIndex = 13;
+            // 
+            // btn_printCusList
+            // 
+            this.btn_printCusList.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_printCusList.ForeColor = System.Drawing.Color.Green;
+            this.btn_printCusList.Location = new System.Drawing.Point(693, 68);
+            this.btn_printCusList.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btn_printCusList.Name = "btn_printCusList";
+            this.btn_printCusList.Size = new System.Drawing.Size(95, 52);
+            this.btn_printCusList.TabIndex = 127;
+            this.btn_printCusList.TabStop = false;
+            this.btn_printCusList.Text = "print Customer List";
+            this.btn_printCusList.UseVisualStyleBackColor = true;
+            this.btn_printCusList.Click += new System.EventHandler(this.btn_printCusList_Click);
             // 
             // rdo_pringDialog
             // 
@@ -201,7 +220,7 @@
             // btn_paymentList
             // 
             this.btn_paymentList.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_paymentList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_paymentList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btn_paymentList.Location = new System.Drawing.Point(606, 68);
             this.btn_paymentList.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btn_paymentList.Name = "btn_paymentList";
@@ -308,7 +327,7 @@
             // 
             this.btn_printAndAddPayments.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_printAndAddPayments.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btn_printAndAddPayments.Location = new System.Drawing.Point(693, 68);
+            this.btn_printAndAddPayments.Location = new System.Drawing.Point(7, 74);
             this.btn_printAndAddPayments.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btn_printAndAddPayments.Name = "btn_printAndAddPayments";
             this.btn_printAndAddPayments.Size = new System.Drawing.Size(69, 52);
@@ -336,10 +355,10 @@
             // 
             this.txt_totalLiters.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_totalLiters.ForeColor = System.Drawing.Color.Green;
-            this.txt_totalLiters.Location = new System.Drawing.Point(452, 7);
+            this.txt_totalLiters.Location = new System.Drawing.Point(464, 7);
             this.txt_totalLiters.Margin = new System.Windows.Forms.Padding(4);
             this.txt_totalLiters.Name = "txt_totalLiters";
-            this.txt_totalLiters.Size = new System.Drawing.Size(119, 27);
+            this.txt_totalLiters.Size = new System.Drawing.Size(107, 27);
             this.txt_totalLiters.TabIndex = 5;
             // 
             // label5
@@ -358,7 +377,7 @@
             // 
             this.txt_totalParchiAmount.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_totalParchiAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.txt_totalParchiAmount.Location = new System.Drawing.Point(705, 7);
+            this.txt_totalParchiAmount.Location = new System.Drawing.Point(691, 7);
             this.txt_totalParchiAmount.Margin = new System.Windows.Forms.Padding(4);
             this.txt_totalParchiAmount.Name = "txt_totalParchiAmount";
             this.txt_totalParchiAmount.Size = new System.Drawing.Size(113, 27);
@@ -371,7 +390,7 @@
             this.txt_totalLitersAmount.Location = new System.Drawing.Point(574, 7);
             this.txt_totalLitersAmount.Margin = new System.Windows.Forms.Padding(4);
             this.txt_totalLitersAmount.Name = "txt_totalLitersAmount";
-            this.txt_totalLitersAmount.Size = new System.Drawing.Size(126, 27);
+            this.txt_totalLitersAmount.Size = new System.Drawing.Size(113, 27);
             this.txt_totalLitersAmount.TabIndex = 1;
             // 
             // printDocument2
@@ -421,6 +440,14 @@
             // printDialog2
             // 
             this.printDialog2.UseEXDialog = true;
+            // 
+            // printDocument3
+            // 
+            this.printDocument3.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument3_PrintPage);
+            // 
+            // printDialog3
+            // 
+            this.printDialog3.UseEXDialog = true;
             // 
             // Parchi
             // 
@@ -480,5 +507,8 @@
         private System.Windows.Forms.RadioButton rdo_pringDialog;
         private System.Windows.Forms.RadioButton rdo_printPreview;
         private System.Windows.Forms.PrintDialog printDialog2;
+        private System.Windows.Forms.Button btn_printCusList;
+        private System.Drawing.Printing.PrintDocument printDocument3;
+        private System.Windows.Forms.PrintDialog printDialog3;
     }
 }

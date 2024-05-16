@@ -72,7 +72,7 @@ namespace DairyAccounting
                             tsVolume += tsLiters;
                             tAmount += amount;
 
-                            salesReport.Rows.Add(salesId,date,companyId,companyName, liters, lr, fat, liters, amount);
+                            salesReport.Rows.Add(salesId,date,companyId,companyName, liters, lr, fat, tsLiters, amount);
                         }
                     }
                 }
@@ -168,8 +168,6 @@ namespace DairyAccounting
                         command.Parameters.AddWithValue("@endDate", endDate);
                     }
 
-
-                    
 
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
@@ -481,7 +479,16 @@ namespace DairyAccounting
 
                             grandTotalReceive += totalReceive;
                             grandTotalPurchase += totalPurchase;
-                            grandTotalLoss+= totalLoss;
+
+                            if(gainOrLoss=="Loss")
+                            {
+                                grandTotalLoss += totalLoss;
+                            }
+                            else
+                            {
+                                grandTotalLoss -= totalLoss;
+                            }
+                            
 
                             // setting the values zero for next use
                             totalPurchase = 0;

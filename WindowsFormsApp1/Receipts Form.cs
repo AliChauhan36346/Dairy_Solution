@@ -16,6 +16,7 @@ namespace WindowsFormsApp1
 
         CommonFunctionsClass commonFunctions=new CommonFunctionsClass();
         AddReceipts receipts=new AddReceipts();
+        ParchiClass parchi=new ParchiClass();
 
         public bool isFromOtherForm = false;
         public int receiptId = 0;
@@ -58,17 +59,17 @@ namespace WindowsFormsApp1
                 lstAccountsSuggestion.Visible = false;
             }
 
-            decimal accountBalance;
-            string status;
+            //decimal accountBalance;
+            //string status;
 
             if (!int.TryParse(txt_accountId.Text, out int id))
             {
-
+                return;
             }
+            parchi.GetAccountSummary(out decimal openingBalance, out string openingStatus, out decimal totalDebit, out decimal totalCredit, out decimal accountBalance, out string status, id);
 
-            commonFunctions.GetAccountSummary(out decimal totalDebit, out decimal totalCredit, out accountBalance, out status, id);
+            textBox2.Text = accountBalance.ToString() + " " + status;
 
-            txt_accountBalance.Text = accountBalance.ToString() + " " + status;
         }
 
         private void txt_accountId_KeyDown(object sender, KeyEventArgs e)
