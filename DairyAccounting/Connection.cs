@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.IO;
 
 
 namespace DairyAccounting
@@ -59,7 +60,7 @@ namespace DairyAccounting
             get
             {
                 SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(connectionString);
-                return builder.InitialCatalog;
+                return Path.GetFileNameWithoutExtension(builder.AttachDBFilename);
             }
         }
 

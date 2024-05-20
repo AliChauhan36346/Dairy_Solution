@@ -1,37 +1,27 @@
 ﻿using DairyAccounting;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
     public partial class backupData : Form
     {
-        public string selectedBackupPath = "";
+        BackupRestoreClass backupRestore=new BackupRestoreClass();
 
         public backupData()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btn_backup_Click(object sender, EventArgs e)
         {
+            backupRestore.BackupDatabase("alsdja");
 
-
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Backup files (*.bak)|*.bak"; // Filter for backup files
-            saveFileDialog.FileName = "dairyDatabase_backup_" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".bak"; // Default file name with timestamp
+            /*SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "Backup files (*.bak)|*.bak",
+                FileName = "dairyDatabase_backup_" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".bak"
+            };
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -39,37 +29,23 @@ namespace WindowsFormsApp1
 
                 BackupRestoreClass backupRestoreClass = new BackupRestoreClass();
                 backupRestoreClass.BackupDatabase(selectedBackupPath);
-            }
+            }*/
         }
 
         private void btn_restore_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Backup files (*.bak)|*.bak"; // Filter for backup files
-            //saveFileDialog.FileName = "dairyDatabase_backup_" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".bak"; // Default file name with timestamp
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            OpenFileDialog openFileDialog = new OpenFileDialog
             {
-                string selectedBackupPath = saveFileDialog.FileName;
+                Filter = "Backup files (*.bak)|*.bak"
+            };
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string selectedBackupPath = openFileDialog.FileName;
 
                 BackupRestoreClass backupRestoreClass = new BackupRestoreClass();
                 backupRestoreClass.RestoreDatabase(selectedBackupPath);
             }
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void backupData_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

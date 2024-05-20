@@ -46,7 +46,7 @@ namespace DairyAccounting
                 dbConnection.openConnection();
 
                 string salesReportQuery = "SELECT salesId, date, companyId, company, liters, lr, fat, " +
-                    "tsLiters, amount FROM Sales WHERE date>=@startDate AND date<=@endDate";
+                    "tsLiters, amount FROM Sales WHERE date>=@startDate AND date<=@endDate ORDER BY date ASC";
 
                 using (SqlCommand command = new SqlCommand(salesReportQuery, dbConnection.connection))
                 {
@@ -139,7 +139,7 @@ namespace DairyAccounting
             {
                 dbConnection.openConnection();
 
-                string purchaseReportQuery = $"SELECT purchaseId, date, customerID, customerName, dodhi, time, liters, amount FROM Purchases {condition}";
+                string purchaseReportQuery = $"SELECT purchaseId, date, customerID, customerName, dodhi, time, liters, amount FROM Purchases {condition} ORDER BY date ASC";
 
                 using (SqlCommand command = new SqlCommand(purchaseReportQuery, dbConnection.connection))
                 {
@@ -254,7 +254,7 @@ namespace DairyAccounting
             {
                 dbConnection.openConnection();
 
-                string receiveReportQuery = $"SELECT chilarReceiveId, date, dodhi, time, grossLiters, lr, fat, tsLiters FROM ChilarReceive {condition}";
+                string receiveReportQuery = $"SELECT chilarReceiveId, date, dodhi, time, grossLiters, lr, fat, tsLiters FROM ChilarReceive {condition} ORDER BY date ASC";
 
                 using (SqlCommand command = new SqlCommand(receiveReportQuery, dbConnection.connection))
                 {
@@ -513,7 +513,16 @@ namespace DairyAccounting
 
                         grandTotalReceive += totalReceive;
                         grandTotalPurchase += totalPurchase;
-                        grandTotalLoss += totalLoss;
+
+                        if (gainOrLoss == "Loss")
+                        {
+                            grandTotalLoss += totalLoss;
+                        }
+                        else
+                        {
+                            grandTotalLoss -= totalLoss;
+                        }
+                        
 
                         // setting the values zero for next use
                         totalPurchase = 0;
@@ -539,7 +548,16 @@ namespace DairyAccounting
 
                             grandTotalReceive += totalReceive;
                             grandTotalPurchase += totalPurchase;
-                            grandTotalLoss += totalLoss;
+
+                            if (gainOrLoss == "Loss")
+                            {
+                                grandTotalLoss += totalLoss;
+                            }
+                            else
+                            {
+                                grandTotalLoss -= totalLoss;
+                            }
+                            
 
                             // setting the values zero for next use
                             totalPurchase = 0;
@@ -566,7 +584,16 @@ namespace DairyAccounting
 
                         grandTotalReceive += totalReceive;
                         grandTotalPurchase += totalPurchase;
-                        grandTotalLoss += totalLoss;
+
+                        if (gainOrLoss == "Loss")
+                        {
+                            grandTotalLoss += totalLoss;
+                        }
+                        else
+                        {
+                            grandTotalLoss -= totalLoss;
+                        }
+                        
 
                         // setting the values zero for next use
                         totalPurchase = 0;
@@ -627,11 +654,11 @@ namespace DairyAccounting
 
                 if (ExpenseType == "")
                 {
-                    query = "SELECT ExpenseId, date, cashAccountId, cashAccountName, type, amount, discription, employeeId, employeeName FROM Expense WHERE date>=@startDate AND date<=@endDate";
+                    query = "SELECT ExpenseId, date, cashAccountId, cashAccountName, type, amount, discription, employeeId, employeeName FROM Expense WHERE date>=@startDate AND date<=@endDate ORDER BY date ASC";
                 }
                 else
                 {
-                    query = "SELECT ExpenseId, date, cashAccountId, cashAccountName, type, amount, discription, employeeId, employeeName FROM Expense WHERE type=@type AND date>=@startDate AND date<=@endDate";
+                    query = "SELECT ExpenseId, date, cashAccountId, cashAccountName, type, amount, discription, employeeId, employeeName FROM Expense WHERE type=@type AND date>=@startDate AND date<=@endDate ORDER BY date ASC";
                 }
 
                 

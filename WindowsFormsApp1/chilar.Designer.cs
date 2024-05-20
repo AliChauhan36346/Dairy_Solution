@@ -36,13 +36,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.chlrBtn_deleteEntry = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txt_eveningLtrs = new System.Windows.Forms.TextBox();
+            this.txt_morningLtrs = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.btn_goForward = new System.Windows.Forms.Button();
             this.btn_goBack = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
-            this.lstDodhiSuggestions = new System.Windows.Forms.ListBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.rdo_evening = new System.Windows.Forms.RadioButton();
-            this.rdo_morning = new System.Windows.Forms.RadioButton();
             this.txt_tsStandard = new System.Windows.Forms.TextBox();
             this.dtm_picker = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
@@ -50,15 +50,18 @@
             this.txt_fat = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.txt_tsLiters = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txt_lr = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txt_liters = new System.Windows.Forms.TextBox();
+            this.txt_tsLiters = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txt_dodhiName = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_id = new System.Windows.Forms.TextBox();
+            this.txt_lr = new System.Windows.Forms.TextBox();
+            this.lstDodhiSuggestions = new System.Windows.Forms.ListBox();
+            this.rdo_evening = new System.Windows.Forms.RadioButton();
+            this.rdo_morning = new System.Windows.Forms.RadioButton();
+            this.txt_liters = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label14 = new System.Windows.Forms.Label();
             this.txt_averageLr = new System.Windows.Forms.TextBox();
@@ -67,6 +70,8 @@
             this.txt_averagefat = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txt_grossReceive = new System.Windows.Forms.TextBox();
+            this.chk_morning = new System.Windows.Forms.CheckBox();
+            this.chk_evening = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -170,13 +175,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txt_eveningLtrs);
+            this.groupBox1.Controls.Add(this.txt_morningLtrs);
+            this.groupBox1.Controls.Add(this.label16);
+            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.btn_goForward);
             this.groupBox1.Controls.Add(this.btn_goBack);
             this.groupBox1.Controls.Add(this.label15);
-            this.groupBox1.Controls.Add(this.lstDodhiSuggestions);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.rdo_evening);
-            this.groupBox1.Controls.Add(this.rdo_morning);
             this.groupBox1.Controls.Add(this.txt_tsStandard);
             this.groupBox1.Controls.Add(this.dtm_picker);
             this.groupBox1.Controls.Add(this.label9);
@@ -184,23 +189,67 @@
             this.groupBox1.Controls.Add(this.txt_fat);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.txt_tsLiters);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.txt_lr);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.txt_liters);
+            this.groupBox1.Controls.Add(this.txt_tsLiters);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txt_dodhiName);
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txt_id);
+            this.groupBox1.Controls.Add(this.txt_lr);
             this.groupBox1.Location = new System.Drawing.Point(16, 80);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.groupBox1.Size = new System.Drawing.Size(450, 287);
+            this.groupBox1.Size = new System.Drawing.Size(481, 287);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Company Info";
+            // 
+            // txt_eveningLtrs
+            // 
+            this.txt_eveningLtrs.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_eveningLtrs.ForeColor = System.Drawing.Color.Black;
+            this.txt_eveningLtrs.Location = new System.Drawing.Point(239, 192);
+            this.txt_eveningLtrs.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.txt_eveningLtrs.Name = "txt_eveningLtrs";
+            this.txt_eveningLtrs.Size = new System.Drawing.Size(103, 27);
+            this.txt_eveningLtrs.TabIndex = 94;
+            // 
+            // txt_morningLtrs
+            // 
+            this.txt_morningLtrs.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_morningLtrs.ForeColor = System.Drawing.Color.Black;
+            this.txt_morningLtrs.Location = new System.Drawing.Point(129, 192);
+            this.txt_morningLtrs.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.txt_morningLtrs.Name = "txt_morningLtrs";
+            this.txt_morningLtrs.Size = new System.Drawing.Size(103, 27);
+            this.txt_morningLtrs.TabIndex = 93;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.Red;
+            this.label16.Location = new System.Drawing.Point(236, 157);
+            this.label16.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(97, 21);
+            this.label16.TabIndex = 92;
+            this.label16.Text = "Evening شام";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.label10.Location = new System.Drawing.Point(125, 154);
+            this.label10.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(107, 21);
+            this.label10.TabIndex = 91;
+            this.label10.Text = "Morning صبح";
+            
             // 
             // btn_goForward
             // 
@@ -236,58 +285,6 @@
             this.label15.TabIndex = 88;
             this.label15.Text = "Date تاریخ";
             // 
-            // lstDodhiSuggestions
-            // 
-            this.lstDodhiSuggestions.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lstDodhiSuggestions.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lstDodhiSuggestions.FormattingEnabled = true;
-            this.lstDodhiSuggestions.ItemHeight = 20;
-            this.lstDodhiSuggestions.Location = new System.Drawing.Point(128, 139);
-            this.lstDodhiSuggestions.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.lstDodhiSuggestions.Name = "lstDodhiSuggestions";
-            this.lstDodhiSuggestions.Size = new System.Drawing.Size(314, 140);
-            this.lstDodhiSuggestions.TabIndex = 36;
-            this.lstDodhiSuggestions.TabStop = false;
-            this.lstDodhiSuggestions.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstDodhiSuggestions_MouseDoubleClick);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label13.Location = new System.Drawing.Point(42, 198);
-            this.label13.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(81, 21);
-            this.label13.TabIndex = 87;
-            this.label13.Text = "Time وقت";
-            // 
-            // rdo_evening
-            // 
-            this.rdo_evening.AutoSize = true;
-            this.rdo_evening.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdo_evening.ForeColor = System.Drawing.Color.Green;
-            this.rdo_evening.Location = new System.Drawing.Point(270, 198);
-            this.rdo_evening.Margin = new System.Windows.Forms.Padding(4);
-            this.rdo_evening.Name = "rdo_evening";
-            this.rdo_evening.Size = new System.Drawing.Size(112, 24);
-            this.rdo_evening.TabIndex = 5;
-            this.rdo_evening.Text = "Evening شام";
-            this.rdo_evening.UseVisualStyleBackColor = true;
-            // 
-            // rdo_morning
-            // 
-            this.rdo_morning.AutoSize = true;
-            this.rdo_morning.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdo_morning.ForeColor = System.Drawing.Color.Green;
-            this.rdo_morning.Location = new System.Drawing.Point(128, 198);
-            this.rdo_morning.Margin = new System.Windows.Forms.Padding(4);
-            this.rdo_morning.Name = "rdo_morning";
-            this.rdo_morning.Size = new System.Drawing.Size(124, 24);
-            this.rdo_morning.TabIndex = 4;
-            this.rdo_morning.Text = "Morning  صبح";
-            this.rdo_morning.UseVisualStyleBackColor = true;
-            // 
             // txt_tsStandard
             // 
             this.txt_tsStandard.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -296,7 +293,7 @@
             this.txt_tsStandard.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txt_tsStandard.Name = "txt_tsStandard";
             this.txt_tsStandard.ReadOnly = true;
-            this.txt_tsStandard.Size = new System.Drawing.Size(38, 27);
+            this.txt_tsStandard.Size = new System.Drawing.Size(66, 27);
             this.txt_tsStandard.TabIndex = 5;
             this.txt_tsStandard.TabStop = false;
             this.txt_tsStandard.Leave += new System.EventHandler(this.txt_tsStandard_Leave);
@@ -342,7 +339,7 @@
             // 
             this.txt_fat.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_fat.ForeColor = System.Drawing.Color.Black;
-            this.txt_fat.Location = new System.Drawing.Point(389, 154);
+            this.txt_fat.Location = new System.Drawing.Point(417, 192);
             this.txt_fat.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txt_fat.Name = "txt_fat";
             this.txt_fat.Size = new System.Drawing.Size(54, 27);
@@ -353,12 +350,12 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label6.Location = new System.Drawing.Point(327, 160);
+            this.label6.Location = new System.Drawing.Point(344, 196);
             this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(65, 17);
+            this.label6.Size = new System.Drawing.Size(75, 20);
             this.label6.TabIndex = 15;
             this.label6.Text = "Fat% فیٹ";
             // 
@@ -374,6 +371,18 @@
             this.label7.TabIndex = 11;
             this.label7.Text = "Ts-Liters-ts لیٹر";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label4.Location = new System.Drawing.Point(2, 194);
+            this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(121, 21);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Gross Liters لیٹر";
+            // 
             // txt_tsLiters
             // 
             this.txt_tsLiters.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -383,55 +392,9 @@
             this.txt_tsLiters.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txt_tsLiters.Name = "txt_tsLiters";
             this.txt_tsLiters.ReadOnly = true;
-            this.txt_tsLiters.Size = new System.Drawing.Size(315, 27);
+            this.txt_tsLiters.Size = new System.Drawing.Size(343, 27);
             this.txt_tsLiters.TabIndex = 12;
             this.txt_tsLiters.TabStop = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label5.Location = new System.Drawing.Point(217, 160);
-            this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 17);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "LR ایل آر";
-            // 
-            // txt_lr
-            // 
-            this.txt_lr.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_lr.ForeColor = System.Drawing.Color.Black;
-            this.txt_lr.Location = new System.Drawing.Point(270, 154);
-            this.txt_lr.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.txt_lr.Name = "txt_lr";
-            this.txt_lr.Size = new System.Drawing.Size(54, 27);
-            this.txt_lr.TabIndex = 2;
-            this.txt_lr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_lr_KeyDown);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(2, 158);
-            this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(121, 21);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Gross Liters لیٹر";
-            // 
-            // txt_liters
-            // 
-            this.txt_liters.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_liters.ForeColor = System.Drawing.Color.Black;
-            this.txt_liters.Location = new System.Drawing.Point(129, 154);
-            this.txt_liters.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.txt_liters.Name = "txt_liters";
-            this.txt_liters.Size = new System.Drawing.Size(82, 27);
-            this.txt_liters.TabIndex = 1;
-            this.txt_liters.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_liters_KeyDown);
             // 
             // label3
             // 
@@ -454,9 +417,21 @@
             this.txt_dodhiName.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txt_dodhiName.Name = "txt_dodhiName";
             this.txt_dodhiName.ReadOnly = true;
-            this.txt_dodhiName.Size = new System.Drawing.Size(221, 27);
+            this.txt_dodhiName.Size = new System.Drawing.Size(249, 27);
             this.txt_dodhiName.TabIndex = 1;
             this.txt_dodhiName.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.label5.Location = new System.Drawing.Point(353, 153);
+            this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(64, 20);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "LR ایل آر";
             // 
             // label2
             // 
@@ -483,6 +458,68 @@
             this.txt_id.TabIndex = 4;
             this.txt_id.TabStop = false;
             this.txt_id.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txt_lr
+            // 
+            this.txt_lr.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_lr.ForeColor = System.Drawing.Color.Black;
+            this.txt_lr.Location = new System.Drawing.Point(416, 149);
+            this.txt_lr.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.txt_lr.Name = "txt_lr";
+            this.txt_lr.Size = new System.Drawing.Size(54, 27);
+            this.txt_lr.TabIndex = 2;
+            this.txt_lr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_lr_KeyDown);
+            // 
+            // lstDodhiSuggestions
+            // 
+            this.lstDodhiSuggestions.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lstDodhiSuggestions.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lstDodhiSuggestions.FormattingEnabled = true;
+            this.lstDodhiSuggestions.ItemHeight = 20;
+            this.lstDodhiSuggestions.Location = new System.Drawing.Point(680, 233);
+            this.lstDodhiSuggestions.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lstDodhiSuggestions.Name = "lstDodhiSuggestions";
+            this.lstDodhiSuggestions.Size = new System.Drawing.Size(314, 140);
+            this.lstDodhiSuggestions.TabIndex = 36;
+            this.lstDodhiSuggestions.TabStop = false;
+            this.lstDodhiSuggestions.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstDodhiSuggestions_MouseDoubleClick);
+            // 
+            // rdo_evening
+            // 
+            this.rdo_evening.AutoSize = true;
+            this.rdo_evening.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdo_evening.ForeColor = System.Drawing.Color.Green;
+            this.rdo_evening.Location = new System.Drawing.Point(538, 237);
+            this.rdo_evening.Margin = new System.Windows.Forms.Padding(4);
+            this.rdo_evening.Name = "rdo_evening";
+            this.rdo_evening.Size = new System.Drawing.Size(112, 24);
+            this.rdo_evening.TabIndex = 5;
+            this.rdo_evening.Text = "Evening شام";
+            this.rdo_evening.UseVisualStyleBackColor = true;
+            // 
+            // rdo_morning
+            // 
+            this.rdo_morning.AutoSize = true;
+            this.rdo_morning.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdo_morning.ForeColor = System.Drawing.Color.Green;
+            this.rdo_morning.Location = new System.Drawing.Point(538, 201);
+            this.rdo_morning.Margin = new System.Windows.Forms.Padding(4);
+            this.rdo_morning.Name = "rdo_morning";
+            this.rdo_morning.Size = new System.Drawing.Size(124, 24);
+            this.rdo_morning.TabIndex = 4;
+            this.rdo_morning.Text = "Morning  صبح";
+            this.rdo_morning.UseVisualStyleBackColor = true;
+            // 
+            // txt_liters
+            // 
+            this.txt_liters.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_liters.ForeColor = System.Drawing.Color.Black;
+            this.txt_liters.Location = new System.Drawing.Point(665, 116);
+            this.txt_liters.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.txt_liters.Name = "txt_liters";
+            this.txt_liters.Size = new System.Drawing.Size(82, 27);
+            this.txt_liters.TabIndex = 1;
+            this.txt_liters.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_liters_KeyDown);
             // 
             // dataGridView2
             // 
@@ -593,19 +630,49 @@
             this.txt_grossReceive.TabIndex = 40;
             this.txt_grossReceive.TabStop = false;
             // 
+            // chk_morning
+            // 
+            this.chk_morning.AutoSize = true;
+            this.chk_morning.Font = new System.Drawing.Font("Segoe UI", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_morning.ForeColor = System.Drawing.Color.Green;
+            this.chk_morning.Location = new System.Drawing.Point(505, 89);
+            this.chk_morning.Name = "chk_morning";
+            this.chk_morning.Size = new System.Drawing.Size(120, 24);
+            this.chk_morning.TabIndex = 42;
+            this.chk_morning.Text = "Morning صبح";
+            this.chk_morning.UseVisualStyleBackColor = true;
+            // 
+            // chk_evening
+            // 
+            this.chk_evening.AutoSize = true;
+            this.chk_evening.Font = new System.Drawing.Font("Segoe UI", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_evening.ForeColor = System.Drawing.Color.Red;
+            this.chk_evening.Location = new System.Drawing.Point(505, 119);
+            this.chk_evening.Name = "chk_evening";
+            this.chk_evening.Size = new System.Drawing.Size(109, 24);
+            this.chk_evening.TabIndex = 43;
+            this.chk_evening.Text = "Evening شام";
+            this.chk_evening.UseVisualStyleBackColor = true;
+            // 
             // chilar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1018, 683);
+            this.Controls.Add(this.chk_evening);
+            this.Controls.Add(this.chk_morning);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.txt_grossReceive);
+            this.Controls.Add(this.rdo_evening);
             this.Controls.Add(this.label11);
+            this.Controls.Add(this.rdo_morning);
+            this.Controls.Add(this.lstDodhiSuggestions);
             this.Controls.Add(this.txt_averagefat);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.txt_averageLr);
             this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.txt_liters);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -663,9 +730,14 @@
         private System.Windows.Forms.DateTimePicker dtm_picker;
         private System.Windows.Forms.RadioButton rdo_evening;
         private System.Windows.Forms.RadioButton rdo_morning;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button btn_goForward;
         private System.Windows.Forms.Button btn_goBack;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.CheckBox chk_morning;
+        private System.Windows.Forms.CheckBox chk_evening;
+        private System.Windows.Forms.TextBox txt_eveningLtrs;
+        private System.Windows.Forms.TextBox txt_morningLtrs;
+        private System.Windows.Forms.Label label16;
     }
 }

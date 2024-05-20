@@ -67,7 +67,7 @@
             this.label1.Size = new System.Drawing.Size(251, 45);
             this.label1.TabIndex = 0;
             this.label1.Text = "Back-Up Utility";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            
             // 
             // flowLayoutPanel1
             // 
@@ -91,7 +91,7 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Back-Up Data";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            
             // 
             // label3
             // 
@@ -116,7 +116,7 @@
             this.label2.Text = "Tip: Always back up the database to a different drive than the actual database.Th" +
     "en,\r\nif you get a disk crash, you will not lose your backup file along with the " +
     "database.";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            
             // 
             // btn_backup
             // 
@@ -189,7 +189,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "backupData";
             this.Text = "Backu-Up Utility";
-            this.Load += new System.EventHandler(this.backupData_Load);
+            
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);

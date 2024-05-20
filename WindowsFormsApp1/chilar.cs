@@ -268,7 +268,6 @@ namespace WindowsFormsApp1
             
         }
 
-        
         private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -377,10 +376,6 @@ namespace WindowsFormsApp1
 
             
         }
-
-        
-
-
 
         private void chlrBtn_deleteEntry_Click(object sender, EventArgs e)
         {
@@ -556,7 +551,7 @@ namespace WindowsFormsApp1
 
         private void getStats()
         {
-            DateTime today = DateTime.Now;
+            DateTime today = dtm_picker.Value.Date;
 
             
             string grossReceive;
@@ -649,6 +644,9 @@ namespace WindowsFormsApp1
         private void dtm_picker_ValueChanged(object sender, EventArgs e)
         {
             chilarReceive.showDataInGridView(dataGridView2, dtm_picker.Value.Date);
+            getStats();
         }
+
+        
     }
 }

@@ -63,6 +63,8 @@
             this.printDialog2 = new System.Windows.Forms.PrintDialog();
             this.printDocument3 = new System.Drawing.Printing.PrintDocument();
             this.printDialog3 = new System.Windows.Forms.PrintDialog();
+            this.printDocument4 = new System.Drawing.Printing.PrintDocument();
+            this.chk_thermalPrint = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -152,7 +154,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.chk_thermalPrint);
             this.panel1.Controls.Add(this.btn_printCusList);
             this.panel1.Controls.Add(this.rdo_pringDialog);
             this.panel1.Controls.Add(this.rdo_printPreview);
@@ -197,7 +200,7 @@
             // 
             this.rdo_pringDialog.AutoSize = true;
             this.rdo_pringDialog.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdo_pringDialog.Location = new System.Drawing.Point(845, 50);
+            this.rdo_pringDialog.Location = new System.Drawing.Point(871, 90);
             this.rdo_pringDialog.Name = "rdo_pringDialog";
             this.rdo_pringDialog.Size = new System.Drawing.Size(106, 21);
             this.rdo_pringDialog.TabIndex = 126;
@@ -209,7 +212,7 @@
             // 
             this.rdo_printPreview.AutoSize = true;
             this.rdo_printPreview.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdo_printPreview.Location = new System.Drawing.Point(845, 23);
+            this.rdo_printPreview.Location = new System.Drawing.Point(871, 63);
             this.rdo_printPreview.Name = "rdo_printPreview";
             this.rdo_printPreview.Size = new System.Drawing.Size(108, 21);
             this.rdo_printPreview.TabIndex = 125;
@@ -325,16 +328,17 @@
             // 
             // btn_printAndAddPayments
             // 
-            this.btn_printAndAddPayments.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_printAndAddPayments.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_printAndAddPayments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btn_printAndAddPayments.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_printAndAddPayments.ForeColor = System.Drawing.Color.White;
             this.btn_printAndAddPayments.Location = new System.Drawing.Point(7, 74);
             this.btn_printAndAddPayments.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btn_printAndAddPayments.Name = "btn_printAndAddPayments";
-            this.btn_printAndAddPayments.Size = new System.Drawing.Size(69, 52);
+            this.btn_printAndAddPayments.Size = new System.Drawing.Size(96, 52);
             this.btn_printAndAddPayments.TabIndex = 42;
             this.btn_printAndAddPayments.TabStop = false;
             this.btn_printAndAddPayments.Text = "Add Payments";
-            this.btn_printAndAddPayments.UseVisualStyleBackColor = true;
+            this.btn_printAndAddPayments.UseVisualStyleBackColor = false;
             this.btn_printAndAddPayments.Click += new System.EventHandler(this.btn_printAndAddPayments_Click);
             // 
             // panel2
@@ -449,6 +453,22 @@
             // 
             this.printDialog3.UseEXDialog = true;
             // 
+            // printDocument4
+            // 
+            this.printDocument4.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument4_PrintPage);
+            // 
+            // chk_thermalPrint
+            // 
+            this.chk_thermalPrint.AutoSize = true;
+            this.chk_thermalPrint.Font = new System.Drawing.Font("Segoe UI Black", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_thermalPrint.ForeColor = System.Drawing.Color.Sienna;
+            this.chk_thermalPrint.Location = new System.Drawing.Point(871, 20);
+            this.chk_thermalPrint.Name = "chk_thermalPrint";
+            this.chk_thermalPrint.Size = new System.Drawing.Size(139, 25);
+            this.chk_thermalPrint.TabIndex = 128;
+            this.chk_thermalPrint.Text = "Thermal Print";
+            this.chk_thermalPrint.UseVisualStyleBackColor = true;
+            // 
             // Parchi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -510,5 +530,7 @@
         private System.Windows.Forms.Button btn_printCusList;
         private System.Drawing.Printing.PrintDocument printDocument3;
         private System.Windows.Forms.PrintDialog printDialog3;
+        private System.Drawing.Printing.PrintDocument printDocument4;
+        private System.Windows.Forms.CheckBox chk_thermalPrint;
     }
 }
