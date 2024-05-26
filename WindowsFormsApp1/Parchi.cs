@@ -733,9 +733,10 @@ namespace WindowsFormsApp1
             Font subHeading = new Font("Segoe UI", 24, FontStyle.Bold);
             Font heading3 = new Font("Segoe UI", 16, FontStyle.Bold | FontStyle.Italic); 
             Font heading4 = new Font("Segoe UI", 12, FontStyle.Bold | FontStyle.Italic); 
-            Font detail = new Font("Segoe UI Semibold", 11, FontStyle.Regular); 
+            Font detail = new Font("Segoe UI Semibold", 10, FontStyle.Regular); 
+            Font name = new Font("Segoe UI Semibold", 9, FontStyle.Regular); 
 
-            Pen pen = new Pen(Color.Black, 2);
+            Pen pen = new Pen(Color.Black, 1);
             Brush brush = Brushes.Black;
 
             
@@ -812,9 +813,9 @@ namespace WindowsFormsApp1
                 e.Graphics.DrawString("Acc Id", heading4, brush, xAxis, yAxis);
                 xAxis += 70;//170
                 e.Graphics.DrawString("Name", heading4, brush, xAxis, yAxis);
-                xAxis += 190;//570
+                xAxis += 215;//570
                 e.Graphics.DrawString("pBalance", heading4,brush, xAxis, yAxis);
-                xAxis += 125;
+                xAxis += 115;
                 e.Graphics.DrawString("Liters", heading4, brush, xAxis, yAxis);
                 xAxis += 80;
                 e.Graphics.DrawString("Amount", heading4, brush, xAxis, yAxis);
@@ -843,10 +844,10 @@ namespace WindowsFormsApp1
 
                 e.Graphics.DrawString(row.Cells["Id"].Value.ToString(),detail,brush, xAxis, yAxis);
                 xAxis += 70;
-                e.Graphics.DrawString(row.Cells["Customer Name"].Value.ToString(),detail,brush, xAxis, yAxis);
-                xAxis += 190;
+                e.Graphics.DrawString(row.Cells["Customer Name"].Value.ToString(),name,brush, xAxis, yAxis);
+                xAxis += 215;
                 e.Graphics.DrawString(row.Cells["Previous Balance"].Value.ToString() + " " + row.Cells["pStatus"].Value.ToString(), detail, brush, xAxis, yAxis);
-                xAxis += 125;
+                xAxis += 115;
                 e.Graphics.DrawString(row.Cells["Total Liters"].Value.ToString(), detail, brush, xAxis, yAxis);
                 xAxis += 80;
                 e.Graphics.DrawString(row.Cells["Milk Amount"].Value.ToString(), detail, brush, xAxis, yAxis);
@@ -874,7 +875,7 @@ namespace WindowsFormsApp1
 
                 currentRow++;
 
-                if(yAxis+25>e.MarginBounds.Bottom)
+                if(yAxis+25>e.MarginBounds.Bottom+80)
                 {
                     e.HasMorePages = true;
                     
@@ -884,7 +885,7 @@ namespace WindowsFormsApp1
                 }
             }
 
-            xAxis = 300;
+            xAxis = 315;
 
             //e.Graphics.DrawLine(pen, 50, yAxis, e.PageBounds.Width - 50, yAxis);
             //yAxis += 5;
@@ -916,9 +917,9 @@ namespace WindowsFormsApp1
             Font heading1 = new Font("Times New Roman", 18, FontStyle.Bold);
             Font heading2 = new Font("Times New Roman", 14, FontStyle.Bold | FontStyle.Italic);
             Font heading3 = new Font("Times New Roman", 13, FontStyle.Bold);
-            Font detail = new Font("Times New Roman", 11, FontStyle.Regular | FontStyle.Bold);
+            Font detail = new Font("Times New Roman", 10, FontStyle.Regular | FontStyle.Bold);
 
-            Pen pen = new Pen(Color.Black, 2);
+            Pen pen = new Pen(Color.Black, 1);
             Brush brush = Brushes.Black;
 
             //heading
@@ -957,6 +958,11 @@ namespace WindowsFormsApp1
             e.Graphics.DrawString(headingText, headingFont, brush, xCenter, yAxis);
             yAxis += 50;
             e.Graphics.DrawString(dodhi, heading1, brush, dodhiCenter, yAxis);
+            e.Graphics.DrawString(":تاریخ", heading2, brush, e.PageBounds.Width-70, yAxis);
+            e.Graphics.DrawLine(pen, e.PageBounds.Width - 200, yAxis+20, e.PageBounds.Width - 70, yAxis+20);
+            e.Graphics.DrawString(":تاریخ", heading2, brush, 150, yAxis);
+            e.Graphics.DrawLine(pen, 20, yAxis+20, 150, yAxis+ 20);
+
             yAxis += 30;
             e.Graphics.DrawLine(pen, 20, yAxis, e.PageBounds.Width - 20, yAxis);
             e.Graphics.DrawLine(pen, 20, yAxis, 20, e.MarginBounds.Bottom+60);
@@ -983,7 +989,7 @@ namespace WindowsFormsApp1
                 yAxis += 30;
             }
 
-            yAxis = 135;
+            yAxis = 137;
             xAxis = e.PageBounds.Width - 290;
 
             bool isSecondIteration = false;
@@ -1083,7 +1089,7 @@ namespace WindowsFormsApp1
 
             Pen pen = new Pen(Color.Black, 2);
 
-            int horizotalElement = 60;
+            //int horizotalElement = 60;
 
             int xAxis = 60;
             int yAxis = 25;
@@ -1227,16 +1233,6 @@ namespace WindowsFormsApp1
                     currentRow++;
                     e.HasMorePages = true;
                     break;
-
-                    if (currentRow < dataGridView2.RowCount - 1)
-                    {
-                        currentRow++;
-                    }
-                    else
-                    {
-                        e.HasMorePages = true;
-                        break;
-                    }
 
                 }
             }

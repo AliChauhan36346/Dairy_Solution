@@ -23,7 +23,7 @@ namespace DairyAccounting
 
         // Method to retrieve IDs and names for all account types
 
-        public void GetCustomerLedger(DataGridView dataGridView, int id, DateTime fromDate, DateTime toDate, out decimal totalDebit, out decimal totalCredit, out decimal totalBalance, out string bStatus ,out decimal balanceBroughtForward, out string forwardString)
+        public void GetCustomerLedger(DataGridView dataGridView, int id, DateTime fromDate, DateTime toDate, out decimal totalDebit, out decimal totalCredit, out decimal totalBalance, out string bStatus, out decimal balanceBroughtForward, out string forwardString)
         {
             DataTable ledgerTable = new DataTable();
             ledgerTable.Columns.Add("Date");
@@ -42,8 +42,8 @@ namespace DairyAccounting
             totalCredit = 0;
             balanceBroughtForward = 0;
             forwardString = "";
-            
-            bStatus="";
+
+            bStatus = "";
 
             try
             {
@@ -69,26 +69,26 @@ namespace DairyAccounting
 
                     SELECT 0 AS debit, amountReceived AS credit
                     FROM Sales 
-                    WHERE companyId = @id AND date < @fromDate
+                    WHERE (companyId = @id OR accountId=@Id) AND date < @fromDate
                     AND amountReceived <> 0
 
                     UNION ALL
 
                     SELECT amount AS debit, 0 AS credit
                     FROM Sales 
-                    WHERE companyId = @id AND date < @fromDate
+                    WHERE (companyId = @id OR accountId=@Id) AND date < @fromDate
 
                     UNION ALL
 
                     SELECT 0 AS debit, amount AS credit
                     FROM Receipts 
-                    WHERE accountId = @id AND date < @fromDate
+                    WHERE (accountId = @id OR cashAccountId=@Id) AND date < @fromDate
 
                     UNION ALL
 
                     SELECT amount AS debit, 0 AS credit
                     FROM Payments 
-                    WHERE accountId = @id AND date < @fromDate
+                    WHERE (accountId = @id OR cashAccountId=@Id) AND date < @fromDate
                     ) AS subquery";
 
                 using (SqlCommand balanceCommand = new SqlCommand(queryBalance, dbConnection.connection))
@@ -107,7 +107,7 @@ namespace DairyAccounting
                 }
 
                 runningBalance += balanceBroughtForward;
-                if( balanceBroughtForward > 0 )
+                if (balanceBroughtForward > 0)
                 {
                     forwardString = "Credit";
                 }
@@ -115,7 +115,7 @@ namespace DairyAccounting
                 {
                     forwardString = "Debit";
                 }
-                
+
 
                 string query = @"
                 SELECT date, 'PV' + CAST(purchaseID AS NVARCHAR(50)) AS transactionNo, 
@@ -179,7 +179,7 @@ namespace DairyAccounting
                     {
                         while (reader.Read())
                         {
-                            
+
                             string date = ((DateTime)reader["date"]).ToString("dd-MM-yy"); // Change the format as needed
                             string transactionNo = reader["transactionNo"].ToString();
                             string description = reader["description"].ToString();
@@ -210,7 +210,7 @@ namespace DairyAccounting
                     }
                 }
 
-                
+
             }
             catch (Exception ex)
             {
@@ -225,7 +225,7 @@ namespace DairyAccounting
             totalBalance = Math.Abs(runningBalance);
 
             dataGridView.DataSource = ledgerTable;
-            
+
 
             dataGridView.Columns["Date"].Width = 85;
             dataGridView.Columns["Tran.No"].Width = 80;
@@ -235,6 +235,11 @@ namespace DairyAccounting
             dataGridView.Columns["Balance"].Width = 100;
             dataGridView.Columns["Status"].Width = 80;
         }
+
+
+
+
+
 
 
         public void GetCustomerMilkCard(int id, DateTime startDate, DateTime endDate,

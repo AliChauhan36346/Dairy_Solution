@@ -20,7 +20,7 @@ namespace WindowsFormsApp1
         public bool isFromOtherForm = false;
         public int chilarReceiveId;
 
-        bool isTruePassword = false;
+        //bool isTruePassword = false;
 
         public chilar()
         {

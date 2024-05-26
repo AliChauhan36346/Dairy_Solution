@@ -220,7 +220,7 @@ namespace DairyAccounting
 
                 // Update SQL statement
                 string updateQuery = "UPDATE Receipts " +
-                    "SET date=@date, accountId=@accountId, accountName=@accountName, amount=@amount, cashAccountId=@cashAccountName, discription=@discription WHERE receiptId = @receiptId";
+                    "SET date=@date, accountId=@accountId, accountName=@accountName, amount=@amount, cashAccountId=@cashAccountId, cashAccountName=@cashAccountName, discription=@discription WHERE receiptId = @receiptId";
 
 
                 // SQL command object
