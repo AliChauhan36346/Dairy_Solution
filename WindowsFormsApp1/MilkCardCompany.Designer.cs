@@ -40,9 +40,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txt_volume = new System.Windows.Forms.TextBox();
+            this.txt_tsVolume = new System.Windows.Forms.TextBox();
+            this.txt_amount = new System.Windows.Forms.TextBox();
             this.lstAccountSuggestions = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -63,7 +63,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(657, 94);
+            this.panel1.Size = new System.Drawing.Size(671, 94);
             this.panel1.TabIndex = 0;
             // 
             // button1
@@ -152,7 +152,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Green;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -160,43 +160,53 @@
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(0, 125);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(657, 523);
+            this.dataGridView1.Size = new System.Drawing.Size(671, 523);
             this.dataGridView1.TabIndex = 1;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Green;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.textBox5);
-            this.panel2.Controls.Add(this.textBox4);
-            this.panel2.Controls.Add(this.textBox3);
+            this.panel2.Controls.Add(this.txt_volume);
+            this.panel2.Controls.Add(this.txt_tsVolume);
+            this.panel2.Controls.Add(this.txt_amount);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 646);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(657, 40);
+            this.panel2.Size = new System.Drawing.Size(671, 40);
             this.panel2.TabIndex = 2;
             // 
-            // textBox5
+            // txt_volume
             // 
-            this.textBox5.Location = new System.Drawing.Point(137, 7);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(96, 25);
-            this.textBox5.TabIndex = 4;
+            this.txt_volume.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_volume.ForeColor = System.Drawing.Color.Red;
+            this.txt_volume.Location = new System.Drawing.Point(131, 7);
+            this.txt_volume.Name = "txt_volume";
+            this.txt_volume.Size = new System.Drawing.Size(96, 25);
+            this.txt_volume.TabIndex = 4;
+            this.txt_volume.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox4
+            // txt_tsVolume
             // 
-            this.textBox4.Location = new System.Drawing.Point(369, 7);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(96, 25);
-            this.textBox4.TabIndex = 3;
+            this.txt_tsVolume.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_tsVolume.ForeColor = System.Drawing.Color.Teal;
+            this.txt_tsVolume.Location = new System.Drawing.Point(369, 7);
+            this.txt_tsVolume.Name = "txt_tsVolume";
+            this.txt_tsVolume.Size = new System.Drawing.Size(96, 25);
+            this.txt_tsVolume.TabIndex = 3;
+            this.txt_tsVolume.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox3
+            // txt_amount
             // 
-            this.textBox3.Location = new System.Drawing.Point(546, 7);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(99, 25);
-            this.textBox3.TabIndex = 2;
+            this.txt_amount.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_amount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.txt_amount.Location = new System.Drawing.Point(546, 7);
+            this.txt_amount.Name = "txt_amount";
+            this.txt_amount.Size = new System.Drawing.Size(99, 25);
+            this.txt_amount.TabIndex = 2;
+            this.txt_amount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lstAccountSuggestions
             // 
@@ -212,7 +222,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
-            this.ClientSize = new System.Drawing.Size(657, 686);
+            this.ClientSize = new System.Drawing.Size(671, 686);
             this.Controls.Add(this.lstAccountSuggestions);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dataGridView1);
@@ -244,9 +254,9 @@
         private System.Windows.Forms.DateTimePicker dtm_end;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtm_start;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txt_tsVolume;
+        private System.Windows.Forms.TextBox txt_amount;
+        private System.Windows.Forms.TextBox txt_volume;
         private System.Windows.Forms.ListBox lstAccountSuggestions;
         private System.Windows.Forms.Button button1;
     }

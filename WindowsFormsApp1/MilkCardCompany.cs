@@ -41,11 +41,14 @@ namespace WindowsFormsApp1
             if(id!=-1)
             {
                 txt_companyName.Text = name;
+                txt_id.Text = id.ToString();
                 
                 legersClass.getCompanyMilkCard(id, dtm_start.Value.Date, dtm_end.Value.Date, out decimal grossLtrs,
                     out decimal tsLtrs, out decimal totalAmount, dataGridView1);
 
-
+                txt_volume.Text = grossLtrs.ToString();
+                txt_tsVolume.Text = tsLtrs.ToString();
+                txt_amount.Text= totalAmount.ToString();
                 
             }
             
@@ -72,6 +75,10 @@ namespace WindowsFormsApp1
 
             legersClass.getCompanyMilkCard(id, dtm_start.Value.Date, dtm_end.Value.Date, out decimal grossLtrs,
                         out decimal tsLtrs, out decimal totalAmount, dataGridView1);
+
+            txt_volume.Text = grossLtrs.ToString();
+            txt_tsVolume.Text = tsLtrs.ToString();
+            txt_amount.Text = totalAmount.ToString();
         }
     }
 }
