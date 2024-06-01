@@ -59,9 +59,6 @@
             this.txt_id = new System.Windows.Forms.TextBox();
             this.txt_lr = new System.Windows.Forms.TextBox();
             this.lstDodhiSuggestions = new System.Windows.Forms.ListBox();
-            this.rdo_evening = new System.Windows.Forms.RadioButton();
-            this.rdo_morning = new System.Windows.Forms.RadioButton();
-            this.txt_liters = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label14 = new System.Windows.Forms.Label();
             this.txt_averageLr = new System.Windows.Forms.TextBox();
@@ -175,11 +172,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txt_eveningLtrs);
-            this.groupBox1.Controls.Add(this.txt_morningLtrs);
-            this.groupBox1.Controls.Add(this.label16);
-            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.btn_goForward);
+            this.groupBox1.Controls.Add(this.lstDodhiSuggestions);
             this.groupBox1.Controls.Add(this.btn_goBack);
             this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.txt_tsStandard);
@@ -197,6 +191,10 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txt_id);
             this.groupBox1.Controls.Add(this.txt_lr);
+            this.groupBox1.Controls.Add(this.txt_eveningLtrs);
+            this.groupBox1.Controls.Add(this.label16);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.txt_morningLtrs);
             this.groupBox1.Location = new System.Drawing.Point(16, 80);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.groupBox1.Name = "groupBox1";
@@ -215,6 +213,7 @@
             this.txt_eveningLtrs.Name = "txt_eveningLtrs";
             this.txt_eveningLtrs.Size = new System.Drawing.Size(103, 27);
             this.txt_eveningLtrs.TabIndex = 94;
+            this.txt_eveningLtrs.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_eveningLtrs_KeyDown);
             // 
             // txt_morningLtrs
             // 
@@ -225,6 +224,7 @@
             this.txt_morningLtrs.Name = "txt_morningLtrs";
             this.txt_morningLtrs.Size = new System.Drawing.Size(103, 27);
             this.txt_morningLtrs.TabIndex = 93;
+            this.txt_morningLtrs.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_morningLtrs_KeyDown);
             // 
             // label16
             // 
@@ -249,7 +249,6 @@
             this.label10.Size = new System.Drawing.Size(107, 21);
             this.label10.TabIndex = 91;
             this.label10.Text = "Morning صبح";
-            
             // 
             // btn_goForward
             // 
@@ -296,7 +295,6 @@
             this.txt_tsStandard.Size = new System.Drawing.Size(66, 27);
             this.txt_tsStandard.TabIndex = 5;
             this.txt_tsStandard.TabStop = false;
-            this.txt_tsStandard.Leave += new System.EventHandler(this.txt_tsStandard_Leave);
             // 
             // dtm_picker
             // 
@@ -476,50 +474,13 @@
             this.lstDodhiSuggestions.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lstDodhiSuggestions.FormattingEnabled = true;
             this.lstDodhiSuggestions.ItemHeight = 20;
-            this.lstDodhiSuggestions.Location = new System.Drawing.Point(680, 233);
+            this.lstDodhiSuggestions.Location = new System.Drawing.Point(128, 137);
             this.lstDodhiSuggestions.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lstDodhiSuggestions.Name = "lstDodhiSuggestions";
-            this.lstDodhiSuggestions.Size = new System.Drawing.Size(314, 140);
+            this.lstDodhiSuggestions.Size = new System.Drawing.Size(342, 140);
             this.lstDodhiSuggestions.TabIndex = 36;
             this.lstDodhiSuggestions.TabStop = false;
             this.lstDodhiSuggestions.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstDodhiSuggestions_MouseDoubleClick);
-            // 
-            // rdo_evening
-            // 
-            this.rdo_evening.AutoSize = true;
-            this.rdo_evening.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdo_evening.ForeColor = System.Drawing.Color.Green;
-            this.rdo_evening.Location = new System.Drawing.Point(538, 237);
-            this.rdo_evening.Margin = new System.Windows.Forms.Padding(4);
-            this.rdo_evening.Name = "rdo_evening";
-            this.rdo_evening.Size = new System.Drawing.Size(112, 24);
-            this.rdo_evening.TabIndex = 5;
-            this.rdo_evening.Text = "Evening شام";
-            this.rdo_evening.UseVisualStyleBackColor = true;
-            // 
-            // rdo_morning
-            // 
-            this.rdo_morning.AutoSize = true;
-            this.rdo_morning.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdo_morning.ForeColor = System.Drawing.Color.Green;
-            this.rdo_morning.Location = new System.Drawing.Point(538, 201);
-            this.rdo_morning.Margin = new System.Windows.Forms.Padding(4);
-            this.rdo_morning.Name = "rdo_morning";
-            this.rdo_morning.Size = new System.Drawing.Size(124, 24);
-            this.rdo_morning.TabIndex = 4;
-            this.rdo_morning.Text = "Morning  صبح";
-            this.rdo_morning.UseVisualStyleBackColor = true;
-            // 
-            // txt_liters
-            // 
-            this.txt_liters.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_liters.ForeColor = System.Drawing.Color.Black;
-            this.txt_liters.Location = new System.Drawing.Point(665, 116);
-            this.txt_liters.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.txt_liters.Name = "txt_liters";
-            this.txt_liters.Size = new System.Drawing.Size(82, 27);
-            this.txt_liters.TabIndex = 1;
-            this.txt_liters.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_liters_KeyDown);
             // 
             // dataGridView2
             // 
@@ -641,6 +602,7 @@
             this.chk_morning.TabIndex = 42;
             this.chk_morning.Text = "Morning صبح";
             this.chk_morning.UseVisualStyleBackColor = true;
+            this.chk_morning.CheckedChanged += new System.EventHandler(this.chk_morning_CheckedChanged);
             // 
             // chk_evening
             // 
@@ -653,6 +615,7 @@
             this.chk_evening.TabIndex = 43;
             this.chk_evening.Text = "Evening شام";
             this.chk_evening.UseVisualStyleBackColor = true;
+            this.chk_evening.CheckedChanged += new System.EventHandler(this.chk_evening_CheckedChanged);
             // 
             // chilar
             // 
@@ -663,16 +626,12 @@
             this.Controls.Add(this.chk_morning);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.txt_grossReceive);
-            this.Controls.Add(this.rdo_evening);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.rdo_morning);
-            this.Controls.Add(this.lstDodhiSuggestions);
             this.Controls.Add(this.txt_averagefat);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.txt_averageLr);
             this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.txt_liters);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -716,7 +675,6 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txt_averageLr;
-        private System.Windows.Forms.TextBox txt_liters;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txt_tsStandard;
         private System.Windows.Forms.Label label9;
@@ -728,8 +686,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txt_grossReceive;
         private System.Windows.Forms.DateTimePicker dtm_picker;
-        private System.Windows.Forms.RadioButton rdo_evening;
-        private System.Windows.Forms.RadioButton rdo_morning;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button btn_goForward;
         private System.Windows.Forms.Button btn_goBack;

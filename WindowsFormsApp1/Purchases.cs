@@ -254,7 +254,6 @@ namespace WindowsFormsApp1
 
 
 
-
                 // parsing rate
                 if (!decimal.TryParse(txt_rate.Text, out decimal Rate))
                 {
@@ -700,6 +699,7 @@ namespace WindowsFormsApp1
                     chk_evening.Checked = false;
 
                     txt_morningLtrs.Text = liters.ToString();
+                    txt_eveningLtrs.Clear();
                 }
                 else if (time.Equals("Evening", StringComparison.OrdinalIgnoreCase))
                 {
@@ -707,7 +707,8 @@ namespace WindowsFormsApp1
                     chk_morning.Checked = false;
                     chk_evening.Checked = true;
 
-                    txt_morningLtrs.Text = liters.ToString();
+                    txt_eveningLtrs.Text = liters.ToString();
+                    txt_morningLtrs.Clear();
                 }
             }
             
@@ -743,6 +744,7 @@ namespace WindowsFormsApp1
                     chk_evening.Checked = false;
 
                     txt_morningLtrs.Text = liters.ToString();
+                    txt_eveningLtrs.Clear();
                 }
                 else if (time.Equals("Evening", StringComparison.OrdinalIgnoreCase))
                 {
@@ -750,7 +752,8 @@ namespace WindowsFormsApp1
                     chk_morning.Checked = false;
                     chk_evening.Checked = true;
 
-                    txt_morningLtrs.Text = liters.ToString();
+                    txt_eveningLtrs.Text = liters.ToString();
+                    txt_morningLtrs.Clear();
                 }
             }
 

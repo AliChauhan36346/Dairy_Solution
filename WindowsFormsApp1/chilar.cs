@@ -42,17 +42,13 @@ namespace WindowsFormsApp1
             getStats();
             DateTime currentTime = DateTime.Now;
 
-            // Check if the current time is before 12 PM (noon)
-            if (currentTime.Hour < 15)
-            {
-                // Set the Morning radio button as checked
-                rdo_morning.Checked = true;
-            }
-            else
-            {
-                // Set the Evening radio button as checked
-                rdo_evening.Checked = true;
-            }
+
+            // disabling morning evening liters
+            txt_morningLtrs.Enabled = false;
+            txt_eveningLtrs.Enabled = false;
+            label10.Enabled=false;
+            label16.Enabled=false;
+
 
             if (isFromOtherForm)
             {
@@ -64,7 +60,7 @@ namespace WindowsFormsApp1
                 txt_dodhiId.Text = dodhiId.ToString();
                 txt_dodhiName.Text = dodhiName;
                 txt_lr.Text = lr.ToString();
-                txt_liters.Text = grossLiters.ToString();
+                //txt_liters.Text = grossLiters.ToString();
                 txt_fat.Text = fat.ToString();
                 txt_tsStandard.Text = tsStandar.ToString();
                 txt_tsLiters.Text= tsLiters.ToString();
@@ -72,11 +68,15 @@ namespace WindowsFormsApp1
 
                 if (time == "Morning")
                 {
-                    rdo_morning.Checked = true;
+                    chk_morning.Checked = true;
+                    chk_evening.Checked = false;
+                    txt_morningLtrs.Text=grossLiters.ToString();
                 }
                 else
                 {
-                    rdo_evening.Checked = true;
+                    chk_evening.Checked = true;
+                    chk_morning.Checked=false;
+                    txt_eveningLtrs.Text = grossLiters.ToString();
                 }
             }
 
@@ -88,23 +88,57 @@ namespace WindowsFormsApp1
             try
             {
                 
-                // assigning time according to radio button selected
-                if(rdo_morning.Checked)
+               
+                decimal morningLtrs = 0;
+                decimal eveningLtrs = 0;
+
+                // validating morning and evening liters
+                if (chk_morning.Checked && chk_evening.Checked)// if both checks are checked
                 {
-                    chilarReceive.time = "Morning";
+                    // parsing morning liters
+                    if (!decimal.TryParse(txt_morningLtrs.Text, out morningLtrs))
+                    {
+                        MessageBox.Show("Invalid Morning Liters value!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txt_morningLtrs.Focus();
+                        return;
+                    }
+
+                    // parsing evening liters
+                    if (!decimal.TryParse(txt_eveningLtrs.Text, out eveningLtrs))
+                    {
+                        MessageBox.Show("Invalid Morning Liters value!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txt_eveningLtrs.Focus();
+                        return;
+                    }
                 }
-                else if(rdo_evening.Checked)
+                else if (chk_morning.Checked) // if only morning
                 {
-                    chilarReceive.time = "Evening";
+                    // parsing morning liters
+                    if (!decimal.TryParse(txt_morningLtrs.Text, out morningLtrs))
+                    {
+                        MessageBox.Show("Invalid Morning Liters value!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txt_morningLtrs.Focus();
+                        return;
+                    }
                 }
-                else
+                else if (chk_evening.Checked) // if only evening
                 {
-                    MessageBox.Show("Please select a time slot!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // parsing evening liters
+                    if (!decimal.TryParse(txt_eveningLtrs.Text, out eveningLtrs))
+                    {
+                        MessageBox.Show("Invalid Morning Liters value!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txt_eveningLtrs.Focus();
+                        return;
+                    }
+                }
+                else // if none of the checked
+                {
+                    MessageBox.Show("Please check morning or evening check box!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 // checking for not null
-                if(!int.TryParse(txt_dodhiId.Text,out int dodhiId))
+                if (!int.TryParse(txt_dodhiId.Text,out int dodhiId))
                 {
                     MessageBox.Show("Invalid dodhi Id!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -113,12 +147,6 @@ namespace WindowsFormsApp1
                 if (string.IsNullOrEmpty(txt_dodhiName.Text))
                 {
                     MessageBox.Show("Please add Dodhi name!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                if (!decimal.TryParse(txt_liters.Text, out decimal grossLiters))
-                {
-                    MessageBox.Show("Invalid gross liters value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -143,9 +171,12 @@ namespace WindowsFormsApp1
                     MessageBox.Show("Invalid fat value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-                decimal ts = chilarReceive.tsCalculator(lr, fat, grossLiters, tsStandard);
+                decimal ts = chilarReceive.tsCalculator(lr, fat, morningLtrs, tsStandard);
 
                 txt_tsLiters.Text = ts.ToString();
+
+                const string morning = "Morning";
+                const string evening = "Evening";
 
 
                 // assigning values to emloyee object
@@ -154,14 +185,56 @@ namespace WindowsFormsApp1
                 chilarReceive.dodhiId = dodhiId;
                 chilarReceive.receiveDate = dtm_picker.Value;
                 chilarReceive.dodhiName = txt_dodhiName.Text;
-                chilarReceive.grossLiters = grossLiters;
                 chilarReceive.fat = fat;
                 chilarReceive.lr = lr;
                 chilarReceive.tsStandard = tsStandard;
-                chilarReceive.tsLiters = ts;
 
+                if(chk_evening.Checked&&chk_morning.Checked)
+                {
+                    if(morningLtrs!=0)
+                    {
+                        decimal Mts=chilarReceive.tsCalculator(lr,fat, morningLtrs, tsStandard);
 
-                chilarReceive.saveChilarReceive(chilarReceive);
+                        chilarReceive.grossLiters = morningLtrs;
+                        chilarReceive.tsLiters = Mts;
+                        chilarReceive.time = morning;
+
+                        chilarReceive.saveChilarReceive(chilarReceive);
+                    }
+
+                    if (eveningLtrs != 0)
+                    {
+                        decimal Ets = chilarReceive.tsCalculator(lr, fat, eveningLtrs, tsStandard);
+
+                        chilarReceive.grossLiters = eveningLtrs;
+                        chilarReceive.tsLiters = Ets;
+                        chilarReceive.time = evening;
+                        chilarReceive.id = chilarReceive.GetNextAvailableID();
+
+                        chilarReceive.saveChilarReceive(chilarReceive);
+                    }
+
+                }
+                else if(chk_morning.Checked)
+                {
+                    decimal Mts = chilarReceive.tsCalculator(lr, fat, morningLtrs, tsStandard);
+
+                    chilarReceive.grossLiters = morningLtrs;
+                    chilarReceive.tsLiters = Mts;
+                    chilarReceive.time = morning;
+
+                    chilarReceive.saveChilarReceive(chilarReceive);
+                }
+                else if(chk_evening.Checked)
+                {
+                    decimal Ets = chilarReceive.tsCalculator(lr, fat, eveningLtrs, tsStandard);
+
+                    chilarReceive.grossLiters = eveningLtrs;
+                    chilarReceive.tsLiters = Ets;
+                    chilarReceive.time = evening;
+
+                    chilarReceive.saveChilarReceive(chilarReceive);
+                }
 
                 // clearing all the text boxes for new entries
                 commonFunctions.ClearAllTextBoxes(this);
@@ -200,11 +273,11 @@ namespace WindowsFormsApp1
             // Check if the pressed key is Enter
             if (e.KeyCode == Keys.Enter)
             {
+                txt_fat.Focus();
+
                 // Prevent the beep sound
                 e.SuppressKeyPress = true;
 
-                // Move focus to the next control (text box)
-                this.SelectNextControl((Control)sender, true, true, true, true);
             }
         }
 
@@ -235,8 +308,6 @@ namespace WindowsFormsApp1
                 // Hide the suggestion list
                 lstDodhiSuggestions.Visible = false;
 
-                // Move focus to the next control (ID TextBox)
-                txt_liters.Focus();
 
                 // Prevent the Enter key from being processed further
 
@@ -253,8 +324,19 @@ namespace WindowsFormsApp1
             commonFunctions.HandleAccountSuggestionKeyDown(txt_dodhiId, txt_dodhiName, lstDodhiSuggestions, e);
             if (e.KeyCode==Keys.Enter)
             {
-                
-                txt_liters.Focus();
+                if(txt_morningLtrs.Enabled)
+                {
+                    txt_morningLtrs.Focus();
+                }
+                else if(txt_eveningLtrs.Enabled)
+                {
+                    txt_eveningLtrs.Focus();
+                }
+                else
+                {
+                    return;
+                }
+
             }
         }
 
@@ -285,20 +367,24 @@ namespace WindowsFormsApp1
                 // check the radio button according to time 
                 if (row.Cells["Time"].Value.ToString().Trim() == "Morning")
                 {
-                    //rdo_evening.Checked = false;
-                    rdo_morning.Checked = true;
+                    chk_morning.Checked = true;
+                    chk_evening.Checked = false;
+                    txt_eveningLtrs.Clear();
+                    txt_morningLtrs.Text = row.Cells["Gross Liters"].Value.ToString();
 
-                    
+
                 }
                 else
                 {
-                    //rdo_morning.Checked= false;
-                    rdo_evening.Checked = true;
+                    chk_evening.Checked = true;
+                    chk_morning.Checked = false;
+                    txt_morningLtrs.Clear();
+                    txt_eveningLtrs.Text = row.Cells["Gross Liters"].Value.ToString();
                 }
 
                 txt_dodhiId.Text = row.Cells["Dodhi Id"].Value.ToString();
                 txt_dodhiName.Text = row.Cells["Dodhi Name"].Value.ToString();
-                txt_liters.Text = row.Cells["Gross Liters"].Value.ToString();
+                //txt_liters.Text = row.Cells["Gross Liters"].Value.ToString();
                 txt_lr.Text = row.Cells["LR"].Value.ToString();
                 txt_fat.Text = row.Cells["Fat"].Value.ToString();
                 txt_tsStandard.Text = row.Cells["Ts-Standard"].Value.ToString();
@@ -309,72 +395,85 @@ namespace WindowsFormsApp1
 
         private void txt_fat_Leave(object sender, EventArgs e)
         {
-            if (!decimal.TryParse(txt_liters.Text, out decimal grossLiters))
+            decimal morningLtrs = 0;
+            decimal eveningLtrs = 0;
+
+            // parsing morning and evening liters
+            if(chk_morning.Checked && chk_evening.Checked)
             {
-                MessageBox.Show("Invalid gross liters value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                // parsing morning liters
+                if (!decimal.TryParse(txt_morningLtrs.Text, out morningLtrs))
+                {
+                    MessageBox.Show("Invalid Morning Liters value!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // parsing evening liters
+                if (!decimal.TryParse(txt_eveningLtrs.Text, out eveningLtrs))
+                {
+                    MessageBox.Show("Invalid Morning Liters value!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
+            else if(chk_morning.Checked) // only morning liters
+            {
+                // parsing morning liters
+                if (!decimal.TryParse(txt_morningLtrs.Text, out morningLtrs))
+                {
+                    MessageBox.Show("Invalid Morning Liters value!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            else if(chk_evening.Checked) // only evening liters
+            {
+                if (!decimal.TryParse(txt_eveningLtrs.Text, out eveningLtrs))
+                {
+                    MessageBox.Show("Invalid Morning Liters value!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
 
             // Validate and parse rate
             if (!decimal.TryParse(txt_lr.Text, out decimal lr))
             {
                 MessageBox.Show("Invalid lr value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                if (lr > 35 || lr < 0)
-                {
-                    MessageBox.Show("Lr value should between 0 to 35", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                
                 return;
             }
 
             if (!decimal.TryParse(txt_fat.Text, out decimal fat))
             {
                 MessageBox.Show("Invalid fat value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             if(!int.TryParse(txt_tsStandard.Text, out int tsStandard))
             {
                 MessageBox.Show("Invalid TS value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            decimal ts = chilarReceive.tsCalculator(lr, fat, grossLiters, tsStandard);
-
-            txt_tsLiters.Text = ts.ToString();
-        }
-
-        private void txt_tsStandard_Leave(object sender, EventArgs e)
-        {
-            if (!decimal.TryParse(txt_liters.Text, out decimal grossLiters))
-            {
-                MessageBox.Show("Invalid gross liters value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Validate and parse rate
-            if (!decimal.TryParse(txt_lr.Text, out decimal lr))
+            if(chk_morning.Checked && chk_evening.Checked)
             {
-                MessageBox.Show("Invalid lr value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                if (lr > 35 || lr < 0)
-                {
-                    MessageBox.Show("Lr value should between 0 to 35", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                decimal ts = chilarReceive.tsCalculator(lr, fat, morningLtrs + eveningLtrs, tsStandard);
+                txt_tsLiters.Text = ts.ToString();
+            }
+            else if(chk_morning.Checked)
+            {
+                decimal ts = chilarReceive.tsCalculator(lr, fat, morningLtrs, tsStandard);
+                txt_tsLiters.Text = ts.ToString();
+            }
+            else if(chk_evening.Checked)
+            {
+                decimal ts = chilarReceive.tsCalculator(lr, fat, eveningLtrs, tsStandard);
+                txt_tsLiters.Text = ts.ToString();
+            }
+            else
+            {
                 return;
             }
 
-            if (!decimal.TryParse(txt_fat.Text, out decimal fat))
-            {
-                MessageBox.Show("Invalid fat value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            if (!int.TryParse(txt_tsStandard.Text, out int tsStandard))
-            {
-                MessageBox.Show("Invalid TS value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            decimal ts = chilarReceive.tsCalculator(lr, fat, grossLiters, tsStandard);
-
-            txt_tsLiters.Text = ts.ToString();
-
-            
         }
 
         private void chlrBtn_deleteEntry_Click(object sender, EventArgs e)
@@ -449,37 +548,64 @@ namespace WindowsFormsApp1
             try
             {
 
-                // assigning time according to radio button selected
-                if (rdo_morning.Checked)
+                decimal morningLtrs = 0;
+                decimal eveningLtrs = 0;
+
+                // validating morning and evening liters
+                if (chk_morning.Checked && chk_evening.Checked)// if both checks are checked
                 {
-                    chilarReceive.time = "Morning";
+                    // parsing morning liters
+                    if (!decimal.TryParse(txt_morningLtrs.Text, out morningLtrs))
+                    {
+                        MessageBox.Show("Invalid Morning Liters value!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txt_morningLtrs.Focus();
+                        return;
+                    }
+
+                    // parsing evening liters
+                    if (!decimal.TryParse(txt_eveningLtrs.Text, out eveningLtrs))
+                    {
+                        MessageBox.Show("Invalid Morning Liters value!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txt_eveningLtrs.Focus();
+                        return;
+                    }
                 }
-                else if (rdo_evening.Checked)
+                else if (chk_morning.Checked) // if only morning
                 {
-                    chilarReceive.time = "Evening";
+                    // parsing morning liters
+                    if (!decimal.TryParse(txt_morningLtrs.Text, out morningLtrs))
+                    {
+                        MessageBox.Show("Invalid Morning Liters value!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txt_morningLtrs.Focus();
+                        return;
+                    }
                 }
-                else
+                else if (chk_evening.Checked) // if only evening
                 {
-                    MessageBox.Show("Please select a time slot!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // parsing evening liters
+                    if (!decimal.TryParse(txt_eveningLtrs.Text, out eveningLtrs))
+                    {
+                        MessageBox.Show("Invalid Morning Liters value!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txt_eveningLtrs.Focus();
+                        return;
+                    }
+                }
+                else // if none of the checked
+                {
+                    MessageBox.Show("Please check morning or evening check box!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                if(!int.TryParse(txt_dodhiId.Text,out int dodhiId))
+                // checking for not null
+                if (!int.TryParse(txt_dodhiId.Text, out int dodhiId))
                 {
                     MessageBox.Show("Invalid dodhi Id!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // checking for not null
                 if (string.IsNullOrEmpty(txt_dodhiName.Text))
                 {
                     MessageBox.Show("Please add Dodhi name!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                if (!decimal.TryParse(txt_liters.Text, out decimal grossLiters))
-                {
-                    MessageBox.Show("Invalid gross liters value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -504,9 +630,8 @@ namespace WindowsFormsApp1
                     MessageBox.Show("Invalid fat value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-                decimal ts = chilarReceive.tsCalculator(lr, fat, grossLiters, tsStandard);
-
-                txt_tsLiters.Text = ts.ToString();
+                const string morning = "Morning";
+                const string evening = "Evening";
 
 
                 // assigning values to emloyee object
@@ -515,14 +640,36 @@ namespace WindowsFormsApp1
                 chilarReceive.dodhiId = dodhiId;
                 chilarReceive.receiveDate = dtm_picker.Value;
                 chilarReceive.dodhiName = txt_dodhiName.Text;
-                chilarReceive.grossLiters = grossLiters;
                 chilarReceive.fat = fat;
                 chilarReceive.lr = lr;
                 chilarReceive.tsStandard = tsStandard;
-                chilarReceive.tsLiters = ts;
 
+                if (chk_evening.Checked && chk_morning.Checked)
+                {
+                    MessageBox.Show("Cannot update both morning and evening at same time. Please select one", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
 
-                chilarReceive.updateChilarReceive(chilarReceive);
+                }
+                else if (chk_morning.Checked)
+                {
+                    decimal Mts = chilarReceive.tsCalculator(lr, fat, morningLtrs, tsStandard);
+
+                    chilarReceive.grossLiters = morningLtrs;
+                    chilarReceive.tsLiters = Mts;
+                    chilarReceive.time = morning;
+
+                    chilarReceive.updateChilarReceive(chilarReceive);
+                }
+                else if (chk_evening.Checked)
+                {
+                    decimal Ets = chilarReceive.tsCalculator(lr, fat, eveningLtrs, tsStandard);
+
+                    chilarReceive.grossLiters = eveningLtrs;
+                    chilarReceive.tsLiters = Ets;
+                    chilarReceive.time = evening;
+
+                    chilarReceive.updateChilarReceive(chilarReceive);
+                }
 
                 // clearing all the text boxes for new entries
                 commonFunctions.ClearAllTextBoxes(this);
@@ -587,7 +734,7 @@ namespace WindowsFormsApp1
                 txt_dodhiId.Text = dodhiId.ToString();
                 txt_dodhiName.Text = dodhiName;
                 txt_lr.Text = lr.ToString();
-                txt_liters.Text = grossLiters.ToString();
+                //txt_liters.Text = grossLiters.ToString();
                 txt_fat.Text = fat.ToString();
                 txt_tsStandard.Text = tsStandar.ToString();
                 txt_tsLiters.Text = tsLiters.ToString();
@@ -595,11 +742,19 @@ namespace WindowsFormsApp1
 
                 if (time == "Morning")
                 {
-                    rdo_morning.Checked = true;
+                    chk_morning.Checked = true;
+                    chk_evening.Checked = false;
+
+                    txt_eveningLtrs.Clear();
+                    txt_morningLtrs.Text = grossLiters.ToString();
                 }
                 else
                 {
-                    rdo_evening.Checked = true;
+                    chk_evening.Checked = true;
+                    chk_morning.Checked = false;
+
+                    txt_morningLtrs.Clear();
+                    txt_eveningLtrs.Text = grossLiters.ToString();
                 }
             }
         }
@@ -624,7 +779,7 @@ namespace WindowsFormsApp1
                 txt_dodhiId.Text = dodhiId.ToString();
                 txt_dodhiName.Text = dodhiName;
                 txt_lr.Text = lr.ToString();
-                txt_liters.Text = grossLiters.ToString();
+                //txt_liters.Text = grossLiters.ToString();
                 txt_fat.Text = fat.ToString();
                 txt_tsStandard.Text = tsStandar.ToString();
                 txt_tsLiters.Text = tsLiters.ToString();
@@ -632,11 +787,19 @@ namespace WindowsFormsApp1
 
                 if (time == "Morning")
                 {
-                    rdo_morning.Checked = true;
+                    chk_morning.Checked = true;
+                    chk_evening.Checked = false;
+
+                    txt_eveningLtrs.Clear();
+                    txt_morningLtrs.Text = grossLiters.ToString();
                 }
                 else
                 {
-                    rdo_evening.Checked = true;
+                    chk_evening.Checked = true;
+                    chk_morning.Checked = false;
+
+                    txt_morningLtrs.Clear();
+                    txt_eveningLtrs.Text = grossLiters.ToString();
                 }
             }
         }
@@ -647,6 +810,72 @@ namespace WindowsFormsApp1
             getStats();
         }
 
-        
+        private void chk_morning_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chk_morning.Checked)
+            {
+                txt_morningLtrs.Enabled = true;
+                label10.Enabled = true;
+            }
+            else
+            {
+                txt_morningLtrs.Enabled = false;
+                label10.Enabled = false;
+            }
+        }
+
+        private void txt_morningLtrs_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode==Keys.Enter)
+            {
+                if(txt_eveningLtrs.Enabled)
+                {
+                    txt_eveningLtrs.Focus();
+                }
+                else
+                {
+                    txt_lr.Focus();
+                }
+
+                e.SuppressKeyPress = true;
+            }
+            else if(e.KeyCode==Keys.Right)
+            {
+                txt_eveningLtrs.Focus();
+
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txt_eveningLtrs_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txt_lr.Focus();
+
+                e.SuppressKeyPress = true;
+            }
+            else if(e.KeyCode==Keys.Left)
+            {
+                txt_morningLtrs.Focus();
+
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void chk_evening_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chk_evening.Checked)
+            {
+                txt_eveningLtrs.Enabled = true;
+                label16.Enabled = true;
+            }
+            else
+            {
+                txt_eveningLtrs.Enabled = false;
+                label16.Enabled = false;
+            }
+
+        }
     }
 }
