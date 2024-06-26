@@ -21,6 +21,7 @@ namespace WindowsFormsApp1
         CommonFunctionsClass commonFunctions = new CommonFunctionsClass();// common function accross all forms like search suggestions
         DashboardClass dashboard = new DashboardClass();
         ParchiClass parchi = new ParchiClass();
+        private DataTable dataTable = new DataTable();
 
         public bool isfromOtherForm = false;
         public int purchaseId;
@@ -31,13 +32,6 @@ namespace WindowsFormsApp1
         }
 
         
-
-        private void btn_cashPayment_Click(object sender, EventArgs e)
-        {
-            Payments payments = new Payments();
-            payments.ShowDialog();
-            this.Close();
-        }
 
         private void btn_newCustomer_Click(object sender, EventArgs e)
         {
@@ -867,6 +861,18 @@ namespace WindowsFormsApp1
             totalAmount += rate * eveningLtrs;
 
             txt_totalAmount.Text = totalAmount.ToString();
+        }
+
+        private void txt_datagridId_TextChanged(object sender, EventArgs e)
+        {
+            //commonFunctions.ShowAccountSuggestions(txt_datagridId, lstCustomersSuggestion, "customer");
+
+            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("[Customer Name] LIKE '%" + txt_datagridId.Text.Trim() + "%'");
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

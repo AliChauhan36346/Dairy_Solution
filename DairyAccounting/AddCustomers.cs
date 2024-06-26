@@ -280,6 +280,42 @@ namespace DairyAccounting
             return customerIdsAndNames;
         }
 
+        public Dictionary<int, string> GetCustomersIdsAndNamesByDodhi(int dodhiId)
+        {
+            Dictionary<int, string> customerIdsAndNames = new Dictionary<int, string>();
+
+            try
+            {
+                dbConnection.openConnection();
+
+                string query = "SELECT customerId, name FROM CustomersTbl WHERE dodhiId=@dodhiId";
+                using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
+                {
+                    command.Parameters.AddWithValue("@dodhiId", dodhiId);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int customerId = Convert.ToInt32(reader["customerId"]);
+                            string customerName = reader["name"].ToString();
+                            customerIdsAndNames.Add(customerId, customerName);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error retrieving customers names: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dbConnection.closeConnection();
+            }
+
+            return customerIdsAndNames;
+        }
+
         public string GetCustomerNameById(int customerId)
         {
             string customerName = "";

@@ -288,9 +288,10 @@ namespace WindowsFormsApp1
 
                 if (password.IsPasswordCorrect(enteredPassword))
                 {
-                    Change_Dodhi change_Dodhi = new Change_Dodhi();
-                    change_Dodhi.ShowDialog();
-
+                    //Change_Dodhi change_Dodhi = new Change_Dodhi();
+                    //change_Dodhi.ShowDialog();
+                    Dodhi_change dodhi_Change= new Dodhi_change();
+                    dodhi_Change.ShowDialog();
                 }
                 else
                 {
@@ -346,8 +347,9 @@ namespace WindowsFormsApp1
 
         private void incomeReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            IncomeStatement incomeStatement=new IncomeStatement();
-            incomeStatement.ShowDialog();
+            ProfitLoss profitLoss = new ProfitLoss();
+
+            profitLoss.ShowDialog();
         }
 
         private void toolStripMenuItem7_Click(object sender, EventArgs e)
@@ -382,6 +384,12 @@ namespace WindowsFormsApp1
         {
             ExpenseReport expenseReport=new ExpenseReport();
             expenseReport.ShowDialog();
+        }
+
+        private void roznamchaChilarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Roznamcha roznamcha = new Roznamcha();
+            roznamcha.ShowDialog();
         }
     }
 }

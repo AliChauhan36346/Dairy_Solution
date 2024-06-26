@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Parchi));
             this.btn_print = new System.Windows.Forms.Button();
             this.btn_display = new System.Windows.Forms.Button();
@@ -36,6 +38,7 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.chk_thermalPrint = new System.Windows.Forms.CheckBox();
             this.btn_printCusList = new System.Windows.Forms.Button();
             this.rdo_pringDialog = new System.Windows.Forms.RadioButton();
             this.rdo_printPreview = new System.Windows.Forms.RadioButton();
@@ -64,7 +67,6 @@
             this.printDocument3 = new System.Drawing.Printing.PrintDocument();
             this.printDialog3 = new System.Windows.Forms.PrintDialog();
             this.printDocument4 = new System.Drawing.Printing.PrintDocument();
-            this.chk_thermalPrint = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -125,17 +127,32 @@
             // 
             // dataGridView2
             // 
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView2.Location = new System.Drawing.Point(0, 145);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(1016, 502);
+            this.dataGridView2.Size = new System.Drawing.Size(1102, 502);
             this.dataGridView2.TabIndex = 14;
             // 
             // label1
@@ -179,8 +196,20 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2, 7, 2, 7);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1016, 134);
+            this.panel1.Size = new System.Drawing.Size(1102, 134);
             this.panel1.TabIndex = 13;
+            // 
+            // chk_thermalPrint
+            // 
+            this.chk_thermalPrint.AutoSize = true;
+            this.chk_thermalPrint.Font = new System.Drawing.Font("Segoe UI Black", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_thermalPrint.ForeColor = System.Drawing.Color.Sienna;
+            this.chk_thermalPrint.Location = new System.Drawing.Point(952, 20);
+            this.chk_thermalPrint.Name = "chk_thermalPrint";
+            this.chk_thermalPrint.Size = new System.Drawing.Size(139, 25);
+            this.chk_thermalPrint.TabIndex = 128;
+            this.chk_thermalPrint.Text = "Thermal Print";
+            this.chk_thermalPrint.UseVisualStyleBackColor = true;
             // 
             // btn_printCusList
             // 
@@ -200,7 +229,7 @@
             // 
             this.rdo_pringDialog.AutoSize = true;
             this.rdo_pringDialog.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdo_pringDialog.Location = new System.Drawing.Point(871, 90);
+            this.rdo_pringDialog.Location = new System.Drawing.Point(952, 90);
             this.rdo_pringDialog.Name = "rdo_pringDialog";
             this.rdo_pringDialog.Size = new System.Drawing.Size(106, 21);
             this.rdo_pringDialog.TabIndex = 126;
@@ -212,7 +241,7 @@
             // 
             this.rdo_printPreview.AutoSize = true;
             this.rdo_printPreview.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdo_printPreview.Location = new System.Drawing.Point(871, 63);
+            this.rdo_printPreview.Location = new System.Drawing.Point(952, 63);
             this.rdo_printPreview.Name = "rdo_printPreview";
             this.rdo_printPreview.Size = new System.Drawing.Size(108, 21);
             this.rdo_printPreview.TabIndex = 125;
@@ -352,25 +381,26 @@
             this.panel2.Location = new System.Drawing.Point(0, 648);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1016, 41);
+            this.panel2.Size = new System.Drawing.Size(1102, 41);
             this.panel2.TabIndex = 40;
             // 
             // txt_totalLiters
             // 
             this.txt_totalLiters.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_totalLiters.ForeColor = System.Drawing.Color.Green;
-            this.txt_totalLiters.Location = new System.Drawing.Point(464, 7);
+            this.txt_totalLiters.Location = new System.Drawing.Point(560, 7);
             this.txt_totalLiters.Margin = new System.Windows.Forms.Padding(4);
             this.txt_totalLiters.Name = "txt_totalLiters";
-            this.txt_totalLiters.Size = new System.Drawing.Size(107, 27);
+            this.txt_totalLiters.Size = new System.Drawing.Size(94, 27);
             this.txt_totalLiters.TabIndex = 5;
+            this.txt_totalLiters.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(378, 9);
+            this.label5.Location = new System.Drawing.Point(471, 9);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(51, 20);
@@ -381,21 +411,23 @@
             // 
             this.txt_totalParchiAmount.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_totalParchiAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.txt_totalParchiAmount.Location = new System.Drawing.Point(691, 7);
+            this.txt_totalParchiAmount.Location = new System.Drawing.Point(775, 7);
             this.txt_totalParchiAmount.Margin = new System.Windows.Forms.Padding(4);
             this.txt_totalParchiAmount.Name = "txt_totalParchiAmount";
-            this.txt_totalParchiAmount.Size = new System.Drawing.Size(113, 27);
+            this.txt_totalParchiAmount.Size = new System.Drawing.Size(111, 27);
             this.txt_totalParchiAmount.TabIndex = 2;
+            this.txt_totalParchiAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txt_totalLitersAmount
             // 
             this.txt_totalLitersAmount.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_totalLitersAmount.ForeColor = System.Drawing.Color.Red;
-            this.txt_totalLitersAmount.Location = new System.Drawing.Point(574, 7);
+            this.txt_totalLitersAmount.Location = new System.Drawing.Point(659, 7);
             this.txt_totalLitersAmount.Margin = new System.Windows.Forms.Padding(4);
             this.txt_totalLitersAmount.Name = "txt_totalLitersAmount";
-            this.txt_totalLitersAmount.Size = new System.Drawing.Size(113, 27);
+            this.txt_totalLitersAmount.Size = new System.Drawing.Size(110, 27);
             this.txt_totalLitersAmount.TabIndex = 1;
+            this.txt_totalLitersAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // printDocument2
             // 
@@ -426,7 +458,7 @@
             this.lbl_status.AutoSize = true;
             this.lbl_status.Font = new System.Drawing.Font("Segoe UI", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_status.ForeColor = System.Drawing.Color.Red;
-            this.lbl_status.Location = new System.Drawing.Point(380, 299);
+            this.lbl_status.Location = new System.Drawing.Point(429, 299);
             this.lbl_status.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_status.Name = "lbl_status";
             this.lbl_status.Size = new System.Drawing.Size(296, 25);
@@ -457,23 +489,11 @@
             // 
             this.printDocument4.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument4_PrintPage);
             // 
-            // chk_thermalPrint
-            // 
-            this.chk_thermalPrint.AutoSize = true;
-            this.chk_thermalPrint.Font = new System.Drawing.Font("Segoe UI Black", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_thermalPrint.ForeColor = System.Drawing.Color.Sienna;
-            this.chk_thermalPrint.Location = new System.Drawing.Point(871, 20);
-            this.chk_thermalPrint.Name = "chk_thermalPrint";
-            this.chk_thermalPrint.Size = new System.Drawing.Size(139, 25);
-            this.chk_thermalPrint.TabIndex = 128;
-            this.chk_thermalPrint.Text = "Thermal Print";
-            this.chk_thermalPrint.UseVisualStyleBackColor = true;
-            // 
             // Parchi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1016, 689);
+            this.ClientSize = new System.Drawing.Size(1102, 689);
             this.Controls.Add(this.lbl_status);
             this.Controls.Add(this.lstAccountSuggestions);
             this.Controls.Add(this.panel2);

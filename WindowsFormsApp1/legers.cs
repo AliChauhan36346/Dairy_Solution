@@ -11,6 +11,7 @@ using System.Security.Cryptography.Pkcs;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WindowsFormsApp1
 {
@@ -45,7 +46,7 @@ namespace WindowsFormsApp1
 
             
 
-            if(int.TryParse(txt_accountId.Text, out int id))
+            if(int.TryParse(txtAccountId.Text, out int id))
             {
                 if(id>=20000 && id<25000)
                 {
@@ -75,18 +76,20 @@ namespace WindowsFormsApp1
             {
                 accounts.GetCustomerLedger(dataGridView1, accountId, startDate.Date, dtm_to.Value, out totalDebit, out totalCredit, out totalBalance, out bStatus, out balanceBroughtForward, out forwardString);
 
-                txt_accountId.Text = accountId.ToString();
+                txtAccountId.Text = accountId.ToString();
                 txt_accountName.Text = accountName.ToString();
             }
 
-            txt_accountId.Focus();
+            txtAccountId.Focus();
             lstSuggestions.Visible = false;
+            //txt_accountName.Focused = false;
+            txtAccountId.Focus();
 
         }
 
         private void txt_accountId_TextChanged(object sender, EventArgs e)
         {
-            commonFunctions.ShowAllAccountSuggestions(txt_accountId.Text, lstSuggestions);
+            commonFunctions.ShowAllAccountSuggestions(txtAccountId.Text, lstSuggestions);
 
         }
 
@@ -94,15 +97,6 @@ namespace WindowsFormsApp1
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
-        }
-
-        private void txt_accountId_KeyDown(object sender, KeyEventArgs e)
-        {
-            commonFunctions.HandleAccountSuggestionKeyDown(txt_accountId, txt_accountName, lstSuggestions, e);
-            if (e.KeyCode == Keys.Enter)
-            {
-                btn_display.Focus();
-            }
         }
 
         private void txt_accountId_Leave(object sender, EventArgs e)
@@ -113,7 +107,7 @@ namespace WindowsFormsApp1
         private void btn_display_Click(object sender, EventArgs e)
         {
             //determining id belonging, wheather its customer,company,employee or account
-            if (!int.TryParse(txt_accountId.Text, out accountId))
+            if (!int.TryParse(txtAccountId.Text, out accountId))
             {
                 MessageBox.Show("Invalid Account Id.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -203,7 +197,7 @@ namespace WindowsFormsApp1
             {
                 e.Graphics.DrawString("Chauhan Dairy Farms", heading1, brush, xAxis, yAxis);
                 yAxis += 45;
-                e.Graphics.DrawString(txt_accountId.Text + "   " + txt_accountName.Text, heading2, brush, xAxis, yAxis);
+                e.Graphics.DrawString(txtAccountId.Text + "   " + txt_accountName.Text, heading2, brush, xAxis, yAxis);
                 yAxis += 30;
                 e.Graphics.DrawString(date, heading2, brush, xAxis, yAxis);
                 yAxis += 55;
@@ -400,6 +394,37 @@ namespace WindowsFormsApp1
 
                 }
             }
+        }
+
+        private void txtAccountId_TextChanged(object sender, EventArgs e)
+        {
+            commonFunctions.ShowAllAccountSuggestions(txtAccountId.Text, lstSuggestions);
+        }
+
+        private void txtAccountId_KeyDown(object sender, KeyEventArgs e)
+        {
+            commonFunctions.HandleAccountSuggestionKeyDown(txtAccountId, txt_accountName, lstSuggestions, e);
+            if (e.KeyCode == Keys.Enter)
+            {
+                btn_display.Focus();
+            }
+        }
+
+        private void txtAccountId_Leave(object sender, EventArgs e)
+        {
+            lstSuggestions.Visible = false;
+        }
+
+        private void btn_cashPayment_Click(object sender, EventArgs e)
+        {
+            Payments payments= new Payments();
+            payments.ShowDialog();
+        }
+
+        private void btn_purchase_Click(object sender, EventArgs e)
+        {
+            Purchases purchases= new Purchases();
+            purchases.ShowDialog();
         }
     }
 }

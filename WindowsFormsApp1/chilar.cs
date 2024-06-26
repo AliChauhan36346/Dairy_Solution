@@ -87,8 +87,6 @@ namespace WindowsFormsApp1
         {
             try
             {
-                
-               
                 decimal morningLtrs = 0;
                 decimal eveningLtrs = 0;
 
@@ -246,6 +244,8 @@ namespace WindowsFormsApp1
                 txt_tsStandard.Text = "13";
 
                 txt_dodhiId.Focus();
+
+                chk_autofatlr_CheckedChanged(sender, new EventArgs());
 
             }
             catch (Exception ex)
@@ -512,6 +512,7 @@ namespace WindowsFormsApp1
                         txt_id.Text = chilarReceive.GetNextAvailableID().ToString();
                         txt_tsStandard.Text = "13";
                         txt_dodhiId.Focus();
+                        chk_autofatlr_CheckedChanged(sender, new EventArgs());
                     }
                         
                     
@@ -541,6 +542,7 @@ namespace WindowsFormsApp1
             dtm_picker.Value = DateTime.Today;
 
             txt_dodhiId.Focus();
+            chk_autofatlr_CheckedChanged(sender, new EventArgs());
         }
 
         private void btn_update_Click(object sender, EventArgs e)
@@ -682,6 +684,7 @@ namespace WindowsFormsApp1
                 getStats();
 
                 txt_dodhiId.Focus();
+                chk_autofatlr_CheckedChanged(sender, new EventArgs());
 
 
             }
@@ -694,6 +697,7 @@ namespace WindowsFormsApp1
         private void txt_dodhiId_TextChanged(object sender, EventArgs e)
         {
             commonFunctions.ShowAccountSuggestions(txt_dodhiId, lstDodhiSuggestions, "employee");
+            chk_autofatlr_CheckedChanged(sender, new EventArgs());
         }
 
         private void getStats()
@@ -876,6 +880,25 @@ namespace WindowsFormsApp1
                 label16.Enabled = false;
             }
 
+        }
+
+        private void chk_autofatlr_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chk_autofatlr.Checked)
+            {
+                txt_fat.Text = "4";
+                txt_lr.Text = "26";
+            }
+            else
+            {
+                txt_fat.Clear();
+                txt_lr.Clear();
+            }
+        }
+
+        private void txt_datagridId_TextChanged(object sender, EventArgs e)
+        {
+            (dataGridView2.DataSource as DataTable).DefaultView.RowFilter = string.Format("[Dodhi Name] LIKE '%" + txt_datagridId.Text.Trim() + "%'");
         }
     }
 }

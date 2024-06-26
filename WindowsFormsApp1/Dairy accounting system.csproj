@@ -100,12 +100,6 @@
     <Compile Include="backupData.Designer.cs">
       <DependentUpon>backupData.cs</DependentUpon>
     </Compile>
-    <Compile Include="Change Dodhi.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Change Dodhi.Designer.cs">
-      <DependentUpon>Change Dodhi.cs</DependentUpon>
-    </Compile>
     <Compile Include="Change Rates.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +148,12 @@
     <Compile Include="customer_balances.Designer.cs">
       <DependentUpon>customer_balances.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dodhi change.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dodhi change.Designer.cs">
+      <DependentUpon>Dodhi change.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExpenseReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,12 +165,6 @@
     </Compile>
     <Compile Include="GeneralJournal.Designer.cs">
       <DependentUpon>GeneralJournal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="IncomeStatement.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="IncomeStatement.Designer.cs">
-      <DependentUpon>IncomeStatement.cs</DependentUpon>
     </Compile>
     <Compile Include="MilkCardCompany.cs">
       <SubType>Form</SubType>
@@ -184,11 +178,23 @@
     <Compile Include="Password.Designer.cs">
       <DependentUpon>Password.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProfitLoss.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProfitLoss.Designer.cs">
+      <DependentUpon>ProfitLoss.cs</DependentUpon>
+    </Compile>
     <Compile Include="PurchaseReport.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PurchaseReport.Designer.cs">
       <DependentUpon>PurchaseReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Roznamcha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Roznamcha.Designer.cs">
+      <DependentUpon>Roznamcha.cs</DependentUpon>
     </Compile>
     <Compile Include="SalesReport.cs">
       <SubType>Form</SubType>
@@ -279,9 +285,6 @@
     <EmbeddedResource Include="backupData.resx">
       <DependentUpon>backupData.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Change Dodhi.resx">
-      <DependentUpon>Change Dodhi.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Change Rates.resx">
       <DependentUpon>Change Rates.cs</DependentUpon>
     </EmbeddedResource>
@@ -306,14 +309,14 @@
     <EmbeddedResource Include="customer_balances.resx">
       <DependentUpon>customer_balances.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dodhi change.resx">
+      <DependentUpon>Dodhi change.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ExpenseReport.resx">
       <DependentUpon>ExpenseReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GeneralJournal.resx">
       <DependentUpon>GeneralJournal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="IncomeStatement.resx">
-      <DependentUpon>IncomeStatement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MilkCardCompany.resx">
       <DependentUpon>MilkCardCompany.cs</DependentUpon>
@@ -321,8 +324,14 @@
     <EmbeddedResource Include="Password.resx">
       <DependentUpon>Password.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProfitLoss.resx">
+      <DependentUpon>ProfitLoss.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PurchaseReport.resx">
       <DependentUpon>PurchaseReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Roznamcha.resx">
+      <DependentUpon>Roznamcha.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SalesReport.resx">
       <DependentUpon>SalesReport.cs</DependentUpon>

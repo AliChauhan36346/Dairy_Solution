@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,7 +58,6 @@ namespace DairyAccounting
             }
 
         }
-
 
         public void totalPurchases(DateTime startDate, DateTime endDate, out decimal totalPurchase, out decimal purchaseAmount)
         {
@@ -134,5 +135,130 @@ namespace DairyAccounting
             }
 
         }
+
+
+        // calculates profit loss for one day
+
+        public void oneDayProfitLoss(DateTime date, out decimal totalPurchase, out decimal purchaseAmount, 
+            out decimal totalExpense, out decimal totalSale, out decimal salesAmount, out decimal profitLoss)
+        {
+            totalPurchase = 0;
+            purchaseAmount = 0;
+            totalExpense = 0;
+            totalSale = 0;
+            salesAmount = 0;
+            profitLoss = 0;
+
+
+            totalPurchases(date, date, out totalPurchase, out purchaseAmount);
+            totalExpenses(date, date, out totalExpense);
+            totalSales(date, date, out totalSale, out salesAmount);
+
+            profitLoss = salesAmount - purchaseAmount + totalExpense;
+        }
+
+        public void profitLossInRow(DateTime startDate, DateTime endDate, DataGridView dataGridView ,out decimal GtotalPurchase, out decimal GpurchaseAmount,
+            out decimal GtotalExpense, out decimal GtotalSale, out decimal GsaleAmount, out decimal GprofitLoss)
+        {
+
+            GtotalPurchase = 0;
+            GpurchaseAmount = 0;
+            GtotalExpense = 0;
+            GtotalSale = 0;
+            GsaleAmount = 0;
+            GprofitLoss = 0;
+
+
+            decimal totalPurchase = 0;
+            decimal purchaseAmount = 0;
+            decimal totalExpense = 0;
+            decimal totalSale = 0;
+            decimal saleAmount = 0;
+            decimal profitLoss = 0;
+
+
+
+            string incomeStatus = "";
+
+            DataTable profitLossTable= new DataTable();
+
+            profitLossTable.Columns.Add("Date");
+            profitLossTable.Columns.Add("Total Purchase");
+            profitLossTable.Columns.Add("Purchase Amount");
+            profitLossTable.Columns.Add("Total Expense");
+            profitLossTable.Columns.Add("Total Sales");
+            profitLossTable.Columns.Add("Sales Amount");
+            profitLossTable.Columns.Add("Profit/Loss");
+
+            
+            DateTime date= startDate;
+
+
+
+            while(date<=endDate)
+            {
+                oneDayProfitLoss(date, out totalPurchase, out purchaseAmount, out totalExpense, out totalSale, out saleAmount, out profitLoss);
+
+                incomeStatus = profitLoss > 0 ? "Profit" : "Loss";
+
+                profitLossTable.Rows.Add(date, totalPurchase, purchaseAmount, totalExpense, totalSale, saleAmount, profitLoss + " " + incomeStatus);
+
+                GtotalPurchase += totalPurchase;
+                GpurchaseAmount += purchaseAmount;
+                GtotalExpense += totalExpense;
+                GtotalSale += totalSale;
+                GsaleAmount += saleAmount;
+                GprofitLoss += profitLoss;
+
+                totalPurchase = 0;
+                purchaseAmount = 0;
+                totalExpense = 0;
+                totalSale = 0;
+                saleAmount = 0;
+                profitLoss = 0;
+
+                date =date.AddDays(1);
+            }
+
+            dataGridView.DataSource= profitLossTable;
+
+            dataGridView.Columns["Date"].Width = 100;
+            dataGridView.Columns["Total Purchase"].Width = 120;
+            dataGridView.Columns["Purchase Amount"].Width = 120;
+            dataGridView.Columns["Total Expense"].Width = 120;
+            dataGridView.Columns["Total Sales"].Width = 120;
+            dataGridView.Columns["Sales Amount"].Width = 120;
+            dataGridView.Columns["Profit/Loss"].Width = 190;
+
+            // Set column colors
+            // Set column colors
+            dataGridView.Columns["Date"].HeaderCell.Style.BackColor = Color.LightBlue;
+
+            dataGridView.Columns["Total Purchase"].DefaultCellStyle.BackColor = Color.LightPink;
+            dataGridView.Columns["Total Purchase"].HeaderCell.Style.BackColor = Color.LightBlue;
+
+            dataGridView.Columns["Purchase Amount"].DefaultCellStyle.BackColor = Color.LightGreen;
+            dataGridView.Columns["Purchase Amount"].HeaderCell.Style.BackColor = Color.LightBlue;
+
+            dataGridView.Columns["Total Expense"].DefaultCellStyle.BackColor = Color.LightYellow;
+            dataGridView.Columns["Total Expense"].HeaderCell.Style.BackColor = Color.LightBlue;
+
+            dataGridView.Columns["Total Sales"].DefaultCellStyle.BackColor = Color.LightBlue;
+            dataGridView.Columns["Total Sales"].HeaderCell.Style.BackColor = Color.LightBlue;
+
+            dataGridView.Columns["Sales Amount"].DefaultCellStyle.BackColor = Color.LightCoral;
+            dataGridView.Columns["Sales Amount"].HeaderCell.Style.BackColor = Color.LightBlue;
+
+            dataGridView.Columns["Profit/Loss"].DefaultCellStyle.BackColor = Color.LightGray;
+            dataGridView.Columns["Profit/Loss"].HeaderCell.Style.BackColor = Color.LightBlue;
+
+            dataGridView.Columns["Profit/Loss"].DefaultCellStyle.ForeColor = Color.Black;
+
+            dataGridView.EnableHeadersVisualStyles = false;
+
+
+        }
+        
+
     }
 }

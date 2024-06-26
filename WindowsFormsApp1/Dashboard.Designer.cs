@@ -135,6 +135,7 @@
             this.balanceSheetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
             this.label8 = new System.Windows.Forms.Label();
+            this.roznamchaChilarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel12.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -1203,6 +1204,7 @@
             this.salesReportToolStripMenuItem,
             this.purchaseReportToolStripMenuItem,
             this.chilarReceiveReportToolStripMenuItem,
+            this.roznamchaChilarToolStripMenuItem,
             this.toolStripSeparator5,
             this.expenseReportToolStripMenuItem,
             this.toolStripSeparator7,
@@ -1295,6 +1297,13 @@
             this.label8.Size = new System.Drawing.Size(314, 27);
             this.label8.TabIndex = 13;
             this.label8.Text = "A Sofware developed by علی عباس\r\n";
+            // 
+            // roznamchaChilarToolStripMenuItem
+            // 
+            this.roznamchaChilarToolStripMenuItem.Name = "roznamchaChilarToolStripMenuItem";
+            this.roznamchaChilarToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.roznamchaChilarToolStripMenuItem.Text = "Roznamcha Chilar";
+            this.roznamchaChilarToolStripMenuItem.Click += new System.EventHandler(this.roznamchaChilarToolStripMenuItem_Click);
             // 
             // Dashboard
             // 
@@ -1467,6 +1476,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ToolStripMenuItem roznamchaChilarToolStripMenuItem;
     }
 }
 

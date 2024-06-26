@@ -209,14 +209,14 @@ namespace DairyAccounting
             dataGridView.DataSource = parchiTable;
 
             dataGridView.Columns["Id"].Width = 60;
-            dataGridView.Columns["Customer Name"].Width = 160;
+            dataGridView.Columns["Customer Name"].Width = 260;
             dataGridView.Columns["Previous Balance"].Width = 130;
-            dataGridView.Columns["pStatus"].Width = 70;
+            dataGridView.Columns["pStatus"].Width = 68;
             dataGridView.Columns["Total Liters"].Width = 100;
             dataGridView.Columns["Milk Amount"].Width = 110;
-            dataGridView.Columns["Parchi Amount"].Width = 115;
+            dataGridView.Columns["Parchi Amount"].Width = 120;
             dataGridView.Columns["Closing Balance"].Width = 125;
-            dataGridView.Columns["Status"].Width = 70;
+            dataGridView.Columns["Status"].Width = 68;
         }
 
 

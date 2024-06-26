@@ -73,6 +73,7 @@ namespace DairyAccounting
                     case "cash":
                         accountIdsAndNames = accounts.GetAccountIdsAndNames();
                         break;
+                    
                     default:
                         throw new ArgumentException("Invalid account type specified.");
                 }
@@ -317,16 +318,29 @@ namespace DairyAccounting
             }
         }
 
-        public void ChangeDodhi(string currentDodhi, string newDodhi, bool allTables)
+        
+        public Dictionary<int, string> changeSelectedCustomerDodhi(int dodhiId)
+        {
+            Dictionary<int, string> customerIdsNames= new Dictionary<int, string>();
+
+            foreach(var entry in customers.GetCustomersIdsAndNamesByDodhi(dodhiId))
+            {
+                customerIdsNames.Add(entry.Key, entry.Value);
+            }
+
+            return customerIdsNames;
+        }
+
+
+        public void ChangeDodhiSelectedCustomers(string currentDodhi, string newDodhi, int customerId, int totalCustomers, int changedCustomers)
         {
             int currentDodhiId = employees.getDodhiIdByName(currentDodhi);
             int newDodhiId = employees.getDodhiIdByName(newDodhi);
 
-            SqlTransaction dodhiChangeOperation= null;
+            SqlTransaction dodhiChangeOperation = null;
 
             string dodhiChangeQuery;
-            string [] transactionTables;
-            int customerCount=0;
+            int customerCount = 0;
 
             try
             {
@@ -334,37 +348,31 @@ namespace DairyAccounting
 
                 dodhiChangeOperation = dbConnection.connection.BeginTransaction();
 
-                if(!allTables)
+                
+                dodhiChangeQuery = $"UPDATE CustomersTbl SET dodhiId=@newDodhiId, dodhi=@newDodhiName WHERE dodhiId=@currentDodhiId AND customerId=@customerId";
+                using (SqlCommand command = new SqlCommand(dodhiChangeQuery, dbConnection.connection, dodhiChangeOperation))
                 {
-                    transactionTables = new string[] { "CustomersTbl" };
-                }
-                else
-                {
-                    transactionTables = new string[] { "CustomersTbl","ChilarReceive","Purchases" };
-                }
+                    command.Parameters.AddWithValue("@newDodhiId", newDodhiId);
+                    command.Parameters.AddWithValue("@newDodhiName", newDodhi);
 
-                foreach(string tableName in transactionTables)
-                {
-                    dodhiChangeQuery = $"UPDATE {tableName} SET dodhiId=@newDodhiId, dodhi=@newDodhiName WHERE dodhiId=@currentDodhiId";
-                    using (SqlCommand command = new SqlCommand(dodhiChangeQuery, dbConnection.connection, dodhiChangeOperation))
-                    {
-                        command.Parameters.AddWithValue("@newDodhiId", newDodhiId);
-                        command.Parameters.AddWithValue("@newDodhiName", newDodhi);
+                    command.Parameters.AddWithValue("@currentDodhiId", currentDodhiId);
 
-                        command.Parameters.AddWithValue("@currentDodhiId", currentDodhiId);
+                    command.Parameters.AddWithValue("@customerId", customerId);
 
-                        customerCount++;
-                        command.ExecuteNonQuery();
-                    }
+                    customerCount++;
+                    command.ExecuteNonQuery();
                 }
+                
 
                 dodhiChangeOperation.Commit();
 
-                MessageBox.Show("Dodhi with Id: " + currentDodhiId + " Name: " + currentDodhi.Trim() + " has been updated with Dodhi Id: " +
-                    + newDodhiId + " Name: " + newDodhi, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if(changedCustomers==totalCustomers)
+                {
+                    MessageBox.Show("Selected customers have been updated with new dodhi successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 if (dodhiChangeOperation != null) // Check if transaction object is not null before rollback
                 {
@@ -379,66 +387,51 @@ namespace DairyAccounting
             }
         }
 
-        public decimal AverageRate(bool isCustomer)
+        public void ShowAccountSuggestionsDodhiWise(TextBox textBox, ListBox listBox, int dodhiId)
         {
-            decimal averageRate = 0;
-
-            string tableName = "";
-
-            if(isCustomer)
+            if (textBox.Focused)
             {
-                tableName = "Purchases";
-            }
-            else
-            {
-                tableName = "Sales";
-            }
+                listBox.Visible = true;
+                string searchTerm = textBox.Text.Trim(); // Trim whitespace
 
-            try
-            {
-                string query = $"SELECT SUM(amount) AS totalAmount, SUM(liters) AS totalLiters FROM {tableName}";
+                // Clear existing suggestions
+                listBox.Items.Clear();
 
-                using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
+                // Get account IDs and names based on account type
+                Dictionary<int, string> accountIdsAndNames;
+
+                accountIdsAndNames = customers.GetCustomersIdsAndNamesByDodhi(dodhiId);
+
+                // Find best-matched item and select it
+                string bestMatch = null;
+                foreach (var entry in accountIdsAndNames)
                 {
-                    SqlDataReader reader = command.ExecuteReader();
+                    int accountId = entry.Key;
+                    string accountName = entry.Value;
 
-                    if (reader.Read())
+                    if (accountId.ToString().Contains(searchTerm) || accountName.IndexOf(searchTerm, StringComparison.OrdinalIgnoreCase) >= 0) // Check if either ID or name matches the search term (case-insensitive)
                     {
-                        decimal totalAmount=1;
-                        decimal totalLiters=1;
-                        // Check if the totalAmount column is not null and retrieve its value
-                        if (!reader.IsDBNull(reader.GetOrdinal("totalAmount")))
+                        listBox.Items.Add($"{accountId} - {accountName}");
+                        if (bestMatch == null || accountName.Length < bestMatch.Length)
                         {
-                            totalAmount = reader.GetDecimal(reader.GetOrdinal("totalAmount"));
-                            // Use totalAmount as needed
+                            bestMatch = accountName;
                         }
-
-                        // Check if the totalLiters column is not null and retrieve its value
-                        if (!reader.IsDBNull(reader.GetOrdinal("totalLiters")))
-                        {
-                            totalLiters = reader.GetDecimal(reader.GetOrdinal("totalLiters"));
-                            // Use totalLiters as needed
-                        }
-
-                        averageRate=totalAmount/totalLiters;
                     }
-                    reader.Close();
                 }
 
+                // Auto-select best matched item
+                if (!string.IsNullOrEmpty(bestMatch))
+                {
+                    for (int i = 0; i < listBox.Items.Count; i++)
+                    {
+                        if (listBox.Items[i].ToString().Contains(bestMatch))
+                        {
+                            listBox.SelectedIndex = i;
+                            break;
+                        }
+                    }
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error calculating average rate: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                dbConnection.closeConnection();
-            }
-
-            return averageRate;
         }
-
-        
-
     }
 }

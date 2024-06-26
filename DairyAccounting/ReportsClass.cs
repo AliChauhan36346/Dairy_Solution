@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics.Eventing.Reader;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -726,5 +727,175 @@ namespace DairyAccounting
 
             return total;
         }
+
+        public void GetCombinedReport(DataGridView dataGridView, DateTime startDate, DateTime endDate, string startDateMorningEvening, string endDateMorningEvening, out decimal morningReceive, out decimal totalSales, out decimal eveningReceive, out decimal tsSales)
+        {
+            morningReceive = 0;
+            eveningReceive = 0;
+            totalSales = 0;
+            tsSales = 0;
+
+            DataTable combinedReport = new DataTable();
+
+            combinedReport.Columns.Add("Id");
+            combinedReport.Columns.Add("Date");
+            combinedReport.Columns.Add("Company/Dodhi Name");
+            combinedReport.Columns.Add("Morning Volume");
+            combinedReport.Columns.Add("Evening Volume");
+            combinedReport.Columns.Add("Sale Volume");
+            combinedReport.Columns.Add("Sale TS Volume");
+
+            try
+            {
+                dbConnection.openConnection();
+
+                string chilarReceiveCondition = @"
+        AND (
+            (R.date > @startDate AND R.date < @endDate)
+            OR (R.date = @startDate AND R.time = @startDateMorningEvening)
+            OR (R.date = @endDate AND R.time = @endDateMorningEvening)
+        )";
+
+                string chilarReceiveQuery = $@"
+        SELECT 
+            'CR' + CAST(R.chilarReceiveId AS NVARCHAR(50)) AS Id, 
+            R.date, 
+            R.dodhi AS Name, 
+            CASE WHEN R.time = 'Morning' THEN R.grossLiters ELSE 0 END AS MorningVolume,
+            CASE WHEN R.time = 'Evening' THEN R.grossLiters ELSE 0 END AS EveningVolume,
+            NULL AS SaleVolume,
+            NULL AS SaleTsVolume
+        FROM ChilarReceive R
+        WHERE R.date >= @startDate AND R.date <= @endDate";
+
+                string salesQuery = $@"
+        SELECT 
+            'SV' + CAST(S.salesId AS NVARCHAR(50)) AS Id,
+            S.date, 
+            S.company AS Name, 
+            NULL AS MorningVolume,
+            NULL AS EveningVolume,
+            S.liters AS SaleVolume,
+            S.tsLiters AS SaleTsVolume
+        FROM Sales S
+        WHERE S.date >= @startDate AND S.date <= @endDate";
+
+                string combinedQuery = $@"
+        ({chilarReceiveQuery})
+        UNION ALL
+        ({salesQuery})
+        ORDER BY date ASC";
+
+                using (SqlCommand command = new SqlCommand(combinedQuery, dbConnection.connection))
+                {
+                    command.Parameters.AddWithValue("@startDate", startDate);
+                    command.Parameters.AddWithValue("@endDate", endDate);
+                    command.Parameters.AddWithValue("@startDateMorningEvening", string.IsNullOrEmpty(startDateMorningEvening) ? DBNull.Value : (object)startDateMorningEvening);
+                    command.Parameters.AddWithValue("@endDateMorningEvening", string.IsNullOrEmpty(endDateMorningEvening) ? DBNull.Value : (object)endDateMorningEvening);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string id = reader["Id"].ToString();
+                            string date = ((DateTime)reader["date"]).ToString("dd-MM-yyyy");
+                            string name = reader["Name"].ToString();
+                            string morningVolume = reader["MorningVolume"] != DBNull.Value ? reader["MorningVolume"].ToString() : "";
+                            string eveningVolume = reader["EveningVolume"] != DBNull.Value ? reader["EveningVolume"].ToString() : "";
+                            string saleVolume = reader["SaleVolume"] != DBNull.Value ? reader["SaleVolume"].ToString() : "";
+                            string saleTsVolume = reader["SaleTsVolume"] != DBNull.Value ? reader["SaleTsVolume"].ToString() : "";
+
+                            // Parse the decimal values and add to totals
+                            if (!string.IsNullOrEmpty(morningVolume))
+                            {
+                                morningReceive += decimal.Parse(morningVolume);
+                            }
+                            if (!string.IsNullOrEmpty(eveningVolume))
+                            {
+                                eveningReceive += decimal.Parse(eveningVolume);
+                            }
+                            if (!string.IsNullOrEmpty(saleVolume))
+                            {
+                                totalSales += decimal.Parse(saleVolume);
+                            }
+                            if (!string.IsNullOrEmpty(saleTsVolume))
+                            {
+                                tsSales += decimal.Parse(saleTsVolume);
+                            }
+
+                            // Add to DataTable, replacing zero with empty string
+                            combinedReport.Rows.Add(
+                                id,
+                                date,
+                                name,
+                                morningVolume == "0" ? "" : morningVolume,
+                                eveningVolume == "0" ? "" : eveningVolume,
+                                saleVolume == "0" ? "" : saleVolume,
+                                saleTsVolume == "0" ? "" : saleTsVolume
+                            );
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error creating combined report: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dbConnection.closeConnection();
+            }
+
+            dataGridView.DataSource = combinedReport;
+
+            dataGridView.Columns["Id"].Width = 70;
+            dataGridView.Columns["Date"].Width = 90;
+            dataGridView.Columns["Company/Dodhi Name"].Width = 260;
+            dataGridView.Columns["Morning Volume"].Width = 120;
+            dataGridView.Columns["Evening Volume"].Width = 120;
+            dataGridView.Columns["Sale Volume"].Width = 120;
+            dataGridView.Columns["Sale TS Volume"].Width = 120;
+
+            dataGridView.Columns["Id"].HeaderCell.Style.BackColor = Color.FromArgb(173, 175, 179);
+            dataGridView.Columns["Date"].HeaderCell.Style.BackColor = Color.FromArgb(173, 175, 179);
+            dataGridView.Columns["Company/Dodhi Name"].HeaderCell.Style.BackColor = Color.FromArgb(173, 175, 179);
+            dataGridView.Columns["Morning Volume"].HeaderCell.Style.BackColor = Color.FromArgb(173, 175, 179);
+            dataGridView.Columns["Evening Volume"].HeaderCell.Style.BackColor = Color.FromArgb(173, 175, 179);
+            dataGridView.Columns["Sale Volume"].HeaderCell.Style.BackColor = Color.FromArgb(173, 175, 179);
+            dataGridView.Columns["Sale TS Volume"].HeaderCell.Style.BackColor = Color.FromArgb(173, 175, 179);
+
+            dataGridView.EnableHeadersVisualStyles = false;
+
+            // Event handler for changing row color
+            dataGridView.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(dataGridView_DataBindingComplete);
+        }
+
+        private void dataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            DataGridView dataGridView = sender as DataGridView;
+            if (dataGridView == null) return;
+
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                if (row.Cells["Id"].Value != null)
+                {
+                    string id = row.Cells["Id"].Value.ToString();
+
+                    // Change the row color if it's a sales record
+                    if (id.StartsWith("SV"))
+                    {
+                        row.DefaultCellStyle.BackColor = Color.FromArgb(242, 165, 165); // Change this color as needed
+                    }
+                    // Optionally, change the row color for ChilarReceive records
+                    else if (id.StartsWith("CR"))
+                    {
+                        row.DefaultCellStyle.BackColor = Color.FromArgb(211, 240, 219); // Change this color as needed
+                    }
+                }
+            }
+        }
+        
+
+
     }
 }

@@ -122,9 +122,9 @@ namespace DairyAccounting
                         dataGridView.Columns["Date"].Width = 80;
                         dataGridView.Columns["Time"].Width = 85;
                         dataGridView.Columns["Customer Id"].Width = 80;
-                        dataGridView.Columns["Customer Name"].Width = 170;
+                        dataGridView.Columns["Customer Name"].Width = 280;
                         dataGridView.Columns["Dodhi Id"].Width = 75;
-                        dataGridView.Columns["Dodhi Name"].Width = 140;
+                        dataGridView.Columns["Dodhi Name"].Width = 232;
                         dataGridView.Columns["Gross Liters"].Width = 100;
                         dataGridView.Columns["Rate"].Width = 75;
                         dataGridView.Columns["Amount"].Width = 100;

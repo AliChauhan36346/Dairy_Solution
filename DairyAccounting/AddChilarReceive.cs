@@ -144,6 +144,18 @@ namespace DairyAccounting
 
                         // Bind the DataTable to the DataGridView
                         dataGridView.DataSource = dataTable;
+
+
+                        dataGridView.Columns["Receive Id"].Width = 70;
+                        dataGridView.Columns["Date"].Width = 80;
+                        dataGridView.Columns["Time"].Width = 80;
+                        dataGridView.Columns["Dodhi Id"].Width = 80;
+                        dataGridView.Columns["Dodhi Name"].Width = 250;
+                        dataGridView.Columns["Gross Liters"].Width = 80;
+                        dataGridView.Columns["LR"].Width = 80;
+                        dataGridView.Columns["Fat"].Width = 80;
+                        dataGridView.Columns["Ts-Standard"].Width = 80;
+                        dataGridView.Columns["Ts Liters"].Width = 90;
                     }
                 }
             }

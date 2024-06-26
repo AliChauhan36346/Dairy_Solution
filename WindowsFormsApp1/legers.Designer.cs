@@ -32,8 +32,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtAccountId = new System.Windows.Forms.TextBox();
             this.chkBox_fromDate = new System.Windows.Forms.CheckBox();
-            this.txt_accountId = new System.Windows.Forms.TextBox();
             this.btn_milkCard = new System.Windows.Forms.Button();
             this.btn_print = new System.Windows.Forms.Button();
             this.btn_display = new System.Windows.Forms.Button();
@@ -50,6 +50,8 @@
             this.lstSuggestions = new System.Windows.Forms.ListBox();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.lbl_forwardBalance = new System.Windows.Forms.Label();
+            this.btn_cashPayment = new System.Windows.Forms.Button();
+            this.btn_purchase = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -107,8 +109,10 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btn_purchase);
+            this.panel1.Controls.Add(this.btn_cashPayment);
+            this.panel1.Controls.Add(this.txtAccountId);
             this.panel1.Controls.Add(this.chkBox_fromDate);
-            this.panel1.Controls.Add(this.txt_accountId);
             this.panel1.Controls.Add(this.btn_milkCard);
             this.panel1.Controls.Add(this.btn_print);
             this.panel1.Controls.Add(this.btn_display);
@@ -127,6 +131,18 @@
             this.panel1.TabIndex = 37;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // txtAccountId
+            // 
+            this.txtAccountId.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAccountId.Location = new System.Drawing.Point(367, 38);
+            this.txtAccountId.Name = "txtAccountId";
+            this.txtAccountId.Size = new System.Drawing.Size(100, 27);
+            this.txtAccountId.TabIndex = 0;
+            this.txtAccountId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtAccountId.TextChanged += new System.EventHandler(this.txtAccountId_TextChanged);
+            this.txtAccountId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAccountId_KeyDown);
+            this.txtAccountId.Leave += new System.EventHandler(this.txtAccountId_Leave);
+            // 
             // chkBox_fromDate
             // 
             this.chkBox_fromDate.AutoSize = true;
@@ -140,18 +156,6 @@
             this.chkBox_fromDate.Text = "From Date";
             this.chkBox_fromDate.UseVisualStyleBackColor = true;
             this.chkBox_fromDate.CheckedChanged += new System.EventHandler(this.chkBox_fromDate_CheckedChanged);
-            // 
-            // txt_accountId
-            // 
-            this.txt_accountId.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_accountId.Location = new System.Drawing.Point(366, 38);
-            this.txt_accountId.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_accountId.Name = "txt_accountId";
-            this.txt_accountId.Size = new System.Drawing.Size(96, 27);
-            this.txt_accountId.TabIndex = 29;
-            this.txt_accountId.TextChanged += new System.EventHandler(this.txt_accountId_TextChanged);
-            this.txt_accountId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_accountId_KeyDown);
-            this.txt_accountId.Leave += new System.EventHandler(this.txt_accountId_Leave);
             // 
             // btn_milkCard
             // 
@@ -181,7 +185,7 @@
             this.btn_display.Margin = new System.Windows.Forms.Padding(4);
             this.btn_display.Name = "btn_display";
             this.btn_display.Size = new System.Drawing.Size(68, 39);
-            this.btn_display.TabIndex = 7;
+            this.btn_display.TabIndex = 1;
             this.btn_display.Text = "Display";
             this.btn_display.UseVisualStyleBackColor = true;
             this.btn_display.Click += new System.EventHandler(this.btn_display_Click);
@@ -238,6 +242,7 @@
             this.txt_accountName.ReadOnly = true;
             this.txt_accountName.Size = new System.Drawing.Size(256, 27);
             this.txt_accountName.TabIndex = 1;
+            this.txt_accountName.TabStop = false;
             // 
             // panel2
             // 
@@ -320,6 +325,28 @@
             this.lbl_forwardBalance.Size = new System.Drawing.Size(0, 21);
             this.lbl_forwardBalance.TabIndex = 41;
             // 
+            // btn_cashPayment
+            // 
+            this.btn_cashPayment.Location = new System.Drawing.Point(4, 40);
+            this.btn_cashPayment.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_cashPayment.Name = "btn_cashPayment";
+            this.btn_cashPayment.Size = new System.Drawing.Size(103, 39);
+            this.btn_cashPayment.TabIndex = 31;
+            this.btn_cashPayment.Text = "Cash Payment";
+            this.btn_cashPayment.UseVisualStyleBackColor = true;
+            this.btn_cashPayment.Click += new System.EventHandler(this.btn_cashPayment_Click);
+            // 
+            // btn_purchase
+            // 
+            this.btn_purchase.Location = new System.Drawing.Point(4, 81);
+            this.btn_purchase.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_purchase.Name = "btn_purchase";
+            this.btn_purchase.Size = new System.Drawing.Size(103, 39);
+            this.btn_purchase.TabIndex = 32;
+            this.btn_purchase.Text = "Purchase";
+            this.btn_purchase.UseVisualStyleBackColor = true;
+            this.btn_purchase.Click += new System.EventHandler(this.btn_purchase_Click);
+            // 
             // legers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -365,10 +392,12 @@
         private System.Windows.Forms.TextBox txt_totalCredit;
         private System.Windows.Forms.TextBox txt_totalDebit;
         private System.Windows.Forms.Button btn_milkCard;
-        private System.Windows.Forms.TextBox txt_accountId;
         private System.Windows.Forms.ListBox lstSuggestions;
-        private System.Windows.Forms.CheckBox chkBox_fromDate;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.Label lbl_forwardBalance;
+        private System.Windows.Forms.TextBox txtAccountId;
+        private System.Windows.Forms.CheckBox chkBox_fromDate;
+        private System.Windows.Forms.Button btn_purchase;
+        private System.Windows.Forms.Button btn_cashPayment;
     }
 }

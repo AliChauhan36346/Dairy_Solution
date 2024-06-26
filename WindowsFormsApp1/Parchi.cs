@@ -223,7 +223,7 @@ namespace WindowsFormsApp1
                             {
                                 payments.accountId = Convert.ToInt32(row.Cells["Id"].Value);
                                 payments.accountName = Convert.ToString(row.Cells["Customer Name"].Value);
-                                payments.discription = "Parchi   " + startDate.Date.ToString("dd/MM/yyyy") + "  to  " + endDate.Date.ToString("dd/MM/yyyy");
+                                payments.discription = "Parchi   " + startDate.Date.ToString("dd/MM/yyyy") + "  to  " + endDate.Date.ToString("dd/MM/yyyy") +" (Liter: "+ row.Cells["Total Liters"].Value+")";
                                 payments.date = DateTime.Now.Date;
                                 payments.cashAccountId = cashAccountId;
                                 payments.cashAccountName = cashAccountName;
@@ -1000,7 +1000,7 @@ namespace WindowsFormsApp1
 
                 row = dataGridView2.Rows[currentRow];
 
-                e.Graphics.DrawString(row.Cells["Customer Name"].Value.ToString(), detail, brush, xAxis, yAxis);
+                e.Graphics.DrawString(row.Cells["Id"].Value.ToString()+ "-" + row.Cells["Customer Name"].Value.ToString(), detail, brush, xAxis, yAxis);
 
                 yAxis += 30;
 
