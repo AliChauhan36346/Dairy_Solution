@@ -130,7 +130,7 @@ namespace WindowsFormsApp1
             string tsSale;
 
             // get the gross sales and ts-sales volume
-            dashboard.getGrossAndTsSales(out grossSale, out tsSale, startDate.Date, startDate.Date);
+            dashboard.getGrossAndTsSales(out grossSale, out tsSale, startDate.Date, endDate.Date);
 
             // assignes the values to the text
             lbl_grossVolume.Text = grossSale;
@@ -187,50 +187,7 @@ namespace WindowsFormsApp1
 
         }
 
-        private void panel10_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_grossVolume_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_tsVolume_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label21_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label23_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel11_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
+        
 
         private void rateToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -390,6 +347,50 @@ namespace WindowsFormsApp1
         {
             Roznamcha roznamcha = new Roznamcha();
             roznamcha.ShowDialog();
+        }
+
+        private void roznamchaChilarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Roznamcha roznamcha = new Roznamcha();
+            roznamcha.ShowDialog();
+        }
+
+        private void roznamchaCashToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RoznamchaCash roznamchaCash = new RoznamchaCash();
+            roznamchaCash.ShowDialog();
+        }
+
+        private void btn_back_Click(object sender, EventArgs e)
+        {
+            dtm_start.Value = dtm_start.Value.Date.AddDays(-1);
+            dtm_end.Value = dtm_end.Value.Date.AddDays(-1);
+
+            Dashboard_Activated(sender, e);
+        }
+
+        private void btn_forward_Click(object sender, EventArgs e)
+        {
+            if (dtm_start.Value.Date.AddDays(1) > DateTime.Today || dtm_end.Value.Date.AddDays(1)>DateTime.Today)
+            {
+                return;
+            }
+            else
+            {
+                dtm_start.Value = dtm_start.Value.Date.AddDays(1);
+                dtm_end.Value = dtm_end.Value.Date.AddDays(1);
+            }
+            
+        }
+
+        private void dtm_start_ValueChanged(object sender, EventArgs e)
+        {
+            Dashboard_Activated(sender, e);
+        }
+
+        private void dtm_end_ValueChanged(object sender, EventArgs e)
+        {
+            Dashboard_Activated(sender, e);
         }
     }
 }

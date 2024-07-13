@@ -61,6 +61,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txt_paymentId = new System.Windows.Forms.TextBox();
             this.txt_cashAccountName = new System.Windows.Forms.TextBox();
+            this.chk_autoComplete = new System.Windows.Forms.CheckBox();
+            this.btn_leger = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -112,6 +114,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btn_leger);
             this.panel1.Controls.Add(this.btn_newAccount);
             this.panel1.Controls.Add(this.btn_newCustomer);
             this.panel1.Controls.Add(this.btn_save);
@@ -262,11 +265,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chk_autoComplete);
             this.groupBox1.Controls.Add(this.btn_goForward);
             this.groupBox1.Controls.Add(this.btn_goBack);
-            this.groupBox1.Controls.Add(this.lstAccountsSuggestion);
             this.groupBox1.Controls.Add(this.txt_cashAccountId);
-            this.groupBox1.Controls.Add(this.lstAccountSuggestion);
             this.groupBox1.Controls.Add(this.txt_discription);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.txt_amount);
@@ -317,7 +319,7 @@
             this.lstAccountsSuggestion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstAccountsSuggestion.FormattingEnabled = true;
             this.lstAccountsSuggestion.ItemHeight = 17;
-            this.lstAccountsSuggestion.Location = new System.Drawing.Point(120, 128);
+            this.lstAccountsSuggestion.Location = new System.Drawing.Point(505, 205);
             this.lstAccountsSuggestion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lstAccountsSuggestion.Name = "lstAccountsSuggestion";
             this.lstAccountsSuggestion.Size = new System.Drawing.Size(347, 174);
@@ -340,7 +342,7 @@
             // 
             this.lstAccountSuggestion.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstAccountSuggestion.FormattingEnabled = true;
-            this.lstAccountSuggestion.Location = new System.Drawing.Point(120, 207);
+            this.lstAccountSuggestion.Location = new System.Drawing.Point(491, 330);
             this.lstAccountSuggestion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lstAccountSuggestion.Name = "lstAccountSuggestion";
             this.lstAccountSuggestion.Size = new System.Drawing.Size(347, 95);
@@ -355,6 +357,8 @@
             this.txt_discription.Size = new System.Drawing.Size(347, 65);
             this.txt_discription.TabIndex = 3;
             this.txt_discription.Text = "";
+            this.txt_discription.TextChanged += new System.EventHandler(this.txt_discription_TextChanged);
+            this.txt_discription.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_discription_KeyDown);
             // 
             // label8
             // 
@@ -499,6 +503,32 @@
             this.txt_cashAccountName.TabIndex = 123;
             this.txt_cashAccountName.TabStop = false;
             // 
+            // chk_autoComplete
+            // 
+            this.chk_autoComplete.AutoSize = true;
+            this.chk_autoComplete.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_autoComplete.ForeColor = System.Drawing.Color.Fuchsia;
+            this.chk_autoComplete.Location = new System.Drawing.Point(8, 259);
+            this.chk_autoComplete.Name = "chk_autoComplete";
+            this.chk_autoComplete.Size = new System.Drawing.Size(107, 19);
+            this.chk_autoComplete.TabIndex = 126;
+            this.chk_autoComplete.Text = "Auto Complete";
+            this.chk_autoComplete.UseVisualStyleBackColor = true;
+            // 
+            // btn_leger
+            // 
+            this.btn_leger.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_leger.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_leger.Location = new System.Drawing.Point(308, 4);
+            this.btn_leger.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btn_leger.Name = "btn_leger";
+            this.btn_leger.Size = new System.Drawing.Size(88, 56);
+            this.btn_leger.TabIndex = 112;
+            this.btn_leger.TabStop = false;
+            this.btn_leger.Text = "Account Leger";
+            this.btn_leger.UseVisualStyleBackColor = true;
+            this.btn_leger.Click += new System.EventHandler(this.btn_leger_Click);
+            // 
             // Payments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -506,6 +536,8 @@
             this.ClientSize = new System.Drawing.Size(1041, 690);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label13);
+            this.Controls.Add(this.lstAccountsSuggestion);
+            this.Controls.Add(this.lstAccountSuggestion);
             this.Controls.Add(this.txt_cashAccountBalance);
             this.Controls.Add(this.txt_accountBalance);
             this.Controls.Add(this.label7);
@@ -563,5 +595,7 @@
         private System.Windows.Forms.ListBox lstAccountSuggestion;
         private System.Windows.Forms.Button btn_goForward;
         private System.Windows.Forms.Button btn_goBack;
+        private System.Windows.Forms.CheckBox chk_autoComplete;
+        private System.Windows.Forms.Button btn_leger;
     }
 }

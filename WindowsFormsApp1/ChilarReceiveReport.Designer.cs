@@ -51,6 +51,10 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.btn_roznamcha = new System.Windows.Forms.Button();
+            this.btn_ChilarReceive = new System.Windows.Forms.Button();
+            this.btn_saleReport = new System.Windows.Forms.Button();
+            this.btn_purchaseReport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -99,7 +103,6 @@
             // dataGridView2
             // 
             this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(0, 179);
@@ -116,7 +119,11 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btn_saleReport);
+            this.panel1.Controls.Add(this.btn_purchaseReport);
+            this.panel1.Controls.Add(this.btn_roznamcha);
+            this.panel1.Controls.Add(this.btn_ChilarReceive);
             this.panel1.Controls.Add(this.chk_time);
             this.panel1.Controls.Add(this.cmbo_time);
             this.panel1.Controls.Add(this.chk_dodhi);
@@ -316,7 +323,6 @@
             // dataGridView1
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -353,6 +359,54 @@
             this.label6.Size = new System.Drawing.Size(199, 30);
             this.label6.TabIndex = 25;
             this.label6.Text = "Dodhi Loss Report";
+            // 
+            // btn_roznamcha
+            // 
+            this.btn_roznamcha.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_roznamcha.Location = new System.Drawing.Point(743, 68);
+            this.btn_roznamcha.Margin = new System.Windows.Forms.Padding(5);
+            this.btn_roznamcha.Name = "btn_roznamcha";
+            this.btn_roznamcha.Size = new System.Drawing.Size(92, 48);
+            this.btn_roznamcha.TabIndex = 27;
+            this.btn_roznamcha.Text = "Roznamcha";
+            this.btn_roznamcha.UseVisualStyleBackColor = true;
+            this.btn_roznamcha.Click += new System.EventHandler(this.btn_roznamcha_Click);
+            // 
+            // btn_ChilarReceive
+            // 
+            this.btn_ChilarReceive.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ChilarReceive.Location = new System.Drawing.Point(743, 17);
+            this.btn_ChilarReceive.Margin = new System.Windows.Forms.Padding(5);
+            this.btn_ChilarReceive.Name = "btn_ChilarReceive";
+            this.btn_ChilarReceive.Size = new System.Drawing.Size(92, 48);
+            this.btn_ChilarReceive.TabIndex = 26;
+            this.btn_ChilarReceive.Text = "Chilar Receive";
+            this.btn_ChilarReceive.UseVisualStyleBackColor = true;
+            this.btn_ChilarReceive.Click += new System.EventHandler(this.btn_ChilarReceive_Click);
+            // 
+            // btn_saleReport
+            // 
+            this.btn_saleReport.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_saleReport.Location = new System.Drawing.Point(837, 68);
+            this.btn_saleReport.Margin = new System.Windows.Forms.Padding(5);
+            this.btn_saleReport.Name = "btn_saleReport";
+            this.btn_saleReport.Size = new System.Drawing.Size(92, 48);
+            this.btn_saleReport.TabIndex = 29;
+            this.btn_saleReport.Text = "Sale Report";
+            this.btn_saleReport.UseVisualStyleBackColor = true;
+            this.btn_saleReport.Click += new System.EventHandler(this.btn_saleReport_Click);
+            // 
+            // btn_purchaseReport
+            // 
+            this.btn_purchaseReport.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_purchaseReport.Location = new System.Drawing.Point(837, 17);
+            this.btn_purchaseReport.Margin = new System.Windows.Forms.Padding(5);
+            this.btn_purchaseReport.Name = "btn_purchaseReport";
+            this.btn_purchaseReport.Size = new System.Drawing.Size(92, 48);
+            this.btn_purchaseReport.TabIndex = 28;
+            this.btn_purchaseReport.Text = "Purchase Report";
+            this.btn_purchaseReport.UseVisualStyleBackColor = true;
+            this.btn_purchaseReport.Click += new System.EventHandler(this.btn_purchaseReport_Click);
             // 
             // ChilarReceiveReport
             // 
@@ -406,5 +460,9 @@
         private System.Windows.Forms.TextBox txt_totalPurchased;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btn_saleReport;
+        private System.Windows.Forms.Button btn_purchaseReport;
+        private System.Windows.Forms.Button btn_roznamcha;
+        private System.Windows.Forms.Button btn_ChilarReceive;
     }
 }

@@ -56,6 +56,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.dashBtn_addPurchase = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.btn_forward = new System.Windows.Forms.Button();
+            this.btn_back = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.dtm_end = new System.Windows.Forms.DateTimePicker();
@@ -134,8 +136,10 @@
             this.incomeReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.balanceSheetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
+            this.roznamchaChilarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.roznamchaCashToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label8 = new System.Windows.Forms.Label();
-            this.roznamchaChilarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel12.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -460,6 +464,8 @@
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel9.Controls.Add(this.btn_forward);
+            this.panel9.Controls.Add(this.btn_back);
             this.panel9.Controls.Add(this.label13);
             this.panel9.Controls.Add(this.label10);
             this.panel9.Controls.Add(this.dtm_end);
@@ -472,13 +478,33 @@
             this.panel9.Size = new System.Drawing.Size(1112, 50);
             this.panel9.TabIndex = 8;
             // 
+            // btn_forward
+            // 
+            this.btn_forward.Location = new System.Drawing.Point(1069, 9);
+            this.btn_forward.Name = "btn_forward";
+            this.btn_forward.Size = new System.Drawing.Size(36, 30);
+            this.btn_forward.TabIndex = 15;
+            this.btn_forward.Text = ">>";
+            this.btn_forward.UseVisualStyleBackColor = true;
+            this.btn_forward.Click += new System.EventHandler(this.btn_forward_Click);
+            // 
+            // btn_back
+            // 
+            this.btn_back.Location = new System.Drawing.Point(746, 10);
+            this.btn_back.Name = "btn_back";
+            this.btn_back.Size = new System.Drawing.Size(36, 30);
+            this.btn_back.TabIndex = 14;
+            this.btn_back.Text = "<<";
+            this.btn_back.UseVisualStyleBackColor = true;
+            this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label13.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(749, 12);
+            this.label13.Location = new System.Drawing.Point(668, 12);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(55, 26);
             this.label13.TabIndex = 13;
@@ -502,17 +528,18 @@
             this.dtm_end.CalendarTitleForeColor = System.Drawing.Color.Maroon;
             this.dtm_end.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtm_end.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtm_end.Location = new System.Drawing.Point(979, 11);
+            this.dtm_end.Location = new System.Drawing.Point(950, 11);
             this.dtm_end.Name = "dtm_end";
             this.dtm_end.Size = new System.Drawing.Size(113, 27);
             this.dtm_end.TabIndex = 10;
+            this.dtm_end.ValueChanged += new System.EventHandler(this.dtm_end_ValueChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(946, 14);
+            this.label2.Location = new System.Drawing.Point(917, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(24, 20);
             this.label2.TabIndex = 9;
@@ -525,10 +552,11 @@
             this.dtm_start.CalendarTitleForeColor = System.Drawing.Color.Black;
             this.dtm_start.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtm_start.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtm_start.Location = new System.Drawing.Point(817, 11);
+            this.dtm_start.Location = new System.Drawing.Point(788, 11);
             this.dtm_start.Name = "dtm_start";
             this.dtm_start.Size = new System.Drawing.Size(115, 27);
             this.dtm_start.TabIndex = 9;
+            this.dtm_start.ValueChanged += new System.EventHandler(this.dtm_start_ValueChanged);
             // 
             // panel10
             // 
@@ -546,7 +574,6 @@
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(210, 222);
             this.panel10.TabIndex = 9;
-            this.panel10.Paint += new System.Windows.Forms.PaintEventHandler(this.panel10_Paint);
             // 
             // lbl_dodhiLoss
             // 
@@ -585,7 +612,6 @@
             this.lbl_grossReceive.TabIndex = 4;
             this.lbl_grossReceive.Text = "1000";
             this.lbl_grossReceive.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.lbl_grossReceive.Click += new System.EventHandler(this.label12_Click);
             // 
             // label
             // 
@@ -609,7 +635,6 @@
             this.lbl_purchases.Size = new System.Drawing.Size(62, 30);
             this.lbl_purchases.TabIndex = 2;
             this.lbl_purchases.Text = "1900";
-            this.lbl_purchases.Click += new System.EventHandler(this.label10_Click);
             // 
             // label122
             // 
@@ -647,7 +672,6 @@
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(210, 222);
             this.panel11.TabIndex = 10;
-            this.panel11.Paint += new System.Windows.Forms.PaintEventHandler(this.panel11_Paint);
             // 
             // label27
             // 
@@ -777,7 +801,6 @@
             this.lbl_stockSales.Size = new System.Drawing.Size(62, 30);
             this.lbl_stockSales.TabIndex = 10;
             this.lbl_stockSales.Text = "1900";
-            this.lbl_stockSales.Click += new System.EventHandler(this.label23_Click);
             // 
             // label25
             // 
@@ -803,7 +826,6 @@
             this.lbl_stockCReceive.TabIndex = 6;
             this.lbl_stockCReceive.Text = "1000";
             this.lbl_stockCReceive.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.lbl_stockCReceive.Click += new System.EventHandler(this.label21_Click);
             // 
             // label22
             // 
@@ -893,7 +915,6 @@
             this.lbl_tsVolume.TabIndex = 10;
             this.lbl_tsVolume.Text = "1000";
             this.lbl_tsVolume.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.lbl_tsVolume.Click += new System.EventHandler(this.lbl_tsVolume_Click);
             // 
             // label11
             // 
@@ -928,7 +949,6 @@
             this.lbl_grossVolume.Size = new System.Drawing.Size(62, 30);
             this.lbl_grossVolume.TabIndex = 8;
             this.lbl_grossVolume.Text = "1900";
-            this.lbl_grossVolume.Click += new System.EventHandler(this.lbl_grossVolume_Click);
             // 
             // label20
             // 
@@ -1078,13 +1098,13 @@
             this.toolStripMenuItem1,
             this.maintainToolStripMenuItem,
             this.reportsToolStripMenuItem,
-            this.toolStripMenuItem8});
+            this.toolStripMenuItem8,
+            this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1358, 24);
             this.menuStrip1.TabIndex = 12;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // toolStripMenuItem1
             // 
@@ -1204,7 +1224,6 @@
             this.salesReportToolStripMenuItem,
             this.purchaseReportToolStripMenuItem,
             this.chilarReceiveReportToolStripMenuItem,
-            this.roznamchaChilarToolStripMenuItem,
             this.toolStripSeparator5,
             this.expenseReportToolStripMenuItem,
             this.toolStripSeparator7,
@@ -1281,10 +1300,33 @@
             // 
             // toolStripMenuItem8
             // 
+            this.toolStripMenuItem8.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.roznamchaChilarToolStripMenuItem1,
+            this.roznamchaCashToolStripMenuItem});
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(52, 20);
-            this.toolStripMenuItem8.Text = "About";
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(81, 20);
+            this.toolStripMenuItem8.Text = "Roznamcha";
             this.toolStripMenuItem8.Click += new System.EventHandler(this.toolStripMenuItem8_Click);
+            // 
+            // roznamchaChilarToolStripMenuItem1
+            // 
+            this.roznamchaChilarToolStripMenuItem1.Name = "roznamchaChilarToolStripMenuItem1";
+            this.roznamchaChilarToolStripMenuItem1.Size = new System.Drawing.Size(170, 22);
+            this.roznamchaChilarToolStripMenuItem1.Text = "Roznamcha Chilar";
+            this.roznamchaChilarToolStripMenuItem1.Click += new System.EventHandler(this.roznamchaChilarToolStripMenuItem1_Click);
+            // 
+            // roznamchaCashToolStripMenuItem
+            // 
+            this.roznamchaCashToolStripMenuItem.Name = "roznamchaCashToolStripMenuItem";
+            this.roznamchaCashToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.roznamchaCashToolStripMenuItem.Text = "Roznamcha Cash";
+            this.roznamchaCashToolStripMenuItem.Click += new System.EventHandler(this.roznamchaCashToolStripMenuItem_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.aboutToolStripMenuItem.Text = "About";
             // 
             // label8
             // 
@@ -1297,13 +1339,6 @@
             this.label8.Size = new System.Drawing.Size(314, 27);
             this.label8.TabIndex = 13;
             this.label8.Text = "A Sofware developed by علی عباس\r\n";
-            // 
-            // roznamchaChilarToolStripMenuItem
-            // 
-            this.roznamchaChilarToolStripMenuItem.Name = "roznamchaChilarToolStripMenuItem";
-            this.roznamchaChilarToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.roznamchaChilarToolStripMenuItem.Text = "Roznamcha Chilar";
-            this.roznamchaChilarToolStripMenuItem.Click += new System.EventHandler(this.roznamchaChilarToolStripMenuItem_Click);
             // 
             // Dashboard
             // 
@@ -1476,7 +1511,11 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ToolStripMenuItem roznamchaChilarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem roznamchaChilarToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem roznamchaCashToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.Button btn_back;
+        private System.Windows.Forms.Button btn_forward;
     }
 }
 

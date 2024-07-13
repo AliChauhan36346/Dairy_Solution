@@ -159,5 +159,29 @@ namespace WindowsFormsApp1
                 }
             }
         }
+
+        private void btn_ChilarReceive_Click(object sender, EventArgs e)
+        {
+            chilar chilarReceive = new chilar();
+            chilarReceive.ShowDialog();
+        }
+
+        private void btn_roznamcha_Click(object sender, EventArgs e)
+        {
+            Roznamcha roznamcha= new Roznamcha();
+            roznamcha.ShowDialog();
+        }
+
+        private void btn_purchaseReport_Click(object sender, EventArgs e)
+        {
+            PurchaseReport purchaseReport = new PurchaseReport();
+            purchaseReport.ShowDialog();
+        }
+
+        private void btn_saleReport_Click(object sender, EventArgs e)
+        {
+            SalesReport salesReport = new SalesReport();
+            salesReport.ShowDialog();
+        }
     }
 }

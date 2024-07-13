@@ -160,7 +160,7 @@
             // 
             this.lstDodhiSuggestions.FormattingEnabled = true;
             this.lstDodhiSuggestions.ItemHeight = 17;
-            this.lstDodhiSuggestions.Location = new System.Drawing.Point(114, 11);
+            this.lstDodhiSuggestions.Location = new System.Drawing.Point(114, 10);
             this.lstDodhiSuggestions.Name = "lstDodhiSuggestions";
             this.lstDodhiSuggestions.Size = new System.Drawing.Size(239, 174);
             this.lstDodhiSuggestions.TabIndex = 40;
@@ -387,7 +387,7 @@
             // 
             this.cusBtn_find.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cusBtn_find.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cusBtn_find.Location = new System.Drawing.Point(780, 120);
+            this.cusBtn_find.Location = new System.Drawing.Point(779, 120);
             this.cusBtn_find.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cusBtn_find.Name = "cusBtn_find";
             this.cusBtn_find.Size = new System.Drawing.Size(67, 36);
@@ -402,7 +402,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(514, 91);
+            this.label6.Location = new System.Drawing.Point(468, 91);
             this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(92, 17);
@@ -413,18 +413,18 @@
             // 
             this.txt_cusName.BackColor = System.Drawing.Color.White;
             this.txt_cusName.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_cusName.Location = new System.Drawing.Point(689, 85);
+            this.txt_cusName.Location = new System.Drawing.Point(643, 85);
             this.txt_cusName.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txt_cusName.Name = "txt_cusName";
             this.txt_cusName.ReadOnly = true;
-            this.txt_cusName.Size = new System.Drawing.Size(158, 27);
+            this.txt_cusName.Size = new System.Drawing.Size(204, 27);
             this.txt_cusName.TabIndex = 40;
             this.txt_cusName.TabStop = false;
             // 
             // txt_cusId
             // 
             this.txt_cusId.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_cusId.Location = new System.Drawing.Point(608, 85);
+            this.txt_cusId.Location = new System.Drawing.Point(562, 85);
             this.txt_cusId.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txt_cusId.Name = "txt_cusId";
             this.txt_cusId.Size = new System.Drawing.Size(79, 27);
@@ -436,9 +436,9 @@
             // 
             this.lstCustomerSuggestions.FormattingEnabled = true;
             this.lstCustomerSuggestions.ItemHeight = 20;
-            this.lstCustomerSuggestions.Location = new System.Drawing.Point(621, 179);
+            this.lstCustomerSuggestions.Location = new System.Drawing.Point(563, 112);
             this.lstCustomerSuggestions.Name = "lstCustomerSuggestions";
-            this.lstCustomerSuggestions.Size = new System.Drawing.Size(226, 84);
+            this.lstCustomerSuggestions.Size = new System.Drawing.Size(283, 144);
             this.lstCustomerSuggestions.TabIndex = 41;
             // 
             // Customers

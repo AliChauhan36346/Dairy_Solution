@@ -196,6 +196,12 @@
     <Compile Include="Roznamcha.Designer.cs">
       <DependentUpon>Roznamcha.cs</DependentUpon>
     </Compile>
+    <Compile Include="RoznamchaCash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RoznamchaCash.Designer.cs">
+      <DependentUpon>RoznamchaCash.cs</DependentUpon>
+    </Compile>
     <Compile Include="SalesReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -332,6 +338,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Roznamcha.resx">
       <DependentUpon>Roznamcha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RoznamchaCash.resx">
+      <DependentUpon>RoznamchaCash.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SalesReport.resx">
       <DependentUpon>SalesReport.cs</DependentUpon>

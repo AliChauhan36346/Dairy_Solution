@@ -45,7 +45,7 @@ namespace WindowsFormsApp1
             cmbo_dodhi.Enabled = false;
             cmbo_time.Enabled = false;
 
-            purchaseR.GetPurchaseReport(dataGridView2, startDate.Date, endDate.Date, -1, "", out volume, out tAmount);
+            purchaseR.GetPurchaseReport(dataGridView2, startDate.Date, endDate.Date, -1, "", out volume, out tAmount, false, false);
 
             txt_totalAmount.Text=tAmount.ToString();
             txt_Volume.Text=volume.ToString();
@@ -103,10 +103,37 @@ namespace WindowsFormsApp1
                 
             }
 
-            purchaseR.GetPurchaseReport(dataGridView2, startDate.Date, endDate.Date, dodhiId, time, out volume, out tAmount);
+            if(chk_startDateTime.Checked && chk_endDateTime.Checked)
+            {
+                purchaseR.GetPurchaseReport(dataGridView2, startDate.Date, endDate.Date, dodhiId, time, out volume, out tAmount,true,true);
+            }
+            else if(chk_startDateTime.Checked && !chk_endDateTime.Checked)
+            {
+                purchaseR.GetPurchaseReport(dataGridView2, startDate.Date, endDate.Date, dodhiId, time, out volume, out tAmount,true,false);
+            }
+            else if(!chk_startDateTime.Checked && chk_endDateTime.Checked)
+            {
+                purchaseR.GetPurchaseReport(dataGridView2, startDate.Date, endDate.Date, dodhiId, time, out volume, out tAmount, false, true);
+            }
+            else
+            {
+                purchaseR.GetPurchaseReport(dataGridView2, startDate.Date, endDate.Date, dodhiId, time, out volume, out tAmount, false, false);
+            }
+
+            
 
             txt_totalAmount.Text = tAmount.ToString();
             txt_Volume.Text = volume.ToString();
+
+            if (tAmount != 0)
+            {
+                decimal avgRate = tAmount / volume;
+                avgRate=Math.Round(avgRate,2);
+
+                txt_avgRate.Text=avgRate.ToString();
+            }
+
+
         }
 
         private void dataGridView2_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -136,9 +163,8 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
+       
 
-        }
+        
     }
 }

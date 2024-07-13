@@ -102,6 +102,7 @@ namespace WindowsFormsApp1
             txt_paymentId.Text = payments.GetNextAvailableId().ToString();
             payments.showDataInGridView(dataGridView1,dtm_picker.Value.Date);
             dtm_picker.Value = DateTime.Today;
+            chk_autoComplete.Checked = true;
 
             lstAccountsSuggestion.Visible = false;
             lstAccountSuggestion.Visible = false;
@@ -438,6 +439,50 @@ namespace WindowsFormsApp1
         private void dtm_picker_ValueChanged(object sender, EventArgs e)
         {
             payments.showDataInGridView(dataGridView1, dtm_picker.Value.Date);
+        }
+
+        private void txt_discription_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txt_discription_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.C)
+            {
+                txt_discription.Text += " Cash received by";
+
+                txt_discription.SelectionStart = txt_discription.Text.Length;
+
+                e.SuppressKeyPress=true;
+
+            }
+
+            if (e.KeyCode == Keys.W)
+            {
+                txt_discription.Text += " Wanda()";
+
+                txt_discription.SelectionStart = txt_discription.Text.Length-1;
+
+                e.SuppressKeyPress = true;
+            }
+
+            if (e.KeyCode == Keys.S)
+            {
+                txt_discription.Text += " Spray bill";
+
+                txt_discription.SelectionStart = txt_discription.Text.Length;
+
+                e.SuppressKeyPress = true;
+            }
+
+
+        }
+
+        private void btn_leger_Click(object sender, EventArgs e)
+        {
+            legers legers=new legers();
+            legers.ShowDialog();
         }
     }
 

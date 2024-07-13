@@ -84,12 +84,7 @@ namespace WindowsFormsApp1
 
             customers.showDataInGridView(dataGridView2);
 
-            txt_customerName.Text = "";
-            txt_address.Text = "";
-            txt_creditLimit.Text = "";
-            txt_rate.Text = "";
-            txt_dodhiId.Text = "";
-            txt_dodhiName.Text = "";
+            CommonFunctions.ClearAllTextBoxes(this);
 
             txt_Id.Text = customers.GetNextAvailableID().ToString();
 

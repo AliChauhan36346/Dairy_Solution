@@ -100,8 +100,8 @@ namespace DairyAccounting
             dataGridView.Columns["Amount"].Width = 110;
         }
 
-        public void GetPurchaseReport(DataGridView dataGridView, DateTime startDate, DateTime endDate, 
-            int dodhiId, string time, out decimal Volume, out decimal tAmount)
+        public void GetPurchaseReport(DataGridView dataGridView, DateTime startDate, DateTime endDate,
+    int dodhiId, string time, out decimal Volume, out decimal tAmount, bool start, bool end)
         {
             DataTable purchaseReport = new DataTable();
 
@@ -113,23 +113,29 @@ namespace DairyAccounting
             purchaseReport.Columns.Add("Time");
             purchaseReport.Columns.Add("Volume");
             purchaseReport.Columns.Add("Amount");
-            
 
             Volume = 0;
             tAmount = 0;
             string condition = "";
+            string eveningCondition = "";
 
-            if(dodhiId!=-1 && time=="")
+            // dates to increase/decrease
+            DateTime startDat = startDate;
+            DateTime endDat = endDate;
+
+            if (dodhiId != -1 && time == "")
             {
                 condition = "WHERE date>=@startDate AND date<=@endDate AND dodhiId=@dodhiId";
+                eveningCondition = "AND dodhiId=@dodhiId";
             }
-            else if(time!="" && dodhiId==-1)
+            else if (time != "" && dodhiId == -1)
             {
                 condition = "WHERE date>=@startDate AND date<=@endDate AND time=@time";
             }
-            else if(dodhiId != -1 && time != "")
+            else if (dodhiId != -1 && time != "")
             {
                 condition = "WHERE date>=@startDate AND date<=@endDate AND dodhiId=@dodhiId AND time=@time";
+                eveningCondition = "AND dodhiId=@dodhiId";
             }
             else
             {
@@ -139,6 +145,46 @@ namespace DairyAccounting
             try
             {
                 dbConnection.openConnection();
+
+                if (start)
+                {
+                    string startQuery = $"SELECT purchaseId, date, customerID, customerName, dodhi, time, liters, amount FROM Purchases WHERE date=@startDate AND time=@time {eveningCondition}";
+
+                    using (SqlCommand command = new SqlCommand(startQuery, dbConnection.connection))
+                    {
+                        command.Parameters.AddWithValue("@startDate", startDate);
+                        command.Parameters.AddWithValue("@time", "Evening");
+                        command.Parameters.AddWithValue("@dodhiId", dodhiId);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                string date = ((DateTime)reader["date"]).ToString("dd-MM-yyyy");
+                                int purchaseId = int.Parse(reader["purchaseId"].ToString());
+                                int customerId = int.Parse(reader["customerId"].ToString());
+                                string customerName = reader["customerName"].ToString();
+                                string dodhi = reader["dodhi"].ToString();
+                                string cTime = reader["time"].ToString();
+                                decimal liters = decimal.Parse(reader["liters"].ToString());
+                                decimal amount = decimal.Parse(reader["amount"].ToString());
+
+                                Volume += liters;
+                                tAmount += amount;
+
+                                purchaseReport.Rows.Add(purchaseId, date, customerId, customerName, dodhi, cTime, liters, amount);
+                            }
+                        }
+                    }
+
+                    // add one day to the start date to exclude the current date data
+                    startDate = startDate.AddDays(1).Date;
+                }
+
+                if(end)
+                {
+                    endDate = endDate.AddDays(-1);
+                }
 
                 string purchaseReportQuery = $"SELECT purchaseId, date, customerID, customerName, dodhi, time, liters, amount FROM Purchases {condition} ORDER BY date ASC";
 
@@ -169,7 +215,6 @@ namespace DairyAccounting
                         command.Parameters.AddWithValue("@endDate", endDate);
                     }
 
-
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -183,11 +228,41 @@ namespace DairyAccounting
                             decimal liters = decimal.Parse(reader["liters"].ToString());
                             decimal amount = decimal.Parse(reader["amount"].ToString());
 
-
                             Volume += liters;
                             tAmount += amount;
 
                             purchaseReport.Rows.Add(purchaseId, date, customerId, customerName, dodhi, cTime, liters, amount);
+                        }
+                    }
+                }
+
+                if (end)
+                {
+                    string startQuery = "SELECT purchaseId, date, customerID, customerName, dodhi, time, liters, amount FROM Purchases WHERE date=@endDate AND time=@time";
+
+                    using (SqlCommand command = new SqlCommand(startQuery, dbConnection.connection))
+                    {
+                        command.Parameters.AddWithValue("@endDate", endDate);
+                        command.Parameters.AddWithValue("@time", "Morning");
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                string date = ((DateTime)reader["date"]).ToString("dd-MM-yyyy");
+                                int purchaseId = int.Parse(reader["purchaseId"].ToString());
+                                int customerId = int.Parse(reader["customerId"].ToString());
+                                string customerName = reader["customerName"].ToString();
+                                string dodhi = reader["dodhi"].ToString();
+                                string cTime = reader["time"].ToString();
+                                decimal liters = decimal.Parse(reader["liters"].ToString());
+                                decimal amount = decimal.Parse(reader["amount"].ToString());
+
+                                Volume += liters;
+                                tAmount += amount;
+
+                                purchaseReport.Rows.Add(purchaseId, date, customerId, customerName, dodhi, cTime, liters, amount);
+                            }
                         }
                     }
                 }
@@ -206,12 +281,13 @@ namespace DairyAccounting
             dataGridView.Columns["Purchase Id"].Width = 70;
             dataGridView.Columns["Date"].Width = 70;
             dataGridView.Columns["Customer Id"].Width = 75;
-            dataGridView.Columns["customer Name"].Width = 150;
+            dataGridView.Columns["Customer Name"].Width = 150;
             dataGridView.Columns["Dodhi Name"].Width = 120;
             dataGridView.Columns["Time"].Width = 70;
             dataGridView.Columns["Volume"].Width = 80;
             dataGridView.Columns["Amount"].Width = 120;
         }
+
 
         public void GetReceiveReport(DataGridView dataGridView, DateTime startDate, DateTime endDate,
             int dodhiId, string time, out decimal totalReceive, out decimal tsReceive)
@@ -728,12 +804,16 @@ namespace DairyAccounting
             return total;
         }
 
-        public void GetCombinedReport(DataGridView dataGridView, DateTime startDate, DateTime endDate, string startDateMorningEvening, string endDateMorningEvening, out decimal morningReceive, out decimal totalSales, out decimal eveningReceive, out decimal tsSales)
+        public void GetCombinedReport(DataGridView dataGridView, DateTime startDate, DateTime endDate,
+        out decimal morningReceive, out decimal totalSales, out decimal eveningReceive, out decimal tsSales, bool morning, bool evening)
         {
             morningReceive = 0;
             eveningReceive = 0;
             totalSales = 0;
             tsSales = 0;
+
+            DateTime end=endDate;
+            DateTime start=startDate;
 
             DataTable combinedReport = new DataTable();
 
@@ -749,49 +829,114 @@ namespace DairyAccounting
             {
                 dbConnection.openConnection();
 
-                string chilarReceiveCondition = @"
-        AND (
-            (R.date > @startDate AND R.date < @endDate)
-            OR (R.date = @startDate AND R.time = @startDateMorningEvening)
-            OR (R.date = @endDate AND R.time = @endDateMorningEvening)
-        )";
+                // Handle the evening data for the start date
+                if (evening)
+                {
+                    string eveningQuery = @"
+                    SELECT 
+                        'CR' + CAST(R.chilarReceiveId AS NVARCHAR(50)) AS Id, 
+                        R.date, 
+                        R.dodhi AS Name, 
+                        CASE WHEN R.time = 'Morning' THEN R.grossLiters ELSE 0 END AS MorningVolume,
+                        CASE WHEN R.time = 'Evening' THEN R.grossLiters ELSE 0 END AS EveningVolume,
+                        NULL AS SaleVolume,
+                        NULL AS SaleTsVolume
+                    FROM ChilarReceive R
+                    WHERE R.date = @startDate AND R.time='Evening'";
 
-                string chilarReceiveQuery = $@"
-        SELECT 
-            'CR' + CAST(R.chilarReceiveId AS NVARCHAR(50)) AS Id, 
-            R.date, 
-            R.dodhi AS Name, 
-            CASE WHEN R.time = 'Morning' THEN R.grossLiters ELSE 0 END AS MorningVolume,
-            CASE WHEN R.time = 'Evening' THEN R.grossLiters ELSE 0 END AS EveningVolume,
-            NULL AS SaleVolume,
-            NULL AS SaleTsVolume
-        FROM ChilarReceive R
-        WHERE R.date >= @startDate AND R.date <= @endDate";
+                    using (SqlCommand command = new SqlCommand(eveningQuery, dbConnection.connection))
+                    {
+                        command.Parameters.AddWithValue("@startDate", startDate);
 
-                string salesQuery = $@"
-        SELECT 
-            'SV' + CAST(S.salesId AS NVARCHAR(50)) AS Id,
-            S.date, 
-            S.company AS Name, 
-            NULL AS MorningVolume,
-            NULL AS EveningVolume,
-            S.liters AS SaleVolume,
-            S.tsLiters AS SaleTsVolume
-        FROM Sales S
-        WHERE S.date >= @startDate AND S.date <= @endDate";
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                string id = reader["Id"].ToString();
+                                string date = ((DateTime)reader["date"]).ToString("dd-MM-yyyy");
+                                string name = reader["Name"].ToString();
+                                string morningVolume = reader["MorningVolume"] != DBNull.Value ? reader["MorningVolume"].ToString() : "";
+                                string eveningVolume = reader["EveningVolume"] != DBNull.Value ? reader["EveningVolume"].ToString() : "";
+                                string saleVolume = reader["SaleVolume"] != DBNull.Value ? reader["SaleVolume"].ToString() : "";
+                                string saleTsVolume = reader["SaleTsVolume"] != DBNull.Value ? reader["SaleTsVolume"].ToString() : "";
+
+                                // Parse the decimal values and add to totals
+                                if (!string.IsNullOrEmpty(morningVolume))
+                                {
+                                    morningReceive += decimal.Parse(morningVolume);
+                                }
+                                if (!string.IsNullOrEmpty(eveningVolume))
+                                {
+                                    eveningReceive += decimal.Parse(eveningVolume);
+                                }
+                                if (!string.IsNullOrEmpty(saleVolume))
+                                {
+                                    totalSales += decimal.Parse(saleVolume);
+                                }
+                                if (!string.IsNullOrEmpty(saleTsVolume))
+                                {
+                                    tsSales += decimal.Parse(saleTsVolume);
+                                }
+
+                                // Add to DataTable, replacing zero with empty string
+                                combinedReport.Rows.Add(
+                                    id,
+                                    date,
+                                    name,
+                                    morningVolume == "0" ? "" : morningVolume,
+                                    eveningVolume == "0" ? "" : eveningVolume,
+                                    saleVolume == "0" ? "" : saleVolume,
+                                    saleTsVolume == "0" ? "" : saleTsVolume
+                                );
+                            }
+                        }
+                    }
+
+                    // Move startDate to the next day to exclude the evening of the startDate in the main query
+                    start = startDate.AddDays(1);
+                }
+
+                // Handle the morning data for the end date
+                if (morning)
+                {
+                    end = endDate.AddDays(-1);
+                }
+
+                // Combined query for the range between startDate and endDate
+                string chilarReceiveQuery = @"
+            SELECT 
+                'CR' + CAST(R.chilarReceiveId AS NVARCHAR(50)) AS Id, 
+                R.date, 
+                R.dodhi AS Name, 
+                CASE WHEN R.time = 'Morning' THEN R.grossLiters ELSE 0 END AS MorningVolume,
+                CASE WHEN R.time = 'Evening' THEN R.grossLiters ELSE 0 END AS EveningVolume,
+                NULL AS SaleVolume,
+                NULL AS SaleTsVolume
+            FROM ChilarReceive R
+            WHERE R.date >= @startDate AND R.date <= @endDate";
+
+                string salesQuery = @"
+            SELECT 
+                'SV' + CAST(S.salesId AS NVARCHAR(50)) AS Id,
+                S.date, 
+                S.company AS Name, 
+                NULL AS MorningVolume,
+                NULL AS EveningVolume,
+                S.liters AS SaleVolume,
+                S.tsLiters AS SaleTsVolume
+            FROM Sales S
+            WHERE S.date >= @startDate AND S.date <= @endDate";
 
                 string combinedQuery = $@"
-        ({chilarReceiveQuery})
-        UNION ALL
-        ({salesQuery})
-        ORDER BY date ASC";
+            ({chilarReceiveQuery})
+            UNION ALL
+            ({salesQuery})
+            ORDER BY date ASC";
 
                 using (SqlCommand command = new SqlCommand(combinedQuery, dbConnection.connection))
                 {
-                    command.Parameters.AddWithValue("@startDate", startDate);
-                    command.Parameters.AddWithValue("@endDate", endDate);
-                    command.Parameters.AddWithValue("@startDateMorningEvening", string.IsNullOrEmpty(startDateMorningEvening) ? DBNull.Value : (object)startDateMorningEvening);
-                    command.Parameters.AddWithValue("@endDateMorningEvening", string.IsNullOrEmpty(endDateMorningEvening) ? DBNull.Value : (object)endDateMorningEvening);
+                    command.Parameters.AddWithValue("@startDate", start);
+                    command.Parameters.AddWithValue("@endDate", end);
 
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
@@ -836,6 +981,83 @@ namespace DairyAccounting
                         }
                     }
                 }
+
+                // Handle the morning data for the end date
+                if (morning)
+                {
+                    end = endDate.AddDays(1);
+
+                    string morningQuery = @"
+            SELECT 
+                'CR' + CAST(R.chilarReceiveId AS NVARCHAR(50)) AS Id, 
+                R.date, 
+                R.dodhi AS Name, 
+                CASE WHEN R.time = 'Morning' THEN R.grossLiters ELSE 0 END AS MorningVolume,
+                CASE WHEN R.time = 'Evening' THEN R.grossLiters ELSE 0 END AS EveningVolume,
+                NULL AS SaleVolume,
+                NULL AS SaleTsVolume
+            FROM ChilarReceive R
+            WHERE R.date = @endDate AND R.time='Morning'
+            UNION ALL
+            SELECT 
+                'SV' + CAST(S.salesId AS NVARCHAR(50)) AS Id,
+                S.date, 
+                S.company AS Name, 
+                NULL AS MorningVolume,
+                NULL AS EveningVolume,
+                S.liters AS SaleVolume,
+                S.tsLiters AS SaleTsVolume
+            FROM Sales S
+            WHERE S.date = @endDate";
+
+                    using (SqlCommand command = new SqlCommand(morningQuery, dbConnection.connection))
+                    {
+                        command.Parameters.AddWithValue("@endDate", endDate);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                string id = reader["Id"].ToString();
+                                string date = ((DateTime)reader["date"]).ToString("dd-MM-yyyy");
+                                string name = reader["Name"].ToString();
+                                string morningVolume = reader["MorningVolume"] != DBNull.Value ? reader["MorningVolume"].ToString() : "";
+                                string eveningVolume = reader["EveningVolume"] != DBNull.Value ? reader["EveningVolume"].ToString() : "";
+                                string saleVolume = reader["SaleVolume"] != DBNull.Value ? reader["SaleVolume"].ToString() : "";
+                                string saleTsVolume = reader["SaleTsVolume"] != DBNull.Value ? reader["SaleTsVolume"].ToString() : "";
+
+                                // Parse the decimal values and add to totals
+                                if (!string.IsNullOrEmpty(morningVolume))
+                                {
+                                    morningReceive += decimal.Parse(morningVolume);
+                                }
+                                if (!string.IsNullOrEmpty(eveningVolume))
+                                {
+                                    eveningReceive += decimal.Parse(eveningVolume);
+                                }
+                                if (!string.IsNullOrEmpty(saleVolume))
+                                {
+                                    totalSales += decimal.Parse(saleVolume);
+                                }
+                                if (!string.IsNullOrEmpty(saleTsVolume))
+                                {
+                                    tsSales += decimal.Parse(saleTsVolume);
+                                }
+
+                                // Add to DataTable, replacing zero with empty string
+                                combinedReport.Rows.Add(
+                                    id,
+                                    date,
+                                    name,
+                                    morningVolume == "0" ? "" : morningVolume,
+                                    eveningVolume == "0" ? "" : eveningVolume,
+                                    saleVolume == "0" ? "" : saleVolume,
+                                    saleTsVolume == "0" ? "" : saleTsVolume
+                                );
+                            }
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -870,6 +1092,7 @@ namespace DairyAccounting
             dataGridView.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(dataGridView_DataBindingComplete);
         }
 
+
         private void dataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             DataGridView dataGridView = sender as DataGridView;
@@ -894,7 +1117,147 @@ namespace DairyAccounting
                 }
             }
         }
-        
+
+        public void RoznamchaCash(DataGridView dataGridView, DateTime startDate, DateTime endDate, out decimal paymentTotal, out decimal receiptTotal, bool expense)
+        {
+            receiptTotal = 0;
+            paymentTotal = 0;
+
+            DataTable dataTable = new DataTable();
+
+            dataTable.Columns.Add("Date");
+            dataTable.Columns.Add("Trans.Id");
+            dataTable.Columns.Add("Acc Id");
+            dataTable.Columns.Add("Customer/Company Name");
+            dataTable.Columns.Add("Discription");
+            dataTable.Columns.Add("cAcc Id");
+            dataTable.Columns.Add("Cash Account");
+            dataTable.Columns.Add("Debit");
+            dataTable.Columns.Add("Credit");
+
+            try
+            {
+                dbConnection.openConnection();
+
+                string query = "";
+
+                string expenseQuery = @"SELECT 'EV' + CAST(expenseId AS NVARCHAR(50)) AS Id, date, 
+                                employeeId AS accountId, employeeName AS accountName, cashAccountId, 
+                                cashAccountName, discription, amount AS payment, NULL AS receipt 
+                                FROM Expense WHERE date >= @startDate AND date <= @endDate
+                                UNION ALL";
+
+                if (expense)
+                {
+                    query = $@"{expenseQuery}
+                SELECT 'SV' + CAST(salesId AS NVARCHAR(50)) AS Id, date, companyId AS accountId,
+                    company AS accountName, accountId AS cashAccountId, accountName AS cashAccountName,
+                    'Cash received during sales' AS discription, amountReceived AS receipt, NULL AS payment 
+                FROM sales WHERE date >= @startDate AND date <= @endDate AND amountReceived != 0
+                UNION ALL
+                SELECT 'CPV' + CAST(paymentId AS NVARCHAR(50)) AS Id, date, accountId, 
+                    accountName, cashAccountId, cashAccountName, discription, 
+                    amount AS payment, NULL AS receipt 
+                FROM Payments 
+                WHERE date >= @startDate AND date <= @endDate 
+                UNION ALL 
+                SELECT 'CRV' + CAST(ReceiptId AS NVARCHAR(50)) AS Id, date, accountId, 
+                    accountName, cashAccountId, cashAccountName, discription, 
+                    NULL AS payment, amount AS receipt 
+                FROM Receipts 
+                WHERE date >= @startDate AND date <= @endDate 
+                ORDER BY date ASC";
+                }
+                else
+                {
+                    query = @"
+                SELECT 'SV' + CAST(salesId AS NVARCHAR(50)) AS Id, date, companyId AS accountId,
+                    company AS accountName, accountId AS cashAccountId, accountName AS cashAccountName, 
+                    'Cash received during sales' AS discription, amountReceived AS receipt, NULL AS payment 
+                FROM sales WHERE date >= @startDate AND date <= @endDate AND amountReceived != 0
+                UNION ALL
+                SELECT 'CPV' + CAST(paymentId AS NVARCHAR(50)) AS Id, date, accountId, 
+                    accountName, cashAccountId, cashAccountName, discription, 
+                    amount AS payment, NULL AS receipt 
+                FROM Payments 
+                WHERE date >= @startDate AND date <= @endDate 
+                UNION ALL 
+                SELECT 'CRV' + CAST(ReceiptId AS NVARCHAR(50)) AS Id, date, accountId, 
+                    accountName, cashAccountId, cashAccountName, discription, 
+                    NULL AS payment, amount AS receipt 
+                FROM Receipts 
+                WHERE date >= @startDate AND date <= @endDate 
+                ORDER BY date ASC";
+                }
+
+                using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
+                {
+                    command.Parameters.AddWithValue("@startDate", startDate);
+                    command.Parameters.AddWithValue("@endDate", endDate);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string id = reader["Id"].ToString();
+                            string date = ((DateTime)reader["date"]).ToString("dd-MM-yyyy");
+                            string accId = reader["accountId"].ToString();
+                            string accName = reader["accountName"].ToString();
+                            string discription = reader["discription"].ToString();
+                            string cAccId = reader["cashAccountId"].ToString();
+                            string cAccName = reader["cashAccountName"].ToString();
+
+                            // Handle nullable payment and receipt fields
+                            string payment = reader["payment"] != DBNull.Value ? reader["payment"].ToString() : "0";
+                            string receipt = reader["receipt"] != DBNull.Value ? reader["receipt"].ToString() : "0";
+
+                            // Parse and update totals
+                            decimal paymentAmount = decimal.Parse(payment);
+                            decimal receiptAmount = decimal.Parse(receipt);
+
+                            paymentTotal += paymentAmount;
+                            receiptTotal += receiptAmount;
+
+                            // Add to DataTable
+                            dataTable.Rows.Add(date, id, accId, accName, discription, cAccId, cAccName, paymentAmount, receiptAmount);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error creating roznamcha cash report: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dbConnection.closeConnection();
+            }
+
+            dataGridView.DataSource = dataTable;
+
+            dataGridView.Columns["Date"].Width = 90;
+            dataGridView.Columns["Trans.Id"].Width = 80;
+            dataGridView.Columns["Acc Id"].Width = 90;
+            dataGridView.Columns["Customer/Company Name"].Width = 200;
+            dataGridView.Columns["Discription"].Width = 200;
+            dataGridView.Columns["cAcc Id"].Width = 80;
+            dataGridView.Columns["Cash Account"].Width = 130;
+            dataGridView.Columns["Debit"].Width = 100;
+            dataGridView.Columns["Credit"].Width = 100;
+
+            dataGridView.Columns["Date"].HeaderCell.Style.BackColor = Color.LightGray;
+            dataGridView.Columns["Trans.Id"].HeaderCell.Style.BackColor = Color.LightGray;
+            dataGridView.Columns["Acc Id"].HeaderCell.Style.BackColor = Color.LightGray;
+            dataGridView.Columns["Customer/Company Name"].HeaderCell.Style.BackColor = Color.LightGray;
+            dataGridView.Columns["Discription"].HeaderCell.Style.BackColor = Color.LightGray;
+            dataGridView.Columns["cAcc Id"].HeaderCell.Style.BackColor = Color.LightGray;
+            dataGridView.Columns["Cash Account"].HeaderCell.Style.BackColor = Color.LightGray;
+            dataGridView.Columns["Debit"].HeaderCell.Style.BackColor = Color.LightGray;
+            dataGridView.Columns["Credit"].HeaderCell.Style.BackColor = Color.LightGray;
+
+            dataGridView.EnableHeadersVisualStyles = false;
+        }
+
 
 
     }

@@ -35,6 +35,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txt_Volume = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txt_avgRate = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dtm_start = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,6 +46,8 @@
             this.cmbo_time = new System.Windows.Forms.ComboBox();
             this.chk_dodhi = new System.Windows.Forms.CheckBox();
             this.cmbo_dodhi = new System.Windows.Forms.ComboBox();
+            this.chk_endDateTime = new System.Windows.Forms.CheckBox();
+            this.chk_startDateTime = new System.Windows.Forms.CheckBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -61,7 +65,7 @@
             // 
             // Print
             // 
-            this.Print.Location = new System.Drawing.Point(730, 34);
+            this.Print.Location = new System.Drawing.Point(730, 8);
             this.Print.Margin = new System.Windows.Forms.Padding(5);
             this.Print.Name = "Print";
             this.Print.Size = new System.Drawing.Size(80, 52);
@@ -71,7 +75,7 @@
             // 
             // btn_display
             // 
-            this.btn_display.Location = new System.Drawing.Point(649, 34);
+            this.btn_display.Location = new System.Drawing.Point(649, 8);
             this.btn_display.Margin = new System.Windows.Forms.Padding(5);
             this.btn_display.Name = "btn_display";
             this.btn_display.Size = new System.Drawing.Size(80, 52);
@@ -86,7 +90,7 @@
             this.dtm_end.CalendarTitleForeColor = System.Drawing.Color.Maroon;
             this.dtm_end.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtm_end.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtm_end.Location = new System.Drawing.Point(528, 111);
+            this.dtm_end.Location = new System.Drawing.Point(528, 85);
             this.dtm_end.Margin = new System.Windows.Forms.Padding(5);
             this.dtm_end.Name = "dtm_end";
             this.dtm_end.Size = new System.Drawing.Size(100, 25);
@@ -117,6 +121,8 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DarkGray;
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.txt_avgRate);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.txt_Volume);
             this.panel2.Controls.Add(this.txt_totalAmount);
@@ -127,12 +133,34 @@
             this.panel2.Size = new System.Drawing.Size(1084, 38);
             this.panel2.TabIndex = 19;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Black", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label4.Location = new System.Drawing.Point(7, 11);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(175, 20);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Average Purchase Rate";
+            // 
+            // txt_avgRate
+            // 
+            this.txt_avgRate.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_avgRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_avgRate.Location = new System.Drawing.Point(190, 7);
+            this.txt_avgRate.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_avgRate.Name = "txt_avgRate";
+            this.txt_avgRate.Size = new System.Drawing.Size(116, 25);
+            this.txt_avgRate.TabIndex = 4;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(494, 113);
+            this.label2.Location = new System.Drawing.Point(494, 87);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(24, 20);
@@ -146,7 +174,7 @@
             this.dtm_start.CalendarTitleForeColor = System.Drawing.Color.Black;
             this.dtm_start.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtm_start.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtm_start.Location = new System.Drawing.Point(384, 111);
+            this.dtm_start.Location = new System.Drawing.Point(384, 85);
             this.dtm_start.Margin = new System.Windows.Forms.Padding(5);
             this.dtm_start.Name = "dtm_start";
             this.dtm_start.Size = new System.Drawing.Size(100, 25);
@@ -187,6 +215,8 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.chk_startDateTime);
+            this.panel1.Controls.Add(this.chk_endDateTime);
             this.panel1.Controls.Add(this.chk_time);
             this.panel1.Controls.Add(this.cmbo_time);
             this.panel1.Controls.Add(this.chk_dodhi);
@@ -203,14 +233,13 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1084, 148);
             this.panel1.TabIndex = 17;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // chk_time
             // 
             this.chk_time.AutoSize = true;
             this.chk_time.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chk_time.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.chk_time.Location = new System.Drawing.Point(320, 40);
+            this.chk_time.Location = new System.Drawing.Point(320, 14);
             this.chk_time.Margin = new System.Windows.Forms.Padding(4);
             this.chk_time.Name = "chk_time";
             this.chk_time.Size = new System.Drawing.Size(56, 21);
@@ -227,7 +256,7 @@
             this.cmbo_time.Items.AddRange(new object[] {
             "Morning",
             "Evening"});
-            this.cmbo_time.Location = new System.Drawing.Point(384, 38);
+            this.cmbo_time.Location = new System.Drawing.Point(384, 12);
             this.cmbo_time.Margin = new System.Windows.Forms.Padding(4);
             this.cmbo_time.Name = "cmbo_time";
             this.cmbo_time.Size = new System.Drawing.Size(244, 25);
@@ -238,7 +267,7 @@
             this.chk_dodhi.AutoSize = true;
             this.chk_dodhi.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chk_dodhi.ForeColor = System.Drawing.Color.Green;
-            this.chk_dodhi.Location = new System.Drawing.Point(313, 77);
+            this.chk_dodhi.Location = new System.Drawing.Point(313, 51);
             this.chk_dodhi.Margin = new System.Windows.Forms.Padding(4);
             this.chk_dodhi.Name = "chk_dodhi";
             this.chk_dodhi.Size = new System.Drawing.Size(63, 21);
@@ -252,11 +281,37 @@
             this.cmbo_dodhi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbo_dodhi.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbo_dodhi.FormattingEnabled = true;
-            this.cmbo_dodhi.Location = new System.Drawing.Point(384, 75);
+            this.cmbo_dodhi.Location = new System.Drawing.Point(384, 49);
             this.cmbo_dodhi.Margin = new System.Windows.Forms.Padding(4);
             this.cmbo_dodhi.Name = "cmbo_dodhi";
             this.cmbo_dodhi.Size = new System.Drawing.Size(244, 25);
             this.cmbo_dodhi.TabIndex = 20;
+            // 
+            // chk_endDateTime
+            // 
+            this.chk_endDateTime.AutoSize = true;
+            this.chk_endDateTime.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_endDateTime.ForeColor = System.Drawing.Color.Green;
+            this.chk_endDateTime.Location = new System.Drawing.Point(528, 119);
+            this.chk_endDateTime.Margin = new System.Windows.Forms.Padding(4);
+            this.chk_endDateTime.Name = "chk_endDateTime";
+            this.chk_endDateTime.Size = new System.Drawing.Size(77, 21);
+            this.chk_endDateTime.TabIndex = 26;
+            this.chk_endDateTime.Text = "Morning";
+            this.chk_endDateTime.UseVisualStyleBackColor = true;
+            // 
+            // chk_startDateTime
+            // 
+            this.chk_startDateTime.AutoSize = true;
+            this.chk_startDateTime.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_startDateTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.chk_startDateTime.Location = new System.Drawing.Point(384, 119);
+            this.chk_startDateTime.Margin = new System.Windows.Forms.Padding(4);
+            this.chk_startDateTime.Name = "chk_startDateTime";
+            this.chk_startDateTime.Size = new System.Drawing.Size(75, 21);
+            this.chk_startDateTime.TabIndex = 27;
+            this.chk_startDateTime.Text = "Evening";
+            this.chk_startDateTime.UseVisualStyleBackColor = true;
             // 
             // PurchaseReport
             // 
@@ -300,5 +355,9 @@
         private System.Windows.Forms.ComboBox cmbo_dodhi;
         private System.Windows.Forms.CheckBox chk_time;
         private System.Windows.Forms.ComboBox cmbo_time;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txt_avgRate;
+        private System.Windows.Forms.CheckBox chk_startDateTime;
+        private System.Windows.Forms.CheckBox chk_endDateTime;
     }
 }
