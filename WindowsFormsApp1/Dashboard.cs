@@ -377,6 +377,8 @@ namespace WindowsFormsApp1
             }
             else
             {
+                dtm_start.Value.Date.AddDays(-1);
+                dtm_end.Value.Date.AddDays(-1);
                 dtm_start.Value = dtm_start.Value.Date.AddDays(1);
                 dtm_end.Value = dtm_end.Value.Date.AddDays(1);
             }

@@ -78,6 +78,19 @@ namespace WindowsFormsApp1
 
                 txtAccountId.Text = accountId.ToString();
                 txt_accountName.Text = accountName.ToString();
+
+                // convenience round off
+                totalBalance = Math.Round(totalBalance, 0);
+                balanceBroughtForward = Math.Round(balanceBroughtForward, 0);
+                balanceBroughtForward = Math.Abs(balanceBroughtForward);
+                totalCredit = Math.Round(totalCredit, 0);
+                totalDebit = Math.Round(totalDebit, 0);
+
+
+                lbl_forwardBalance.Text = "Balance brought forward " + balanceBroughtForward.ToString() + " " + forwardString;
+                txt_totalDebit.Text = totalDebit.ToString();
+                txt_totalCredit.Text = totalCredit.ToString();
+                txt_totalBalance.Text = totalBalance.ToString() + " " + bStatus;
             }
 
             txtAccountId.Focus();
@@ -331,7 +344,7 @@ namespace WindowsFormsApp1
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
+            if (dataGridView1.SelectedRows.Count == 1)
             {
                 int selectedIndex = dataGridView1.SelectedRows[0].Index;
 

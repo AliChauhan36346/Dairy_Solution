@@ -50,6 +50,8 @@
             this.txt_sale = new System.Windows.Forms.TextBox();
             this.txt_evening = new System.Windows.Forms.TextBox();
             this.txt_morning = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txt_datagridId = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -183,11 +185,13 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 119);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 141);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(967, 478);
+            this.dataGridView1.Size = new System.Drawing.Size(967, 456);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // panel2
             // 
@@ -304,11 +308,36 @@
             this.txt_morning.Size = new System.Drawing.Size(116, 25);
             this.txt_morning.TabIndex = 0;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label6.Location = new System.Drawing.Point(585, 110);
+            this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(92, 21);
+            this.label6.TabIndex = 92;
+            this.label6.Text = "Search here";
+            // 
+            // txt_datagridId
+            // 
+            this.txt_datagridId.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_datagridId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.txt_datagridId.Location = new System.Drawing.Point(685, 107);
+            this.txt_datagridId.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.txt_datagridId.Name = "txt_datagridId";
+            this.txt_datagridId.Size = new System.Drawing.Size(268, 27);
+            this.txt_datagridId.TabIndex = 91;
+            this.txt_datagridId.TextChanged += new System.EventHandler(this.txt_datagridId_TextChanged);
+            // 
             // Roznamcha
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(967, 687);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txt_datagridId);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
@@ -324,6 +353,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -351,5 +381,7 @@
         private System.Windows.Forms.TextBox txt_tsDifference;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txt_totalVolume;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txt_datagridId;
     }
 }

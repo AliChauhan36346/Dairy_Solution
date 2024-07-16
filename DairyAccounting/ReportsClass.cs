@@ -15,6 +15,7 @@ namespace DairyAccounting
     public class ReportsClass
     {
         AddEmployees employees = new AddEmployees();
+        DashboardClass dashboard=new DashboardClass();
 
         Connection dbConnection;
 
@@ -1107,21 +1108,27 @@ namespace DairyAccounting
                     // Change the row color if it's a sales record
                     if (id.StartsWith("SV"))
                     {
-                        row.DefaultCellStyle.BackColor = Color.FromArgb(242, 165, 165); // Change this color as needed
+                        row.DefaultCellStyle.BackColor = Color.FromArgb(242, 165, 165); 
                     }
                     // Optionally, change the row color for ChilarReceive records
                     else if (id.StartsWith("CR"))
                     {
-                        row.DefaultCellStyle.BackColor = Color.FromArgb(211, 240, 219); // Change this color as needed
+                        row.DefaultCellStyle.BackColor = Color.FromArgb(211, 240, 219); 
                     }
                 }
             }
         }
 
-        public void RoznamchaCash(DataGridView dataGridView, DateTime startDate, DateTime endDate, out decimal paymentTotal, out decimal receiptTotal, bool expense)
+        public void RoznamchaCash(DataGridView dataGridView, DateTime startDate, DateTime endDate, out decimal paymentTotal, out decimal receiptTotal, out decimal comulativeTotal, out decimal openingBalance, bool expense)
         {
             receiptTotal = 0;
             paymentTotal = 0;
+            comulativeTotal = 0;
+            
+            dashboard.getAccountOpeningBalance(startDate, out comulativeTotal);
+
+            openingBalance = comulativeTotal;
+
 
             DataTable dataTable = new DataTable();
 
@@ -1134,6 +1141,7 @@ namespace DairyAccounting
             dataTable.Columns.Add("Cash Account");
             dataTable.Columns.Add("Debit");
             dataTable.Columns.Add("Credit");
+            dataTable.Columns.Add("Balance");
 
             try
             {
@@ -1215,11 +1223,14 @@ namespace DairyAccounting
                             decimal paymentAmount = decimal.Parse(payment);
                             decimal receiptAmount = decimal.Parse(receipt);
 
+                            comulativeTotal -= paymentAmount;
+                            comulativeTotal += receiptAmount;
+
                             paymentTotal += paymentAmount;
                             receiptTotal += receiptAmount;
 
                             // Add to DataTable
-                            dataTable.Rows.Add(date, id, accId, accName, discription, cAccId, cAccName, paymentAmount, receiptAmount);
+                            dataTable.Rows.Add(date, id, accId, accName, discription, cAccId, cAccName, paymentAmount, receiptAmount, comulativeTotal);
                         }
                     }
                 }
@@ -1244,6 +1255,7 @@ namespace DairyAccounting
             dataGridView.Columns["Cash Account"].Width = 130;
             dataGridView.Columns["Debit"].Width = 100;
             dataGridView.Columns["Credit"].Width = 100;
+            dataGridView.Columns["Balance"].Width = 110;
 
             dataGridView.Columns["Date"].HeaderCell.Style.BackColor = Color.LightGray;
             dataGridView.Columns["Trans.Id"].HeaderCell.Style.BackColor = Color.LightGray;
@@ -1254,11 +1266,45 @@ namespace DairyAccounting
             dataGridView.Columns["Cash Account"].HeaderCell.Style.BackColor = Color.LightGray;
             dataGridView.Columns["Debit"].HeaderCell.Style.BackColor = Color.LightGray;
             dataGridView.Columns["Credit"].HeaderCell.Style.BackColor = Color.LightGray;
+            dataGridView.Columns["Balance"].HeaderCell.Style.BackColor = Color.LightGray;
 
             dataGridView.EnableHeadersVisualStyles = false;
+
+            dataGridView.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(RoznamchaCashdataGridView_DataBindingComplete);
         }
 
+        private void RoznamchaCashdataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            DataGridView dataGridView = sender as DataGridView;
+            if (dataGridView == null) return;
 
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                if (row.Cells["Trans.Id"].Value != null)
+                {
+                    string id = row.Cells["Trans.Id"].Value.ToString();
+
+                    // Change the row color if it's a sales record
+                    if (id.StartsWith("CRV"))
+                    {
+                        row.DefaultCellStyle.BackColor = Color.FromArgb(252, 251, 192);
+                    }
+                    // Optionally, change the row color for ChilarReceive records
+                    else if (id.StartsWith("CPV"))
+                    {
+                        row.DefaultCellStyle.BackColor = Color.FromArgb(250, 217, 210);
+                    }
+                    else if (id.StartsWith("EV"))
+                    {
+                        row.DefaultCellStyle.BackColor = Color.FromArgb(203, 223, 247);
+                    }
+                    else if (id.StartsWith("SV"))
+                    {
+                        row.DefaultCellStyle.BackColor = Color.FromArgb(171, 250, 162);
+                    }
+                }
+            }
+        }
 
     }
 }

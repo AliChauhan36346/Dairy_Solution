@@ -102,7 +102,6 @@ namespace WindowsFormsApp1
             txt_paymentId.Text = payments.GetNextAvailableId().ToString();
             payments.showDataInGridView(dataGridView1,dtm_picker.Value.Date);
             dtm_picker.Value = DateTime.Today;
-            chk_autoComplete.Checked = true;
 
             lstAccountsSuggestion.Visible = false;
             lstAccountSuggestion.Visible = false;
@@ -448,7 +447,7 @@ namespace WindowsFormsApp1
 
         private void txt_discription_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.C)
+            if (e.KeyCode == Keys.C && e.Shift)
             {
                 txt_discription.Text += " Cash received by";
 
@@ -458,7 +457,7 @@ namespace WindowsFormsApp1
 
             }
 
-            if (e.KeyCode == Keys.W)
+            else if (e.KeyCode == Keys.W && e.Shift)
             {
                 txt_discription.Text += " Wanda()";
 
@@ -467,13 +466,18 @@ namespace WindowsFormsApp1
                 e.SuppressKeyPress = true;
             }
 
-            if (e.KeyCode == Keys.S)
+            else if (e.KeyCode == Keys.S && e.Shift)
             {
                 txt_discription.Text += " Spray bill";
 
                 txt_discription.SelectionStart = txt_discription.Text.Length;
 
                 e.SuppressKeyPress = true;
+            }
+
+            else if(e.KeyCode == Keys.Enter && e.Shift)
+            {
+                btn_save.Focus();
             }
 
 

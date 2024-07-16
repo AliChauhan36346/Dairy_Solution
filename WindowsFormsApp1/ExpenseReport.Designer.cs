@@ -120,6 +120,7 @@
             this.dtm_end.Name = "dtm_end";
             this.dtm_end.Size = new System.Drawing.Size(113, 27);
             this.dtm_end.TabIndex = 13;
+            this.dtm_end.Value = new System.DateTime(2024, 7, 15, 17, 9, 59, 0);
             // 
             // label2
             // 
@@ -143,6 +144,7 @@
             this.dtm_start.Name = "dtm_start";
             this.dtm_start.Size = new System.Drawing.Size(115, 27);
             this.dtm_start.TabIndex = 12;
+            this.dtm_start.Value = new System.DateTime(2024, 7, 15, 17, 9, 21, 0);
             // 
             // label1
             // 

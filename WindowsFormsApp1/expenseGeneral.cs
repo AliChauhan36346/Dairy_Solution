@@ -46,6 +46,8 @@ namespace WindowsFormsApp1
             txt_employeeId.Enabled= false;
             txt_employeeName.Enabled= false;
 
+            dtTm_date.Value = DateTime.Today;
+
             lstCashAccountSuggestions.Visible= false;
             lstEmployeeSuggestions.Visible = false;
             txt_expenseId.Text = expense.GetNextAvailableId().ToString();

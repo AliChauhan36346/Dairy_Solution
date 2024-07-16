@@ -90,6 +90,60 @@ namespace WindowsFormsApp1
             chilar.ShowDialog();
         }
 
-        
+        private void txt_datagridId_TextChanged(object sender, EventArgs e)
+        {
+            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("[Company/Dodhi Name] LIKE '%" + txt_datagridId.Text.Trim() + "%'");
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 1)
+            {
+                int selectedIndex = dataGridView1.SelectedRows[0].Index;
+
+                if (selectedIndex >= 0 && selectedIndex < dataGridView1.Rows.Count)
+                {
+                    // Get the selected row
+                    DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+
+                    // Populate text boxes with data from the selected row
+                    string transactionId = selectedRow.Cells["Id"].Value.ToString();
+
+                    // Find the index where the digits start
+                    int index = 0;
+                    for (int i = 0; i < transactionId.Length; i++)
+                    {
+                        if (char.IsDigit(transactionId[i]))
+                        {
+                            index = i;
+                            break;
+                        }
+                    }
+
+                    // Separate the number part and the other part
+                    string formCode = transactionId.Substring(0, index); // "pv"
+                    string numberPart = transactionId.Substring(index); // "12"
+
+                    int id = int.Parse(numberPart);
+
+
+                    if (formCode == "CR")
+                    {
+                        chilar chilar = new chilar();
+                        chilar.isFromOtherForm = true;
+                        chilar.chilarReceiveId = id;
+                        chilar.ShowDialog();
+                    }
+                    
+                    else if (formCode == "SV")
+                    {
+                        Sales sales = new Sales();
+                        sales.isFromOtherForm = true;
+                        sales.salesId = id;
+                        sales.ShowDialog();
+                    }
+                }
+            }
+        }
     }
 }
