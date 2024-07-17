@@ -48,20 +48,6 @@ namespace DairyAccounting
                     }
                 }
 
-                string customerCheck = "SELECT COUNT(*) FROM CustomersTbl WHERE customerId=@customerId";
-
-                using(SqlCommand  customerCheckCommand = new SqlCommand(customerCheck, dbConnection.connection))
-                {
-                    customerCheckCommand.Parameters.AddWithValue("@customerId", payments.accountId);
-
-                    int count= (int)customerCheckCommand.ExecuteScalar();
-                    if (count == 0)
-                    {
-                        MessageBox.Show("Customer not found with the provided Id!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                }
-
 
                 using (SqlCommand command = new SqlCommand())
                 {
