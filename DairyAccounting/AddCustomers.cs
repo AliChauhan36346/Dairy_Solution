@@ -523,5 +523,42 @@ namespace DairyAccounting
             }
         }
 
+        public void GetCustomerAddress(int id, out string address)
+        {
+            address = "";
+
+            try
+            {
+                dbConnection.openConnection();
+
+                string query = "SELECT address FROM CustomersTbl WHERE customerId=@id";
+
+                using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        address = reader["address"].ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Customer not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error retrieving customer address: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dbConnection.closeConnection();
+            }
+        }
+
+
     }
 }

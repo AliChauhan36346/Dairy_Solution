@@ -133,6 +133,7 @@
             // 
             // btn_leger
             // 
+            this.btn_leger.BackColor = System.Drawing.Color.White;
             this.btn_leger.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_leger.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btn_leger.Location = new System.Drawing.Point(308, 4);
@@ -142,11 +143,12 @@
             this.btn_leger.TabIndex = 112;
             this.btn_leger.TabStop = false;
             this.btn_leger.Text = "Account Leger";
-            this.btn_leger.UseVisualStyleBackColor = true;
+            this.btn_leger.UseVisualStyleBackColor = false;
             this.btn_leger.Click += new System.EventHandler(this.btn_leger_Click);
             // 
             // btn_newAccount
             // 
+            this.btn_newAccount.BackColor = System.Drawing.Color.White;
             this.btn_newAccount.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_newAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btn_newAccount.Location = new System.Drawing.Point(403, 4);
@@ -156,11 +158,12 @@
             this.btn_newAccount.TabIndex = 41;
             this.btn_newAccount.TabStop = false;
             this.btn_newAccount.Text = "New Account";
-            this.btn_newAccount.UseVisualStyleBackColor = true;
+            this.btn_newAccount.UseVisualStyleBackColor = false;
             this.btn_newAccount.Click += new System.EventHandler(this.btn_newAccount_Click);
             // 
             // btn_newCustomer
             // 
+            this.btn_newCustomer.BackColor = System.Drawing.Color.White;
             this.btn_newCustomer.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_newCustomer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btn_newCustomer.Location = new System.Drawing.Point(491, 4);
@@ -170,11 +173,12 @@
             this.btn_newCustomer.TabIndex = 40;
             this.btn_newCustomer.TabStop = false;
             this.btn_newCustomer.Text = "New Customer";
-            this.btn_newCustomer.UseVisualStyleBackColor = true;
+            this.btn_newCustomer.UseVisualStyleBackColor = false;
             this.btn_newCustomer.Click += new System.EventHandler(this.btn_newCustomer_Click);
             // 
             // btn_save
             // 
+            this.btn_save.BackColor = System.Drawing.Color.White;
             this.btn_save.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_save.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btn_save.Location = new System.Drawing.Point(674, 4);
@@ -183,11 +187,12 @@
             this.btn_save.Size = new System.Drawing.Size(88, 56);
             this.btn_save.TabIndex = 0;
             this.btn_save.Text = "Save";
-            this.btn_save.UseVisualStyleBackColor = true;
+            this.btn_save.UseVisualStyleBackColor = false;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
             // btn_update
             // 
+            this.btn_update.BackColor = System.Drawing.Color.White;
             this.btn_update.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_update.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btn_update.Location = new System.Drawing.Point(586, 4);
@@ -197,7 +202,7 @@
             this.btn_update.TabIndex = 36;
             this.btn_update.TabStop = false;
             this.btn_update.Text = "Update Record";
-            this.btn_update.UseVisualStyleBackColor = true;
+            this.btn_update.UseVisualStyleBackColor = false;
             this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
             // 
             // btn_dashboard
@@ -216,6 +221,7 @@
             // 
             // btn_addNew
             // 
+            this.btn_addNew.BackColor = System.Drawing.Color.White;
             this.btn_addNew.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_addNew.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btn_addNew.Location = new System.Drawing.Point(762, 4);
@@ -225,7 +231,7 @@
             this.btn_addNew.TabIndex = 38;
             this.btn_addNew.TabStop = false;
             this.btn_addNew.Text = "Add New";
-            this.btn_addNew.UseVisualStyleBackColor = true;
+            this.btn_addNew.UseVisualStyleBackColor = false;
             this.btn_addNew.Click += new System.EventHandler(this.btn_addNew_Click);
             // 
             // btn_deleteRecord
@@ -322,13 +328,14 @@
             // 
             // btn_goForward
             // 
+            this.btn_goForward.BackColor = System.Drawing.Color.White;
             this.btn_goForward.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_goForward.Location = new System.Drawing.Point(206, 16);
+            this.btn_goForward.Location = new System.Drawing.Point(206, 18);
             this.btn_goForward.Name = "btn_goForward";
-            this.btn_goForward.Size = new System.Drawing.Size(45, 33);
+            this.btn_goForward.Size = new System.Drawing.Size(45, 29);
             this.btn_goForward.TabIndex = 125;
             this.btn_goForward.Text = ">>";
-            this.btn_goForward.UseVisualStyleBackColor = true;
+            this.btn_goForward.UseVisualStyleBackColor = false;
             this.btn_goForward.Click += new System.EventHandler(this.btn_goForward_Click);
             // 
             // lstAccountsSuggestion
@@ -345,13 +352,14 @@
             // 
             // btn_goBack
             // 
+            this.btn_goBack.BackColor = System.Drawing.Color.White;
             this.btn_goBack.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_goBack.Location = new System.Drawing.Point(74, 16);
+            this.btn_goBack.Location = new System.Drawing.Point(74, 18);
             this.btn_goBack.Name = "btn_goBack";
-            this.btn_goBack.Size = new System.Drawing.Size(45, 33);
+            this.btn_goBack.Size = new System.Drawing.Size(45, 29);
             this.btn_goBack.TabIndex = 124;
             this.btn_goBack.Text = "<<";
-            this.btn_goBack.UseVisualStyleBackColor = true;
+            this.btn_goBack.UseVisualStyleBackColor = false;
             this.btn_goBack.Click += new System.EventHandler(this.btn_goBack_Click);
             // 
             // lstAccountSuggestion
@@ -475,7 +483,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(10, 103);
+            this.label6.Location = new System.Drawing.Point(9, 105);
             this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(64, 17);
@@ -500,7 +508,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(10, 29);
+            this.label2.Location = new System.Drawing.Point(10, 27);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(19, 17);

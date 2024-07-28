@@ -237,6 +237,7 @@
             // 
             // btn_updateChanges
             // 
+            this.btn_updateChanges.BackColor = System.Drawing.Color.White;
             this.btn_updateChanges.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btn_updateChanges.Location = new System.Drawing.Point(211, 315);
             this.btn_updateChanges.Margin = new System.Windows.Forms.Padding(4);
@@ -244,7 +245,7 @@
             this.btn_updateChanges.Size = new System.Drawing.Size(144, 30);
             this.btn_updateChanges.TabIndex = 19;
             this.btn_updateChanges.Text = "Update Changes...";
-            this.btn_updateChanges.UseVisualStyleBackColor = true;
+            this.btn_updateChanges.UseVisualStyleBackColor = false;
             this.btn_updateChanges.Click += new System.EventHandler(this.btn_updateChanges_Click);
             // 
             // label3

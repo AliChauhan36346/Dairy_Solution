@@ -394,5 +394,11 @@ namespace WindowsFormsApp1
         {
             Dashboard_Activated(sender, e);
         }
+
+        private void toolStripMenuItem10_Click(object sender, EventArgs e)
+        {
+            DailyBasisChilarReport dailyBasisChilarReport= new DailyBasisChilarReport();
+            dailyBasisChilarReport.ShowDialog();
+        }
     }
 }

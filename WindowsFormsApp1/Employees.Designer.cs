@@ -88,6 +88,7 @@
             // 
             // empBtn_save
             // 
+            this.empBtn_save.BackColor = System.Drawing.Color.White;
             this.empBtn_save.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.empBtn_save.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.empBtn_save.Location = new System.Drawing.Point(540, 3);
@@ -96,11 +97,12 @@
             this.empBtn_save.Size = new System.Drawing.Size(68, 42);
             this.empBtn_save.TabIndex = 0;
             this.empBtn_save.Text = "Save";
-            this.empBtn_save.UseVisualStyleBackColor = true;
+            this.empBtn_save.UseVisualStyleBackColor = false;
             this.empBtn_save.Click += new System.EventHandler(this.empBtn_save_Click);
             // 
             // empBtn_addNew
             // 
+            this.empBtn_addNew.BackColor = System.Drawing.Color.White;
             this.empBtn_addNew.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.empBtn_addNew.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.empBtn_addNew.Location = new System.Drawing.Point(607, 3);
@@ -109,11 +111,12 @@
             this.empBtn_addNew.Size = new System.Drawing.Size(68, 42);
             this.empBtn_addNew.TabIndex = 8;
             this.empBtn_addNew.Text = "Add New";
-            this.empBtn_addNew.UseVisualStyleBackColor = true;
+            this.empBtn_addNew.UseVisualStyleBackColor = false;
             this.empBtn_addNew.Click += new System.EventHandler(this.empBtn_addNew_Click);
             // 
             // empBtn_deleteEmployee
             // 
+            this.empBtn_deleteEmployee.BackColor = System.Drawing.Color.White;
             this.empBtn_deleteEmployee.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.empBtn_deleteEmployee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.empBtn_deleteEmployee.Location = new System.Drawing.Point(750, 3);
@@ -123,11 +126,12 @@
             this.empBtn_deleteEmployee.TabIndex = 29;
             this.empBtn_deleteEmployee.TabStop = false;
             this.empBtn_deleteEmployee.Text = "Delete Employee";
-            this.empBtn_deleteEmployee.UseVisualStyleBackColor = true;
+            this.empBtn_deleteEmployee.UseVisualStyleBackColor = false;
             this.empBtn_deleteEmployee.Click += new System.EventHandler(this.empBtn_deleteEmployee_Click);
             // 
             // empBtn_dashboard
             // 
+            this.empBtn_dashboard.BackColor = System.Drawing.Color.White;
             this.empBtn_dashboard.Font = new System.Drawing.Font("Segoe UI", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.empBtn_dashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.empBtn_dashboard.Location = new System.Drawing.Point(683, 3);
@@ -137,7 +141,7 @@
             this.empBtn_dashboard.TabIndex = 27;
             this.empBtn_dashboard.TabStop = false;
             this.empBtn_dashboard.Text = "Dashboard";
-            this.empBtn_dashboard.UseVisualStyleBackColor = true;
+            this.empBtn_dashboard.UseVisualStyleBackColor = false;
             this.empBtn_dashboard.Click += new System.EventHandler(this.empBtn_dashboard_Click);
             // 
             // panel1
@@ -159,6 +163,7 @@
             // 
             // btn_updateEmployee
             // 
+            this.btn_updateEmployee.BackColor = System.Drawing.Color.White;
             this.btn_updateEmployee.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_updateEmployee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btn_updateEmployee.Location = new System.Drawing.Point(464, 3);
@@ -167,7 +172,7 @@
             this.btn_updateEmployee.Size = new System.Drawing.Size(68, 42);
             this.btn_updateEmployee.TabIndex = 30;
             this.btn_updateEmployee.Text = "Update Employee";
-            this.btn_updateEmployee.UseVisualStyleBackColor = true;
+            this.btn_updateEmployee.UseVisualStyleBackColor = false;
             this.btn_updateEmployee.Click += new System.EventHandler(this.btn_updateEmployee_Click);
             // 
             // label1
@@ -405,8 +410,9 @@
             // 
             // empBtn_find
             // 
+            this.empBtn_find.BackColor = System.Drawing.Color.Green;
             this.empBtn_find.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.empBtn_find.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.empBtn_find.ForeColor = System.Drawing.Color.White;
             this.empBtn_find.Location = new System.Drawing.Point(240, 60);
             this.empBtn_find.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.empBtn_find.Name = "empBtn_find";
@@ -414,7 +420,7 @@
             this.empBtn_find.TabIndex = 2;
             this.empBtn_find.TabStop = false;
             this.empBtn_find.Text = "Find";
-            this.empBtn_find.UseVisualStyleBackColor = true;
+            this.empBtn_find.UseVisualStyleBackColor = false;
             // 
             // label6
             // 

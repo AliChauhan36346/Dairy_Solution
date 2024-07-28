@@ -86,6 +86,10 @@ namespace WindowsFormsApp1
         private void txt_id_TextChanged(object sender, EventArgs e)
         {
             commonFunctions.ShowAccountSuggestions(txt_id, lstCompanySuggestions, "company");
+            if (txt_id.Text == string.Empty)
+            {
+                lstCompanySuggestions.Visible = false;
+            }
         }
 
         private void txt_id_Leave(object sender, EventArgs e)

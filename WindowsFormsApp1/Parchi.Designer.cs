@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Parchi));
             this.btn_print = new System.Windows.Forms.Button();
             this.btn_display = new System.Windows.Forms.Button();
@@ -74,6 +74,7 @@
             // 
             // btn_print
             // 
+            this.btn_print.BackColor = System.Drawing.Color.White;
             this.btn_print.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_print.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btn_print.Location = new System.Drawing.Point(674, 20);
@@ -83,11 +84,12 @@
             this.btn_print.TabIndex = 41;
             this.btn_print.TabStop = false;
             this.btn_print.Text = "Print";
-            this.btn_print.UseVisualStyleBackColor = true;
+            this.btn_print.UseVisualStyleBackColor = false;
             this.btn_print.Click += new System.EventHandler(this.btn_print_Click);
             // 
             // btn_display
             // 
+            this.btn_display.BackColor = System.Drawing.Color.White;
             this.btn_display.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_display.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btn_display.Location = new System.Drawing.Point(605, 20);
@@ -97,7 +99,7 @@
             this.btn_display.TabIndex = 40;
             this.btn_display.TabStop = false;
             this.btn_display.Text = "Display";
-            this.btn_display.UseVisualStyleBackColor = true;
+            this.btn_display.UseVisualStyleBackColor = false;
             this.btn_display.Click += new System.EventHandler(this.btn_display_Click);
             // 
             // cmbo_dodhi
@@ -113,6 +115,7 @@
             // 
             // Btn_dashboard
             // 
+            this.Btn_dashboard.BackColor = System.Drawing.Color.White;
             this.Btn_dashboard.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_dashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Btn_dashboard.Location = new System.Drawing.Point(743, 20);
@@ -122,7 +125,7 @@
             this.Btn_dashboard.TabIndex = 27;
             this.Btn_dashboard.TabStop = false;
             this.Btn_dashboard.Text = "Dashboard";
-            this.Btn_dashboard.UseVisualStyleBackColor = true;
+            this.Btn_dashboard.UseVisualStyleBackColor = false;
             this.Btn_dashboard.Click += new System.EventHandler(this.Btn_dashboard_Click);
             // 
             // dataGridView2
@@ -130,23 +133,23 @@
             this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView2.Location = new System.Drawing.Point(0, 145);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dataGridView2.Name = "dataGridView2";
@@ -213,6 +216,7 @@
             // 
             // btn_printCusList
             // 
+            this.btn_printCusList.BackColor = System.Drawing.Color.White;
             this.btn_printCusList.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_printCusList.ForeColor = System.Drawing.Color.Green;
             this.btn_printCusList.Location = new System.Drawing.Point(693, 68);
@@ -222,7 +226,7 @@
             this.btn_printCusList.TabIndex = 127;
             this.btn_printCusList.TabStop = false;
             this.btn_printCusList.Text = "print Customer List";
-            this.btn_printCusList.UseVisualStyleBackColor = true;
+            this.btn_printCusList.UseVisualStyleBackColor = false;
             this.btn_printCusList.Click += new System.EventHandler(this.btn_printCusList_Click);
             // 
             // rdo_pringDialog
@@ -251,6 +255,7 @@
             // 
             // btn_paymentList
             // 
+            this.btn_paymentList.BackColor = System.Drawing.Color.White;
             this.btn_paymentList.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_paymentList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btn_paymentList.Location = new System.Drawing.Point(606, 68);
@@ -260,7 +265,7 @@
             this.btn_paymentList.TabIndex = 124;
             this.btn_paymentList.TabStop = false;
             this.btn_paymentList.Text = "Print Payment List";
-            this.btn_paymentList.UseVisualStyleBackColor = true;
+            this.btn_paymentList.UseVisualStyleBackColor = false;
             this.btn_paymentList.Click += new System.EventHandler(this.btn_paymentList_Click);
             // 
             // chk_dodhiWise

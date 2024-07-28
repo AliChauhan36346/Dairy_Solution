@@ -18,6 +18,7 @@ namespace WindowsFormsApp1
         public ProfitLoss()
         {
             InitializeComponent();
+            dataGridView1.RowsAdded += dataGridView1_RowsAdded;
         }
 
         private void btn_view_Click(object sender, EventArgs e)
@@ -35,6 +36,21 @@ namespace WindowsFormsApp1
 
             txt_profitLoss.Text = profitLoss > 0 ? profitLoss + " Profit" : profitLoss + " Loss";
 
+        }
+
+        private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            for (int i = e.RowIndex; i < (e.RowIndex + e.RowCount); i++)
+            {
+                if (i % 2 == 0)
+                {
+                    dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.LightBlue;
+                }
+                else
+                {
+                    dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.CornflowerBlue;
+                }
+            }
         }
     }
 }

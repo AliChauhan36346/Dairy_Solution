@@ -78,12 +78,13 @@
             // 
             // btn_clearAllTransactions
             // 
+            this.btn_clearAllTransactions.BackColor = System.Drawing.Color.White;
             this.btn_clearAllTransactions.Location = new System.Drawing.Point(317, 310);
             this.btn_clearAllTransactions.Name = "btn_clearAllTransactions";
             this.btn_clearAllTransactions.Size = new System.Drawing.Size(98, 64);
             this.btn_clearAllTransactions.TabIndex = 6;
             this.btn_clearAllTransactions.Text = "Clear All Transactions";
-            this.btn_clearAllTransactions.UseVisualStyleBackColor = true;
+            this.btn_clearAllTransactions.UseVisualStyleBackColor = false;
             this.btn_clearAllTransactions.Click += new System.EventHandler(this.btn_clearAllTransactions_Click);
             // 
             // label2

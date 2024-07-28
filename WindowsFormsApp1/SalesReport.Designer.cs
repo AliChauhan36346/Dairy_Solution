@@ -65,23 +65,25 @@
             // 
             // Print
             // 
+            this.Print.BackColor = System.Drawing.Color.White;
             this.Print.Location = new System.Drawing.Point(670, 32);
             this.Print.Margin = new System.Windows.Forms.Padding(4);
             this.Print.Name = "Print";
             this.Print.Size = new System.Drawing.Size(78, 48);
             this.Print.TabIndex = 15;
             this.Print.Text = "Print";
-            this.Print.UseVisualStyleBackColor = true;
+            this.Print.UseVisualStyleBackColor = false;
             // 
             // btn_display
             // 
+            this.btn_display.BackColor = System.Drawing.Color.White;
             this.btn_display.Location = new System.Drawing.Point(584, 32);
             this.btn_display.Margin = new System.Windows.Forms.Padding(4);
             this.btn_display.Name = "btn_display";
             this.btn_display.Size = new System.Drawing.Size(78, 48);
             this.btn_display.TabIndex = 14;
             this.btn_display.Text = "Display";
-            this.btn_display.UseVisualStyleBackColor = true;
+            this.btn_display.UseVisualStyleBackColor = false;
             this.btn_display.Click += new System.EventHandler(this.btn_display_Click);
             // 
             // dtm_end

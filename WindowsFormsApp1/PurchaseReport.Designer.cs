@@ -42,12 +42,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.chk_startDateTime = new System.Windows.Forms.CheckBox();
+            this.chk_endDateTime = new System.Windows.Forms.CheckBox();
             this.chk_time = new System.Windows.Forms.CheckBox();
             this.cmbo_time = new System.Windows.Forms.ComboBox();
             this.chk_dodhi = new System.Windows.Forms.CheckBox();
             this.cmbo_dodhi = new System.Windows.Forms.ComboBox();
-            this.chk_endDateTime = new System.Windows.Forms.CheckBox();
-            this.chk_startDateTime = new System.Windows.Forms.CheckBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -65,23 +65,25 @@
             // 
             // Print
             // 
+            this.Print.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Print.Location = new System.Drawing.Point(730, 8);
             this.Print.Margin = new System.Windows.Forms.Padding(5);
             this.Print.Name = "Print";
             this.Print.Size = new System.Drawing.Size(80, 52);
             this.Print.TabIndex = 15;
             this.Print.Text = "Print";
-            this.Print.UseVisualStyleBackColor = true;
+            this.Print.UseVisualStyleBackColor = false;
             // 
             // btn_display
             // 
+            this.btn_display.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_display.Location = new System.Drawing.Point(649, 8);
             this.btn_display.Margin = new System.Windows.Forms.Padding(5);
             this.btn_display.Name = "btn_display";
             this.btn_display.Size = new System.Drawing.Size(80, 52);
             this.btn_display.TabIndex = 14;
             this.btn_display.Text = "Display";
-            this.btn_display.UseVisualStyleBackColor = true;
+            this.btn_display.UseVisualStyleBackColor = false;
             this.btn_display.Click += new System.EventHandler(this.btn_display_Click);
             // 
             // dtm_end
@@ -234,6 +236,32 @@
             this.panel1.Size = new System.Drawing.Size(1084, 148);
             this.panel1.TabIndex = 17;
             // 
+            // chk_startDateTime
+            // 
+            this.chk_startDateTime.AutoSize = true;
+            this.chk_startDateTime.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_startDateTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.chk_startDateTime.Location = new System.Drawing.Point(384, 119);
+            this.chk_startDateTime.Margin = new System.Windows.Forms.Padding(4);
+            this.chk_startDateTime.Name = "chk_startDateTime";
+            this.chk_startDateTime.Size = new System.Drawing.Size(75, 21);
+            this.chk_startDateTime.TabIndex = 27;
+            this.chk_startDateTime.Text = "Evening";
+            this.chk_startDateTime.UseVisualStyleBackColor = true;
+            // 
+            // chk_endDateTime
+            // 
+            this.chk_endDateTime.AutoSize = true;
+            this.chk_endDateTime.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_endDateTime.ForeColor = System.Drawing.Color.Green;
+            this.chk_endDateTime.Location = new System.Drawing.Point(528, 119);
+            this.chk_endDateTime.Margin = new System.Windows.Forms.Padding(4);
+            this.chk_endDateTime.Name = "chk_endDateTime";
+            this.chk_endDateTime.Size = new System.Drawing.Size(77, 21);
+            this.chk_endDateTime.TabIndex = 26;
+            this.chk_endDateTime.Text = "Morning";
+            this.chk_endDateTime.UseVisualStyleBackColor = true;
+            // 
             // chk_time
             // 
             this.chk_time.AutoSize = true;
@@ -286,32 +314,6 @@
             this.cmbo_dodhi.Name = "cmbo_dodhi";
             this.cmbo_dodhi.Size = new System.Drawing.Size(244, 25);
             this.cmbo_dodhi.TabIndex = 20;
-            // 
-            // chk_endDateTime
-            // 
-            this.chk_endDateTime.AutoSize = true;
-            this.chk_endDateTime.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_endDateTime.ForeColor = System.Drawing.Color.Green;
-            this.chk_endDateTime.Location = new System.Drawing.Point(528, 119);
-            this.chk_endDateTime.Margin = new System.Windows.Forms.Padding(4);
-            this.chk_endDateTime.Name = "chk_endDateTime";
-            this.chk_endDateTime.Size = new System.Drawing.Size(77, 21);
-            this.chk_endDateTime.TabIndex = 26;
-            this.chk_endDateTime.Text = "Morning";
-            this.chk_endDateTime.UseVisualStyleBackColor = true;
-            // 
-            // chk_startDateTime
-            // 
-            this.chk_startDateTime.AutoSize = true;
-            this.chk_startDateTime.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_startDateTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.chk_startDateTime.Location = new System.Drawing.Point(384, 119);
-            this.chk_startDateTime.Margin = new System.Windows.Forms.Padding(4);
-            this.chk_startDateTime.Name = "chk_startDateTime";
-            this.chk_startDateTime.Size = new System.Drawing.Size(75, 21);
-            this.chk_startDateTime.TabIndex = 27;
-            this.chk_startDateTime.Text = "Evening";
-            this.chk_startDateTime.UseVisualStyleBackColor = true;
             // 
             // PurchaseReport
             // 

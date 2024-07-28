@@ -33,6 +33,10 @@
             this.cmbo_dodhi = new System.Windows.Forms.ComboBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_saleReport = new System.Windows.Forms.Button();
+            this.btn_purchaseReport = new System.Windows.Forms.Button();
+            this.btn_roznamcha = new System.Windows.Forms.Button();
+            this.btn_ChilarReceive = new System.Windows.Forms.Button();
             this.chk_dodhi = new System.Windows.Forms.CheckBox();
             this.Print = new System.Windows.Forms.Button();
             this.btn_display = new System.Windows.Forms.Button();
@@ -51,10 +55,6 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.btn_roznamcha = new System.Windows.Forms.Button();
-            this.btn_ChilarReceive = new System.Windows.Forms.Button();
-            this.btn_saleReport = new System.Windows.Forms.Button();
-            this.btn_purchaseReport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -141,6 +141,58 @@
             this.panel1.Size = new System.Drawing.Size(1213, 130);
             this.panel1.TabIndex = 20;
             // 
+            // btn_saleReport
+            // 
+            this.btn_saleReport.BackColor = System.Drawing.Color.White;
+            this.btn_saleReport.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_saleReport.Location = new System.Drawing.Point(837, 68);
+            this.btn_saleReport.Margin = new System.Windows.Forms.Padding(5);
+            this.btn_saleReport.Name = "btn_saleReport";
+            this.btn_saleReport.Size = new System.Drawing.Size(92, 48);
+            this.btn_saleReport.TabIndex = 29;
+            this.btn_saleReport.Text = "Sale Report";
+            this.btn_saleReport.UseVisualStyleBackColor = false;
+            this.btn_saleReport.Click += new System.EventHandler(this.btn_saleReport_Click);
+            // 
+            // btn_purchaseReport
+            // 
+            this.btn_purchaseReport.BackColor = System.Drawing.Color.White;
+            this.btn_purchaseReport.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_purchaseReport.Location = new System.Drawing.Point(837, 17);
+            this.btn_purchaseReport.Margin = new System.Windows.Forms.Padding(5);
+            this.btn_purchaseReport.Name = "btn_purchaseReport";
+            this.btn_purchaseReport.Size = new System.Drawing.Size(92, 48);
+            this.btn_purchaseReport.TabIndex = 28;
+            this.btn_purchaseReport.Text = "Purchase Report";
+            this.btn_purchaseReport.UseVisualStyleBackColor = false;
+            this.btn_purchaseReport.Click += new System.EventHandler(this.btn_purchaseReport_Click);
+            // 
+            // btn_roznamcha
+            // 
+            this.btn_roznamcha.BackColor = System.Drawing.Color.White;
+            this.btn_roznamcha.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_roznamcha.Location = new System.Drawing.Point(743, 68);
+            this.btn_roznamcha.Margin = new System.Windows.Forms.Padding(5);
+            this.btn_roznamcha.Name = "btn_roznamcha";
+            this.btn_roznamcha.Size = new System.Drawing.Size(92, 48);
+            this.btn_roznamcha.TabIndex = 27;
+            this.btn_roznamcha.Text = "Roznamcha";
+            this.btn_roznamcha.UseVisualStyleBackColor = false;
+            this.btn_roznamcha.Click += new System.EventHandler(this.btn_roznamcha_Click);
+            // 
+            // btn_ChilarReceive
+            // 
+            this.btn_ChilarReceive.BackColor = System.Drawing.Color.White;
+            this.btn_ChilarReceive.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ChilarReceive.Location = new System.Drawing.Point(743, 17);
+            this.btn_ChilarReceive.Margin = new System.Windows.Forms.Padding(5);
+            this.btn_ChilarReceive.Name = "btn_ChilarReceive";
+            this.btn_ChilarReceive.Size = new System.Drawing.Size(92, 48);
+            this.btn_ChilarReceive.TabIndex = 26;
+            this.btn_ChilarReceive.Text = "Chilar Receive";
+            this.btn_ChilarReceive.UseVisualStyleBackColor = false;
+            this.btn_ChilarReceive.Click += new System.EventHandler(this.btn_ChilarReceive_Click);
+            // 
             // chk_dodhi
             // 
             this.chk_dodhi.AutoSize = true;
@@ -157,6 +209,7 @@
             // 
             // Print
             // 
+            this.Print.BackColor = System.Drawing.Color.White;
             this.Print.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Print.Location = new System.Drawing.Point(644, 68);
             this.Print.Margin = new System.Windows.Forms.Padding(5);
@@ -164,10 +217,11 @@
             this.Print.Size = new System.Drawing.Size(77, 48);
             this.Print.TabIndex = 15;
             this.Print.Text = "Print";
-            this.Print.UseVisualStyleBackColor = true;
+            this.Print.UseVisualStyleBackColor = false;
             // 
             // btn_display
             // 
+            this.btn_display.BackColor = System.Drawing.Color.White;
             this.btn_display.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_display.Location = new System.Drawing.Point(644, 17);
             this.btn_display.Margin = new System.Windows.Forms.Padding(5);
@@ -175,7 +229,7 @@
             this.btn_display.Size = new System.Drawing.Size(77, 48);
             this.btn_display.TabIndex = 14;
             this.btn_display.Text = "Display";
-            this.btn_display.UseVisualStyleBackColor = true;
+            this.btn_display.UseVisualStyleBackColor = false;
             this.btn_display.Click += new System.EventHandler(this.btn_display_Click);
             // 
             // dtm_end
@@ -359,54 +413,6 @@
             this.label6.Size = new System.Drawing.Size(199, 30);
             this.label6.TabIndex = 25;
             this.label6.Text = "Dodhi Loss Report";
-            // 
-            // btn_roznamcha
-            // 
-            this.btn_roznamcha.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_roznamcha.Location = new System.Drawing.Point(743, 68);
-            this.btn_roznamcha.Margin = new System.Windows.Forms.Padding(5);
-            this.btn_roznamcha.Name = "btn_roznamcha";
-            this.btn_roznamcha.Size = new System.Drawing.Size(92, 48);
-            this.btn_roznamcha.TabIndex = 27;
-            this.btn_roznamcha.Text = "Roznamcha";
-            this.btn_roznamcha.UseVisualStyleBackColor = true;
-            this.btn_roznamcha.Click += new System.EventHandler(this.btn_roznamcha_Click);
-            // 
-            // btn_ChilarReceive
-            // 
-            this.btn_ChilarReceive.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ChilarReceive.Location = new System.Drawing.Point(743, 17);
-            this.btn_ChilarReceive.Margin = new System.Windows.Forms.Padding(5);
-            this.btn_ChilarReceive.Name = "btn_ChilarReceive";
-            this.btn_ChilarReceive.Size = new System.Drawing.Size(92, 48);
-            this.btn_ChilarReceive.TabIndex = 26;
-            this.btn_ChilarReceive.Text = "Chilar Receive";
-            this.btn_ChilarReceive.UseVisualStyleBackColor = true;
-            this.btn_ChilarReceive.Click += new System.EventHandler(this.btn_ChilarReceive_Click);
-            // 
-            // btn_saleReport
-            // 
-            this.btn_saleReport.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_saleReport.Location = new System.Drawing.Point(837, 68);
-            this.btn_saleReport.Margin = new System.Windows.Forms.Padding(5);
-            this.btn_saleReport.Name = "btn_saleReport";
-            this.btn_saleReport.Size = new System.Drawing.Size(92, 48);
-            this.btn_saleReport.TabIndex = 29;
-            this.btn_saleReport.Text = "Sale Report";
-            this.btn_saleReport.UseVisualStyleBackColor = true;
-            this.btn_saleReport.Click += new System.EventHandler(this.btn_saleReport_Click);
-            // 
-            // btn_purchaseReport
-            // 
-            this.btn_purchaseReport.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_purchaseReport.Location = new System.Drawing.Point(837, 17);
-            this.btn_purchaseReport.Margin = new System.Windows.Forms.Padding(5);
-            this.btn_purchaseReport.Name = "btn_purchaseReport";
-            this.btn_purchaseReport.Size = new System.Drawing.Size(92, 48);
-            this.btn_purchaseReport.TabIndex = 28;
-            this.btn_purchaseReport.Text = "Purchase Report";
-            this.btn_purchaseReport.UseVisualStyleBackColor = true;
-            this.btn_purchaseReport.Click += new System.EventHandler(this.btn_purchaseReport_Click);
             // 
             // ChilarReceiveReport
             // 

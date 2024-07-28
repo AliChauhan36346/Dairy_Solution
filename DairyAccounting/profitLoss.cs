@@ -154,9 +154,10 @@ namespace DairyAccounting
             totalExpenses(date, date, out totalExpense);
             totalSales(date, date, out totalSale, out salesAmount);
 
-            profitLoss = salesAmount - purchaseAmount + totalExpense;
+            profitLoss = salesAmount - (purchaseAmount + totalExpense);
         }
 
+        // Gives profit loss for the selected period
         public void profitLossInRow(DateTime startDate, DateTime endDate, DataGridView dataGridView ,out decimal GtotalPurchase, out decimal GpurchaseAmount,
             out decimal GtotalExpense, out decimal GtotalSale, out decimal GsaleAmount, out decimal GprofitLoss)
         {
@@ -201,7 +202,7 @@ namespace DairyAccounting
 
                 incomeStatus = profitLoss > 0 ? "Profit" : "Loss";
 
-                profitLossTable.Rows.Add(date, totalPurchase, purchaseAmount, totalExpense, totalSale, saleAmount, profitLoss + " " + incomeStatus);
+                profitLossTable.Rows.Add(date.ToString("dd/MM/yyyy"), totalPurchase, purchaseAmount, totalExpense, totalSale, saleAmount, profitLoss + " " + incomeStatus);
 
                 GtotalPurchase += totalPurchase;
                 GpurchaseAmount += purchaseAmount;
@@ -231,28 +232,15 @@ namespace DairyAccounting
             dataGridView.Columns["Profit/Loss"].Width = 190;
 
             // Set column colors
-            // Set column colors
-            dataGridView.Columns["Date"].HeaderCell.Style.BackColor = Color.LightBlue;
-
-            dataGridView.Columns["Total Purchase"].DefaultCellStyle.BackColor = Color.LightPink;
+            // set the headers colors
+            dataGridView.Columns["Date"].HeaderCell.Style.BackColor = Color.LightBlue;           
             dataGridView.Columns["Total Purchase"].HeaderCell.Style.BackColor = Color.LightBlue;
-
-            dataGridView.Columns["Purchase Amount"].DefaultCellStyle.BackColor = Color.LightGreen;
             dataGridView.Columns["Purchase Amount"].HeaderCell.Style.BackColor = Color.LightBlue;
-
-            dataGridView.Columns["Total Expense"].DefaultCellStyle.BackColor = Color.LightYellow;
             dataGridView.Columns["Total Expense"].HeaderCell.Style.BackColor = Color.LightBlue;
-
-            dataGridView.Columns["Total Sales"].DefaultCellStyle.BackColor = Color.LightBlue;
             dataGridView.Columns["Total Sales"].HeaderCell.Style.BackColor = Color.LightBlue;
-
-            dataGridView.Columns["Sales Amount"].DefaultCellStyle.BackColor = Color.LightCoral;
             dataGridView.Columns["Sales Amount"].HeaderCell.Style.BackColor = Color.LightBlue;
-
-            dataGridView.Columns["Profit/Loss"].DefaultCellStyle.BackColor = Color.LightGray;
             dataGridView.Columns["Profit/Loss"].HeaderCell.Style.BackColor = Color.LightBlue;
-
-            dataGridView.Columns["Profit/Loss"].DefaultCellStyle.ForeColor = Color.Black;
+            //dataGridView.Columns["Profit/Loss"].DefaultCellStyle.ForeColor = Color.Black;
 
             dataGridView.EnableHeadersVisualStyles = false;
 

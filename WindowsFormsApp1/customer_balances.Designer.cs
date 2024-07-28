@@ -39,11 +39,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txt_grandOpeningBalance = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_debit = new System.Windows.Forms.TextBox();
             this.txt_credit = new System.Windows.Forms.TextBox();
             this.txt_balance = new System.Windows.Forms.TextBox();
-            this.txt_grandOpeningBalance = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel2.SuspendLayout();
@@ -96,6 +96,7 @@
             // 
             // btn_print
             // 
+            this.btn_print.BackColor = System.Drawing.Color.White;
             this.btn_print.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_print.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btn_print.Location = new System.Drawing.Point(720, 19);
@@ -105,10 +106,11 @@
             this.btn_print.TabIndex = 41;
             this.btn_print.TabStop = false;
             this.btn_print.Text = "Print";
-            this.btn_print.UseVisualStyleBackColor = true;
+            this.btn_print.UseVisualStyleBackColor = false;
             // 
             // btn_display
             // 
+            this.btn_display.BackColor = System.Drawing.Color.White;
             this.btn_display.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_display.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btn_display.Location = new System.Drawing.Point(641, 19);
@@ -118,7 +120,7 @@
             this.btn_display.TabIndex = 40;
             this.btn_display.TabStop = false;
             this.btn_display.Text = "Display";
-            this.btn_display.UseVisualStyleBackColor = true;
+            this.btn_display.UseVisualStyleBackColor = false;
             this.btn_display.Click += new System.EventHandler(this.btn_display_Click);
             // 
             // cmbo_addressWise
@@ -145,6 +147,7 @@
             // 
             // Btn_dashboard
             // 
+            this.Btn_dashboard.BackColor = System.Drawing.Color.White;
             this.Btn_dashboard.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_dashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Btn_dashboard.Location = new System.Drawing.Point(799, 19);
@@ -154,7 +157,7 @@
             this.Btn_dashboard.TabIndex = 27;
             this.Btn_dashboard.TabStop = false;
             this.Btn_dashboard.Text = "Dashboard";
-            this.Btn_dashboard.UseVisualStyleBackColor = true;
+            this.Btn_dashboard.UseVisualStyleBackColor = false;
             this.Btn_dashboard.Click += new System.EventHandler(this.Btn_dashboard_Click);
             // 
             // label1
@@ -201,6 +204,15 @@
             this.panel2.Size = new System.Drawing.Size(979, 39);
             this.panel2.TabIndex = 13;
             // 
+            // txt_grandOpeningBalance
+            // 
+            this.txt_grandOpeningBalance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_grandOpeningBalance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_grandOpeningBalance.Location = new System.Drawing.Point(297, 6);
+            this.txt_grandOpeningBalance.Name = "txt_grandOpeningBalance";
+            this.txt_grandOpeningBalance.Size = new System.Drawing.Size(218, 25);
+            this.txt_grandOpeningBalance.TabIndex = 4;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -239,15 +251,6 @@
             this.txt_balance.Name = "txt_balance";
             this.txt_balance.Size = new System.Drawing.Size(201, 25);
             this.txt_balance.TabIndex = 0;
-            // 
-            // txt_grandOpeningBalance
-            // 
-            this.txt_grandOpeningBalance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_grandOpeningBalance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_grandOpeningBalance.Location = new System.Drawing.Point(297, 6);
-            this.txt_grandOpeningBalance.Name = "txt_grandOpeningBalance";
-            this.txt_grandOpeningBalance.Size = new System.Drawing.Size(218, 25);
-            this.txt_grandOpeningBalance.TabIndex = 4;
             // 
             // customer_balances
             // 

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btn_addNew = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
@@ -79,6 +79,7 @@
             // 
             // btn_addNew
             // 
+            this.btn_addNew.BackColor = System.Drawing.Color.White;
             this.btn_addNew.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_addNew.ForeColor = System.Drawing.Color.Black;
             this.btn_addNew.Location = new System.Drawing.Point(930, 3);
@@ -88,11 +89,12 @@
             this.btn_addNew.TabIndex = 31;
             this.btn_addNew.TabStop = false;
             this.btn_addNew.Text = "Add New\r\nنیا ریکارڈ";
-            this.btn_addNew.UseVisualStyleBackColor = true;
+            this.btn_addNew.UseVisualStyleBackColor = false;
             this.btn_addNew.Click += new System.EventHandler(this.btn_addNew_Click);
             // 
             // btn_save
             // 
+            this.btn_save.BackColor = System.Drawing.Color.White;
             this.btn_save.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_save.ForeColor = System.Drawing.Color.Black;
             this.btn_save.Location = new System.Drawing.Point(843, 3);
@@ -101,11 +103,12 @@
             this.btn_save.Size = new System.Drawing.Size(88, 56);
             this.btn_save.TabIndex = 0;
             this.btn_save.Text = "Save\r\nمحفوظ کریں";
-            this.btn_save.UseVisualStyleBackColor = true;
+            this.btn_save.UseVisualStyleBackColor = false;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
             // btn_delete
             // 
+            this.btn_delete.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_delete.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_delete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btn_delete.Location = new System.Drawing.Point(1113, 3);
@@ -115,11 +118,12 @@
             this.btn_delete.TabIndex = 29;
             this.btn_delete.TabStop = false;
             this.btn_delete.Text = "Delete Record\r\nڈیلیٹ ریکارڈ";
-            this.btn_delete.UseVisualStyleBackColor = true;
+            this.btn_delete.UseVisualStyleBackColor = false;
             this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // btn_update
             // 
+            this.btn_update.BackColor = System.Drawing.Color.White;
             this.btn_update.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_update.ForeColor = System.Drawing.Color.Black;
             this.btn_update.Location = new System.Drawing.Point(756, 3);
@@ -129,11 +133,12 @@
             this.btn_update.TabIndex = 28;
             this.btn_update.TabStop = false;
             this.btn_update.Text = "Update Record";
-            this.btn_update.UseVisualStyleBackColor = true;
+            this.btn_update.UseVisualStyleBackColor = false;
             this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
             // 
             // btn_dashboard
             // 
+            this.btn_dashboard.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_dashboard.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_dashboard.ForeColor = System.Drawing.Color.Black;
             this.btn_dashboard.Location = new System.Drawing.Point(1026, 3);
@@ -143,7 +148,7 @@
             this.btn_dashboard.TabIndex = 27;
             this.btn_dashboard.TabStop = false;
             this.btn_dashboard.Text = "Dashboard";
-            this.btn_dashboard.UseVisualStyleBackColor = true;
+            this.btn_dashboard.UseVisualStyleBackColor = false;
             this.btn_dashboard.Click += new System.EventHandler(this.btn_dashboard_Click);
             // 
             // txt_totalReceive
@@ -212,14 +217,14 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView1.ImeMode = System.Windows.Forms.ImeMode.Off;
@@ -255,6 +260,7 @@
             // 
             // btn_newCustomer
             // 
+            this.btn_newCustomer.BackColor = System.Drawing.Color.White;
             this.btn_newCustomer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_newCustomer.ForeColor = System.Drawing.Color.Black;
             this.btn_newCustomer.Location = new System.Drawing.Point(661, 3);
@@ -264,7 +270,7 @@
             this.btn_newCustomer.TabIndex = 62;
             this.btn_newCustomer.TabStop = false;
             this.btn_newCustomer.Text = "New Customer";
-            this.btn_newCustomer.UseVisualStyleBackColor = true;
+            this.btn_newCustomer.UseVisualStyleBackColor = false;
             this.btn_newCustomer.Click += new System.EventHandler(this.btn_newCustomer_Click);
             // 
             // chk_evening
@@ -411,12 +417,13 @@
             // 
             // btn_goForward
             // 
+            this.btn_goForward.BackColor = System.Drawing.Color.White;
             this.btn_goForward.Location = new System.Drawing.Point(303, 18);
             this.btn_goForward.Name = "btn_goForward";
             this.btn_goForward.Size = new System.Drawing.Size(49, 31);
             this.btn_goForward.TabIndex = 73;
             this.btn_goForward.Text = ">>";
-            this.btn_goForward.UseVisualStyleBackColor = true;
+            this.btn_goForward.UseVisualStyleBackColor = false;
             this.btn_goForward.Click += new System.EventHandler(this.btn_goForward_Click);
             // 
             // txt_dodhiId
@@ -431,12 +438,13 @@
             // 
             // btn_goBack
             // 
+            this.btn_goBack.BackColor = System.Drawing.Color.White;
             this.btn_goBack.Location = new System.Drawing.Point(152, 18);
             this.btn_goBack.Name = "btn_goBack";
             this.btn_goBack.Size = new System.Drawing.Size(49, 31);
             this.btn_goBack.TabIndex = 72;
             this.btn_goBack.Text = "<<";
-            this.btn_goBack.UseVisualStyleBackColor = true;
+            this.btn_goBack.UseVisualStyleBackColor = false;
             this.btn_goBack.Click += new System.EventHandler(this.btn_goBack_Click);
             // 
             // txt_dodhiName
@@ -570,6 +578,7 @@
             // 
             // txt_purchaseId
             // 
+            this.txt_purchaseId.BackColor = System.Drawing.Color.White;
             this.txt_purchaseId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_purchaseId.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_purchaseId.Location = new System.Drawing.Point(203, 20);

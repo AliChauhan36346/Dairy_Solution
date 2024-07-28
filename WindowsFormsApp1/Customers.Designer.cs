@@ -279,7 +279,8 @@
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button1.Location = new System.Drawing.Point(351, 4);
             this.button1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -288,12 +289,13 @@
             this.button1.TabIndex = 31;
             this.button1.TabStop = false;
             this.button1.Text = "Add Employee";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btn_updateRecord
             // 
-            this.btn_updateRecord.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_updateRecord.BackColor = System.Drawing.Color.White;
+            this.btn_updateRecord.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_updateRecord.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btn_updateRecord.Location = new System.Drawing.Point(439, 4);
             this.btn_updateRecord.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -302,12 +304,13 @@
             this.btn_updateRecord.TabIndex = 30;
             this.btn_updateRecord.TabStop = false;
             this.btn_updateRecord.Text = "Update Record";
-            this.btn_updateRecord.UseVisualStyleBackColor = true;
+            this.btn_updateRecord.UseVisualStyleBackColor = false;
             this.btn_updateRecord.Click += new System.EventHandler(this.btn_updateRecord_Click);
             // 
             // cusBtn_dashboard
             // 
-            this.cusBtn_dashboard.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cusBtn_dashboard.BackColor = System.Drawing.Color.White;
+            this.cusBtn_dashboard.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cusBtn_dashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cusBtn_dashboard.Location = new System.Drawing.Point(687, 4);
             this.cusBtn_dashboard.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -316,12 +319,13 @@
             this.cusBtn_dashboard.TabIndex = 2;
             this.cusBtn_dashboard.TabStop = false;
             this.cusBtn_dashboard.Text = "Dashboard";
-            this.cusBtn_dashboard.UseVisualStyleBackColor = true;
+            this.cusBtn_dashboard.UseVisualStyleBackColor = false;
             this.cusBtn_dashboard.Click += new System.EventHandler(this.cusBtn_dashboard_Click);
             // 
             // cusBtn_addNew
             // 
-            this.cusBtn_addNew.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cusBtn_addNew.BackColor = System.Drawing.Color.White;
+            this.cusBtn_addNew.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cusBtn_addNew.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cusBtn_addNew.Location = new System.Drawing.Point(599, 4);
             this.cusBtn_addNew.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -330,12 +334,13 @@
             this.cusBtn_addNew.TabIndex = 1;
             this.cusBtn_addNew.TabStop = false;
             this.cusBtn_addNew.Text = "Add New";
-            this.cusBtn_addNew.UseVisualStyleBackColor = true;
+            this.cusBtn_addNew.UseVisualStyleBackColor = false;
             this.cusBtn_addNew.Click += new System.EventHandler(this.cusBtn_addNew_Click);
             // 
             // cusBtn_save
             // 
-            this.cusBtn_save.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cusBtn_save.BackColor = System.Drawing.Color.White;
+            this.cusBtn_save.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cusBtn_save.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cusBtn_save.Location = new System.Drawing.Point(519, 4);
             this.cusBtn_save.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -343,12 +348,13 @@
             this.cusBtn_save.Size = new System.Drawing.Size(81, 52);
             this.cusBtn_save.TabIndex = 0;
             this.cusBtn_save.Text = "Save";
-            this.cusBtn_save.UseVisualStyleBackColor = true;
+            this.cusBtn_save.UseVisualStyleBackColor = false;
             this.cusBtn_save.Click += new System.EventHandler(this.cusBtn_save_Click);
             // 
             // cusBtn_deleteCustomer
             // 
-            this.cusBtn_deleteCustomer.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cusBtn_deleteCustomer.BackColor = System.Drawing.Color.White;
+            this.cusBtn_deleteCustomer.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cusBtn_deleteCustomer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cusBtn_deleteCustomer.Location = new System.Drawing.Point(768, 4);
             this.cusBtn_deleteCustomer.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -357,7 +363,7 @@
             this.cusBtn_deleteCustomer.TabIndex = 29;
             this.cusBtn_deleteCustomer.TabStop = false;
             this.cusBtn_deleteCustomer.Text = "Delete Customer";
-            this.cusBtn_deleteCustomer.UseVisualStyleBackColor = true;
+            this.cusBtn_deleteCustomer.UseVisualStyleBackColor = false;
             this.cusBtn_deleteCustomer.Click += new System.EventHandler(this.cusBtn_deleteCustomer_Click);
             // 
             // dataGridView2

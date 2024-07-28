@@ -79,6 +79,7 @@
             // 
             // btn_saleReport
             // 
+            this.btn_saleReport.BackColor = System.Drawing.Color.White;
             this.btn_saleReport.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_saleReport.Location = new System.Drawing.Point(744, 39);
             this.btn_saleReport.Margin = new System.Windows.Forms.Padding(5);
@@ -86,11 +87,12 @@
             this.btn_saleReport.Size = new System.Drawing.Size(114, 35);
             this.btn_saleReport.TabIndex = 31;
             this.btn_saleReport.Text = "Chilar Receive";
-            this.btn_saleReport.UseVisualStyleBackColor = true;
+            this.btn_saleReport.UseVisualStyleBackColor = false;
             this.btn_saleReport.Click += new System.EventHandler(this.btn_saleReport_Click);
             // 
             // btn_purchaseReport
             // 
+            this.btn_purchaseReport.BackColor = System.Drawing.Color.White;
             this.btn_purchaseReport.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_purchaseReport.Location = new System.Drawing.Point(744, 4);
             this.btn_purchaseReport.Margin = new System.Windows.Forms.Padding(5);
@@ -98,18 +100,19 @@
             this.btn_purchaseReport.Size = new System.Drawing.Size(114, 35);
             this.btn_purchaseReport.TabIndex = 30;
             this.btn_purchaseReport.Text = "Receive Report";
-            this.btn_purchaseReport.UseVisualStyleBackColor = true;
+            this.btn_purchaseReport.UseVisualStyleBackColor = false;
             this.btn_purchaseReport.Click += new System.EventHandler(this.btn_purchaseReport_Click);
             // 
             // btn_roznamcha
             // 
+            this.btn_roznamcha.BackColor = System.Drawing.Color.White;
             this.btn_roznamcha.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_roznamcha.Location = new System.Drawing.Point(634, 4);
             this.btn_roznamcha.Name = "btn_roznamcha";
             this.btn_roznamcha.Size = new System.Drawing.Size(98, 70);
             this.btn_roznamcha.TabIndex = 17;
             this.btn_roznamcha.Text = "Display\r\nRoznamcha";
-            this.btn_roznamcha.UseVisualStyleBackColor = true;
+            this.btn_roznamcha.UseVisualStyleBackColor = false;
             this.btn_roznamcha.Click += new System.EventHandler(this.btn_roznamcha_Click);
             // 
             // chk_Morning

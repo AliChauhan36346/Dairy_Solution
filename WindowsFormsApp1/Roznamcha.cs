@@ -20,15 +20,61 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
+        public bool fromOtherForm = false;
+        public DateTime startDate;
+        public DateTime endDate;
+
         private void Roznamcha_Load(object sender, EventArgs e)
         {
-            reports.GetCombinedReport(dataGridView1,dtm_start.Value.Date,dtm_end.Value.Date, out decimal morningReceive,
-                out decimal totalSales, out decimal eveningReceive, out decimal tsSales,false,false);
+            if(fromOtherForm)
+            {
+                dtm_start.Value= startDate;
+                dtm_end.Value= endDate;
+                chkEvening.Checked = true;
+                chk_Morning.Checked = true;
 
-            txt_tsSale.Text = tsSales.ToString();
-            txt_sale.Text = totalSales.ToString();
-            txt_evening.Text = eveningReceive.ToString();
-            txt_morning.Text = morningReceive.ToString();
+                reports.GetCombinedReport(dataGridView1, dtm_start.Value.Date, dtm_end.Value.Date, out decimal morningReceive,
+                out decimal totalSales, out decimal eveningReceive, out decimal tsSales, true, true);
+
+                txt_tsSale.Text = tsSales.ToString();
+                txt_sale.Text = totalSales.ToString();
+                txt_evening.Text = eveningReceive.ToString();
+                txt_morning.Text = morningReceive.ToString();
+
+                decimal tsDifference = totalSales - tsSales;
+                decimal totalVolume = eveningReceive + morningReceive;
+                decimal volumeDifference = totalVolume - totalSales;
+
+                txt_tsDifference.Text = tsDifference.ToString();
+                txt_totalVolume.Text = totalVolume.ToString();
+                txt_volumeDifference.Text = volumeDifference.ToString();
+
+            }
+            else
+            {
+                chk_Morning.Checked = true;
+                chkEvening.Checked = true;
+
+                reports.GetCombinedReport(dataGridView1, dtm_start.Value.Date, dtm_end.Value.Date, out decimal morningReceive,
+                out decimal totalSales, out decimal eveningReceive, out decimal tsSales, true, true);
+
+                txt_tsSale.Text = tsSales.ToString();
+                txt_sale.Text = totalSales.ToString();
+                txt_evening.Text = eveningReceive.ToString();
+                txt_morning.Text = morningReceive.ToString();
+
+                decimal tsDifference = totalSales - tsSales;
+                decimal totalVolume = eveningReceive + morningReceive;
+                decimal volumeDifference = totalVolume - totalSales;
+
+                txt_tsDifference.Text = tsDifference.ToString();
+                txt_totalVolume.Text = totalVolume.ToString();
+                txt_volumeDifference.Text = volumeDifference.ToString();
+            }
+
+            
+
+            
 
         }
         

@@ -96,6 +96,7 @@
             // 
             // btn_update
             // 
+            this.btn_update.BackColor = System.Drawing.Color.White;
             this.btn_update.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_update.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btn_update.Location = new System.Drawing.Point(684, 3);
@@ -104,11 +105,12 @@
             this.btn_update.Size = new System.Drawing.Size(81, 56);
             this.btn_update.TabIndex = 1;
             this.btn_update.Text = "Update Record";
-            this.btn_update.UseVisualStyleBackColor = true;
+            this.btn_update.UseVisualStyleBackColor = false;
             this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
             // 
             // chilarBtn_addNew
             // 
+            this.chilarBtn_addNew.BackColor = System.Drawing.Color.White;
             this.chilarBtn_addNew.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chilarBtn_addNew.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.chilarBtn_addNew.Location = new System.Drawing.Point(853, 3);
@@ -117,11 +119,12 @@
             this.chilarBtn_addNew.Size = new System.Drawing.Size(81, 56);
             this.chilarBtn_addNew.TabIndex = 2;
             this.chilarBtn_addNew.Text = "Add New\r\nنیا ریکارڈ";
-            this.chilarBtn_addNew.UseVisualStyleBackColor = true;
+            this.chilarBtn_addNew.UseVisualStyleBackColor = false;
             this.chilarBtn_addNew.Click += new System.EventHandler(this.chilarBtn_addNew_Click);
             // 
             // chilarBtn_save
             // 
+            this.chilarBtn_save.BackColor = System.Drawing.Color.White;
             this.chilarBtn_save.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chilarBtn_save.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.chilarBtn_save.Location = new System.Drawing.Point(773, 3);
@@ -130,11 +133,12 @@
             this.chilarBtn_save.Size = new System.Drawing.Size(81, 56);
             this.chilarBtn_save.TabIndex = 0;
             this.chilarBtn_save.Text = "Save\r\nمحفوظ کریں";
-            this.chilarBtn_save.UseVisualStyleBackColor = true;
+            this.chilarBtn_save.UseVisualStyleBackColor = false;
             this.chilarBtn_save.Click += new System.EventHandler(this.chilarBtn_save_Click);
             // 
             // chilarBtn_dashboard
             // 
+            this.chilarBtn_dashboard.BackColor = System.Drawing.Color.White;
             this.chilarBtn_dashboard.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chilarBtn_dashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.chilarBtn_dashboard.Location = new System.Drawing.Point(942, 3);
@@ -144,7 +148,7 @@
             this.chilarBtn_dashboard.TabIndex = 27;
             this.chilarBtn_dashboard.TabStop = false;
             this.chilarBtn_dashboard.Text = "Dashboard";
-            this.chilarBtn_dashboard.UseVisualStyleBackColor = true;
+            this.chilarBtn_dashboard.UseVisualStyleBackColor = false;
             this.chilarBtn_dashboard.Click += new System.EventHandler(this.chilarBtn_dashboard_Click);
             // 
             // label1
@@ -161,6 +165,7 @@
             // 
             // chlrBtn_deleteEntry
             // 
+            this.chlrBtn_deleteEntry.BackColor = System.Drawing.Color.White;
             this.chlrBtn_deleteEntry.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chlrBtn_deleteEntry.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.chlrBtn_deleteEntry.Location = new System.Drawing.Point(1022, 3);
@@ -170,7 +175,7 @@
             this.chlrBtn_deleteEntry.TabIndex = 29;
             this.chlrBtn_deleteEntry.TabStop = false;
             this.chlrBtn_deleteEntry.Text = "Delete Entry\r\nڈیلیٹ ریکارڈ";
-            this.chlrBtn_deleteEntry.UseVisualStyleBackColor = true;
+            this.chlrBtn_deleteEntry.UseVisualStyleBackColor = false;
             this.chlrBtn_deleteEntry.Click += new System.EventHandler(this.chlrBtn_deleteEntry_Click);
             // 
             // groupBox1

@@ -64,6 +64,7 @@
             // 
             // btn_view
             // 
+            this.btn_view.BackColor = System.Drawing.Color.White;
             this.btn_view.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_view.Location = new System.Drawing.Point(770, 13);
             this.btn_view.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -71,7 +72,7 @@
             this.btn_view.Size = new System.Drawing.Size(78, 43);
             this.btn_view.TabIndex = 15;
             this.btn_view.Text = "View";
-            this.btn_view.UseVisualStyleBackColor = true;
+            this.btn_view.UseVisualStyleBackColor = false;
             this.btn_view.Click += new System.EventHandler(this.btn_view_Click);
             // 
             // label1
@@ -126,7 +127,7 @@
             // dataGridView1
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.Gainsboro;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(0, 104);
@@ -214,6 +215,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "ProfitLoss";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ProfitLoss";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

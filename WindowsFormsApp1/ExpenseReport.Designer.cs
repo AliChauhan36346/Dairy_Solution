@@ -47,7 +47,7 @@
             // 
             // Compare
             // 
-            this.Compare.BackColor = System.Drawing.Color.Silver;
+            this.Compare.BackColor = System.Drawing.Color.LightGray;
             this.Compare.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Compare.Controls.Add(this.button2);
             this.Compare.Controls.Add(this.btn_display);
@@ -66,21 +66,23 @@
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(749, 21);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 40);
             this.button2.TabIndex = 18;
             this.button2.Text = "Compare";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // btn_display
             // 
+            this.btn_display.BackColor = System.Drawing.Color.White;
             this.btn_display.Location = new System.Drawing.Point(668, 21);
             this.btn_display.Name = "btn_display";
             this.btn_display.Size = new System.Drawing.Size(75, 40);
             this.btn_display.TabIndex = 17;
             this.btn_display.Text = "Display";
-            this.btn_display.UseVisualStyleBackColor = true;
+            this.btn_display.UseVisualStyleBackColor = false;
             this.btn_display.Click += new System.EventHandler(this.btn_display_Click);
             // 
             // chk_filter

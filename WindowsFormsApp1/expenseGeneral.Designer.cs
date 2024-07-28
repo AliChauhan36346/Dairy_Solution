@@ -82,6 +82,7 @@
             // 
             // btn_update
             // 
+            this.btn_update.BackColor = System.Drawing.Color.White;
             this.btn_update.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_update.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btn_update.Location = new System.Drawing.Point(479, 4);
@@ -91,11 +92,12 @@
             this.btn_update.TabIndex = 30;
             this.btn_update.TabStop = false;
             this.btn_update.Text = "Update Expense";
-            this.btn_update.UseVisualStyleBackColor = true;
+            this.btn_update.UseVisualStyleBackColor = false;
             this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
             // 
             // btn_save
             // 
+            this.btn_save.BackColor = System.Drawing.Color.White;
             this.btn_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_save.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btn_save.Location = new System.Drawing.Point(566, 4);
@@ -104,11 +106,12 @@
             this.btn_save.Size = new System.Drawing.Size(88, 56);
             this.btn_save.TabIndex = 6;
             this.btn_save.Text = "Save";
-            this.btn_save.UseVisualStyleBackColor = true;
+            this.btn_save.UseVisualStyleBackColor = false;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
             // btn_addEmployee
             // 
+            this.btn_addEmployee.BackColor = System.Drawing.Color.White;
             this.btn_addEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_addEmployee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btn_addEmployee.Location = new System.Drawing.Point(384, 4);
@@ -118,11 +121,12 @@
             this.btn_addEmployee.TabIndex = 28;
             this.btn_addEmployee.TabStop = false;
             this.btn_addEmployee.Text = "Add Employee";
-            this.btn_addEmployee.UseVisualStyleBackColor = true;
+            this.btn_addEmployee.UseVisualStyleBackColor = false;
             this.btn_addEmployee.Click += new System.EventHandler(this.btn_addPurchase_Click);
             // 
             // btn_dashboard
             // 
+            this.btn_dashboard.BackColor = System.Drawing.Color.White;
             this.btn_dashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_dashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btn_dashboard.Location = new System.Drawing.Point(747, 4);
@@ -132,11 +136,12 @@
             this.btn_dashboard.TabIndex = 27;
             this.btn_dashboard.TabStop = false;
             this.btn_dashboard.Text = "Dashboard";
-            this.btn_dashboard.UseVisualStyleBackColor = true;
+            this.btn_dashboard.UseVisualStyleBackColor = false;
             this.btn_dashboard.Click += new System.EventHandler(this.btn_dashboard_Click);
             // 
             // btn_addNew
             // 
+            this.btn_addNew.BackColor = System.Drawing.Color.White;
             this.btn_addNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_addNew.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btn_addNew.Location = new System.Drawing.Point(653, 4);
@@ -145,7 +150,7 @@
             this.btn_addNew.Size = new System.Drawing.Size(88, 56);
             this.btn_addNew.TabIndex = 7;
             this.btn_addNew.Text = "Add New";
-            this.btn_addNew.UseVisualStyleBackColor = true;
+            this.btn_addNew.UseVisualStyleBackColor = false;
             this.btn_addNew.Click += new System.EventHandler(this.btn_addNew_Click);
             // 
             // label1
@@ -163,6 +168,7 @@
             // 
             // btn_deleteRecord
             // 
+            this.btn_deleteRecord.BackColor = System.Drawing.Color.White;
             this.btn_deleteRecord.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_deleteRecord.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btn_deleteRecord.Location = new System.Drawing.Point(835, 4);
@@ -172,7 +178,7 @@
             this.btn_deleteRecord.TabIndex = 29;
             this.btn_deleteRecord.TabStop = false;
             this.btn_deleteRecord.Text = "Delete Record";
-            this.btn_deleteRecord.UseVisualStyleBackColor = true;
+            this.btn_deleteRecord.UseVisualStyleBackColor = false;
             this.btn_deleteRecord.Click += new System.EventHandler(this.btn_deleteRecord_Click);
             // 
             // groupBox1
@@ -225,21 +231,23 @@
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(324, 31);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(40, 29);
             this.button2.TabIndex = 22;
             this.button2.Text = ">>";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(282, 31);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(40, 29);
             this.button1.TabIndex = 21;
             this.button1.Text = "<<";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // label3
             // 
@@ -424,7 +432,7 @@
             this.dataGridView2.AllowUserToResizeColumns = false;
             this.dataGridView2.AllowUserToResizeRows = false;
             this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Bottom;

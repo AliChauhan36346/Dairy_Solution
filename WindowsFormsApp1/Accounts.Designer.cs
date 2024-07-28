@@ -67,6 +67,7 @@
             // 
             // btn_update
             // 
+            this.btn_update.BackColor = System.Drawing.Color.White;
             this.btn_update.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_update.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btn_update.Location = new System.Drawing.Point(239, 4);
@@ -75,11 +76,12 @@
             this.btn_update.Size = new System.Drawing.Size(84, 52);
             this.btn_update.TabIndex = 30;
             this.btn_update.Text = "Update Account";
-            this.btn_update.UseVisualStyleBackColor = true;
+            this.btn_update.UseVisualStyleBackColor = false;
             this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
             // 
             // btn_addNew
             // 
+            this.btn_addNew.BackColor = System.Drawing.Color.White;
             this.btn_addNew.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_addNew.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btn_addNew.Location = new System.Drawing.Point(415, 4);
@@ -88,11 +90,12 @@
             this.btn_addNew.Size = new System.Drawing.Size(84, 52);
             this.btn_addNew.TabIndex = 1;
             this.btn_addNew.Text = "Add New";
-            this.btn_addNew.UseVisualStyleBackColor = true;
+            this.btn_addNew.UseVisualStyleBackColor = false;
             this.btn_addNew.Click += new System.EventHandler(this.btn_addNew_Click);
             // 
             // chilarBtn_save
             // 
+            this.chilarBtn_save.BackColor = System.Drawing.Color.White;
             this.chilarBtn_save.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chilarBtn_save.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.chilarBtn_save.Location = new System.Drawing.Point(331, 4);
@@ -101,11 +104,12 @@
             this.chilarBtn_save.Size = new System.Drawing.Size(84, 52);
             this.chilarBtn_save.TabIndex = 0;
             this.chilarBtn_save.Text = "Save";
-            this.chilarBtn_save.UseVisualStyleBackColor = true;
+            this.chilarBtn_save.UseVisualStyleBackColor = false;
             this.chilarBtn_save.Click += new System.EventHandler(this.chilarBtn_save_Click);
             // 
             // chilarBtn_dashboard
             // 
+            this.chilarBtn_dashboard.BackColor = System.Drawing.Color.White;
             this.chilarBtn_dashboard.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chilarBtn_dashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.chilarBtn_dashboard.Location = new System.Drawing.Point(507, 4);
@@ -115,7 +119,7 @@
             this.chilarBtn_dashboard.TabIndex = 27;
             this.chilarBtn_dashboard.TabStop = false;
             this.chilarBtn_dashboard.Text = "Dashboard";
-            this.chilarBtn_dashboard.UseVisualStyleBackColor = true;
+            this.chilarBtn_dashboard.UseVisualStyleBackColor = false;
             this.chilarBtn_dashboard.Click += new System.EventHandler(this.chilarBtn_dashboard_Click);
             // 
             // label1
@@ -132,6 +136,7 @@
             // 
             // tn_deleteEntry
             // 
+            this.tn_deleteEntry.BackColor = System.Drawing.Color.White;
             this.tn_deleteEntry.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tn_deleteEntry.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.tn_deleteEntry.Location = new System.Drawing.Point(591, 4);
@@ -141,7 +146,7 @@
             this.tn_deleteEntry.TabIndex = 29;
             this.tn_deleteEntry.TabStop = false;
             this.tn_deleteEntry.Text = "Delete Account";
-            this.tn_deleteEntry.UseVisualStyleBackColor = true;
+            this.tn_deleteEntry.UseVisualStyleBackColor = false;
             this.tn_deleteEntry.Click += new System.EventHandler(this.tn_deleteEntry_Click);
             // 
             // groupBox1

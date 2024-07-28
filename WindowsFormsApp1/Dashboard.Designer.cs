@@ -140,6 +140,7 @@
             this.roznamchaCashToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label8 = new System.Windows.Forms.Label();
+            this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel12.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -1224,6 +1225,7 @@
             this.salesReportToolStripMenuItem,
             this.purchaseReportToolStripMenuItem,
             this.chilarReceiveReportToolStripMenuItem,
+            this.toolStripMenuItem10,
             this.toolStripSeparator5,
             this.expenseReportToolStripMenuItem,
             this.toolStripSeparator7,
@@ -1238,64 +1240,64 @@
             // salesReportToolStripMenuItem
             // 
             this.salesReportToolStripMenuItem.Name = "salesReportToolStripMenuItem";
-            this.salesReportToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.salesReportToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.salesReportToolStripMenuItem.Text = "Sales Report";
             this.salesReportToolStripMenuItem.Click += new System.EventHandler(this.salesReportToolStripMenuItem_Click);
             // 
             // purchaseReportToolStripMenuItem
             // 
             this.purchaseReportToolStripMenuItem.Name = "purchaseReportToolStripMenuItem";
-            this.purchaseReportToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.purchaseReportToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.purchaseReportToolStripMenuItem.Text = "Purchase Report";
             this.purchaseReportToolStripMenuItem.Click += new System.EventHandler(this.purchaseReportToolStripMenuItem_Click);
             // 
             // chilarReceiveReportToolStripMenuItem
             // 
             this.chilarReceiveReportToolStripMenuItem.Name = "chilarReceiveReportToolStripMenuItem";
-            this.chilarReceiveReportToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.chilarReceiveReportToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.chilarReceiveReportToolStripMenuItem.Text = "Chilar Receive Report";
             this.chilarReceiveReportToolStripMenuItem.Click += new System.EventHandler(this.chilarReceiveReportToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(183, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(198, 6);
             // 
             // expenseReportToolStripMenuItem
             // 
             this.expenseReportToolStripMenuItem.Name = "expenseReportToolStripMenuItem";
-            this.expenseReportToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.expenseReportToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.expenseReportToolStripMenuItem.Text = "Expense Report";
             this.expenseReportToolStripMenuItem.Click += new System.EventHandler(this.expenseReportToolStripMenuItem_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(183, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(198, 6);
             // 
             // toolStripMenuItem9
             // 
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(186, 22);
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(201, 22);
             this.toolStripMenuItem9.Text = "Statistics";
             this.toolStripMenuItem9.Click += new System.EventHandler(this.toolStripMenuItem9_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(183, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(198, 6);
             // 
             // incomeReportToolStripMenuItem
             // 
             this.incomeReportToolStripMenuItem.Name = "incomeReportToolStripMenuItem";
-            this.incomeReportToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.incomeReportToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.incomeReportToolStripMenuItem.Text = "Income Report";
             this.incomeReportToolStripMenuItem.Click += new System.EventHandler(this.incomeReportToolStripMenuItem_Click);
             // 
             // balanceSheetToolStripMenuItem
             // 
             this.balanceSheetToolStripMenuItem.Name = "balanceSheetToolStripMenuItem";
-            this.balanceSheetToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.balanceSheetToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.balanceSheetToolStripMenuItem.Text = "Balance Sheet";
             // 
             // toolStripMenuItem8
@@ -1339,6 +1341,13 @@
             this.label8.Size = new System.Drawing.Size(314, 27);
             this.label8.TabIndex = 13;
             this.label8.Text = "A Sofware developed by علی عباس\r\n";
+            // 
+            // toolStripMenuItem10
+            // 
+            this.toolStripMenuItem10.Name = "toolStripMenuItem10";
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(201, 22);
+            this.toolStripMenuItem10.Text = "Daily Basis Chilar Report";
+            this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem10_Click);
             // 
             // Dashboard
             // 
@@ -1516,6 +1525,7 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Button btn_back;
         private System.Windows.Forms.Button btn_forward;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
     }
 }
 

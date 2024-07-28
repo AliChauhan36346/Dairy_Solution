@@ -121,14 +121,15 @@
             // 
             // btn_roznamcha
             // 
+            this.btn_roznamcha.BackColor = System.Drawing.Color.White;
             this.btn_roznamcha.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_roznamcha.Location = new System.Drawing.Point(711, 13);
+            this.btn_roznamcha.Location = new System.Drawing.Point(710, 13);
             this.btn_roznamcha.Margin = new System.Windows.Forms.Padding(5);
             this.btn_roznamcha.Name = "btn_roznamcha";
             this.btn_roznamcha.Size = new System.Drawing.Size(96, 59);
             this.btn_roznamcha.TabIndex = 21;
             this.btn_roznamcha.Text = "Display\r\nRoznamcha";
-            this.btn_roznamcha.UseVisualStyleBackColor = true;
+            this.btn_roznamcha.UseVisualStyleBackColor = false;
             this.btn_roznamcha.Click += new System.EventHandler(this.btn_roznamcha_Click);
             // 
             // dtm_end

@@ -32,14 +32,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_purchase = new System.Windows.Forms.Button();
+            this.btn_cashPayment = new System.Windows.Forms.Button();
             this.txtAccountId = new System.Windows.Forms.TextBox();
             this.chkBox_fromDate = new System.Windows.Forms.CheckBox();
             this.btn_milkCard = new System.Windows.Forms.Button();
             this.btn_print = new System.Windows.Forms.Button();
             this.btn_display = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.dtm_to = new System.Windows.Forms.DateTimePicker();
-            this.dtm_from = new System.Windows.Forms.DateTimePicker();
+            this.dtm_endDate = new System.Windows.Forms.DateTimePicker();
+            this.dtm_startDate = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_accountName = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -50,8 +52,6 @@
             this.lstSuggestions = new System.Windows.Forms.ListBox();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.lbl_forwardBalance = new System.Windows.Forms.Label();
-            this.btn_cashPayment = new System.Windows.Forms.Button();
-            this.btn_purchase = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -59,6 +59,7 @@
             // 
             // btn_dashboard
             // 
+            this.btn_dashboard.BackColor = System.Drawing.Color.White;
             this.btn_dashboard.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_dashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btn_dashboard.Location = new System.Drawing.Point(878, 36);
@@ -67,7 +68,7 @@
             this.btn_dashboard.Size = new System.Drawing.Size(88, 39);
             this.btn_dashboard.TabIndex = 27;
             this.btn_dashboard.Text = "Dashboard";
-            this.btn_dashboard.UseVisualStyleBackColor = true;
+            this.btn_dashboard.UseVisualStyleBackColor = false;
             this.btn_dashboard.Click += new System.EventHandler(this.btn_dashboard_Click);
             // 
             // label1
@@ -117,8 +118,8 @@
             this.panel1.Controls.Add(this.btn_print);
             this.panel1.Controls.Add(this.btn_display);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.dtm_to);
-            this.panel1.Controls.Add(this.dtm_from);
+            this.panel1.Controls.Add(this.dtm_endDate);
+            this.panel1.Controls.Add(this.dtm_startDate);
             this.panel1.Controls.Add(this.btn_dashboard);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txt_accountName);
@@ -130,6 +131,30 @@
             this.panel1.Size = new System.Drawing.Size(972, 125);
             this.panel1.TabIndex = 37;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // btn_purchase
+            // 
+            this.btn_purchase.BackColor = System.Drawing.Color.White;
+            this.btn_purchase.Location = new System.Drawing.Point(4, 81);
+            this.btn_purchase.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_purchase.Name = "btn_purchase";
+            this.btn_purchase.Size = new System.Drawing.Size(103, 39);
+            this.btn_purchase.TabIndex = 32;
+            this.btn_purchase.Text = "Purchase";
+            this.btn_purchase.UseVisualStyleBackColor = false;
+            this.btn_purchase.Click += new System.EventHandler(this.btn_purchase_Click);
+            // 
+            // btn_cashPayment
+            // 
+            this.btn_cashPayment.BackColor = System.Drawing.Color.White;
+            this.btn_cashPayment.Location = new System.Drawing.Point(4, 40);
+            this.btn_cashPayment.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_cashPayment.Name = "btn_cashPayment";
+            this.btn_cashPayment.Size = new System.Drawing.Size(103, 39);
+            this.btn_cashPayment.TabIndex = 31;
+            this.btn_cashPayment.Text = "Cash Payment";
+            this.btn_cashPayment.UseVisualStyleBackColor = false;
+            this.btn_cashPayment.Click += new System.EventHandler(this.btn_cashPayment_Click);
             // 
             // txtAccountId
             // 
@@ -159,35 +184,38 @@
             // 
             // btn_milkCard
             // 
+            this.btn_milkCard.BackColor = System.Drawing.Color.White;
             this.btn_milkCard.Location = new System.Drawing.Point(734, 74);
             this.btn_milkCard.Margin = new System.Windows.Forms.Padding(4);
             this.btn_milkCard.Name = "btn_milkCard";
             this.btn_milkCard.Size = new System.Drawing.Size(68, 39);
             this.btn_milkCard.TabIndex = 28;
             this.btn_milkCard.Text = "M-Card";
-            this.btn_milkCard.UseVisualStyleBackColor = true;
+            this.btn_milkCard.UseVisualStyleBackColor = false;
             this.btn_milkCard.Click += new System.EventHandler(this.btn_milkCard_Click);
             // 
             // btn_print
             // 
+            this.btn_print.BackColor = System.Drawing.Color.White;
             this.btn_print.Location = new System.Drawing.Point(806, 36);
             this.btn_print.Margin = new System.Windows.Forms.Padding(4);
             this.btn_print.Name = "btn_print";
             this.btn_print.Size = new System.Drawing.Size(68, 39);
             this.btn_print.TabIndex = 8;
             this.btn_print.Text = "print";
-            this.btn_print.UseVisualStyleBackColor = true;
+            this.btn_print.UseVisualStyleBackColor = false;
             this.btn_print.Click += new System.EventHandler(this.btn_print_Click);
             // 
             // btn_display
             // 
+            this.btn_display.BackColor = System.Drawing.Color.White;
             this.btn_display.Location = new System.Drawing.Point(734, 36);
             this.btn_display.Margin = new System.Windows.Forms.Padding(4);
             this.btn_display.Name = "btn_display";
             this.btn_display.Size = new System.Drawing.Size(68, 39);
             this.btn_display.TabIndex = 1;
             this.btn_display.Text = "Display";
-            this.btn_display.UseVisualStyleBackColor = true;
+            this.btn_display.UseVisualStyleBackColor = false;
             this.btn_display.Click += new System.EventHandler(this.btn_display_Click);
             // 
             // label3
@@ -201,24 +229,23 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "to";
             // 
-            // dtm_to
+            // dtm_endDate
             // 
-            this.dtm_to.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtm_to.Location = new System.Drawing.Point(614, 83);
-            this.dtm_to.Margin = new System.Windows.Forms.Padding(4);
-            this.dtm_to.Name = "dtm_to";
-            this.dtm_to.Size = new System.Drawing.Size(112, 25);
-            this.dtm_to.TabIndex = 5;
+            this.dtm_endDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtm_endDate.Location = new System.Drawing.Point(614, 83);
+            this.dtm_endDate.Margin = new System.Windows.Forms.Padding(4);
+            this.dtm_endDate.Name = "dtm_endDate";
+            this.dtm_endDate.Size = new System.Drawing.Size(112, 25);
+            this.dtm_endDate.TabIndex = 5;
             // 
-            // dtm_from
+            // dtm_startDate
             // 
-            this.dtm_from.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtm_from.Location = new System.Drawing.Point(470, 83);
-            this.dtm_from.Margin = new System.Windows.Forms.Padding(4);
-            this.dtm_from.Name = "dtm_from";
-            this.dtm_from.Size = new System.Drawing.Size(109, 25);
-            this.dtm_from.TabIndex = 4;
-            this.dtm_from.ValueChanged += new System.EventHandler(this.dtm_from_ValueChanged);
+            this.dtm_startDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtm_startDate.Location = new System.Drawing.Point(470, 83);
+            this.dtm_startDate.Margin = new System.Windows.Forms.Padding(4);
+            this.dtm_startDate.Name = "dtm_startDate";
+            this.dtm_startDate.Size = new System.Drawing.Size(109, 25);
+            this.dtm_startDate.TabIndex = 4;
             // 
             // label2
             // 
@@ -305,7 +332,7 @@
             // 
             this.lstSuggestions.FormattingEnabled = true;
             this.lstSuggestions.ItemHeight = 17;
-            this.lstSuggestions.Location = new System.Drawing.Point(368, 67);
+            this.lstSuggestions.Location = new System.Drawing.Point(369, 68);
             this.lstSuggestions.Margin = new System.Windows.Forms.Padding(4);
             this.lstSuggestions.Name = "lstSuggestions";
             this.lstSuggestions.Size = new System.Drawing.Size(360, 310);
@@ -318,45 +345,24 @@
             // lbl_forwardBalance
             // 
             this.lbl_forwardBalance.AutoSize = true;
-            this.lbl_forwardBalance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_forwardBalance.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_forwardBalance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lbl_forwardBalance.Location = new System.Drawing.Point(619, 134);
             this.lbl_forwardBalance.Name = "lbl_forwardBalance";
-            this.lbl_forwardBalance.Size = new System.Drawing.Size(0, 21);
+            this.lbl_forwardBalance.Size = new System.Drawing.Size(71, 19);
             this.lbl_forwardBalance.TabIndex = 41;
-            // 
-            // btn_cashPayment
-            // 
-            this.btn_cashPayment.Location = new System.Drawing.Point(4, 40);
-            this.btn_cashPayment.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_cashPayment.Name = "btn_cashPayment";
-            this.btn_cashPayment.Size = new System.Drawing.Size(103, 39);
-            this.btn_cashPayment.TabIndex = 31;
-            this.btn_cashPayment.Text = "Cash Payment";
-            this.btn_cashPayment.UseVisualStyleBackColor = true;
-            this.btn_cashPayment.Click += new System.EventHandler(this.btn_cashPayment_Click);
-            // 
-            // btn_purchase
-            // 
-            this.btn_purchase.Location = new System.Drawing.Point(4, 81);
-            this.btn_purchase.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_purchase.Name = "btn_purchase";
-            this.btn_purchase.Size = new System.Drawing.Size(103, 39);
-            this.btn_purchase.TabIndex = 32;
-            this.btn_purchase.Text = "Purchase";
-            this.btn_purchase.UseVisualStyleBackColor = true;
-            this.btn_purchase.Click += new System.EventHandler(this.btn_purchase_Click);
+            this.lbl_forwardBalance.Text = "Balance";
             // 
             // legers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(972, 677);
-            this.Controls.Add(this.lbl_forwardBalance);
             this.Controls.Add(this.lstSuggestions);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.lbl_forwardBalance);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
@@ -383,8 +389,8 @@
         private System.Windows.Forms.TextBox txt_accountName;
         private System.Windows.Forms.Button btn_display;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dtm_to;
-        private System.Windows.Forms.DateTimePicker dtm_from;
+        private System.Windows.Forms.DateTimePicker dtm_endDate;
+        private System.Windows.Forms.DateTimePicker dtm_startDate;
         private System.Windows.Forms.Button btn_print;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label4;

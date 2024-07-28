@@ -52,6 +52,7 @@
             // 
             // comBtn_addNew
             // 
+            this.comBtn_addNew.BackColor = System.Drawing.Color.White;
             this.comBtn_addNew.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comBtn_addNew.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.comBtn_addNew.Location = new System.Drawing.Point(497, 3);
@@ -60,11 +61,12 @@
             this.comBtn_addNew.Size = new System.Drawing.Size(71, 48);
             this.comBtn_addNew.TabIndex = 1;
             this.comBtn_addNew.Text = "Add New";
-            this.comBtn_addNew.UseVisualStyleBackColor = true;
+            this.comBtn_addNew.UseVisualStyleBackColor = false;
             this.comBtn_addNew.Click += new System.EventHandler(this.comBtn_addNew_Click);
             // 
             // comBtn_Save
             // 
+            this.comBtn_Save.BackColor = System.Drawing.Color.White;
             this.comBtn_Save.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comBtn_Save.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.comBtn_Save.Location = new System.Drawing.Point(426, 3);
@@ -73,11 +75,12 @@
             this.comBtn_Save.Size = new System.Drawing.Size(71, 48);
             this.comBtn_Save.TabIndex = 0;
             this.comBtn_Save.Text = "Save";
-            this.comBtn_Save.UseVisualStyleBackColor = true;
+            this.comBtn_Save.UseVisualStyleBackColor = false;
             this.comBtn_Save.Click += new System.EventHandler(this.comBtn_Save_Click);
             // 
             // comBtn_deleteEntry
             // 
+            this.comBtn_deleteEntry.BackColor = System.Drawing.Color.White;
             this.comBtn_deleteEntry.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comBtn_deleteEntry.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.comBtn_deleteEntry.Location = new System.Drawing.Point(645, 3);
@@ -87,11 +90,12 @@
             this.comBtn_deleteEntry.TabIndex = 29;
             this.comBtn_deleteEntry.TabStop = false;
             this.comBtn_deleteEntry.Text = "Delete Compny";
-            this.comBtn_deleteEntry.UseVisualStyleBackColor = true;
+            this.comBtn_deleteEntry.UseVisualStyleBackColor = false;
             this.comBtn_deleteEntry.Click += new System.EventHandler(this.comBtn_deleteEntry_Click);
             // 
             // comBtn_dashboard
             // 
+            this.comBtn_dashboard.BackColor = System.Drawing.Color.White;
             this.comBtn_dashboard.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comBtn_dashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.comBtn_dashboard.Location = new System.Drawing.Point(574, 3);
@@ -101,7 +105,7 @@
             this.comBtn_dashboard.TabIndex = 27;
             this.comBtn_dashboard.TabStop = false;
             this.comBtn_dashboard.Text = "Dashboard";
-            this.comBtn_dashboard.UseVisualStyleBackColor = true;
+            this.comBtn_dashboard.UseVisualStyleBackColor = false;
             this.comBtn_dashboard.Click += new System.EventHandler(this.comBtn_dashboard_Click);
             // 
             // panel1
@@ -123,6 +127,7 @@
             // 
             // btn_updateCompany
             // 
+            this.btn_updateCompany.BackColor = System.Drawing.Color.White;
             this.btn_updateCompany.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_updateCompany.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btn_updateCompany.Location = new System.Drawing.Point(349, 3);
@@ -131,7 +136,7 @@
             this.btn_updateCompany.Size = new System.Drawing.Size(71, 48);
             this.btn_updateCompany.TabIndex = 30;
             this.btn_updateCompany.Text = "Update Company";
-            this.btn_updateCompany.UseVisualStyleBackColor = true;
+            this.btn_updateCompany.UseVisualStyleBackColor = false;
             this.btn_updateCompany.Click += new System.EventHandler(this.btn_updateCompany_Click);
             // 
             // label1

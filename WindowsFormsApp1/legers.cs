@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Security.Cryptography;
 using System.Security.Cryptography.Pkcs;
 using System.Text;
@@ -21,7 +22,7 @@ namespace WindowsFormsApp1
         CommonFunctionsClass commonFunctions = new CommonFunctionsClass();
         milk_card milkCard= new milk_card();
         MilkCardCompany companyMilkCard=new MilkCardCompany();
-        DateTime startDate = new DateTime(1900, 1, 1);
+      
         customer_balances customer_Balances = new customer_balances();
         public bool isFromOtherForm=false;
 
@@ -69,12 +70,12 @@ namespace WindowsFormsApp1
             lstSuggestions.Visible = false;
             
 
-            dtm_from.Enabled = false;
-            dtm_to.Enabled = false;
+            dtm_startDate.Enabled = false;
+            dtm_endDate.Enabled = false;
 
             if(isFromOtherForm)
             {
-                accounts.GetCustomerLedger(dataGridView1, accountId, startDate.Date, dtm_to.Value, out totalDebit, out totalCredit, out totalBalance, out bStatus, out balanceBroughtForward, out forwardString);
+                accounts.GetCustomerLedger(dataGridView1, accountId, dtm_startDate.MinDate, dtm_endDate.MaxDate, out totalDebit, out totalCredit, out totalBalance, out bStatus, out balanceBroughtForward, out forwardString);
 
                 txtAccountId.Text = accountId.ToString();
                 txt_accountName.Text = accountName.ToString();
@@ -125,21 +126,31 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Invalid Account Id.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            // setting values for milk card when the user open it already loaded
+            // setting values for milk card
+            // when the user open it already loaded
             milkCard.id=accountId;
             milkCard.name = txt_accountName.Text;
-            milkCard.startDate = dtm_from.Value;
-            milkCard.endDate = dtm_to.Value;
+            milkCard.startDate = dtm_startDate.Value;
+            milkCard.endDate = dtm_endDate.Value;
 
             // company milk card
             companyMilkCard.id = accountId;
             companyMilkCard.name= txt_accountName.Text;
-            companyMilkCard.startDate=dtm_from.Value;
-            companyMilkCard.endDate=dtm_to.Value;
+            companyMilkCard.startDate=dtm_startDate.Value;
+            companyMilkCard.endDate=dtm_endDate.Value;
 
+            if (chkBox_fromDate.Checked)
+            {
+                accounts.GetCustomerLedger(dataGridView1, accountId, dtm_startDate.Value.Date, dtm_endDate.Value.Date, 
+                    out totalDebit, out totalCredit, out totalBalance, out bStatus, out balanceBroughtForward, out forwardString);
+            }
+            else
+            {
+                accounts.GetCustomerLedger(dataGridView1, accountId, dtm_startDate.MinDate, dtm_endDate.MaxDate,
+                    out totalDebit, out totalCredit, out totalBalance, out bStatus, out balanceBroughtForward, out forwardString);
+            }
 
-
-            accounts.GetCustomerLedger(dataGridView1, accountId, startDate.Date, dtm_to.Value, out totalDebit, out totalCredit, out totalBalance, out bStatus, out balanceBroughtForward, out forwardString);
+            
 
             // convenience round off
             totalBalance = Math.Round(totalBalance, 0);
@@ -195,11 +206,11 @@ namespace WindowsFormsApp1
 
             if (chkBox_fromDate.Checked)
             {
-                date = "Leger for the date started on " + dtm_from.Value.Date.ToString("dd-MM-yyyy") + " To " + dtm_to.Value.Date.ToString("dd-MM-yyyy");
+                date = "Leger for the date started on " + dtm_startDate.Value.Date.ToString("dd-MM-yyyy") + " To " + dtm_endDate.Value.Date.ToString("dd-MM-yyyy");
             }
             else
             {
-                date = "Leger for the date ended on " + dtm_to.Value.Date.ToString("dd-MM-yyyy");
+                date = "Leger for the date ended on " + dtm_endDate.Value.Date.ToString("dd-MM-yyyy");
             }
 
 
@@ -327,20 +338,17 @@ namespace WindowsFormsApp1
         {
             if(!chkBox_fromDate.Checked)
             {
-                dtm_from.Enabled = false;
-                dtm_to.Enabled = false;
+                dtm_startDate.Enabled = false;
+                dtm_endDate.Enabled = false;
             }
             else
             {
-                dtm_from.Enabled = true;
-                dtm_to.Enabled = true;
+                dtm_startDate.Enabled = true;
+                dtm_endDate.Enabled = true;
             }
         }
 
-        private void dtm_from_ValueChanged(object sender, EventArgs e)
-        {
-            startDate=dtm_from.Value;
-        }
+        
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {

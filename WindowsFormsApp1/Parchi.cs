@@ -21,6 +21,7 @@ namespace WindowsFormsApp1
         AddPayments payments = new AddPayments();
         cashAccountSelectionForm cashAccountSelection = new cashAccountSelectionForm();
         AddAccounts accounts = new AddAccounts();
+        AddCustomers customers = new AddCustomers();
 
 
         public Parchi()
@@ -262,6 +263,8 @@ namespace WindowsFormsApp1
             string companyName = "چوہان ڈیری فارمز"; // Your company name
             string addres = "چک نمبر 189 گ ب پتلی، ٹوبہ ٹیک سنگھ";
 
+            string legerPageNo = "";
+
             DateTime startDate = dtm_start.Value.Date;
             DateTime endDate = dtm_end.Value.Date;
 
@@ -308,7 +311,16 @@ namespace WindowsFormsApp1
 
                     xAxis -= 50;//125
                     if (row.Cells["Id"].Value != null)
+                    {
                         e.Graphics.DrawString(row.Cells["Id"].Value.ToString(), font, brush, xAxis, yAxis);
+                        int customerId = int.Parse(row.Cells["Id"].Value.ToString());
+
+                        customers.GetCustomerAddress(customerId, out legerPageNo); ;
+
+                        e.Graphics.DrawString("(" + legerPageNo + ")", font, brush, xAxis - 110, yAxis);
+
+
+                    }
 
                     xAxis -= 110;//15
                     yAxis += 30;//90
@@ -450,7 +462,16 @@ namespace WindowsFormsApp1
 
                     xAxis -= 50;//125
                     if (row.Cells["Id"].Value != null)
+                    {
                         e.Graphics.DrawString(row.Cells["Id"].Value.ToString(), font, brush, xAxis, yAxis);
+                        int customerId = int.Parse(row.Cells["Id"].Value.ToString());
+
+                        customers.GetCustomerAddress(customerId, out legerPageNo); ;
+
+                        e.Graphics.DrawString("(" + legerPageNo + ")", font, brush, xAxis - 110, yAxis);
+
+
+                    }
 
                     xAxis -= 110;//15
                     yAxis += 30;//90
@@ -1072,6 +1093,8 @@ namespace WindowsFormsApp1
 
             string companyName = "چوہان ڈیری فارمز"; // Your company name
             string addres = "چک نمبر 189 گ ب پتلی، ٹوبہ ٹیک سنگھ";
+            string legerPageNo = "";
+            
 
             DateTime startDate = dtm_start.Value.Date;
             DateTime endDate = dtm_end.Value.Date;
@@ -1101,140 +1124,151 @@ namespace WindowsFormsApp1
                 DataGridViewRow row = new DataGridViewRow();
 
                 // for horizontal printing
-                for (int i = 0; i < 3; i++)
+                
+                row = dataGridView2.Rows[currentRow];
+
+
+                e.Graphics.DrawString(companyName, headingfont, brush, xAxis, yAxis); // Adjust the Y coordinate as needed
+                yAxis += 35;
+                xAxis -= 40;//15
+                e.Graphics.DrawString(addres, address, brush, xAxis, yAxis);
+
+                yAxis += 5;//30
+                e.Graphics.DrawString("--------------------------------------------", linefont, brush, xAxis, yAxis); // Adjust the Y coordinate as needed
+                xAxis += 160;//175
+                yAxis += 30;//60
+                e.Graphics.DrawString(":اکاؤنٹ نمبر", font, brush, xAxis, yAxis);
+
+                xAxis -= 50;//125
+                if (row.Cells["Id"].Value != null)
                 {
-                    row = dataGridView2.Rows[currentRow];
+                    e.Graphics.DrawString(row.Cells["Id"].Value.ToString(), font, brush, xAxis, yAxis);
+                    int customerId = int.Parse(row.Cells["Id"].Value.ToString());
 
+                    customers.GetCustomerAddress(customerId, out legerPageNo); ;
 
-                    e.Graphics.DrawString(companyName, headingfont, brush, xAxis, yAxis); // Adjust the Y coordinate as needed
-                    yAxis += 35;
-                    xAxis -= 40;//15
-                    e.Graphics.DrawString(addres, address, brush, xAxis, yAxis);
+                    e.Graphics.DrawString("("+legerPageNo+")",font, brush, xAxis-110, yAxis);
 
-                    yAxis += 5;//30
-                    e.Graphics.DrawString("--------------------------------------------", linefont, brush, xAxis, yAxis); // Adjust the Y coordinate as needed
-                    xAxis += 160;//175
-                    yAxis += 30;//60
-                    e.Graphics.DrawString(":اکاؤنٹ نمبر", font, brush, xAxis, yAxis);
-
-                    xAxis -= 50;//125
-                    if (row.Cells["Id"].Value != null)
-                        e.Graphics.DrawString(row.Cells["Id"].Value.ToString(), font, brush, xAxis, yAxis);
-
-                    xAxis -= 110;//15
-                    yAxis += 30;//90
-                                //e.Graphics.DrawString(":نام", font, brush, xeAxis, yAxis);
-                    if (row.Cells["Customer Name"].Value != null)
-                        e.Graphics.DrawString(row.Cells["Customer Name"].Value.ToString(), font, brush, xAxis, yAxis);
-
-                    yAxis += 10;// 100
-                    e.Graphics.DrawString("--------------------------------------------", linefont, brush, xAxis, yAxis);
-
-                    xAxis += 205;//220
-                    yAxis += 25;//125
-                    e.Graphics.DrawString(":تاریخ", font, brush, xAxis, yAxis);
-                    xAxis -= 90;//115
-                    e.Graphics.DrawString(startDate.ToString("dd/MM/yyyy"), font, brush, xAxis, yAxis);
-                    xAxis -= 20;//115
-                    e.Graphics.DrawString("تا", font, brush, xAxis, yAxis);
-                    xAxis -= 95;//20
-                    e.Graphics.DrawString(endDate.ToString("dd/MM/yyyy"), font, brush, xAxis, yAxis);
-
-                    yAxis += 15;//140
-                    e.Graphics.DrawString("--------------------------------------------", linefont, brush, xAxis, yAxis);
-
-                    xAxis += 160;//190
-                    yAxis += 30;//170
-                    e.Graphics.DrawString(":سابقہ بیلنس", font, brush, xAxis, yAxis);
-                    xAxis -= 120;//70
-                    if (row.Cells["Previous Balance"].Value != null)
-                        e.Graphics.DrawString(row.Cells["Previous Balance"].Value.ToString(), font, brush, xAxis, yAxis);
-                    xAxis -= 30;//40
-                    if (row.Cells["pStatus"].Value != null)
-                    {
-                        string pStatus = row.Cells["pStatus"].Value.ToString();
-                        if (pStatus == "Credit")
-                        {
-                            e.Graphics.DrawString("جمع", font, brush, xAxis, yAxis);
-                        }
-                        else
-                        {
-                            e.Graphics.DrawString("بنام", font, brush, xAxis, yAxis);
-                        }
-                    }
-
-                    xAxis += 150;//190
-                    yAxis += 30;//200
-                    e.Graphics.DrawString(":ٹوٹل لیٹر", font, brush, xAxis, yAxis);
-                    xAxis -= 120;//70
-                    if (row.Cells["Total Liters"].Value != null)
-                        e.Graphics.DrawString(row.Cells["Total Liters"].Value.ToString(), font, brush, xAxis, yAxis);
-
-                    xAxis += 120;//190
-                    yAxis += 30;//230
-                    e.Graphics.DrawString(":دودھ رقم", font, brush, xAxis, yAxis);
-                    xAxis -= 120;//70
-                    if (row.Cells["Milk Amount"].Value != null)
-                        e.Graphics.DrawString(row.Cells["Milk Amount"].Value.ToString(), font, brush, xAxis, yAxis);
-                    xAxis += 120;//190
-                    yAxis += 30;//260
-                    e.Graphics.DrawString(":بیلنس", font, brush, xAxis, yAxis);
-                    xAxis -= 120;//70
-                    if (row.Cells["Closing Balance"].Value != null)
-                        e.Graphics.DrawString(row.Cells["Closing Balance"].Value.ToString(), font, brush, xAxis, yAxis);
-                    xAxis -= 30;//40
-                    if (row.Cells["Status"].Value != null)
-                    {
-                        string cStatus = row.Cells["Status"].Value.ToString();
-                        if (cStatus == "Credit")
-                        {
-                            e.Graphics.DrawString("جمع", font, brush, xAxis, yAxis);
-                        }
-                        else
-                        {
-                            e.Graphics.DrawString("بنام", font, brush, xAxis, yAxis);
-                        }
-                    }
-                    xAxis += 150;//190
-                    yAxis += 30;//290
-                    e.Graphics.DrawString(":ادائیگی رقم", font, brush, xAxis, yAxis);
-
-                    xAxis -= 120;//70
-                    float textWidth = 0;
-                    float textHeight = 0;
-                    if (row.Cells["Parchi Amount"].Value != null)
-                    {
-                        textWidth = e.Graphics.MeasureString(row.Cells["Parchi Amount"].Value.ToString(), font).Width;
-                        textHeight = e.Graphics.MeasureString(row.Cells["Parchi Amount"].Value.ToString(), font).Height;
-                    }
-
-                    // Draw a rectangle around the text
-                    e.Graphics.DrawRectangle(pen, xAxis, yAxis, textWidth, textHeight);
-
-                    // Draw the text
-
-                    if (row.Cells["Parchi Amount"].Value != null)
-                        e.Graphics.DrawString(row.Cells["Parchi Amount"].Value.ToString(), font, brush, xAxis, yAxis);
-                    xAxis -= 40;//20
-                    yAxis += 20;//310
-                    e.Graphics.DrawString("--------------------------------------------", linefont, brush, xAxis, yAxis);
-                    xAxis += 5;//25
-                    yAxis += 30;//340
-                    e.Graphics.DrawString("کسی بھی غلط حساب کی صورت میں جلد از ", infofont, brush, xAxis, yAxis);
-                    xAxis += 70;//115
-                    yAxis += 25;//365
-                    e.Graphics.DrawString("جلد ہم سے رابطہ کریں۔ شکریہ", infofont, brush, xAxis, yAxis);
-                    xAxis += 15;//120
-                    yAxis += 30;//395
-                    e.Graphics.DrawString("03346565189 :فون نمبر" + " ", infofont, brush, xAxis, yAxis);
-                    xAxis -= 40;//80
-                    yAxis += 30;//425
-                    e.Graphics.DrawString("آپ کے تعاون کا شکریہ", infofont, brush, xAxis, yAxis);
-                    currentRow++;
-                    e.HasMorePages = true;
-                    break;
-
+                     
                 }
+                    
+
+                
+                 
+                xAxis -= 110;//15
+                yAxis += 30;//90
+                            //e.Graphics.DrawString(":نام", font, brush, xeAxis, yAxis);
+                if (row.Cells["Customer Name"].Value != null)
+                    e.Graphics.DrawString(row.Cells["Customer Name"].Value.ToString(), font, brush, xAxis, yAxis);
+
+                yAxis += 10;// 100
+                e.Graphics.DrawString("--------------------------------------------", linefont, brush, xAxis, yAxis);
+
+                xAxis += 205;//220
+                yAxis += 25;//125
+                e.Graphics.DrawString(":تاریخ", font, brush, xAxis, yAxis);
+                xAxis -= 90;//115
+                e.Graphics.DrawString(startDate.ToString("dd/MM/yyyy"), font, brush, xAxis, yAxis);
+                xAxis -= 20;//115
+                e.Graphics.DrawString("تا", font, brush, xAxis, yAxis);
+                xAxis -= 95;//20
+                e.Graphics.DrawString(endDate.ToString("dd/MM/yyyy"), font, brush, xAxis, yAxis);
+
+                yAxis += 15;//140
+                e.Graphics.DrawString("--------------------------------------------", linefont, brush, xAxis, yAxis);
+
+                xAxis += 160;//190
+                yAxis += 30;//170
+                e.Graphics.DrawString(":سابقہ بیلنس", font, brush, xAxis, yAxis);
+                xAxis -= 120;//70
+                if (row.Cells["Previous Balance"].Value != null)
+                    e.Graphics.DrawString(row.Cells["Previous Balance"].Value.ToString(), font, brush, xAxis, yAxis);
+                xAxis -= 30;//40
+                if (row.Cells["pStatus"].Value != null)
+                {
+                    string pStatus = row.Cells["pStatus"].Value.ToString();
+                    if (pStatus == "Credit")
+                    {
+                        e.Graphics.DrawString("جمع", font, brush, xAxis, yAxis);
+                    }
+                    else
+                    {
+                        e.Graphics.DrawString("بنام", font, brush, xAxis, yAxis);
+                    }
+                }
+
+                xAxis += 150;//190
+                yAxis += 30;//200
+                e.Graphics.DrawString(":ٹوٹل لیٹر", font, brush, xAxis, yAxis);
+                xAxis -= 120;//70
+                if (row.Cells["Total Liters"].Value != null)
+                    e.Graphics.DrawString(row.Cells["Total Liters"].Value.ToString(), font, brush, xAxis, yAxis);
+
+                xAxis += 120;//190
+                yAxis += 30;//230
+                e.Graphics.DrawString(":دودھ رقم", font, brush, xAxis, yAxis);
+                xAxis -= 120;//70
+                if (row.Cells["Milk Amount"].Value != null)
+                    e.Graphics.DrawString(row.Cells["Milk Amount"].Value.ToString(), font, brush, xAxis, yAxis);
+                xAxis += 120;//190
+                yAxis += 30;//260
+                e.Graphics.DrawString(":بیلنس", font, brush, xAxis, yAxis);
+                xAxis -= 120;//70
+                if (row.Cells["Closing Balance"].Value != null)
+                    e.Graphics.DrawString(row.Cells["Closing Balance"].Value.ToString(), font, brush, xAxis, yAxis);
+                xAxis -= 30;//40
+                if (row.Cells["Status"].Value != null)
+                {
+                    string cStatus = row.Cells["Status"].Value.ToString();
+                    if (cStatus == "Credit")
+                    {
+                        e.Graphics.DrawString("جمع", font, brush, xAxis, yAxis);
+                    }
+                    else
+                    {
+                        e.Graphics.DrawString("بنام", font, brush, xAxis, yAxis);
+                    }
+                }
+                xAxis += 150;//190
+                yAxis += 30;//290
+                e.Graphics.DrawString(":ادائیگی رقم", font, brush, xAxis, yAxis);
+
+                xAxis -= 120;//70
+                float textWidth = 0;
+                float textHeight = 0;
+                if (row.Cells["Parchi Amount"].Value != null)
+                {
+                    textWidth = e.Graphics.MeasureString(row.Cells["Parchi Amount"].Value.ToString(), font).Width;
+                    textHeight = e.Graphics.MeasureString(row.Cells["Parchi Amount"].Value.ToString(), font).Height;
+                }
+
+                // Draw a rectangle around the text
+                e.Graphics.DrawRectangle(pen, xAxis, yAxis, textWidth, textHeight);
+
+                // Draw the text
+
+                if (row.Cells["Parchi Amount"].Value != null)
+                    e.Graphics.DrawString(row.Cells["Parchi Amount"].Value.ToString(), font, brush, xAxis, yAxis);
+                xAxis -= 40;//20
+                yAxis += 20;//310
+                e.Graphics.DrawString("--------------------------------------------", linefont, brush, xAxis, yAxis);
+                xAxis += 5;//25
+                yAxis += 30;//340
+                e.Graphics.DrawString("کسی بھی غلط حساب کی صورت میں جلد از ", infofont, brush, xAxis, yAxis);
+                xAxis += 70;//115
+                yAxis += 25;//365
+                e.Graphics.DrawString("جلد ہم سے رابطہ کریں۔ شکریہ", infofont, brush, xAxis, yAxis);
+                xAxis += 15;//120
+                yAxis += 30;//395
+                e.Graphics.DrawString("03346565189 :فون نمبر" + " ", infofont, brush, xAxis, yAxis);
+                xAxis -= 40;//80
+                yAxis += 30;//425
+                e.Graphics.DrawString("آپ کے تعاون کا شکریہ", infofont, brush, xAxis, yAxis);
+                currentRow++;
+                e.HasMorePages = true;
+                
+
+                
             }
         }
     }

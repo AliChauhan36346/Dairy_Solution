@@ -102,7 +102,7 @@ namespace DairyAccounting
         }
 
         public void GetPurchaseReport(DataGridView dataGridView, DateTime startDate, DateTime endDate,
-    int dodhiId, string time, out decimal Volume, out decimal tAmount, bool start, bool end)
+        int dodhiId, string time, out decimal Volume, out decimal tAmount, bool start, bool end)
         {
             DataTable purchaseReport = new DataTable();
 
@@ -1305,6 +1305,128 @@ namespace DairyAccounting
                 }
             }
         }
+
+        private void GetDailyBasisChilarReport(DateTime startDate, out decimal receiveVolume, out decimal saleVolume, out decimal difference)
+        {
+            receiveVolume = 0;
+            saleVolume = 0;
+            difference = 0;
+
+            try
+            {
+                dbConnection.openConnection();
+
+                DateTime previousDate = startDate.AddDays(-1);
+
+                // Corrected query string
+                string query = "SELECT SUM(grossLiters) as TotalGrossLiters FROM chilarReceive WHERE (date = @previousDate AND time = 'Evening') OR (date = @currentDate AND time = 'Morning')";
+
+                using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
+                {
+                    command.Parameters.AddWithValue("@previousDate", previousDate);
+                    command.Parameters.AddWithValue("@currentDate", startDate);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read() && !reader.IsDBNull(reader.GetOrdinal("TotalGrossLiters")))
+                        {
+                            receiveVolume = decimal.Parse(reader["TotalGrossLiters"].ToString());
+                        }
+                    }
+                }
+
+                string salesQuery = "SELECT SUM(liters) as TotalLiters FROM sales WHERE date = @startDate";
+
+                using (SqlCommand command = new SqlCommand(salesQuery, dbConnection.connection))
+                {
+                    command.Parameters.AddWithValue("@startDate", startDate);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read() && !reader.IsDBNull(reader.GetOrdinal("TotalLiters")))
+                        {
+                            saleVolume = decimal.Parse(reader["TotalLiters"].ToString());           
+                        }
+                    }
+                }
+
+                difference = receiveVolume - saleVolume;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error in creating date wise chilar report: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dbConnection.closeConnection();
+            }
+        }
+
+
+        public void GetDateWiseChilarReport(DataGridView dataGridView, DateTime startDate, DateTime endDate, out decimal totalSaleVolume, out decimal totalReceiveVolume, out decimal totalBalance)
+        {
+            totalSaleVolume = 0;
+            totalReceiveVolume = 0;
+            totalBalance = 0;
+
+            DataTable dataTable = new DataTable();
+
+            dataTable.Columns.Add("Date");
+            dataTable.Columns.Add("Receive Volume");
+            dataTable.Columns.Add("Sale Volume");
+            dataTable.Columns.Add("Difference");
+            dataTable.Columns.Add("Balance");
+
+            try
+            {
+                decimal receiveVolume = 0;
+                decimal saleVolume = 0;
+                decimal difference = 0;
+
+                DateTime date = startDate;
+
+                while (date <= endDate)
+                {
+                    GetDailyBasisChilarReport(date, out receiveVolume, out saleVolume, out difference);
+
+                    totalBalance += difference;
+                    totalReceiveVolume += receiveVolume;
+                    totalSaleVolume += saleVolume;
+
+                    dataTable.Rows.Add(date.ToString("dd/MM/yyyy"), receiveVolume, saleVolume, difference, totalBalance);
+
+                    receiveVolume = 0;
+                    saleVolume = 0;
+                    difference = 0;
+
+                    date = date.AddDays(1); // Move to the next date
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error in creating date wise chilar report: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            dataGridView.DataSource = dataTable;
+
+            dataGridView.Columns["Date"].Width = 90;
+            dataGridView.Columns["Receive Volume"].Width = 130;
+            dataGridView.Columns["Sale Volume"].Width = 130;
+            dataGridView.Columns["Difference"].Width = 100;
+            dataGridView.Columns["Balance"].Width = 150;
+
+            dataGridView.Columns["Date"].HeaderCell.Style.BackColor = Color.LightGray;
+            dataGridView.Columns["Receive Volume"].HeaderCell.Style.BackColor = Color.LightGray;
+            dataGridView.Columns["Sale Volume"].HeaderCell.Style.BackColor = Color.LightGray;
+            dataGridView.Columns["Difference"].HeaderCell.Style.BackColor = Color.LightGray;
+            dataGridView.Columns["Balance"].HeaderCell.Style.BackColor = Color.LightGray;
+
+            dataGridView.EnableHeadersVisualStyles = false;
+
+        }
+
+
+
 
     }
 }
