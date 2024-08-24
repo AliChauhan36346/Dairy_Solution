@@ -1160,7 +1160,7 @@ namespace DairyAccounting
                     query = $@"{expenseQuery}
                 SELECT 'SV' + CAST(salesId AS NVARCHAR(50)) AS Id, date, companyId AS accountId,
                     company AS accountName, accountId AS cashAccountId, accountName AS cashAccountName,
-                    'Cash received during sales' AS discription, amountReceived AS receipt, NULL AS payment 
+                    'Cash received during sales' AS discription, NULL AS payment, amountReceived AS receipt 
                 FROM sales WHERE date >= @startDate AND date <= @endDate AND amountReceived != 0
                 UNION ALL
                 SELECT 'CPV' + CAST(paymentId AS NVARCHAR(50)) AS Id, date, accountId, 

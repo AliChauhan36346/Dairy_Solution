@@ -249,6 +249,8 @@ namespace WindowsFormsApp1
                     {
                         MessageBox.Show("No payments added.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
+
+                    btn_display_Click(sender, e);
                 }
             }
         }
@@ -750,186 +752,186 @@ namespace WindowsFormsApp1
         decimal totalDebit=0;
         private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
         {
-            Font headingFont = new Font("Segoe UI", 28, FontStyle.Bold | FontStyle.Underline);
-            Font subHeading = new Font("Segoe UI", 24, FontStyle.Bold);
-            Font heading3 = new Font("Segoe UI", 16, FontStyle.Bold | FontStyle.Italic); 
-            Font heading4 = new Font("Segoe UI", 12, FontStyle.Bold | FontStyle.Italic); 
-            Font detail = new Font("Segoe UI Semibold", 10, FontStyle.Regular); 
-            Font name = new Font("Segoe UI Semibold", 9, FontStyle.Regular); 
+                Font headingFont = new Font("Segoe UI", 28, FontStyle.Bold | FontStyle.Underline);
+                Font subHeading = new Font("Segoe UI", 24, FontStyle.Bold);
+                Font heading3 = new Font("Segoe UI", 16, FontStyle.Bold | FontStyle.Italic); 
+                Font heading4 = new Font("Segoe UI", 12, FontStyle.Bold | FontStyle.Italic); 
+                Font detail = new Font("Segoe UI Semibold", 10, FontStyle.Regular); 
+                Font name = new Font("Segoe UI Semibold", 9, FontStyle.Regular); 
 
-            Pen pen = new Pen(Color.Black, 1);
-            Brush brush = Brushes.Black;
+                Pen pen = new Pen(Color.Black, 1);
+                Brush brush = Brushes.Black;
 
             
 
 
-            //heading
-            string headingText = "PARCHI PAYMENTS LIST";
-            string dodhi;
+                //heading
+                string headingText = "PARCHI PAYMENTS LIST";
+                string dodhi;
 
-            //dodhi
-            if(chk_dodhiWise.Checked)
-            {
-                if(cmbo_dodhi.SelectedItem != null)
+                //dodhi
+                if(chk_dodhiWise.Checked)
                 {
-                    dodhi = (cmbo_dodhi.SelectedItem.ToString().Trim());
+                    if(cmbo_dodhi.SelectedItem != null)
+                    {
+                        dodhi = (cmbo_dodhi.SelectedItem.ToString().Trim());
+                    }
+                    else
+                    {
+                        return;
+                    }
+                
                 }
                 else
                 {
-                    return;
+                    dodhi = "(ALL DODHI)";
                 }
+
+                //date
+                DateTime startDate = dtm_start.Value.Date;
+                DateTime endDate = dtm_end.Value.Date;
+
+                string date = "From Date " + startDate.ToString("dd/MM/yyyy") + "  to  " + endDate.ToString("dd/MM/yyyy");
+
+                int xAxis = 50;
+                int yAxis = 215;
+
+
+                if (!headerPrinted)
+                {
+                    // Calculate the width of the heading text
+                    SizeF headingSize = e.Graphics.MeasureString(headingText, headingFont);
+                    SizeF dodhiSize = e.Graphics.MeasureString(dodhi, subHeading);
+                    SizeF dateSize = e.Graphics.MeasureString(date, heading3);
+
+
+                    // Calculate the X coordinate to center the heading
+                    float xCenter = (e.PageBounds.Width - headingSize.Width) / 2;
+                    float dodhiCenter = (e.PageBounds.Width - dodhiSize.Width) / 2;
+                    float dateCenter = (e.PageBounds.Width - dateSize.Width) / 2;
+                    // Y coordinate for the heading
+                    float y = 40;
+
+                    // Draw the heading centered horizontally
+                    e.Graphics.DrawString(headingText, headingFont, brush, xCenter, y);
+                    y += 60;
+                    e.Graphics.DrawString(dodhi, subHeading, brush, dodhiCenter, y);
+                    y += 60;
+                    e.Graphics.DrawString(date, heading3, brush, dateCenter, y);
+                    y += 35;
+                    e.Graphics.DrawLine(pen, 50, y, e.PageBounds.Width - 50, y);
+
+                    // Draw a single rectangle around all the text
                 
-            }
-            else
-            {
-                dodhi = "(ALL DODHI)";
-            }
-
-            //date
-            DateTime startDate = dtm_start.Value.Date;
-            DateTime endDate = dtm_end.Value.Date;
-
-            string date = "From Date " + startDate.ToString("dd/MM/yyyy") + "  to  " + endDate.ToString("dd/MM/yyyy");
-
-            int xAxis = 50;
-            int yAxis = 215;
+                    int rectWidth = 230; // Adjust this as needed
 
 
-            if (!headerPrinted)
-            {
-                // Calculate the width of the heading text
-                SizeF headingSize = e.Graphics.MeasureString(headingText, headingFont);
-                SizeF dodhiSize = e.Graphics.MeasureString(dodhi, subHeading);
-                SizeF dateSize = e.Graphics.MeasureString(date, heading3);
+                    int totalWidth = 3 * rectWidth + 2 * 30; // Total width of all text and spacing
+                    int rectHeight = (int)heading4.Height; // Height of the text
 
+                    // Draw the rectangle around all text
+                    e.Graphics.DrawRectangle(pen, xAxis, yAxis, totalWidth, rectHeight);
 
-                // Calculate the X coordinate to center the heading
-                float xCenter = (e.PageBounds.Width - headingSize.Width) / 2;
-                float dodhiCenter = (e.PageBounds.Width - dodhiSize.Width) / 2;
-                float dateCenter = (e.PageBounds.Width - dateSize.Width) / 2;
-                // Y coordinate for the heading
-                float y = 40;
+                    // Draw the text within the rectangle
+                    e.Graphics.DrawString("Acc Id", heading4, brush, xAxis, yAxis);
+                    xAxis += 70;//170
+                    e.Graphics.DrawString("Name", heading4, brush, xAxis, yAxis);
+                    xAxis += 215;//570
+                    e.Graphics.DrawString("pBalance", heading4,brush, xAxis, yAxis);
+                    xAxis += 115;
+                    e.Graphics.DrawString("Liters", heading4, brush, xAxis, yAxis);
+                    xAxis += 80;
+                    e.Graphics.DrawString("Amount", heading4, brush, xAxis, yAxis);
+                    xAxis += 90;
+                    e.Graphics.DrawString("Parchi", heading4, brush, xAxis, yAxis);
+                    xAxis += 90;
+                    e.Graphics.DrawString("Balance", heading4, brush, xAxis, yAxis);
 
-                // Draw the heading centered horizontally
-                e.Graphics.DrawString(headingText, headingFont, brush, xCenter, y);
-                y += 60;
-                e.Graphics.DrawString(dodhi, subHeading, brush, dodhiCenter, y);
-                y += 60;
-                e.Graphics.DrawString(date, heading3, brush, dateCenter, y);
-                y += 35;
-                e.Graphics.DrawLine(pen, 50, y, e.PageBounds.Width - 50, y);
+                    yAxis = 250;//260   
+                    xAxis = 50;//50
 
-                // Draw a single rectangle around all the text
-                
-                int rectWidth = 230; // Adjust this as needed
-
-
-                int totalWidth = 3 * rectWidth + 2 * 30; // Total width of all text and spacing
-                int rectHeight = (int)heading4.Height; // Height of the text
-
-                // Draw the rectangle around all text
-                e.Graphics.DrawRectangle(pen, xAxis, yAxis, totalWidth, rectHeight);
-
-                // Draw the text within the rectangle
-                e.Graphics.DrawString("Acc Id", heading4, brush, xAxis, yAxis);
-                xAxis += 70;//170
-                e.Graphics.DrawString("Name", heading4, brush, xAxis, yAxis);
-                xAxis += 215;//570
-                e.Graphics.DrawString("pBalance", heading4,brush, xAxis, yAxis);
-                xAxis += 115;
-                e.Graphics.DrawString("Liters", heading4, brush, xAxis, yAxis);
-                xAxis += 80;
-                e.Graphics.DrawString("Amount", heading4, brush, xAxis, yAxis);
-                xAxis += 90;
-                e.Graphics.DrawString("Parchi", heading4, brush, xAxis, yAxis);
-                xAxis += 90;
-                e.Graphics.DrawString("Balance", heading4, brush, xAxis, yAxis);
-
-                yAxis = 250;//260   
-                xAxis = 50;//50
-
-                headerPrinted = true;
-            }
-            else
-            {
-                xAxis = 50;
-                yAxis = 50;
-            }
+                    headerPrinted = true;
+                }
+                else
+                {
+                    xAxis = 50;
+                    yAxis = 50;
+                }
             
 
-            while (currentRow<dataGridView2.Rows.Count-1)
-            {
-                DataGridViewRow row = new DataGridViewRow();
-
-                row = dataGridView2.Rows[currentRow];
-
-                e.Graphics.DrawString(row.Cells["Id"].Value.ToString(),detail,brush, xAxis, yAxis);
-                xAxis += 70;
-                e.Graphics.DrawString(row.Cells["Customer Name"].Value.ToString(),name,brush, xAxis, yAxis);
-                xAxis += 215;
-                e.Graphics.DrawString(row.Cells["Previous Balance"].Value.ToString() + " " + row.Cells["pStatus"].Value.ToString(), detail, brush, xAxis, yAxis);
-                xAxis += 115;
-                e.Graphics.DrawString(row.Cells["Total Liters"].Value.ToString(), detail, brush, xAxis, yAxis);
-                xAxis += 80;
-                e.Graphics.DrawString(row.Cells["Milk Amount"].Value.ToString(), detail, brush, xAxis, yAxis);
-                xAxis += 90;
-                e.Graphics.DrawString(row.Cells["Parchi Amount"].Value.ToString(), heading4, brush, xAxis, yAxis);
-                xAxis += 90;
-                e.Graphics.DrawString(row.Cells["Closing Balance"].Value.ToString()+ " "+ row.Cells["Status"].Value.ToString(), detail, brush, xAxis, yAxis);
-                yAxis += 20;
-
-                e.Graphics.DrawLine(pen, 50, yAxis, e.PageBounds.Width - 50, yAxis);
-
-
-                if (row.Cells["Status"].Value.ToString()=="Credit")
+                while (currentRow<dataGridView2.Rows.Count-1)
                 {
-                    totalCredit += decimal.Parse(row.Cells["Closing Balance"].Value.ToString());
+                    DataGridViewRow row = new DataGridViewRow();
 
-                }
-                else
-                {
-                    totalDebit += decimal.Parse(row.Cells["Closing Balance"].Value.ToString());
-                }
+                    row = dataGridView2.Rows[currentRow];
 
-                xAxis = 50;
-                yAxis += 10;
+                    e.Graphics.DrawString(row.Cells["Id"].Value.ToString(),detail,brush, xAxis, yAxis);
+                    xAxis += 70;
+                    e.Graphics.DrawString(row.Cells["Customer Name"].Value.ToString(),name,brush, xAxis, yAxis);
+                    xAxis += 215;
+                    e.Graphics.DrawString(row.Cells["Previous Balance"].Value.ToString() + " " + row.Cells["pStatus"].Value.ToString(), detail, brush, xAxis, yAxis);
+                    xAxis += 115;
+                    e.Graphics.DrawString(row.Cells["Total Liters"].Value.ToString(), detail, brush, xAxis, yAxis);
+                    xAxis += 80;
+                    e.Graphics.DrawString(row.Cells["Milk Amount"].Value.ToString(), detail, brush, xAxis, yAxis);
+                    xAxis += 90;
+                    e.Graphics.DrawString(row.Cells["Parchi Amount"].Value.ToString(), heading4, brush, xAxis, yAxis);
+                    xAxis += 90;
+                    e.Graphics.DrawString(row.Cells["Closing Balance"].Value.ToString()+ " "+ row.Cells["Status"].Value.ToString(), detail, brush, xAxis, yAxis);
+                    yAxis += 20;
 
-                currentRow++;
+                    e.Graphics.DrawLine(pen, 50, yAxis, e.PageBounds.Width - 50, yAxis);
 
-                if(yAxis+25>e.MarginBounds.Bottom+80)
-                {
-                    e.HasMorePages = true;
+
+                    if (row.Cells["Status"].Value.ToString()=="Credit")
+                    {
+                        totalCredit += decimal.Parse(row.Cells["Closing Balance"].Value.ToString());
+
+                    }
+                    else
+                    {
+                        totalDebit += decimal.Parse(row.Cells["Closing Balance"].Value.ToString());
+                    }
+
+                    xAxis = 50;
+                    yAxis += 10;
+
+                    currentRow++;
+
+                    if(yAxis+25>e.MarginBounds.Bottom+80)
+                    {
+                        e.HasMorePages = true;
                     
-                    //currentRow++;
+                        //currentRow++;
 
-                    return;
+                        return;
+                    }
                 }
-            }
 
-            xAxis = 315;
+                xAxis = 315;
 
-            //e.Graphics.DrawLine(pen, 50, yAxis, e.PageBounds.Width - 50, yAxis);
-            //yAxis += 5;
+                //e.Graphics.DrawLine(pen, 50, yAxis, e.PageBounds.Width - 50, yAxis);
+                //yAxis += 5;
 
-            decimal balance = totalCredit - totalDebit;
-            string status = balance > 0 ? "Credit" : "Debit";
-            balance = Math.Abs(balance);
-            balance = Math.Round(balance, 0);
+                decimal balance = totalCredit - totalDebit;
+                string status = balance > 0 ? "Credit" : "Debit";
+                balance = Math.Abs(balance);
+                balance = Math.Round(balance, 0);
 
-            e.Graphics.DrawString("TOTALS:", heading4, brush, xAxis, yAxis);
-            xAxis += 135;
-            e.Graphics.DrawString(txt_totalLiters.Text, heading4, brush, xAxis, yAxis);
-            xAxis += 80;
-            e.Graphics.DrawString(txt_totalLitersAmount.Text, heading4, brush, xAxis, yAxis);
-            xAxis += 90;
-            e.Graphics.DrawString(txt_totalParchiAmount.Text, heading4, brush, xAxis, yAxis);
-            xAxis += 90;
-            e.Graphics.DrawString(balance.ToString()+" "+status,heading4,brush, xAxis, yAxis);
-            yAxis += 30;
-            e.Graphics.DrawLine(pen, 300, yAxis, e.PageBounds.Width - 50, yAxis);
+                e.Graphics.DrawString("TOTALS:", heading4, brush, xAxis, yAxis);
+                xAxis += 135;
+                e.Graphics.DrawString(txt_totalLiters.Text, heading4, brush, xAxis, yAxis);
+                xAxis += 80;
+                e.Graphics.DrawString(txt_totalLitersAmount.Text, heading4, brush, xAxis, yAxis);
+                xAxis += 90;
+                e.Graphics.DrawString(txt_totalParchiAmount.Text, heading4, brush, xAxis, yAxis);
+                xAxis += 90;
+                e.Graphics.DrawString(balance.ToString()+" "+status,heading4,brush, xAxis, yAxis);
+                yAxis += 30;
+                e.Graphics.DrawLine(pen, 300, yAxis, e.PageBounds.Width - 50, yAxis);
 
-            headerPrinted = false;
-            e.HasMorePages = false;
+                headerPrinted = false;
+                e.HasMorePages = false;
         }
 
         private void printDocument3_PrintPage(object sender, PrintPageEventArgs e)
@@ -1270,6 +1272,11 @@ namespace WindowsFormsApp1
 
                 
             }
+        }
+
+        private void cmbo_dodhi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

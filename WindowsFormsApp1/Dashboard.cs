@@ -400,5 +400,12 @@ namespace WindowsFormsApp1
             DailyBasisChilarReport dailyBasisChilarReport= new DailyBasisChilarReport();
             dailyBasisChilarReport.ShowDialog();
         }
+
+        private void toolStripMenuItem11_Click(object sender, EventArgs e)
+        {
+            Rate_List rate_List = new Rate_List();
+
+            rate_List.ShowDialog();
+        }
     }
 }

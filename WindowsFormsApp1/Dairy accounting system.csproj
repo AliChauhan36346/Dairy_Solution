@@ -226,6 +226,12 @@
     <Compile Include="PurchaseReport.Designer.cs">
       <DependentUpon>PurchaseReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Rate List.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rate List.Designer.cs">
+      <DependentUpon>Rate List.cs</DependentUpon>
+    </Compile>
     <Compile Include="Roznamcha.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -382,7 +388,9 @@
     <EmbeddedResource Include="PurchaseReport.resx">
       <DependentUpon>PurchaseReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report1.rdlc" />
+    <EmbeddedResource Include="Rate List.resx">
+      <DependentUpon>Rate List.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Roznamcha.resx">
       <DependentUpon>Roznamcha.cs</DependentUpon>
     </EmbeddedResource>

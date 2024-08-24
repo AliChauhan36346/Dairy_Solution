@@ -112,6 +112,7 @@
             this.cmbo_dodhi.Name = "cmbo_dodhi";
             this.cmbo_dodhi.Size = new System.Drawing.Size(254, 28);
             this.cmbo_dodhi.TabIndex = 34;
+            this.cmbo_dodhi.SelectedIndexChanged += new System.EventHandler(this.cmbo_dodhi_SelectedIndexChanged);
             // 
             // Btn_dashboard
             // 

@@ -128,6 +128,7 @@
             this.salesReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.purchaseReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chilarReceiveReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.expenseReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
@@ -140,7 +141,7 @@
             this.roznamchaCashToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label8 = new System.Windows.Forms.Label();
-            this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel12.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -1180,6 +1181,7 @@
             // 
             this.maintainToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.rateToolStripMenuItem,
+            this.toolStripMenuItem11,
             this.toolStripSeparator4,
             this.customersDodhiToolStripMenuItem,
             this.toolStripMenuItem6,
@@ -1257,6 +1259,13 @@
             this.chilarReceiveReportToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.chilarReceiveReportToolStripMenuItem.Text = "Chilar Receive Report";
             this.chilarReceiveReportToolStripMenuItem.Click += new System.EventHandler(this.chilarReceiveReportToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem10
+            // 
+            this.toolStripMenuItem10.Name = "toolStripMenuItem10";
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(201, 22);
+            this.toolStripMenuItem10.Text = "Daily Basis Chilar Report";
+            this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem10_Click);
             // 
             // toolStripSeparator5
             // 
@@ -1342,12 +1351,12 @@
             this.label8.TabIndex = 13;
             this.label8.Text = "A Sofware developed by علی عباس\r\n";
             // 
-            // toolStripMenuItem10
+            // toolStripMenuItem11
             // 
-            this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new System.Drawing.Size(201, 22);
-            this.toolStripMenuItem10.Text = "Daily Basis Chilar Report";
-            this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem10_Click);
+            this.toolStripMenuItem11.Name = "toolStripMenuItem11";
+            this.toolStripMenuItem11.Size = new System.Drawing.Size(222, 22);
+            this.toolStripMenuItem11.Text = "Rate List AND Adjustments";
+            this.toolStripMenuItem11.Click += new System.EventHandler(this.toolStripMenuItem11_Click);
             // 
             // Dashboard
             // 
@@ -1526,6 +1535,7 @@
         private System.Windows.Forms.Button btn_back;
         private System.Windows.Forms.Button btn_forward;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem11;
     }
 }
 

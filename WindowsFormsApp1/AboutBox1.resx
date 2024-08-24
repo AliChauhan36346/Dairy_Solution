@@ -600,4 +600,15 @@
         cJWw3xX9u6JfoPW7on9X9Ku1flf074p+tdbviv5d0a/S+r//+/8BPTxUq6Ub7iwAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="textBoxDescription.Text" xml:space="preserve">
+    <value>This is a milk collection managment system by Ali Abbas
+
+This software is a key to manage the milk purchased, received and sold.
+
+We can create create reports and add payments to the accounts automatically.
+
+This software has many more features like this.
+
+All rights reserved</value>
+  </data>
 </root>

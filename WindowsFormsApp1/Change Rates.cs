@@ -256,5 +256,11 @@ namespace WindowsFormsApp1
         {
             lst_accountSuggestions.Visible = false;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Rate_List rate_List = new Rate_List();
+            rate_List.ShowDialog();
+        }
     }
 }

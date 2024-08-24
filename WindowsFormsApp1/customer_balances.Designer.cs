@@ -44,6 +44,7 @@
             this.txt_debit = new System.Windows.Forms.TextBox();
             this.txt_credit = new System.Windows.Forms.TextBox();
             this.txt_balance = new System.Windows.Forms.TextBox();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel2.SuspendLayout();
@@ -107,6 +108,7 @@
             this.btn_print.TabStop = false;
             this.btn_print.Text = "Print";
             this.btn_print.UseVisualStyleBackColor = false;
+            this.btn_print.Click += new System.EventHandler(this.btn_print_Click);
             // 
             // btn_display
             // 
@@ -125,6 +127,7 @@
             // 
             // cmbo_addressWise
             // 
+            this.cmbo_addressWise.BackColor = System.Drawing.Color.White;
             this.cmbo_addressWise.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbo_addressWise.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbo_addressWise.FormattingEnabled = true;
@@ -136,6 +139,7 @@
             // 
             // cmbo_dodhiWise
             // 
+            this.cmbo_dodhiWise.BackColor = System.Drawing.Color.White;
             this.cmbo_dodhiWise.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbo_dodhiWise.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbo_dodhiWise.FormattingEnabled = true;
@@ -252,6 +256,10 @@
             this.txt_balance.Size = new System.Drawing.Size(201, 25);
             this.txt_balance.TabIndex = 0;
             // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
             // customer_balances
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -297,5 +305,6 @@
         private System.Windows.Forms.TextBox txt_credit;
         private System.Windows.Forms.TextBox txt_balance;
         private System.Windows.Forms.TextBox txt_grandOpeningBalance;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }
