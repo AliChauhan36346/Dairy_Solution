@@ -17,10 +17,12 @@ namespace DairyAccounting
         Connection dbConnection;
         AddCustomers customers=new AddCustomers();
         AddCompanies company=new AddCompanies();
+        private List<(int customerId, decimal creditLimit)> customerIdCreditLimit;
 
         public ParchiClass()
         {
             dbConnection = new Connection();
+            customerIdCreditLimit = customers.GetAllCustomerIdCreditLimit(); // Preload customer id and credit limit
         }
 
         // to get all customers and their dodhi ids for comparison
@@ -59,7 +61,7 @@ namespace DairyAccounting
         }
 
 
-        // to get parchi dodhi wise mean to get the customers only of the provided dodhi id 
+        // to get parchi dodhi wise, mean to get the customers only of the provided dodhi id 
         public void getCustomersParchi(out decimal grandTotalLiters, out decimal grandTotalMilkAmount,
             out decimal grandTotalParchiAmount, int dodhiId, int singleCustomerId,
             DateTime startDate, DateTime endDate, DataGridView dataGridView)

@@ -28,68 +28,122 @@ namespace WindowsFormsApp1
             this.Close();
         }
 
-        private void cusBtn_save_Click(object sender, EventArgs e)
+        private bool ValidateCustomerDetails(out AddCustomers customer)
         {
+            customer = new AddCustomers();
+
+            // Validate Customer Name
             if (string.IsNullOrEmpty(txt_customerName.Text))
             {
                 MessageBox.Show("Please add Customer name!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
+            }
+            customer.name = txt_customerName.Text;
+
+            // Validate Credit Limit
+            if (!int.TryParse(txt_creditLimit.Text, out int creditLimit))
+            {
+                MessageBox.Show("Invalid credit limit!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            customer.creditLimit = creditLimit;
+
+            // Validate Dodhi ID
+            if (!int.TryParse(txt_dodhiId.Text, out int dodhiId))
+            {
+                MessageBox.Show("Invalid dodhi ID!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            customer.dodhiId = dodhiId;
+            customer.dodhi = txt_dodhiName.Text;
+
+            // Validate Rate
+            if (!decimal.TryParse(txt_rate.Text, out decimal rate))
+            {
+                MessageBox.Show("Invalid rate value!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            customer.rate = rate;
+
+            // Validate Address
+            customer.address = txt_address.Text;
+
+            // Validate Phone Number
+            if (!int.TryParse(txt_phNo.Text, out int phno))
+            {
+                MessageBox.Show("Invalid installment amount!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
-            if (string.IsNullOrEmpty(txt_creditLimit.Text))
+            customer.installmentAdjustment = phno;
+
+            // validate page no 
+
+            if (!int.TryParse(txt_pgNo.Text, out int pgno))
             {
-                MessageBox.Show("Please add credit limit!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show("Invalid khata number!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
+            customer.registerPageNo = pgno;
 
-            if(!int.TryParse(txt_dodhiId.Text,out int dodhiId))
+            // Validate Checkboxes
+            if (chk_credit.Checked)
             {
-                MessageBox.Show("Invalid dodhi Id!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            customers.id = int.Parse(txt_Id.Text.ToString());
-            customers.name = txt_customerName.Text;
-            customers.address = txt_address.Text;
-            customers.dodhiId = dodhiId;
-            customers.dodhi = txt_dodhiName.Text;
-
-            decimal rate;
-            int creditLimit;
-
-            // for conversion of .text to decimal
-            if (decimal.TryParse(txt_rate.Text, out rate))
-            {
-                customers.rate = rate;
+                customer.giveCreditOnParchi = true;
             }
             else
             {
-                // Handle the case where the rate textbox contains invalid input
-                MessageBox.Show("Invalid rate value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;// for exit
+                customer.giveCreditOnParchi=false;
             }
 
-            if (int.TryParse(txt_creditLimit.Text, out creditLimit))
+            if (chk_inactiveCus.Checked)
             {
-                customers.creditLimit = creditLimit;
+                customer.isActive = false;
             }
             else
             {
-                // Handle the case where the credit limit textbox contains invalid input
-                MessageBox.Show("Invalid credit limit value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; // Exit the method or handle the error as needed
+                customer.isActive=true;
             }
 
-            customers.saveCustomer(customers);
+            
 
+
+            // Generate ID
+            if (!int.TryParse(txt_Id.Text, out int customerId))
+            {
+                MessageBox.Show("Invalid Customer ID!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            customer.id = customerId;
+
+            return true; // Validation successful
+        }
+
+
+        private void cusBtn_save_Click(object sender, EventArgs e)
+        {
+            // Validate customer details
+            if (!ValidateCustomerDetails(out AddCustomers customer))
+            {
+                return; // Exit if validation fails
+            }
+
+            // Save customer to the database
+            customers.saveCustomer(customer);
+
+            // Update the DataGridView
             customers.showDataInGridView(dataGridView2);
 
+            // Clear input fields
             CommonFunctions.ClearAllTextBoxes(this);
 
+            // Generate the next available ID
             txt_Id.Text = customers.GetNextAvailableID().ToString();
 
+            // Set focus on the name field
             txt_customerName.Focus();
         }
+
 
 
         private void Customers_Load(object sender, EventArgs e)
@@ -161,61 +215,28 @@ namespace WindowsFormsApp1
 
         private void btn_updateRecord_Click(object sender, EventArgs e)
         {
-            if(!int.TryParse(txt_dodhiId.Text,out int dodhiId))
+            // Validate customer details
+            if (!ValidateCustomerDetails(out AddCustomers customer))
             {
-                MessageBox.Show("Invalid dodhi Id.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return; // Exit if validation fails
             }
 
-            customers.id = int.Parse(txt_Id.Text);
-            customers.name=txt_customerName.Text;
-            customers.address=txt_address.Text;
-            customers.dodhiId = dodhiId;
-            customers.dodhi = txt_dodhiName.Text;
+            // Update the customer record in the database
+            customers.updateCustomer(customer);
 
-            decimal rate;
-            int creditLimit;
+            // Clear the input fields
+            CommonFunctions.ClearAllTextBoxes(this);
 
-            // for conversion of .text to decimal
-            if (decimal.TryParse(txt_rate.Text, out rate))
-            {
-                customers.rate = rate;
-            }
-            else
-            {
-                // Handle the case where the rate textbox contains invalid input
-                MessageBox.Show("Invalid rate value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;// for exit
-            }
-
-            if (int.TryParse(txt_creditLimit.Text, out creditLimit))
-            {
-                customers.creditLimit = creditLimit;
-            }
-            else
-            {
-                // Handle the case where the credit limit textbox contains invalid input
-                MessageBox.Show("Invalid credit limit value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; // Exit the method or handle the error as needed
-            }
-            // call funtion to update
-            customers.updateCustomer(customers);
-
-            //clears the text boxes
-            txt_customerName.Text = "";
-            txt_address.Text = "";
-            txt_dodhiId.Text = "";
-            txt_dodhiName.Text = "";
-            txt_creditLimit.Text = "";
-            txt_rate.Text = "";
-
-            // refresh the id
+            // Generate the next available ID
             txt_Id.Text = customers.GetNextAvailableID().ToString();
 
-            //to update datagridview also
+            // Refresh the DataGridView
             customers.showDataInGridView(dataGridView2);
 
+            // Set focus back to the name field
+            txt_customerName.Focus();
         }
+
 
         private void txt_customerName_KeyDown(object sender, KeyEventArgs e)
         {
@@ -318,22 +339,77 @@ namespace WindowsFormsApp1
 
         private void cusBtn_find_Click(object sender, EventArgs e)
         {
-            if(!int.TryParse(txt_cusId.Text, out int id))
+            // Validate the input ID
+            if (!int.TryParse(txt_cusId.Text, out int id))
             {
+                MessageBox.Show("Invalid Customer ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            customers.GetCustomerDetail(id, out int cusId, out string name, out decimal rate, out int creditLimit,
-            out int dodhiId, out string dodhiName, out string address);
+            // Access the method from another class
+            AddCustomers customer = customers.GetCustomerDetail(id);
 
-            txt_Id.Text = cusId.ToString();
-            txt_customerName.Text = name;
-            txt_rate.Text=rate.ToString();
-            txt_creditLimit.Text=creditLimit.ToString();
-            txt_dodhiId.Text = dodhiId.ToString();
-            txt_dodhiName.Text = dodhiName.ToString();
-            txt_address.Text = address;
+            // Check if the customer exists
+            if (customer != null)
+            {
+                // Populate the fields with customer details
+                txt_Id.Text = customer.id.ToString();
+                txt_customerName.Text = customer.name;
+                txt_rate.Text = customer.rate.ToString();
+                txt_creditLimit.Text = customer.creditLimit.ToString();
+                txt_dodhiId.Text = customer.dodhiId.ToString();
+                txt_dodhiName.Text = customer.dodhi;
+                txt_address.Text = customer.address;
+                txt_phNo.Text=customer.installmentAdjustment.ToString();
+                if (customer.giveCreditOnParchi)
+                {
+                    chk_credit.Checked = true;
+                }
+                else
+                {
+                    chk_credit.Checked = false;
+                }
 
+                if (customer.isActive)
+                {
+                    chk_inactiveCus.Checked = false;
+                }
+                else
+                {
+                    chk_inactiveCus.Checked = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Customer not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void txt_pgNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Check if the pressed key is Enter
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Prevent the beep sound
+                e.SuppressKeyPress = true;
+
+                // Move focus to the next control (text box)
+                this.SelectNextControl((Control)sender, true, true, true, true);
+            }
+        }
+
+        private void txt_phNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Check if the pressed key is Enter
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Prevent the beep sound
+                e.SuppressKeyPress = true;
+
+                // Move focus to the next control (text box)
+                this.SelectNextControl((Control)sender, true, true, true, true);
+            }
         }
     }
 }

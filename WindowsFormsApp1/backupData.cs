@@ -15,22 +15,10 @@ namespace WindowsFormsApp1
 
         private void btn_backup_Click(object sender, EventArgs e)
         {
-            backupRestore.BackupDatabase("alsdja");
-
-            /*SaveFileDialog saveFileDialog = new SaveFileDialog
-            {
-                Filter = "Backup files (*.bak)|*.bak",
-                FileName = "dairyDatabase_backup_" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".bak"
-            };
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string selectedBackupPath = saveFileDialog.FileName;
-
-                BackupRestoreClass backupRestoreClass = new BackupRestoreClass();
-                backupRestoreClass.BackupDatabase(selectedBackupPath);
-            }*/
+            BackupRestoreClass backupRestoreClass = new BackupRestoreClass();
+            backupRestoreClass.BackupDatabase(@"D:\");
         }
+
 
         private void btn_restore_Click(object sender, EventArgs e)
         {

@@ -20,6 +20,10 @@ namespace DairyAccounting
         public decimal creditLimit { get; set; }
         public string address { get; set; }
         public int dodhiId { get; set; }
+        public int installmentAdjustment { get; set; }
+        public int registerPageNo { get; set; }
+        public bool isActive { get; set; }
+        public bool giveCreditOnParchi { get; set; }
         public string dodhi { get; set; }
 
         public AddCustomers()
@@ -52,14 +56,18 @@ namespace DairyAccounting
                 using (SqlCommand command = new SqlCommand())
                 {
                     command.Connection = dbConnection.connection;
-                    command.CommandText = "INSERT INTO CustomersTbl(name, address,dodhiId, dodhi, rate, creditLimit) " +
-                                          "VALUES (@name, @address, @dodhiId, @dodhi, @rate, @creditLimit)";
+                    command.CommandText = "INSERT INTO CustomersTbl(name, address,dodhiId, dodhi, rate, creditLimit, phNo, registerPageNo, isActive, giveCreditOnParchi) " +
+                                          "VALUES (@name, @address, @dodhiId, @dodhi, @rate, @creditLimit, @phNo, @registerPageNo, @isActive, @giveCreditOnParchi)";
                     command.Parameters.AddWithValue("@name", customers.name);
                     command.Parameters.AddWithValue("@address", customers.address);
                     command.Parameters.AddWithValue("@dodhiId", customers.dodhiId);
                     command.Parameters.AddWithValue("@dodhi", customers.dodhi);
                     command.Parameters.AddWithValue("@rate", customers.rate);
                     command.Parameters.AddWithValue("@creditLimit", customers.creditLimit);
+                    command.Parameters.AddWithValue("@phNo", customers.installmentAdjustment);
+                    command.Parameters.AddWithValue("@registerPageNo", customers.registerPageNo);
+                    command.Parameters.AddWithValue("@isActive", customers.isActive);
+                    command.Parameters.AddWithValue("@giveCreditOnParchi", customers.giveCreditOnParchi);
                     command.ExecuteNonQuery();
                 }
             }
@@ -81,7 +89,7 @@ namespace DairyAccounting
                 dbConnection.openConnection();
 
                 // Initialize query to select all records 
-                string query = "SELECT customerId, name, address, dodhiID, dodhi, rate, creditLimit FROM CustomersTbl";
+                string query = "SELECT customerId, name, address, dodhiID, dodhi, rate, creditLimit, phNo, registerPageNo, isActive, giveCreditOnParchi  FROM CustomersTbl";
 
                 using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
                 {
@@ -98,6 +106,10 @@ namespace DairyAccounting
                         dataTable.Columns["dodhi"].ColumnName = "Dodhi Name";
                         dataTable.Columns["rate"].ColumnName = "Purchase Rate";
                         dataTable.Columns["creditLimit"].ColumnName = "Credit Limit";
+                        dataTable.Columns["phNo"].ColumnName = "Credit Installment";
+                        dataTable.Columns["registerPageNo"].ColumnName = "Khata No";
+                        dataTable.Columns["isActive"].ColumnName = "isActive";
+                        dataTable.Columns["giveCreditOnParchi"].ColumnName = "Give Credit";
 
                         
 
@@ -110,12 +122,16 @@ namespace DairyAccounting
 
                         // Set width of each column individually
                         dataGridView.Columns["Id"].Width = 60;
-                        dataGridView.Columns["Customer Name"].Width = 150;
+                        dataGridView.Columns["Customer Name"].Width = 175;
                         dataGridView.Columns["Customer Address"].Width = 100;
                         dataGridView.Columns["Dodhi Id"].Width = 70;
                         dataGridView.Columns["Dodhi Name"].Width = 130;
-                        dataGridView.Columns["Purchase Rate"].Width = 100;
-                        dataGridView.Columns["Credit Limit"].Width = 110;
+                        dataGridView.Columns["Purchase Rate"].Width = 90;
+                        dataGridView.Columns["Credit Limit"].Width = 95;
+                        dataGridView.Columns["Credit Installment"].Width = 95;
+                        dataGridView.Columns["isActive"].Width = 60;
+                        dataGridView.Columns["Give Credit"].Width = 60;
+                        dataGridView.Columns["Khata No"].Width = 60;
                     }
                 }
             }
@@ -203,7 +219,7 @@ namespace DairyAccounting
                 dbConnection.openConnection();
 
                 // Check if the customer ID exists
-                string checkQuery = "SELECT COUNT(*) FROM CustomersTbl WHERE CustomerId = @id";
+                string checkQuery = "SELECT COUNT(*) FROM CustomersTbl WHERE customerId = @id";
                 using (SqlCommand checkCommand = new SqlCommand(checkQuery, dbConnection.connection))
                 {
                     checkCommand.Parameters.AddWithValue("@id", customer.id);
@@ -215,10 +231,11 @@ namespace DairyAccounting
                     }
                 }
 
-                // Update SQL statement
+                // Update SQL statement with all required fields
                 string updateQuery = "UPDATE CustomersTbl " +
-                    "SET name = @name, address = @address, dodhiId=@dodhiId, dodhi = @dodhi, rate = @rate, creditLimit = @creditLimit " +
-                    "WHERE CustomerId = @id";
+                    "SET name = @name, address = @address, dodhiId = @dodhiId, dodhi = @dodhi, rate = @rate, creditLimit = @creditLimit, " +
+                    "phNo = @phNo, registerPageNo = @registerPageNo, isActive = @isActive, giveCreditOnParchi = @giveCreditOnParchi " +
+                    "WHERE customerId = @id";
 
                 // SQL command object
                 using (SqlCommand updateCommand = new SqlCommand(updateQuery, dbConnection.connection))
@@ -229,6 +246,10 @@ namespace DairyAccounting
                     updateCommand.Parameters.AddWithValue("@dodhi", customer.dodhi);
                     updateCommand.Parameters.AddWithValue("@rate", customer.rate);
                     updateCommand.Parameters.AddWithValue("@creditLimit", customer.creditLimit);
+                    updateCommand.Parameters.AddWithValue("@phNo", customer.installmentAdjustment);
+                    updateCommand.Parameters.AddWithValue("@registerPageNo", customer.registerPageNo);
+                    updateCommand.Parameters.AddWithValue("@isActive", customer.isActive);
+                    updateCommand.Parameters.AddWithValue("@giveCreditOnParchi", customer.giveCreditOnParchi);
                     updateCommand.Parameters.AddWithValue("@id", customer.id);
 
                     updateCommand.ExecuteNonQuery();
@@ -245,6 +266,7 @@ namespace DairyAccounting
                 dbConnection.closeConnection();
             }
         }
+
 
         public Dictionary<int, string> GetCustomersIdsAndNames()
         {
@@ -467,53 +489,89 @@ namespace DairyAccounting
             return addresses;
         }
 
-
-        public void GetCustomerDetail(int id,out int cusId, out string name, out decimal rate, out int creditLimit,
-            out int dodhiId, out string dodhiName, out string address)
+        public List<(int customerId, decimal creditLimit)> GetAllCustomerIdCreditLimit()
         {
-            cusId = 0;
-            name = "";
-            rate = 0;
-            creditLimit = 0;
-            dodhiId = 0;
-            dodhiName = "";
-            address = "";
+            var customerDetails = new List<(int customerId, decimal creditLimit)>();
 
-            bool customerFound = false;
+            try
+            {
+                // Open the database connection
+                dbConnection.openConnection();
+
+                // Query to fetch customerId and creditLimit for all customers
+                string query = "SELECT customerId, creditLimit FROM CustomersTbl";
+
+                using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            // Extract values for each customer
+                            int customerId = reader.GetInt32(0);
+                            decimal creditLimit = reader.GetDecimal(1);
+
+                            // Add to the list as a tuple
+                            customerDetails.Add((customerId, creditLimit));
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error retrieving customer details: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Close the database connection
+                dbConnection.closeConnection();
+            }
+
+            return customerDetails;
+        }
+
+        public AddCustomers GetCustomerDetail(int id)
+        {
+            AddCustomers customer = null; // Initialize to null to indicate no customer found
 
             try
             {
                 dbConnection.openConnection();
 
-                string query = "SELECT customerId,name,rate,dodhiId,dodhi,rate,creditLimit,address FROM CustomersTbl WHERE customerId=@id";
+                // Query to retrieve customer details
+                string query = "SELECT customerId, name, rate, creditLimit, dodhiId, dodhi, address, phNo, registerPageNo, isActive, giveCreditOnParchi " +
+                               "FROM CustomersTbl WHERE customerId = @id";
 
-                using(SqlCommand command=new SqlCommand(query, dbConnection.connection))
+                using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
                 {
                     command.Parameters.AddWithValue("@id", id);
 
                     SqlDataReader reader = command.ExecuteReader();
 
-                    while(reader.Read())
+                    if (reader.Read()) // If a record is found
                     {
-                        customerFound = true;
-
-                        cusId = int.Parse(reader["customerId"].ToString());
-                        name = reader["Name"].ToString();
-                        rate = decimal.Parse(reader["rate"].ToString());
-                        dodhiId = int.Parse(reader["dodhiId"].ToString());
-                        dodhiName = reader["dodhi"].ToString();
-                        address = reader["address"].ToString();
-                        creditLimit = int.Parse(reader["creditLimit"].ToString());
+                        customer = new AddCustomers
+                        {
+                            id = int.Parse(reader["customerId"].ToString()),
+                            name = reader["name"].ToString(),
+                            rate = decimal.Parse(reader["rate"].ToString()),
+                            creditLimit = int.Parse(reader["creditLimit"].ToString()),
+                            dodhiId = int.Parse(reader["dodhiId"].ToString()),
+                            dodhi = reader["dodhi"].ToString(),
+                            address = reader["address"].ToString(),
+                            installmentAdjustment = int.Parse(reader["phNo"].ToString()),
+                            registerPageNo = int.Parse(reader["registerPageNo"].ToString()),
+                            isActive = bool.Parse(reader["isActive"].ToString()),
+                            giveCreditOnParchi = bool.Parse(reader["giveCreditOnParchi"].ToString())
+                        };
                     }
-
-                    if(!customerFound)
+                    else
                     {
-                        MessageBox.Show("Customer not fount!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Customer not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Error retrieving customer detail: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -521,7 +579,11 @@ namespace DairyAccounting
             {
                 dbConnection.closeConnection();
             }
+
+            return customer; // Return the customer object (or null if not found)
         }
+
+
 
         public void GetCustomerAddress(int id, out string address)
         {

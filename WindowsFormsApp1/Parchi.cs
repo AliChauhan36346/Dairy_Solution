@@ -23,6 +23,11 @@ namespace WindowsFormsApp1
         AddAccounts accounts = new AddAccounts();
         AddCustomers customers = new AddCustomers();
 
+        AddReceipts receipts;
+        AddReceipts AddReceipts=new AddReceipts();
+
+        
+
 
         public Parchi()
         {
@@ -303,7 +308,7 @@ namespace WindowsFormsApp1
                     e.Graphics.DrawString(companyName, headingfont, brush, xAxis, yAxis); // Adjust the Y coordinate as needed
                     yAxis += 35;
                     xAxis -= 40;//15
-                    e.Graphics.DrawString(addres, address, brush, xAxis, yAxis);
+                    e.Graphics.DrawString(addres, address, brush, xAxis, yAxis-5);
                     
                     yAxis += 5;//30
                     e.Graphics.DrawString("--------------------------------------------", linefont, brush, xAxis, yAxis); // Adjust the Y coordinate as needed
@@ -455,7 +460,7 @@ namespace WindowsFormsApp1
                     e.Graphics.DrawString(companyName, headingfont, brush, xAxis, yAxis); // Adjust the Y coordinate as needed
                     yAxis += 35;
                     xAxis -= 40;//15
-                    e.Graphics.DrawString(addres, address, brush, xAxis, yAxis);
+                    e.Graphics.DrawString(addres, address, brush, xAxis, yAxis-5);
                     yAxis += 5;//30
                     e.Graphics.DrawString("--------------------------------------------", linefont, brush, xAxis, yAxis); // Adjust the Y coordinate as needed
                     xAxis += 160;//175
@@ -1117,7 +1122,7 @@ namespace WindowsFormsApp1
             //int horizotalElement = 60;
 
             int xAxis = 60;
-            int yAxis = 25;
+            int yAxis = 10;
 
             if (currentRow < dataGridView2.Rows.Count - 1)
             {
@@ -1133,7 +1138,7 @@ namespace WindowsFormsApp1
                 e.Graphics.DrawString(companyName, headingfont, brush, xAxis, yAxis); // Adjust the Y coordinate as needed
                 yAxis += 35;
                 xAxis -= 40;//15
-                e.Graphics.DrawString(addres, address, brush, xAxis, yAxis);
+                e.Graphics.DrawString(addres, address, brush, xAxis, yAxis-5);
 
                 yAxis += 5;//30
                 e.Graphics.DrawString("--------------------------------------------", linefont, brush, xAxis, yAxis); // Adjust the Y coordinate as needed
@@ -1275,6 +1280,11 @@ namespace WindowsFormsApp1
         }
 
         private void cmbo_dodhi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

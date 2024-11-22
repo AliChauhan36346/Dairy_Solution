@@ -16,6 +16,7 @@ namespace DairyAccounting
         //private readonly string connectionString = @"Data Source=DESKTOP-6T1BFNC\SQLEXPRESS;Initial Catalog=dairyDataBase;Integrated Security=True";
         private readonly string connectionString = (@"Data Source=(LocalDB)\v11.0;AttachDbFilename= |DataDirectory|\DairyManagmentDataBase.mdf; Integrated Security = true; Connect Timeout=30");
 
+
         // SqlConnection object
         public SqlConnection connection;
 

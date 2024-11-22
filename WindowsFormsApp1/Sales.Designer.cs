@@ -43,7 +43,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label18 = new System.Windows.Forms.Label();
             this.lstCompanySuggestions = new System.Windows.Forms.ListBox();
             this.btn_goForward = new System.Windows.Forms.Button();
             this.lstAccountSuggestions = new System.Windows.Forms.ListBox();
@@ -76,6 +75,7 @@
             this.txt_liters = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_salesId = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.txt_tsSales = new System.Windows.Forms.TextBox();
             this.txt_grossSales = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -285,7 +285,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.lstCompanySuggestions);
             this.groupBox1.Controls.Add(this.btn_goForward);
             this.groupBox1.Controls.Add(this.lstAccountSuggestions);
             this.groupBox1.Controls.Add(this.btn_goBack);
@@ -328,26 +327,13 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sales Detail";
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label18.Location = new System.Drawing.Point(392, 186);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(120, 20);
-            this.label18.TabIndex = 55;
-            this.label18.Text = "موصول ہوئی رقم";
-            this.label18.Click += new System.EventHandler(this.label18_Click);
-            // 
             // lstCompanySuggestions
             // 
             this.lstCompanySuggestions.FormattingEnabled = true;
-            this.lstCompanySuggestions.ItemHeight = 20;
-            this.lstCompanySuggestions.Location = new System.Drawing.Point(186, 88);
+            this.lstCompanySuggestions.ItemHeight = 15;
+            this.lstCompanySuggestions.Location = new System.Drawing.Point(200, 162);
             this.lstCompanySuggestions.Name = "lstCompanySuggestions";
-            this.lstCompanySuggestions.Size = new System.Drawing.Size(326, 204);
+            this.lstCompanySuggestions.Size = new System.Drawing.Size(326, 229);
             this.lstCompanySuggestions.TabIndex = 36;
             this.lstCompanySuggestions.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstCompanySuggestions_MouseDoubleClick);
             // 
@@ -366,7 +352,7 @@
             // 
             this.lstAccountSuggestions.FormattingEnabled = true;
             this.lstAccountSuggestions.ItemHeight = 20;
-            this.lstAccountSuggestions.Location = new System.Drawing.Point(186, 118);
+            this.lstAccountSuggestions.Location = new System.Drawing.Point(186, 119);
             this.lstAccountSuggestions.Name = "lstAccountSuggestions";
             this.lstAccountSuggestions.Size = new System.Drawing.Size(326, 124);
             this.lstAccountSuggestions.TabIndex = 37;
@@ -449,24 +435,24 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Green;
             this.label4.Location = new System.Drawing.Point(398, 137);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(75, 20);
+            this.label4.Size = new System.Drawing.Size(66, 18);
             this.label4.TabIndex = 62;
             this.label4.Text = "Ts ٹی ایس";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.Navy;
-            this.label16.Location = new System.Drawing.Point(8, 282);
+            this.label16.Location = new System.Drawing.Point(79, 288);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(92, 20);
+            this.label16.Size = new System.Drawing.Size(87, 18);
             this.label16.TabIndex = 59;
             this.label16.Text = "Balance بقیہ";
             // 
@@ -486,12 +472,12 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label15.Location = new System.Drawing.Point(8, 206);
+            this.label15.Location = new System.Drawing.Point(31, 212);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(149, 20);
+            this.label15.Size = new System.Drawing.Size(135, 18);
             this.label15.TabIndex = 57;
             this.label15.Text = "Total Amount کل رقم";
             // 
@@ -535,24 +521,24 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label10.Location = new System.Drawing.Point(8, 243);
+            this.label10.Location = new System.Drawing.Point(23, 249);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(148, 20);
+            this.label10.Size = new System.Drawing.Size(143, 18);
             this.label10.TabIndex = 52;
             this.label10.Text = "Cash Account اکاؤنٹ";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Purple;
             this.label8.Location = new System.Drawing.Point(251, 137);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(73, 20);
+            this.label8.Size = new System.Drawing.Size(66, 18);
             this.label8.TabIndex = 49;
             this.label8.Text = "Fat% فیٹ";
             // 
@@ -581,24 +567,24 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Purple;
-            this.label9.Location = new System.Drawing.Point(8, 133);
+            this.label9.Location = new System.Drawing.Point(104, 139);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(62, 20);
+            this.label9.Size = new System.Drawing.Size(61, 18);
             this.label9.TabIndex = 51;
             this.label9.Text = "LR ایل آر";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label7.Location = new System.Drawing.Point(8, 169);
+            this.label7.Location = new System.Drawing.Point(36, 175);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(140, 20);
+            this.label7.Size = new System.Drawing.Size(130, 18);
             this.label7.TabIndex = 47;
             this.label7.Text = "Ts Liters ٹی ایس لیٹر";
             // 
@@ -630,12 +616,12 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(8, 60);
+            this.label6.Location = new System.Drawing.Point(58, 66);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(118, 20);
+            this.label6.Size = new System.Drawing.Size(108, 18);
             this.label6.TabIndex = 44;
             this.label6.Text = "Company کمپنی";
             // 
@@ -655,12 +641,12 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Purple;
             this.label5.Location = new System.Drawing.Point(283, 100);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(111, 20);
+            this.label5.Size = new System.Drawing.Size(118, 18);
             this.label5.TabIndex = 42;
             this.label5.Text = "Gross Liters لیٹر";
             // 
@@ -678,12 +664,12 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(8, 96);
+            this.label3.Location = new System.Drawing.Point(96, 102);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 20);
+            this.label3.Size = new System.Drawing.Size(70, 18);
             this.label3.TabIndex = 38;
             this.label3.Text = "Rate قیمت";
             // 
@@ -701,12 +687,12 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(8, 26);
+            this.label2.Location = new System.Drawing.Point(38, 32);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(141, 20);
+            this.label2.Size = new System.Drawing.Size(128, 18);
             this.label2.TabIndex = 36;
             this.label2.Text = "Sales Id سیل آئی ڈی";
             // 
@@ -721,6 +707,19 @@
             this.txt_salesId.Size = new System.Drawing.Size(100, 27);
             this.txt_salesId.TabIndex = 35;
             this.txt_salesId.TabStop = false;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label18.Location = new System.Drawing.Point(414, 186);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(94, 18);
+            this.label18.TabIndex = 55;
+            this.label18.Text = "موصول ہوئی رقم";
+            this.label18.Click += new System.EventHandler(this.label18_Click);
             // 
             // txt_tsSales
             // 
@@ -790,6 +789,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1267, 692);
+            this.Controls.Add(this.lstCompanySuggestions);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.txt_stockVolume);

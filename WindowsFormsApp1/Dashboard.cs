@@ -104,7 +104,7 @@ namespace WindowsFormsApp1
             string grossReceive;
 
             // geth the average fat and lr
-            dashboard.getAverageLrFat(out grossReceive,out avgLr, out avgFat, startDate.Date, endDate.Date);
+            dashboard.getAverageLrFat(out grossReceive, out avgLr, out avgFat, startDate.Date, endDate.Date);
 
             // calculating average ts volume base on chilar receive data like lr fat and gross volume
             int ts = 13;
@@ -115,7 +115,7 @@ namespace WindowsFormsApp1
             decimal averageFat = decimal.Parse(avgFat);
 
             averageFat = Math.Round(averageFat, 2);
-            averageLr=Math.Round(averageLr,2);
+            averageLr = Math.Round(averageLr, 2);
 
             // assigningn values to the labels
             lbl_avgFat.Text = averageFat.ToString();
@@ -134,7 +134,7 @@ namespace WindowsFormsApp1
 
             // assignes the values to the text
             lbl_grossVolume.Text = grossSale;
-            lbl_tsVolume.Text = tsSale ;
+            lbl_tsVolume.Text = tsSale;
 
             // calculates the ts loss
             decimal tsLoss = decimal.Parse(grossSale) - decimal.Parse(tsSale);
@@ -149,45 +149,45 @@ namespace WindowsFormsApp1
             // for purchases card
             string purchaseVolume;
 
-            dashboard.getPurchaseVolume(out purchaseVolume,startDate.Date,endDate.Date);
+            dashboard.getPurchaseVolume(out purchaseVolume, startDate.Date, endDate.Date);
             decimal dodhiLoss = decimal.Parse(purchaseVolume) - decimal.Parse(grossReceive);
             dodhiLoss = Math.Round(dodhiLoss, 2);
 
-            lbl_purchases.Text= purchaseVolume;
-            lbl_grossReceive.Text= grossReceive;
+            lbl_purchases.Text = purchaseVolume;
+            lbl_grossReceive.Text = grossReceive;
             lbl_PdodhiLoss.Text = dodhiLoss.ToString();
 
-            
+
 
 
             // for stock/loss card
 
-            lbl_stockCReceive.Text=grossReceive;
+            lbl_stockCReceive.Text = grossReceive;
             lbl_stockSales.Text = grossSale;
 
-            decimal stockOrLoss=decimal.Parse(grossReceive) - decimal.Parse(grossSale);
+            decimal stockOrLoss = decimal.Parse(grossReceive) - decimal.Parse(grossSale);
             stockOrLoss = Math.Round(stockOrLoss, 2);
 
-            lbl_stockOrLoss.Text= stockOrLoss.ToString();
+            lbl_stockOrLoss.Text = stockOrLoss.ToString();
 
 
             // for bank/cash card
             dashboard.getAccountOpeningBalance(dtm_start.Value.Date, out decimal openingAmount);
-            dashboard.GetTotalPaymentAmount(dtm_start.Value.Date,dtm_end.Value.Date, out decimal totalPaymentAmount);
-            dashboard.GetTotalReceiptAmount(dtm_start.Value.Date,dtm_end.Value.Date, out decimal totalReceiptAmount);
-            lbl_accOpeningBalance.Text= openingAmount.ToString();
+            dashboard.GetTotalPaymentAmount(dtm_start.Value.Date, dtm_end.Value.Date, out decimal totalPaymentAmount);
+            dashboard.GetTotalReceiptAmount(dtm_start.Value.Date, dtm_end.Value.Date, out decimal totalReceiptAmount);
+            lbl_accOpeningBalance.Text = openingAmount.ToString();
             lbl_paymentAmount.Text = totalPaymentAmount.ToString();
-            lbl_totalReceipts.Text= totalReceiptAmount.ToString();
+            lbl_totalReceipts.Text = totalReceiptAmount.ToString();
 
             decimal currentBalane = openingAmount > 0 ? (openingAmount + totalReceiptAmount) - totalPaymentAmount : (openingAmount - totalPaymentAmount) + totalReceiptAmount;
 
-            lbl_currentBalance.Text=currentBalane.ToString();
+            lbl_currentBalance.Text = currentBalane.ToString();
 
 
 
         }
 
-        
+
 
         private void rateToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -366,7 +366,7 @@ namespace WindowsFormsApp1
             dtm_start.Value = dtm_start.Value.Date.AddDays(-1);
             dtm_end.Value = dtm_end.Value.Date.AddDays(-1);
 
-            Dashboard_Activated(sender, e);
+            Dashboard_Activated_1(sender, e);
         }
 
         private void btn_forward_Click(object sender, EventArgs e)
@@ -387,12 +387,12 @@ namespace WindowsFormsApp1
 
         private void dtm_start_ValueChanged(object sender, EventArgs e)
         {
-            Dashboard_Activated(sender, e);
+            Dashboard_Activated_1(sender, e);
         }
 
         private void dtm_end_ValueChanged(object sender, EventArgs e)
         {
-            Dashboard_Activated(sender, e);
+            Dashboard_Activated_1(sender, e);
         }
 
         private void toolStripMenuItem10_Click(object sender, EventArgs e)
@@ -406,6 +406,102 @@ namespace WindowsFormsApp1
             Rate_List rate_List = new Rate_List();
 
             rate_List.ShowDialog();
+        }
+
+        private void Dashboard_Activated_1(object sender, EventArgs e)
+
+        {
+            DateTime startDate = dtm_start.Value;
+            DateTime endDate = dtm_end.Value;
+
+            // for average lr fat card
+
+            string avgLr;
+            string avgFat;
+            string grossReceive;
+
+            // geth the average fat and lr
+            dashboard.getAverageLrFat(out grossReceive, out avgLr, out avgFat, startDate.Date, endDate.Date);
+
+            // calculating average ts volume base on chilar receive data like lr fat and gross volume
+            int ts = 13;
+            decimal averageTsVolume = commonFunctions.tsCalculator(decimal.Parse(avgLr), decimal.Parse(avgFat), decimal.Parse(grossReceive), ts);
+
+            // parsing for 2 decimal place percesion
+            decimal averageLr = decimal.Parse(avgLr);
+            decimal averageFat = decimal.Parse(avgFat);
+
+            averageFat = Math.Round(averageFat, 2);
+            averageLr = Math.Round(averageLr, 2);
+
+            // assigningn values to the labels
+            lbl_avgFat.Text = averageFat.ToString();
+            lbl_avgLr.Text = averageLr.ToString();
+            lbl_avgTsVolume.Text = averageTsVolume.ToString();
+
+
+
+            //for sales card
+
+            string grossSale;
+            string tsSale;
+
+            // get the gross sales and ts-sales volume
+            dashboard.getGrossAndTsSales(out grossSale, out tsSale, startDate.Date, endDate.Date);
+
+            // assignes the values to the text
+            lbl_grossVolume.Text = grossSale;
+            lbl_tsVolume.Text = tsSale;
+
+            // calculates the ts loss
+            decimal tsLoss = decimal.Parse(grossSale) - decimal.Parse(tsSale);
+
+            // assigning value to ts loss lable
+            lbl_tsLoss.Text = tsLoss.ToString();
+
+
+
+
+
+            // for purchases card
+            string purchaseVolume;
+
+            dashboard.getPurchaseVolume(out purchaseVolume, startDate.Date, endDate.Date);
+            decimal dodhiLoss = decimal.Parse(purchaseVolume) - decimal.Parse(grossReceive);
+            dodhiLoss = Math.Round(dodhiLoss, 2);
+
+            lbl_purchases.Text = purchaseVolume;
+            lbl_grossReceive.Text = grossReceive;
+            lbl_PdodhiLoss.Text = dodhiLoss.ToString();
+
+
+
+
+            // for stock/loss card
+
+            lbl_stockCReceive.Text = grossReceive;
+            lbl_stockSales.Text = grossSale;
+
+            decimal stockOrLoss = decimal.Parse(grossReceive) - decimal.Parse(grossSale);
+            stockOrLoss = Math.Round(stockOrLoss, 2);
+
+            lbl_stockOrLoss.Text = stockOrLoss.ToString();
+
+
+            // for bank/cash card
+            dashboard.getAccountOpeningBalance(dtm_start.Value.Date, out decimal openingAmount);
+            dashboard.GetTotalPaymentAmount(dtm_start.Value.Date, dtm_end.Value.Date, out decimal totalPaymentAmount);
+            dashboard.GetTotalReceiptAmount(dtm_start.Value.Date, dtm_end.Value.Date, out decimal totalReceiptAmount);
+            lbl_accOpeningBalance.Text = openingAmount.ToString();
+            lbl_paymentAmount.Text = totalPaymentAmount.ToString();
+            lbl_totalReceipts.Text = totalReceiptAmount.ToString();
+
+            decimal currentBalane = openingAmount > 0 ? (openingAmount + totalReceiptAmount) - totalPaymentAmount : (openingAmount - totalPaymentAmount) + totalReceiptAmount;
+
+            lbl_currentBalance.Text = currentBalane.ToString();
+
+
+
         }
     }
 }
