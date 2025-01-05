@@ -106,7 +106,7 @@ namespace DairyAccounting
                         dataTable.Columns["dodhi"].ColumnName = "Dodhi Name";
                         dataTable.Columns["rate"].ColumnName = "Purchase Rate";
                         dataTable.Columns["creditLimit"].ColumnName = "Credit Limit";
-                        dataTable.Columns["phNo"].ColumnName = "Credit Installment";
+                        dataTable.Columns["phNo"].ColumnName = "Installment Amount";
                         dataTable.Columns["registerPageNo"].ColumnName = "Khata No";
                         dataTable.Columns["isActive"].ColumnName = "isActive";
                         dataTable.Columns["giveCreditOnParchi"].ColumnName = "Give Credit";
@@ -128,7 +128,7 @@ namespace DairyAccounting
                         dataGridView.Columns["Dodhi Name"].Width = 130;
                         dataGridView.Columns["Purchase Rate"].Width = 90;
                         dataGridView.Columns["Credit Limit"].Width = 95;
-                        dataGridView.Columns["Credit Installment"].Width = 95;
+                        dataGridView.Columns["Installment Amount"].Width = 95;
                         dataGridView.Columns["isActive"].Width = 60;
                         dataGridView.Columns["Give Credit"].Width = 60;
                         dataGridView.Columns["Khata No"].Width = 60;
@@ -266,7 +266,6 @@ namespace DairyAccounting
                 dbConnection.closeConnection();
             }
         }
-
 
         public Dictionary<int, string> GetCustomersIdsAndNames()
         {
@@ -499,17 +498,21 @@ namespace DairyAccounting
                 dbConnection.openConnection();
 
                 // Query to fetch customerId and creditLimit for all customers
-                string query = "SELECT customerId, creditLimit FROM CustomersTbl";
+                string query = "SELECT customerId, creditLimit FROM CustomersTbl WHERE giveCreditOnParchi = @giveCreditOnParchi";
+
 
                 using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
                 {
+                    command.Parameters.AddWithValue("@giveCreditOnParchi", 1);
+
+
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
                             // Extract values for each customer
                             int customerId = reader.GetInt32(0);
-                            decimal creditLimit = reader.GetDecimal(1);
+                            int creditLimit = reader.GetInt32(1);
 
                             // Add to the list as a tuple
                             customerDetails.Add((customerId, creditLimit));
@@ -539,8 +542,21 @@ namespace DairyAccounting
                 dbConnection.openConnection();
 
                 // Query to retrieve customer details
-                string query = "SELECT customerId, name, rate, creditLimit, dodhiId, dodhi, address, phNo, registerPageNo, isActive, giveCreditOnParchi " +
-                               "FROM CustomersTbl WHERE customerId = @id";
+                string query = @"
+                SELECT 
+                    customerId, 
+                    name, 
+                    rate, 
+                    creditLimit, 
+                    dodhiId, 
+                    dodhi, 
+                    address, 
+                    phNo, 
+                    registerPageNo, 
+                    isActive, 
+                    giveCreditOnParchi 
+                FROM CustomersTbl 
+                WHERE customerId = @id";
 
                 using (SqlCommand command = new SqlCommand(query, dbConnection.connection))
                 {
@@ -552,17 +568,17 @@ namespace DairyAccounting
                     {
                         customer = new AddCustomers
                         {
-                            id = int.Parse(reader["customerId"].ToString()),
+                            id = reader["customerId"] != DBNull.Value ? Convert.ToInt32(reader["customerId"]) : 0,
                             name = reader["name"].ToString(),
-                            rate = decimal.Parse(reader["rate"].ToString()),
-                            creditLimit = int.Parse(reader["creditLimit"].ToString()),
-                            dodhiId = int.Parse(reader["dodhiId"].ToString()),
-                            dodhi = reader["dodhi"].ToString(),
-                            address = reader["address"].ToString(),
-                            installmentAdjustment = int.Parse(reader["phNo"].ToString()),
-                            registerPageNo = int.Parse(reader["registerPageNo"].ToString()),
-                            isActive = bool.Parse(reader["isActive"].ToString()),
-                            giveCreditOnParchi = bool.Parse(reader["giveCreditOnParchi"].ToString())
+                            rate = reader["rate"] != DBNull.Value ? Convert.ToDecimal(reader["rate"]) : 0m,
+                            creditLimit = reader["creditLimit"] != DBNull.Value ? Convert.ToInt32(reader["creditLimit"]) : 0,
+                            dodhiId = reader["dodhiId"] != DBNull.Value ? Convert.ToInt32(reader["dodhiId"]) : 0,
+                            dodhi = reader["dodhi"]?.ToString() ?? string.Empty,
+                            address = reader["address"]?.ToString() ?? string.Empty,
+                            installmentAdjustment = reader["phNo"] != DBNull.Value ? Convert.ToInt32(reader["phNo"]) : 0,
+                            registerPageNo = reader["registerPageNo"] != DBNull.Value ? Convert.ToInt32(reader["registerPageNo"]) : 0,
+                            isActive = reader["isActive"] != DBNull.Value && Convert.ToBoolean(reader["isActive"]),
+                            giveCreditOnParchi = reader["giveCreditOnParchi"] != DBNull.Value && Convert.ToBoolean(reader["giveCreditOnParchi"])
                         };
                     }
                     else
@@ -582,7 +598,6 @@ namespace DairyAccounting
 
             return customer; // Return the customer object (or null if not found)
         }
-
 
 
         public void GetCustomerAddress(int id, out string address)

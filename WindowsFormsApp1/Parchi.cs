@@ -639,7 +639,7 @@ namespace WindowsFormsApp1
             {
                 if(chk_thermalPrint.Checked)
                 {
-                    printDocument4.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("pprnm", 285, 500);//455
+                    printDocument4.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("pprnm", 285, 530);//455
 
                     // Create PrintPreviewDialog and assign the document
                     PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
@@ -1122,7 +1122,7 @@ namespace WindowsFormsApp1
             //int horizotalElement = 60;
 
             int xAxis = 60;
-            int yAxis = 10;
+            int yAxis = 0;
 
             if (currentRow < dataGridView2.Rows.Count - 1)
             {
@@ -1238,6 +1238,27 @@ namespace WindowsFormsApp1
                 }
                 xAxis += 150;//190
                 yAxis += 30;//290
+
+                if (row.Cells["Credit Limit"].Value.ToString() != "0")
+                {
+                    e.Graphics.DrawLine(pen, 20, yAxis, e.PageBounds.Width - 20, yAxis);
+
+                    yAxis += 15;
+
+                    e.Graphics.DrawString(":کریڈٹ کی حد", font, brush, xAxis, yAxis);
+                    xAxis -= 120;//70
+
+                    if (row.Cells["Credit Limit"].Value != null)
+                        e.Graphics.DrawString(row.Cells["Credit Limit"].Value.ToString(), font, brush, xAxis, yAxis);
+
+                    xAxis += 120;
+                    yAxis += 30;
+                }
+                else
+                {
+
+                }
+
                 e.Graphics.DrawString(":ادائیگی رقم", font, brush, xAxis, yAxis);
 
                 xAxis -= 120;//70
@@ -1256,8 +1277,34 @@ namespace WindowsFormsApp1
 
                 if (row.Cells["Parchi Amount"].Value != null)
                     e.Graphics.DrawString(row.Cells["Parchi Amount"].Value.ToString(), font, brush, xAxis, yAxis);
-                xAxis -= 40;//20
-                yAxis += 20;//310
+
+                // for final balance
+                if (row.Cells["Credit Limit"].Value.ToString() != "0")
+                {
+                    xAxis += 120;
+                    yAxis += 30;
+                    e.Graphics.DrawString(":حتمی بیلنس", font, brush, xAxis, yAxis);
+
+                    xAxis -= 120;
+
+                    if (row.Cells["Final Balance"].Value != null)
+                        e.Graphics.DrawString(row.Cells["Final Balance"].Value.ToString(), font, brush, xAxis, yAxis);
+
+                    xAxis -= 30;
+                    if (row.Cells["fStatus"].Value.ToString() == "Debit")
+                    {
+                        e.Graphics.DrawString("بنام", font, brush, xAxis, yAxis);
+                    }
+                    else
+                    {
+                        e.Graphics.DrawString("جمع", font, brush, xAxis, yAxis);
+                    }
+                    xAxis += 30;
+
+                }
+
+                xAxis -= 40;
+                yAxis += 20;
                 e.Graphics.DrawString("--------------------------------------------", linefont, brush, xAxis, yAxis);
                 xAxis += 5;//25
                 yAxis += 30;//340
@@ -1272,7 +1319,12 @@ namespace WindowsFormsApp1
                 yAxis += 30;//425
                 e.Graphics.DrawString("آپ کے تعاون کا شکریہ", infofont, brush, xAxis, yAxis);
                 currentRow++;
-                e.HasMorePages = true;
+
+                if (currentRow < dataGridView2.Rows.Count - 1)
+                {
+                    e.HasMorePages = true;
+                }
+                    
                 
 
                 

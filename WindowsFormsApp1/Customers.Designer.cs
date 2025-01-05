@@ -35,7 +35,9 @@
             this.txt_customerName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.chk_credit = new System.Windows.Forms.CheckBox();
+            this.txt_creditLimit = new System.Windows.Forms.TextBox();
             this.txt_phNo = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -44,8 +46,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txt_dodhiName = new System.Windows.Forms.TextBox();
             this.txt_dodhiId = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txt_creditLimit = new System.Windows.Forms.TextBox();
             this.txt_Id = new System.Windows.Forms.TextBox();
             this.lstDodhiSuggestions = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -88,7 +88,7 @@
             this.txt_rate.Location = new System.Drawing.Point(118, 105);
             this.txt_rate.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txt_rate.Name = "txt_rate";
-            this.txt_rate.Size = new System.Drawing.Size(100, 27);
+            this.txt_rate.Size = new System.Drawing.Size(83, 27);
             this.txt_rate.TabIndex = 1;
             this.txt_rate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_rate_KeyDown);
             // 
@@ -142,7 +142,9 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.lstDodhiSuggestions);
+            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.chk_credit);
+            this.groupBox1.Controls.Add(this.txt_creditLimit);
             this.groupBox1.Controls.Add(this.txt_phNo);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label9);
@@ -151,9 +153,7 @@
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.txt_dodhiName);
             this.groupBox1.Controls.Add(this.txt_dodhiId);
-            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.txt_creditLimit);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txt_rate);
             this.groupBox1.Controls.Add(this.label3);
@@ -170,11 +170,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer Info";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Blue;
+            this.label7.Location = new System.Drawing.Point(28, 150);
+            this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(86, 20);
+            this.label7.TabIndex = 44;
+            this.label7.Text = "Credit Limit";
+            // 
             // chk_credit
             // 
             this.chk_credit.AutoSize = true;
             this.chk_credit.Font = new System.Drawing.Font("Segoe UI", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_credit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.chk_credit.ForeColor = System.Drawing.Color.Blue;
             this.chk_credit.Location = new System.Drawing.Point(253, 35);
             this.chk_credit.Name = "chk_credit";
             this.chk_credit.Size = new System.Drawing.Size(184, 25);
@@ -182,13 +194,23 @@
             this.chk_credit.Text = "Give Credit on Parchi";
             this.chk_credit.UseVisualStyleBackColor = true;
             // 
+            // txt_creditLimit
+            // 
+            this.txt_creditLimit.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_creditLimit.Location = new System.Drawing.Point(118, 145);
+            this.txt_creditLimit.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.txt_creditLimit.Name = "txt_creditLimit";
+            this.txt_creditLimit.Size = new System.Drawing.Size(83, 27);
+            this.txt_creditLimit.TabIndex = 3;
+            this.txt_creditLimit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_creditLimit_KeyDown_1);
+            // 
             // txt_phNo
             // 
             this.txt_phNo.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_phNo.Location = new System.Drawing.Point(360, 145);
+            this.txt_phNo.Location = new System.Drawing.Point(351, 145);
             this.txt_phNo.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txt_phNo.Name = "txt_phNo";
-            this.txt_phNo.Size = new System.Drawing.Size(77, 27);
+            this.txt_phNo.Size = new System.Drawing.Size(86, 27);
             this.txt_phNo.TabIndex = 4;
             this.txt_phNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_phNo_KeyDown);
             // 
@@ -196,8 +218,8 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label10.Location = new System.Drawing.Point(220, 149);
+            this.label10.ForeColor = System.Drawing.Color.Blue;
+            this.label10.Location = new System.Drawing.Point(210, 149);
             this.label10.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(136, 20);
@@ -209,21 +231,21 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label9.Location = new System.Drawing.Point(6, 148);
+            this.label9.Location = new System.Drawing.Point(241, 111);
             this.label9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(107, 20);
+            this.label9.Size = new System.Drawing.Size(105, 20);
             this.label9.TabIndex = 40;
-            this.label9.Text = "Register Pg No";
+            this.label9.Text = "Khata Number";
             // 
             // txt_pgNo
             // 
             this.txt_pgNo.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_pgNo.Location = new System.Drawing.Point(118, 145);
+            this.txt_pgNo.Location = new System.Drawing.Point(351, 107);
             this.txt_pgNo.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txt_pgNo.Name = "txt_pgNo";
-            this.txt_pgNo.Size = new System.Drawing.Size(77, 27);
-            this.txt_pgNo.TabIndex = 3;
+            this.txt_pgNo.Size = new System.Drawing.Size(86, 27);
+            this.txt_pgNo.TabIndex = 2;
             this.txt_pgNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_pgNo_KeyDown);
             // 
             // txt_address
@@ -273,28 +295,6 @@
             this.txt_dodhiId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_dodhiId_KeyDown);
             this.txt_dodhiId.Leave += new System.EventHandler(this.txt_dodhiId_Leave);
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Blue;
-            this.label7.Location = new System.Drawing.Point(247, 110);
-            this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(86, 20);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Credit Limit";
-            // 
-            // txt_creditLimit
-            // 
-            this.txt_creditLimit.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_creditLimit.Location = new System.Drawing.Point(337, 105);
-            this.txt_creditLimit.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.txt_creditLimit.Name = "txt_creditLimit";
-            this.txt_creditLimit.Size = new System.Drawing.Size(100, 27);
-            this.txt_creditLimit.TabIndex = 2;
-            this.txt_creditLimit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_creditLimit_KeyDown);
-            // 
             // txt_Id
             // 
             this.txt_Id.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -312,7 +312,7 @@
             this.lstDodhiSuggestions.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstDodhiSuggestions.FormattingEnabled = true;
             this.lstDodhiSuggestions.ItemHeight = 17;
-            this.lstDodhiSuggestions.Location = new System.Drawing.Point(118, 28);
+            this.lstDodhiSuggestions.Location = new System.Drawing.Point(118, 27);
             this.lstDodhiSuggestions.Name = "lstDodhiSuggestions";
             this.lstDodhiSuggestions.Size = new System.Drawing.Size(319, 157);
             this.lstDodhiSuggestions.TabIndex = 40;
@@ -402,7 +402,7 @@
             this.cusBtn_addNew.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cusBtn_addNew.Name = "cusBtn_addNew";
             this.cusBtn_addNew.Size = new System.Drawing.Size(81, 52);
-            this.cusBtn_addNew.TabIndex = 1;
+            this.cusBtn_addNew.TabIndex = 2;
             this.cusBtn_addNew.TabStop = false;
             this.cusBtn_addNew.Text = "Add New";
             this.cusBtn_addNew.UseVisualStyleBackColor = false;
@@ -586,8 +586,6 @@
         private System.Windows.Forms.Button cusBtn_addNew;
         private System.Windows.Forms.Button cusBtn_save;
         private System.Windows.Forms.Button cusBtn_deleteCustomer;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txt_creditLimit;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button cusBtn_dashboard;
         private System.Windows.Forms.DataGridView dataGridView2;
@@ -609,5 +607,7 @@
         private System.Windows.Forms.CheckBox chk_credit;
         private System.Windows.Forms.CheckBox chk_inactiveCus;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txt_creditLimit;
     }
 }

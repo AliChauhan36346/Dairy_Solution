@@ -172,8 +172,48 @@ namespace WindowsFormsApp1
                 txt_dodhiName.Text = row.Cells["Dodhi Name"].Value.ToString();
                 txt_creditLimit.Text = row.Cells["Credit Limit"].Value.ToString();
                 txt_rate.Text = row.Cells["Purchase Rate"].Value.ToString();
+
+                // Populate extra fields
+                txt_phNo.Text = row.Cells["Installment Amount"].Value.ToString();
+                txt_pgNo.Text = row.Cells["Khata No"].Value.ToString();
+                if (row.Cells["Give Credit"].Value != null &&
+                    int.TryParse(row.Cells["Give Credit"].Value.ToString(), out int giveCredit))
+                {
+                    
+                    if (giveCredit == 1)
+                    {
+                        chk_credit.Checked = true;
+                    }
+                    else
+                    {
+                        chk_credit.Checked = false;
+                    }
+                }
+                else
+                {
+                    chk_credit.Checked = false; // Default if invalid or null
+                }
+
+                // Safely handle "Is Active" checkbox
+                if (row.Cells["IsActive"].Value != null &&
+                    int.TryParse(row.Cells["IsActive"].Value.ToString(), out int isActive))
+                {
+                    if (isActive == 1)
+                    {
+                        chk_inactiveCus.Checked = false;
+                    }
+                    else
+                    {
+                        chk_inactiveCus.Checked=true;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("unable to load active or inactive");
+                }
             }
         }
+
 
         private void cusBtn_addNew_Click(object sender, EventArgs e)
         {
@@ -385,7 +425,6 @@ namespace WindowsFormsApp1
             }
         }
 
-
         private void txt_pgNo_KeyDown(object sender, KeyEventArgs e)
         {
             // Check if the pressed key is Enter
@@ -400,6 +439,19 @@ namespace WindowsFormsApp1
         }
 
         private void txt_phNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Check if the pressed key is Enter
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Prevent the beep sound
+                e.SuppressKeyPress = true;
+
+                // Move focus to the next control (text box)
+                this.SelectNextControl((Control)sender, true, true, true, true);
+            }
+        }
+
+        private void txt_creditLimit_KeyDown_1(object sender, KeyEventArgs e)
         {
             // Check if the pressed key is Enter
             if (e.KeyCode == Keys.Enter)
